@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react'
-import { LOCAL_STORAGE_THEME_KEY, THEME, ThemeContext } from './ThemeContext';
+import { LOCAL_STORAGE_THEME_KEY, THEME, ThemeContext } from '../lib/ThemeContext';
 
 const DEFAULT_THEME = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as THEME || THEME.LIGHT;
 
-const ThemeProvider: React.FC = ({
+export const ThemeProvider: React.FC = ({
    children
 }) => {
 
@@ -20,5 +20,3 @@ const ThemeProvider: React.FC = ({
       </ThemeContext.Provider>
    )
 }
-
-export default ThemeProvider

@@ -21,7 +21,13 @@
       // ? import React from 'react';
       "allowSyntheticDefaultImports": true,
       // ? baseUrl - для абсолютного импорта;
-      "baseUrl": "."
+      "baseUrl": ".",
+      // ? Такая конструкция paths говорит о том, что все абсолютные экспорты/импорты будут идти из папки src
+      "paths": {
+         "*": [
+            "./src/*"
+         ]
+      }
    },
    // ? Это нужно для настройки import простыми словами, работает в связке с "module": "ESNext";
    "ts-node": {
