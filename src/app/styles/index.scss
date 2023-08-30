@@ -11,19 +11,3 @@
 
    min-height: 100vh;
 }
-
-.button-tggltheme {
-   border-radius: 5px;
-   background: linear-gradient(to bottom, #0073b1, #00a6d4);
-   padding: 5px 10px;
-   color: #ffffff;
-   font-weight: bold;
-   border: none;
-   transition:
-      box-shadow,
-      background 0.3s ease;
-}
-
-.button-tggltheme:hover {
-   background: linear-gradient(to bottom, #0069a2, #0099cc);
-}
