@@ -8,10 +8,10 @@ const MainPage = () => {
    return (
       <div>
          {
-            t('Главная страница')
+            t('glavnya-stranica')
          }
       </div>
    )
 }
 
-export default MainPage;
+export default MainPage; 
