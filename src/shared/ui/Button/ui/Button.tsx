@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { ButtonHTMLAttributes } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Button.module.scss';
@@ -13,14 +15,13 @@ interface ButtonPropsI extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button: React.FC<ButtonPropsI> = ({
-   className, children, theme, ...otherProps
-}) => {
-   return (
-      <button
-         className={classNames(cls.button, {}, [className, cls[theme]])}
-         {...otherProps}
-      >
-         {children}
-      </button>
-   )
-}
+    className, children, theme, ...otherProps
+}) => (
+    <button
+        type="button"
+        className={classNames(cls.button, {}, [className, cls[theme]])}
+        {...otherProps}
+    >
+        {children}
+    </button>
+);
