@@ -1,17 +1,15 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { ButtonHTMLAttributes } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Button.module.scss';
 
 export enum THEME_BUTTON {
-   CLEAR = 'clear',
-
+    CLEAR = 'clear',
 }
 
 interface ButtonPropsI extends ButtonHTMLAttributes<HTMLButtonElement> {
-   className?: string;
-   theme?: THEME_BUTTON;
+    className?: string;
+    theme?: THEME_BUTTON;
 }
 
 export const Button: React.FC<ButtonPropsI> = ({

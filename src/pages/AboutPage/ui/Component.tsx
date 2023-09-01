@@ -7,7 +7,10 @@ interface ComponentPropsI {
 }
 
 export const Component: React.FC<ComponentPropsI> = ({
-    className,
-}) => (
-    <div className={classNames(cls.component, {}, [className])} />
-);
+    className
+}) => {
+    return (
+        <div className={classNames(cls.component, {}, [className])}>
+        </div>
+    )
+}

@@ -3,8 +3,8 @@ import { MainPage } from 'pages/MainPage';
 import { AboutPage } from 'pages/AboutPage';
 
 export enum AppRoutes {
-   MAIN = 'main',
-   ABOUT = 'about'
+    MAIN = 'main',
+    ABOUT = 'about'
 }
 
 export const routesPath: Record<AppRoutes, string> = {
