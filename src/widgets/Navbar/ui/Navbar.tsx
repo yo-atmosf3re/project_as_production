@@ -28,6 +28,7 @@ export const Navbar: React.FC<NavbarPropsI> = ({
                 </AppLink>
                 <AppLink
                     theme={AppLinkTheme.SECONDARY}
+                    // eslint-disable-next-line i18next/no-literal-string
                     to="/about"
                 >
                     {
