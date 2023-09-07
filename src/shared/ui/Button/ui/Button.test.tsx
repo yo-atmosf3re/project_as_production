@@ -1,14 +1,10 @@
 /* eslint-disable i18next/no-literal-string */
-import { Button } from 'shared/ui/Button';
 import { render, screen } from '@testing-library/react';
+import { Button } from 'shared/ui/Button';
 
 describe('Button test', () => {
     test('Testing button', () => {
-        render(
-            <Button>
-                Test
-            </Button>,
-        );
+        render(<Button>Test</Button>);
         expect(screen.getByText('Test')).toBeInTheDocument();
     });
 });

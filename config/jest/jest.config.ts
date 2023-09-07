@@ -43,14 +43,17 @@ export default {
     ],
     testEnvironment: 'jsdom',
     clearMocks: true,
-    // modulePaths: [
-    //     '<rootDir>src',
-    // ],
+    modulePaths: [
+        '<rootDir>src',
+    ],
     rootDir: '../../',
     testMatch: [
         '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)',
     ],
-    // setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
+    setupFilesAfterEnv: ['<rootDir>/config/jest/setupTests.ts'],
+    moduleNameMapper: {
+        '\\.(s?css)$': 'identity-obj-proxy',
+    },
 
     // Indicates which provider should be used to instrument code for coverage
     // coverageProvider: "babel",
