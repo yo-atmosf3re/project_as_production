@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 /*
  * For a detailed explanation regarding each configuration property and type check, visit:
  * https://jestjs.io/docs/configuration
@@ -19,7 +18,9 @@ export default {
     // Indicates whether the coverage information should be collected while executing the test
     // collectCoverage: false,
 
-    // An array of glob patterns indicating a set of files for which coverage information should be collected
+    // An array of glob
+    // patterns indicating a
+    //  set of files for which coverage information should be collected
     // collectCoverageFrom: undefined,
 
     // The directory where Jest should output its coverage files
@@ -79,7 +80,11 @@ export default {
     // A set of global variables that need to be available in all test environments
     // globals: {},
 
-    // The maximum amount of workers used to run your tests. Can be specified as % or a number. E.g. maxWorkers: 10% will use 10% of your CPU amount + 1 as the maximum worker number. maxWorkers: 2 will use a maximum of 2 workers.
+    // The maximum amount of
+    //  workers used to run
+    // your tests. Can be specified as % or a number.
+    // E.g. maxWorkers: 10% will use 10% of
+    // your CPU amount + 1 as the maximum worker number. maxWorkers: 2 will use a maximum of 2 workers.
     // maxWorkers: "50%",
 
     // An array of directory names to be searched recursively up from the requiring module's location
@@ -129,7 +134,9 @@ export default {
     // Allows you to use a custom runner instead of Jest's default test runner
     // runner: "jest-runner",
 
-    // The paths to modules that run some code to configure or set up the testing environment before each test
+    // The paths to modules that
+    // run some code to
+    // configure or set up the testing environment before each test
     // setupFiles: [],
 
     // A list of paths to modules that run some code to configure or set up the testing framework before each test

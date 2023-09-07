@@ -19,7 +19,7 @@ export const Sidebar: React.FC<NavbarPropsI> = ({
         setCollapsed((prev) => !prev);
     };
 
-    const { t } = useTranslation();
+    const { t } = useTranslation('sidebar');
 
     return (
         <div
