@@ -43,10 +43,14 @@ export default {
     ],
     testEnvironment: 'jsdom',
     clearMocks: true,
+    // modulePaths: [
+    //     '<rootDir>src',
+    // ],
     rootDir: '../../',
     testMatch: [
         '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)',
     ],
+    // setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
 
     // Indicates which provider should be used to instrument code for coverage
     // coverageProvider: "babel",
