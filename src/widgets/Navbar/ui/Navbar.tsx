@@ -8,6 +8,7 @@ interface NavbarPropsI {
    className?: string;
 }
 
+// ? Компонента-навбар;
 export const Navbar: React.FC<NavbarPropsI> = ({
     // eslint-disable-next-line no-unused-vars
     className,

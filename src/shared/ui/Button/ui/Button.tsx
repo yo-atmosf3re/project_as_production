@@ -5,6 +5,7 @@ import cls from './Button.module.scss';
 
 export enum THEME_BUTTON {
     CLEAR = 'clear',
+    OUTLINE = 'outline'
 }
 
 interface ButtonPropsI extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -12,6 +13,7 @@ interface ButtonPropsI extends ButtonHTMLAttributes<HTMLButtonElement> {
     theme?: THEME_BUTTON;
 }
 
+// ? Кастомизированная компонента-кнопка;
 export const Button: React.FC<ButtonPropsI> = ({
     className, children, theme, ...otherProps
 }) => (

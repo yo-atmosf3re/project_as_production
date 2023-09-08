@@ -8,6 +8,7 @@ interface ErrorPagePropsI {
    className?: string;
 }
 
+// ? Компонента, которая является страницей с ошибкой при, например, некорректно указаной маршрутиризации;
 export const ErrorPage: React.FC<ErrorPagePropsI> = ({
     className,
 }) => {

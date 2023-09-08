@@ -7,6 +7,7 @@ interface NotFoundPagePropsI {
    className?: string;
 }
 
+// ? Компонента, которая отображается в случае, если какая-либо страница не найдена;
 export const NotFoundPage: React.FC<NotFoundPagePropsI> = ({
     className,
 }) => {

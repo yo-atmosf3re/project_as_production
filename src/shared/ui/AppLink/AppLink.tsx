@@ -13,6 +13,7 @@ interface AppLinkPropsI extends LinkProps {
    theme?: AppLinkTheme;
 }
 
+// ? Кастомизированная компонента для создания ссылок;
 export const AppLink: React.FC<AppLinkPropsI> = ({
     className, children, theme = AppLinkTheme.PRIMARY, ...otherProps
 }) => (

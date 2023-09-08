@@ -11,6 +11,7 @@ export interface ThemeContextPropsI {
    setTheme?: (theme: THEME) => void;
 }
 
+// ? Создаёт контекст, связанный с цветовыми темами приложения;
 export const ThemeContext = createContext<ThemeContextPropsI>({});
 
 export const LOCAL_STORAGE_THEME_KEY = 'theme';

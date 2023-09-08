@@ -9,6 +9,7 @@ export enum AppRoutes {
     NOT_FOUND = 'not_found'
 }
 
+// ? Вся настройка и объявление роутов происходит с помощью данного функционала ;
 export const routesPath: Record<AppRoutes, string> = {
     [AppRoutes.MAIN]: '/',
     [AppRoutes.ABOUT]: '/about',

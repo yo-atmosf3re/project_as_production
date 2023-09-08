@@ -10,6 +10,7 @@ interface NavbarPropsI {
     className?: string;
 }
 
+// ? Компонента-сайдбар, содержит некоторый функционал по пользовательской кастомизации приложения (смена темы, языка);
 export const Sidebar: React.FC<NavbarPropsI> = ({
     className,
 }) => {

@@ -6,6 +6,7 @@ interface UseThemeResult {
     theme: THEME;
 }
 
+// ? Кастомный хук, который переключает темы в приложении, записывает в LS активную тему;
 export const useTheme = (): UseThemeResult => {
     const { theme, setTheme } = useContext(ThemeContext);
 

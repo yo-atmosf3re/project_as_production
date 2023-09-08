@@ -9,6 +9,7 @@ interface LangSwitcherPropsI {
    className?: string;
 }
 
+// ? Компонента, которая отвечает за переключение языка на проекте;
 export const LangSwitcher: React.FC<LangSwitcherPropsI> = ({
     className,
 }) => {

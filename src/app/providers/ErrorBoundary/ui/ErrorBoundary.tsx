@@ -9,6 +9,7 @@ interface ErrorBoundaryStateI {
    hasError: boolean;
 }
 
+// ? Классовая компонента, которая обрабатывает ошибки в дочерних компонентах. Является обёрткой, перехватывает почти любые ошибки. Перехватывает ошибки во время рендеринга компонента, жизненного цикла или обработки события. В данном случае сообщает в консоль содержимое ошибки, отрисовывает ErrorPage;
 class ErrorBoundary
     extends React.Component<ErrorBoundaryPropsI, ErrorBoundaryStateI> {
     constructor(props: ErrorBoundaryPropsI) {
@@ -29,7 +30,6 @@ class ErrorBoundary
         const { hasError } = this.state;
         const { children } = this.props;
         if (hasError) {
-            // You can render any custom fallback UI
             // eslint-disable-next-line i18next/no-literal-string
             return (
                 <Suspense fallback="">

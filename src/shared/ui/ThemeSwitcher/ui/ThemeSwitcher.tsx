@@ -11,6 +11,7 @@ interface ThemeSwitcherPropsI {
    className?: string;
 }
 
+// ? Компонента, которая переключает цветовые темы во всём приложении;
 export const ThemeSwitcher: React.FC<ThemeSwitcherPropsI> = ({
     className,
 }) => {

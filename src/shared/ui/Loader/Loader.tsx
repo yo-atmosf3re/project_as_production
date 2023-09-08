@@ -6,6 +6,7 @@ interface LoaderPropsI {
    className?: string;
 }
 
+// ? Компонента-лоудер;
 export const Loader: React.FC<LoaderPropsI> = ({
     className,
 }) => (

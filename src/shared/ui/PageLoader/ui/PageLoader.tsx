@@ -7,6 +7,7 @@ interface PageLoaderPropsI {
    className?: string;
 }
 
+// ? Компонента, которая является страницей-прелоудером;
 export const PageLoader: React.FC<PageLoaderPropsI> = ({
     className,
 }) => (

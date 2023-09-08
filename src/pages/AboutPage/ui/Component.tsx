@@ -6,6 +6,7 @@ interface ComponentPropsI {
     className?: string;
 }
 
+// ? Тестовая компонента;
 export const Component: React.FC<ComponentPropsI> = ({
     className,
 }) => (
