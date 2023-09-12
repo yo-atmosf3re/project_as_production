@@ -7,7 +7,7 @@ const AboutPage = () => {
     return (
         <div>
             {
-                t('o-saite')
+                t('О сайте')
             }
         </div>
     );
