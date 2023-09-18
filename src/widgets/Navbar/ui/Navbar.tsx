@@ -24,7 +24,7 @@ export const Navbar: React.FC<NavbarPropsI> = ({
                     className={cls.mainLink}
                 >
                     {
-                        t('glavnya-stranica')
+                        t('Главная страница')
                     }
                 </AppLink>
                 <AppLink
@@ -33,7 +33,7 @@ export const Navbar: React.FC<NavbarPropsI> = ({
                     to="/about"
                 >
                     {
-                        t('o-saite')
+                        t('О сайте')
                     }
                 </AppLink>
             </div>
