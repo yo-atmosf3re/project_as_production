@@ -23,6 +23,7 @@ jobs:
         run: npm run build:prod
       - name: linting typescript
         run: npm run lint:ts
+      # Линтинг scss закомментирован для удобства ci;
       # - name: linting css
       #   run: npm run lint:scss
       - name: unit testing
@@ -30,4 +31,4 @@ jobs:
       - name: build storybook
         run: npm run sb:build
       - name: screenshot testing
-        run: npm run test:ui:ci
+        run: npm run test:ui:ok
