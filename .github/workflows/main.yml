@@ -30,3 +30,7 @@ jobs:
       # Скрин тест закомментирован, потому что не работает корректно при CI;
       # - name: Screenshot testing
       #   run: npm run test:ui:ok
+      - name: build storybook
+        run: npm run sb:build
+      - name: screenshot testing
+        run: npm run test:ui:ci
