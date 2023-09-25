@@ -33,5 +33,7 @@ jobs:
       #   run: npm run test:ui:ok
       # - name: update reference
       #   run: npx loki update --reactUri="file:./storybook-static"
+      # - name: screenshot testing
+      #   run: npm run test:ui:ci
       - name: screenshot testing
-        run: npm run test:ui:ci
+        run: npx loki test --reactUri="file:./storybook-static"
