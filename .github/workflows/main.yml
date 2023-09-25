@@ -28,7 +28,7 @@ jobs:
       # - name: unit testing
       #   run: npm run test:unit
       - name: build storybook
-        run: npm run sb:build && npx loki --requireReference --reactUri file:./storybook-static
+        run: npm run sb:build && npm run test:ui:ci
       # - name: ui test ok
       #   run: npm run test:ui:ok
       # - name: update reference
