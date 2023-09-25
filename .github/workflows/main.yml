@@ -28,12 +28,12 @@ jobs:
       # - name: unit testing
       #   run: npm run test:unit
       - name: build storybook
-        run: npm run sb:build
+        run: npm run sb:build && npx loki --requireReference --reactUri file:./storybook-static
       # - name: ui test ok
       #   run: npm run test:ui:ok
       # - name: update reference
       #   run: npx loki update --reactUri="file:./storybook-static"
       # - name: screenshot testing
       #   run: npm run test:ui:ci
-      - name: screenshot testing
-        run: npx loki --requireReference --reactUri file:./storybook-static
+      # - name: screenshot testing
+      #   run: npx loki --requireReference --reactUri file:./storybook-static
