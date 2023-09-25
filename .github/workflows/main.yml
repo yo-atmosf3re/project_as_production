@@ -36,4 +36,4 @@ jobs:
       # - name: screenshot testing
       #   run: npm run test:ui:ci
       - name: screenshot testing
-        run: npx loki test --reactUri="file:./storybook-static"
+        run: npx loki --requireReference --reactUri file:./storybook-static
