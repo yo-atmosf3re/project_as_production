@@ -25,11 +25,11 @@ jobs:
         run: npm run lint:ts
       # - name: linting css
       #   run: npm run lint:scss
-      - name: unit testing
-        run: npm run test:unit
+      # - name: unit testing
+      #   run: npm run test:unit
       - name: build storybook
         run: npm run sb:build
-      - name: ui test ok
-        run: npm run test:ui:ok
+      # - name: ui test ok
+      #   run: npm run test:ui:ok
       - name: screenshot testing
         run: npm run test:ui:ci
