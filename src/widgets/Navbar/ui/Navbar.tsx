@@ -17,35 +17,7 @@ export const Navbar: React.FC<NavbarPropsI> = ({
 
     return (
         <div className={classNames(cls.navbar)}>
-            <div className={cls.links}>
-                <AppLink
-                    theme={AppLinkTheme.SECONDARY}
-                    to="/"
-                    className={cls.mainLink}
-                >
-                    {
-                        t('Главная страница')
-                    }
-                </AppLink>
-                <AppLink
-                    theme={AppLinkTheme.SECONDARY}
-                    // eslint-disable-next-line i18next/no-literal-string
-                    to="/about"
-                >
-                    {
-                        t('О сайте')
-                    }
-                </AppLink>
-                <AppLink
-                    theme={AppLinkTheme.SECONDARY}
-                    // eslint-disable-next-line i18next/no-literal-string
-                    to="/about"
-                >
-                    {
-                        t('О сайте')
-                    }
-                </AppLink>
-            </div>
+            <div className={cls.links} />
         </div>
     );
 };

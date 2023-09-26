@@ -7,9 +7,11 @@ module.exports = {
     },
     // ? Импортируем и расширяем наборы правил для проверки кода;
     extends: [
+        'eslint:recommended',
         'plugin:react/recommended',
         'airbnb',
         'plugin:i18next/recommended',
+        'plugin:@typescript-eslint/recommended',
     ],
     // ? Указываем парсер, который будет использоваться для анализа кода;
     parser: '@typescript-eslint/parser',
@@ -69,8 +71,10 @@ module.exports = {
         'import/no-unresolved': 'off',
         // ? Отключаем правило, которое предлагает использовать экспорт по умолчанию, вместо именованного экспорта;
         'import/prefer-default-export': 'off',
+        '@typescript-eslint/no-unused-vars': 'warn',
+        // ? Представляют собой тайпскриптовые предупреждения об неиспользуемых переменных
         // ? Представляют собой предупреждения об неиспользуемых переменных;
-        'no-unused-vars': 'warn',
+        'no-unused-vars': 'off',
         // ? Отключаем правило, которое предлагает добавить значение по умолчанию для необязательных пропсов в React-компонентах;
         'react/require-default-props': 'off',
         // ? Отключаем правило, которое предотвращает использование React без импорта;

@@ -6,12 +6,9 @@
     transition: width 0.3s ease;
 }
 
-.collapsed {
-    width: var(--sidebar-width-collapsed);
-}
-
 .switchers {
     position: absolute;
+    animation: directionSwitchAnimation 2.25s ease-in-out;
     bottom: 20px;
     display: flex;
     justify-content: center;
@@ -20,4 +17,55 @@
 
 .lang {
     margin-left: 20px;
+}
+
+.items {
+    margin-top: 20px;
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.item {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    svg {
+        flex-shrink: 0;
+    }
+}
+
+.link {
+    margin-left: 10px;
+}
+
+.icon {
+    fill: var(--secondary-color);
+}
+
+@keyframes directionSwitchAnimation {
+    from {
+        flex-direction: row;
+    }
+    to {
+        flex-direction: column;
+    }
+}
+
+.collapsed {
+    width: var(--sidebar-width-collapsed);
+    .switchers {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .lang {
+        margin-left: 0;
+    }
+}
+
+.collapse-button {
+    position: absolute;
+    right: -32px;
+    bottom: 32px;
 }

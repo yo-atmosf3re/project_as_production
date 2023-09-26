@@ -10,7 +10,7 @@ export enum AppRoutes {
 }
 
 // ? Вся настройка и объявление роутов происходит с помощью данного функционала ;
-export const routesPath: Record<AppRoutes, string> = {
+export const ROUTES_PATH: Record<AppRoutes, string> = {
     [AppRoutes.MAIN]: '/',
     [AppRoutes.ABOUT]: '/about',
     [AppRoutes.NOT_FOUND]: '*',
@@ -18,15 +18,15 @@ export const routesPath: Record<AppRoutes, string> = {
 
 export const routeConfig: Record<AppRoutes, RouteProps> = {
     [AppRoutes.MAIN]: {
-        path: routesPath.main,
+        path: ROUTES_PATH.main,
         element: <MainPage />,
     },
     [AppRoutes.ABOUT]: {
-        path: routesPath.about,
+        path: ROUTES_PATH.about,
         element: <AboutPage />,
     },
     [AppRoutes.NOT_FOUND]: {
-        path: routesPath.not_found,
+        path: ROUTES_PATH.not_found,
         element: <NotFoundPage />,
     },
 };
