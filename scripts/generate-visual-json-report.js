@@ -3,6 +3,8 @@ const { promisify } = require('util');
 const { readdir, writeFile } = require('fs');
 const { join: joinPath, relative } = require('path');
 
+// ? Генерирует json на основании работы loki, формирует это всё из скринов, которые предоставляет loki. Затем формирует из json отчёт в виде html, который можно открыть в браузере;
+
 const asyncReaddir = promisify(readdir);
 const writeFileAsync = promisify(writeFile);
 

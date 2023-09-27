@@ -14,6 +14,7 @@ export default ({ config }: {config: webpack.Configuration}) => {
     config!.resolve!.extensions!.push('.ts', '.tsx');
 
     // ! Позже исправлю проблемы с типизацией ниже;
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     // eslint-disable-next-line no-param-reassign
     config!.module!.rules = config!.module!.rules!.map((rule: RuleSetRule) => {
