@@ -17,8 +17,8 @@
 
 @keyframes ldio-sua4x21xnrr-2 {
     0% {
-        top: 41.99999999999999px;
-        height: 116.00000000000001px;
+        top: 42px;
+        height: 116px;
     }
 
     50% {
@@ -52,6 +52,7 @@
 .ldio-sua4x21xnrr div {
     position: absolute;
     width: 30px;
+    box-sizing: content-box;
 }
 
 .ldio-sua4x21xnrr div:nth-child(1) {
@@ -88,9 +89,5 @@
     position: relative;
     transform: translateZ(0) scale(1);
     backface-visibility: hidden;
-    transform-origin: 0 0; /* see note above */
-}
-
-.ldio-sua4x21xnrr div {
-    box-sizing: content-box;
+    transform-origin: 0 0;
 }

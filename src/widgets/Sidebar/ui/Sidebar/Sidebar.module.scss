@@ -8,7 +8,7 @@
 
 .switchers {
     position: absolute;
-    animation: directionSwitchAnimation 2.25s ease-in-out;
+    animation: direction-switch-animation 2.25s ease-in-out;
     bottom: 20px;
     display: flex;
     justify-content: center;
@@ -30,6 +30,7 @@
     margin-top: 10px;
     display: flex;
     align-items: center;
+
     svg {
         flex-shrink: 0;
     }
@@ -46,10 +47,11 @@
     fill: var(--inverted-secondary-color);
 }
 
-@keyframes directionSwitchAnimation {
+@keyframes direction-switch-animation {
     from {
         flex-direction: row;
     }
+
     to {
         flex-direction: column;
     }
@@ -57,16 +59,20 @@
 
 .collapsed {
     width: var(--sidebar-width-collapsed);
+
     .switchers {
         flex-direction: column;
         align-items: center;
         justify-content: center;
     }
+
     .lang {
         margin-left: 0;
     }
+
     .link {
         opacity: 0;
+
         // width: 0;
         cursor: default;
         transition: 0.4s opacity;
