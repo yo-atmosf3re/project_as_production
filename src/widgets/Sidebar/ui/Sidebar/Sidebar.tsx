@@ -46,30 +46,34 @@ export const Sidebar: React.FC<NavbarPropsI> = ({
                 }
             </Button>
             <div className={cls.items}>
-                <div className={cls.item}>
+                <AppLink
+                    theme={AppLinkTheme.SECONDARY}
+                    to={ROUTES_PATH.main}
+                    className={cls.item}
+                >
                     <MainIcon className={cls.icon} />
-                    <AppLink
-                        theme={AppLinkTheme.SECONDARY}
-                        to={ROUTES_PATH.main}
+                    <span
                         className={cls.link}
                     >
                         {
                             t('Главная страница')
                         }
-                    </AppLink>
-                </div>
-                <div className={cls.item}>
+                    </span>
+                </AppLink>
+                <AppLink
+                    theme={AppLinkTheme.SECONDARY}
+                    to={ROUTES_PATH.about}
+                    className={cls.item}
+                >
                     <AboutIcon className={cls.icon} />
-                    <AppLink
-                        theme={AppLinkTheme.SECONDARY}
-                        to={ROUTES_PATH.about}
+                    <span
                         className={cls.link}
                     >
                         {
                             t('О сайте')
                         }
-                    </AppLink>
-                </div>
+                    </span>
+                </AppLink>
             </div>
             <div className={cls.switchers}>
                 <ThemeSwitcher />
