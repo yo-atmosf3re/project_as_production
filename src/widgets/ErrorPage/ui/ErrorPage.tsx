@@ -20,11 +20,11 @@ export const ErrorPage: React.FC<ErrorPagePropsI> = ({
 
     return (
         <div className={classNames(cls.errorPage, {}, [className])}>
-            <p className={cls.errorText}>
+            <div className={cls.errorText}>
                 {
                     t('Oops!')
                 }
-            </p>
+            </div>
             <div className={cls.errorDescription}>
                 {
                     t('Что-то пошло не так, попробуйте обновить страницу.')

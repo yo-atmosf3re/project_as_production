@@ -28,36 +28,8 @@ module.exports = {
         'react',
         '@typescript-eslint',
         'i18next',
+        'react-hooks',
     ],
-    // ? Определяем правила проверки кода;
-    // rules: {
-    //     // ? Приводят к предупреждению или ошибке, когда код нарушает правилу отступов в JSX;
-    //     'react/jsx-indent': [2, 4],
-    //     'react/jsx-indent-props': [2, 4],
-    //     indent: [2, 4],
-    //     'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.tsx'] }],
-    //     'import/no-unresolved': 'off',
-    //     'import/prefer-default-export': 'off',
-    //     'no-unused-vars': 'warn',
-    //     'react/require-default-props': 'off',
-    //     'react/react-in-jsx-scope': 'off',
-    //     'react/jsx-props-no-spreading': 'warn',
-    //     'react/function-component-definition': 'off',
-    //     'no-shadow': 'off',
-    //     'import/extensions': 'off',
-    //     'import/no-extraneous-dependencies': 'off',
-    //     'linebreak-style': ['off', 'windows'],
-    //     'no-underscore-dangle': 'off',
-    //     'i18next/no-literal-string': [
-    //         'error', {
-    //             markupOnly: true,
-    //             ignoreAttribute: [
-    //                 'data-testid',
-    //                 'to',
-    //             ],
-    //         }],
-    //     'max-len': ['error', { code: 120, ignoreComments: true }],
-    // },
     rules: {
         // ? Приводят к предупреждению или ошибке, когда код нарушает правилу отступов в JSX (2 пробела);
         'react/jsx-indent': [2, 4],
@@ -83,6 +55,8 @@ module.exports = {
         'react/jsx-props-no-spreading': 'warn',
         // ? Отключаем правило, которое предлагает объявлять React-функциональные компоненты с ключевым словом function;
         'react/function-component-definition': 'off',
+        // ? Проверяет используется ли описанный пропс в типе - в данный момент отключено. Работает по такому же принципу как и ошибка о неиспользуемых переменных;
+        'react/no-unused-prop-types': 'off',
         // ? Отключаем правило, которое предлагает не использовать одинаковые имена переменных в разных областях видимости;
         'no-shadow': 'off',
         // ? Отключаем правило, которое предлагает добавить расширение импортируемого файла при его отсутствии;
@@ -95,7 +69,7 @@ module.exports = {
         'no-underscore-dangle': 'off',
         // ? Представляют собой ошибки, когда текст передают напрямую внутри шаблонов i18next;
         'i18next/no-literal-string': [
-            'error', {
+            'warn', {
                 markupOnly: true,
                 ignoreAttribute: [
                     'data-testid',
@@ -104,6 +78,16 @@ module.exports = {
             }],
         // ? Представляют собой ошибки, когда строка превышает заданное количество символов;
         'max-len': ['error', { code: 120, ignoreComments: true }],
+        // ? Предупреждает об использовании статических элементов событий в JSX, которые могут быть непроходимы для людей с ограниченными возможностями. К примеру, если используется событие click на неподвижном элементе, то это может затруднить доступ для людей, которые не могут пользоваться мышью.;
+        'jsx-a11y/no-static-element-interactions': 'off',
+        // ? Требует добавления событий клавиш вместе с событием click в JSX. Это гарантирует, что элемент будет доступен как для пользователей, которые используют мышь, так и для пользователей, которые используют клавиатуру.;
+        'jsx-a11y/click-events-have-key-events': 'off',
+        // ? Управляет разрешением использовать ли методы console или нет;
+        'no-console': 'warn',
+        // ? Включает наличие проверок для хуков;
+        'react-hooks/rules-of-hooks': 'error',
+        // ? Проверяет эффекты в зависимостях в хуках;
+        'react-hooks/exhaustive-deps': 'warn',
     },
     // ? Глобальные переменные, которые могут использоваться в любом месте, они задекларированы в global.d.ts;
     globals: {
@@ -112,10 +96,12 @@ module.exports = {
     // ? Определяем правила для определенных файлов с определенным расширением;
     overrides: [
         {
-            files: ['**/src/**/*.test.{ts,tsx}'],
+            files: ['**/src/**/*.{test,stories}.{ts,tsx}'],
             // ? Отключаем правило, которое запрещает передачу текста напрямую внутри шаблонов i18next;
             rules: {
                 'i18next/no-literal-string': 'off',
+                'max-len': 'off',
+                'react/jsx-props-no-spreading': 'off',
             },
         },
     ],

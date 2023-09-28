@@ -72,10 +72,9 @@
 
     .link {
         opacity: 0;
-
-        // width: 0;
         cursor: default;
-        transition: 0.4s opacity;
+        transition-property: opacity;
+        transition-duration: 0.4s;
     }
 }
 

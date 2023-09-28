@@ -27,10 +27,22 @@ Clear.args = {
     theme: BUTTON_THEME.CLEAR,
 };
 
+export const ClearInverted = Template.bind({});
+ClearInverted.args = {
+    children: 'Text',
+    theme: BUTTON_THEME.CLEAR_INVERTED,
+};
+
 export const Outline = Template.bind({});
 Outline.args = {
     children: 'Text',
     theme: BUTTON_THEME.OUTLINE,
+};
+
+export const OutlineInverted = Template.bind({});
+OutlineInverted.args = {
+    children: 'Text',
+    theme: BUTTON_THEME.OUTLINE_INVERTED,
 };
 
 export const OutlineSizeL = Template.bind({});

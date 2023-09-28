@@ -4,11 +4,14 @@
 @import "reset";
 
 // ? Главный scss-файл;
+body {
+    font: var(--font-m);
+    color: var(--inverted-primary-color);
+}
+
 .app {
-    font-size: var(--font-m);
-    background: var(--bg-color);
-    color: var(--primary-color);
     min-height: 100vh;
+    background: var(--bg-color);
 }
 
 .content-page {
