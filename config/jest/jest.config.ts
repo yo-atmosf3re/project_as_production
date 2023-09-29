@@ -46,7 +46,7 @@ export default {
     testEnvironment: 'jsdom',
     clearMocks: true,
     modulePaths: [
-        '<rootDir>/src',
+        '<rootDir>src',
     ],
     rootDir: '../../',
     testMatch: [
@@ -56,7 +56,6 @@ export default {
     moduleNameMapper: {
         '\\.(s?css)$': 'identity-obj-proxy',
         '\\.svg': path.resolve(__dirname, 'jestEmptyComponent'),
-        '^src/(.*)$': '<rootDir>',
     },
 
     // Indicates which provider should be used to instrument code for coverage
