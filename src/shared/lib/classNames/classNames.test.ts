@@ -1,4 +1,5 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+// import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from './classNames';
 
 describe('classNames', () => {
     test('Testing a function only with one argument', () => {

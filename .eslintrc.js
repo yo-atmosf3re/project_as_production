@@ -52,7 +52,7 @@ module.exports = {
         // ? Отключаем правило, которое предотвращает использование React без импорта;
         'react/react-in-jsx-scope': 'off',
         // ? Представляют собой предупреждения о распространении пропсов с помощью оператора ...;
-        'react/jsx-props-no-spreading': 'warn',
+        'react/jsx-props-no-spreading': 'off',
         // ? Отключаем правило, которое предлагает объявлять React-функциональные компоненты с ключевым словом function;
         'react/function-component-definition': 'off',
         // ? Проверяет используется ли описанный пропс в типе - в данный момент отключено. Работает по такому же принципу как и ошибка о неиспользуемых переменных;
@@ -88,6 +88,10 @@ module.exports = {
         'react-hooks/rules-of-hooks': 'error',
         // ? Проверяет эффекты в зависимостях в хуках;
         'react-hooks/exhaustive-deps': 'warn',
+        // ? Проверка на пустые интерфейсы/типы;
+        '@typescript-eslint/no-empty-interface': 'off',
+        // ? Отключает правило, которое не позволяет перезаписывать значения из аргументов функции. Это мешает работе redux-toolkit, потому что там можно работать с аргументом state напрямую в редьюсерах;
+        'no-param-reassign': 'off',
     },
     // ? Глобальные переменные, которые могут использоваться в любом месте, они задекларированы в global.d.ts;
     globals: {
@@ -101,7 +105,6 @@ module.exports = {
             rules: {
                 'i18next/no-literal-string': 'off',
                 'max-len': 'off',
-                'react/jsx-props-no-spreading': 'off',
             },
         },
     ],
