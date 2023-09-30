@@ -28,6 +28,9 @@ export default {
     // The directory where Jest should output its coverage files
     // coverageDirectory: undefined,
 
+    globals: {
+        __IS_DEV__: true,
+    },
     // An array of regexp pattern strings used to skip coverage collection
     coveragePathIgnorePatterns: [
         '\\\\node_modules\\\\',
@@ -86,9 +89,6 @@ export default {
 
     // A path to a module which exports an async function that is triggered once after all test suites
     // globalTeardown: undefined,
-
-    // A set of global variables that need to be available in all test environments
-    // globals: {},
 
     // The maximum amount of
     //  workers used to run

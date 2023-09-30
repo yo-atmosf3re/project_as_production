@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 export type ModsType = Record<string, boolean | string>;
 
 // ? Функция, которая позволяет навешивать несколько классов на один элемент: можно указывать несколько классов, можно указывать класс по некоторым условиям, можно указывать добавочные классы;

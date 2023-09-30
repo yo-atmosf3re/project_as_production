@@ -1,3 +1,4 @@
+/* eslint-disabled @typescript-eslint/no-non-null-assertion */
 import webpack from 'webpack';
 import path from 'path';
 import { buildWebpackConfig } from './config/build/buildWebpackConfig';
