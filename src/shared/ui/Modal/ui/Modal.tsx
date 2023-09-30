@@ -3,7 +3,6 @@
 import React from 'react';
 import { ModsType, classNames } from 'shared/lib/classNames/classNames';
 import { Portal } from 'shared/ui/Portal/ui/Portal';
-import { useTheme } from 'app/providers/ThemeProvider';
 import cls from './Modal.module.scss';
 
 interface ModalPropsI {
@@ -20,11 +19,9 @@ export const Modal: React.FC<ModalPropsI> = ({
     className, children, isOpen, onClose,
 }) => {
     const [isClosing, setIsClosing] = React.useState(false);
-    const { theme } = useTheme();
 
     const additionalClasses = [
         className,
-        theme,
     ];
 
     const mods: ModsType = {

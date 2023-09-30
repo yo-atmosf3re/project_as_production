@@ -13,6 +13,8 @@ export const useTheme = (): UseThemeResult => {
     const toggleTheme = (): void => {
         const newTheme: THEME = theme === THEME.DARK ? THEME.LIGHT : THEME.DARK;
         setTheme(newTheme);
+        // " Вешаем глобальный класс с цветовой темой для исключения лишних действий и переопределений;
+        document.body.className = newTheme;
         localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
     };
 
