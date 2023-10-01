@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { {{ pascalCase }} } from './{{pascalCase}}';
 
 export default {
-    title: 'shared/Button',
+    title: 'shared/{{pascalCase}}',
     component: {{ pascalCase }},
 argTypes: {
     backgroundColor: { control: 'color' },

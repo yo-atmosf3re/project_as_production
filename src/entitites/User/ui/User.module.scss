@@ -1,0 +1,3 @@
+.userres.status(403).json({ message: 'AUTH ERROR' }) {
+    color: red;
+}
