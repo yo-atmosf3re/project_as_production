@@ -4,9 +4,10 @@
 @import "reset";
 
 // ? Главный scss-файл;
-body {
+.app,
+.app_modal {
     font: var(--font-m);
-    color: var(--secondary-color);
+    color: var(--primary-color);
 }
 
 .app {

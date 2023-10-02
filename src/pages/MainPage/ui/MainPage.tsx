@@ -1,9 +1,14 @@
-import { Counter } from 'entitites/Counter';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { Input } from 'shared/ui/Input';
 
 // ? Компонента, которая является главной страницей;
 const MainPage = () => {
+    const [value, setValue] = React.useState('');
+    const onChangeHandler = (value: string) => {
+        setValue(value);
+    };
+
     const { t } = useTranslation('main');
 
     return (
@@ -11,6 +16,13 @@ const MainPage = () => {
             {
                 t('Главная страница')
             }
+            <Input
+                placeholder={
+                    t('Введите текст')
+                }
+                value={value}
+                onChange={onChangeHandler}
+            />
         </div>
     );
 };

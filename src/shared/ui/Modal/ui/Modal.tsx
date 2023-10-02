@@ -10,18 +10,22 @@ interface ModalPropsI {
    children?: React.ReactNode;
    isOpen?: boolean;
    onClose? : () => void;
+   lazy?: boolean;
 }
 
 const ANIMATION_DELAY = 300;
 
 // ? Модальное окно, обёрнутое в реактовский Portal. Внутри логика по плавному открытию-закрытию этого модального окна;
 export const Modal: React.FC<ModalPropsI> = ({
-    className, children, isOpen, onClose,
+    className, children, isOpen, onClose, lazy,
 }) => {
     const [isClosing, setIsClosing] = React.useState(false);
+    // ? Помещаем в состояние вмонтирован компонент или нет;
+    const [isMounted, setIsMounted] = React.useState(false);
 
     const additionalClasses = [
         className,
+        'app_modal',
     ];
 
     const mods: ModsType = {
@@ -59,6 +63,18 @@ export const Modal: React.FC<ModalPropsI> = ({
             window.removeEventListener('keydown', onKeyDown);
         };
     }, [isOpen, onKeyDown]);
+
+    // ? Управляет состоянием вмонтирования компоненты, и если модальное окно открыто, то состояние вмонтирования - true;
+    React.useEffect(() => {
+        if (isOpen) {
+            setIsMounted(true);
+        }
+    }, [isOpen]);
+
+    // ? При lazy = true и isMounted = false возвращает null. То есть, это ленивая загрузка компоненты, и модальное окно не будет вмонтировано в DOM-дерево сразу, а только тогда, когда модальное окно будет открыто. Это нужно для кейса с автофокусом в input при открытии модального окна;
+    if (lazy && !isMounted) {
+        return null;
+    }
 
     return (
         <Portal>

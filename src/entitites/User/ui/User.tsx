@@ -11,7 +11,7 @@ export const User: React.FC<UserPropsI> = ({
 }) => {
     const test = '1';
     return (
-        <div className={classNames(cls.User, {}, [className])}>
+        <div className={classNames(cls.user, {}, [className])}>
             User
         </div>
     );

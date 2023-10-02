@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Modal } from 'shared/ui/Modal';
 import { Button } from 'shared/ui/Button';
 import { BUTTON_THEME } from 'shared/ui/Button/ui/Button';
+import { LoginModal } from 'features/AuthByUsername/ui';
 import cls from './Navbar.module.scss';
 
 interface NavbarPropsI {
@@ -18,8 +19,12 @@ export const Navbar: React.FC<NavbarPropsI> = ({
     const { t } = useTranslation('navbar');
     const [isAuthModal, setIsAuthModal] = React.useState(false);
 
-    const onToggleModal = React.useCallback(() => {
-        setIsAuthModal((prev) => !prev);
+    const onCloseModal = React.useCallback(() => {
+        setIsAuthModal(false);
+    }, []);
+
+    const onShowModal = React.useCallback(() => {
+        setIsAuthModal(true);
     }, []);
 
     return (
@@ -27,16 +32,14 @@ export const Navbar: React.FC<NavbarPropsI> = ({
             <Button
                 className={cls.links}
                 theme={BUTTON_THEME.CLEAR_INVERTED}
-                onClick={onToggleModal}
+                onClick={onShowModal}
             >
                 {t('Войти')}
             </Button>
-            <Modal
+            <LoginModal
                 isOpen={isAuthModal}
-                onClose={onToggleModal}
-            >
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod eligendi architecto nisi minus aspernatur nemo culpa ipsa. Aliquid consequatur at sequi pariatur obcaecati vero debitis dolorem tenetur quam voluptatum necessitatibus quaerat alias eligendi corporis, aliquam quasi repellendus, ducimus, laboriosam architecto beatae impedit labore? A, cum quia quaerat recusandae rerum unde incidunt blanditiis laborum facilis sequi eius cumque officia quo, quibusdam beatae in nam ullam magni maiores odit vitae quas. Voluptatum consectetur ut soluta eum laudantium, distinctio libero consequatur inventore laboriosam maiores odit beatae a eligendi deserunt sit repellendus id asperiores reiciendis nam odio natus porro. Quas, dignissimos? Adipisci, beatae rem.
-            </Modal>
+                onClose={onCloseModal}
+            />
         </div>
     );
 };
