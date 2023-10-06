@@ -40,45 +40,45 @@ Loading.decorators = [StoreDecorator({
     },
 })];
 
-storiesOf('features/LoginForm', module)
-    .addParameters({
-        argTypes: {
-            backgroundColor: { control: 'color' },
-        },
-    })
-    .addDecorator(ThemeDecorator(THEME.DARK))
-    .addDecorator(StoreDecorator({
-        loginForm: {
-            username: '1',
-            password: '1',
-        },
-    }))
-    .add('Okay dark', () => <LoginForm />);
+// storiesOf('features/LoginForm', module)
+//     .addParameters({
+//         argTypes: {
+//             backgroundColor: { control: 'color' },
+//         },
+//     })
+//     .addDecorator(ThemeDecorator(THEME.DARK))
+//     .addDecorator(StoreDecorator({
+//         loginForm: {
+//             username: '1',
+//             password: '1',
+//         },
+//     }))
+//     .add('Okay dark', () => <LoginForm />);
 
-storiesOf('features/LoginForm', module)
-    .addParameters({
-        argTypes: {
-            backgroundColor: { control: 'color' },
-        },
-    })
-    .addDecorator(ThemeDecorator(THEME.DARK))
-    .addDecorator(StoreDecorator({
-        loginForm: {
-            error: 'Some error',
-        },
-    }))
-    .add('Error dark', () => <LoginForm />);
+// storiesOf('features/LoginForm', module)
+//     .addParameters({
+//         argTypes: {
+//             backgroundColor: { control: 'color' },
+//         },
+//     })
+//     .addDecorator(ThemeDecorator(THEME.DARK))
+//     .addDecorator(StoreDecorator({
+//         loginForm: {
+//             error: 'Some error',
+//         },
+//     }))
+//     .add('Error dark', () => <LoginForm />);
 
-storiesOf('features/LoginForm', module)
-    .addParameters({
-        argTypes: {
-            backgroundColor: { control: 'color' },
-        },
-    })
-    .addDecorator(ThemeDecorator(THEME.DARK))
-    .addDecorator(StoreDecorator({
-        loginForm: {
-            isLoading: true,
-        },
-    }))
-    .add('Loading dark', () => <LoginForm />);
+// storiesOf('features/LoginForm', module)
+//     .addParameters({
+//         argTypes: {
+//             backgroundColor: { control: 'color' },
+//         },
+//     })
+//     .addDecorator(ThemeDecorator(THEME.DARK))
+//     .addDecorator(StoreDecorator({
+//         loginForm: {
+//             isLoading: true,
+//         },
+//     }))
+//     .add('Loading dark', () => <LoginForm />);

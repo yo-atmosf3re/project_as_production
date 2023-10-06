@@ -10,12 +10,15 @@ i18n
     .use(initReactI18next)
     .init({
         // ? В случае отсутствия перевода для выбранного языка используется резервный язык 'ru';
-        fallbackLng: 'ru',
-        debug: __IS_DEV__,
+        fallbackLng: 'en',
+        // ! Тестовый вариант - закомментировать это поле;
+        // debug: __IS_DEV__,
         // ? Для интерполяции;
         interpolation: {
             escapeValue: false,
         },
+        // ! Тестовое поле;
+        load: 'languageOnly',
         backend: {
             loadPath: '/locales/{{lng}}/{{ns}}.json',
         },
@@ -23,6 +26,8 @@ i18n
             // ? Отключает задержку перед загрузкой переводов;
             // useSuspense: false,
         },
+        // ! Тестовое поле;
+        // keySeparator: false,
     });
 
 export default i18n;

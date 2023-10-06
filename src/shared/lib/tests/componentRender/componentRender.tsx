@@ -11,13 +11,13 @@ export interface ComponentRouteOptions {
    initialState?: DeepPartial<StateSchema>;
 }
 
-// ? Обёртка для i18nextProvider, оборачивает в MemoryRouter;
+// ? Обёртка для i18nextProvider, оборачивает в MemoryRouter, StoreProvider - для подключения RTK-store;
 export const componentRender = (component: ReactNode, {
     route = '/',
     initialState,
 }: ComponentRouteOptions = {}) => render(
     <StoreProvider initialState={initialState}>
-        <MemoryRouter>
+        <MemoryRouter initialEntries={[route]}>
             <I18nextProvider
                 i18n={i18nForTests}
             >
@@ -26,7 +26,8 @@ export const componentRender = (component: ReactNode, {
                 }
             </I18nextProvider>
         </MemoryRouter>
-    </StoreProvider>,
+    </StoreProvider>
+    ,
 );
 // " MemoryRouter - позволять приложению работать с маршрутами без необходимости менять адресную строку браузера или перезагружать страницу. Он полезен, например, когда требуется создать приложение в среде, где нет реального браузера, или для создания тестов, где работа с адресной строкой не требуется;
 // " MemoryRouter сохраняет текущий маршрут и его состояние в памяти, а также позволяет управлять переходами по маршрутам через использование некоторых методов;

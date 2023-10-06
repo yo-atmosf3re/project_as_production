@@ -53,7 +53,9 @@ export const LoginForm: React.FC<LoginFormPropsI> = memo(({
                     ? (
                         <Text
                             theme={TEXT_THEME.ERROR}
-                            text={error}
+                            text={
+                                t('Вы ввели неверный логин или пароль!')
+                            }
                         />
                     )
                     : null

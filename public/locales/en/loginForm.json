@@ -2,5 +2,6 @@
     "Войти": "Sign in",
     "Введите логин": "Enter your username",
     "Введите пароль": "Enter your password",
-    "Форма авторизации": "Autorization form"
+    "Форма авторизации": "Autorization form",
+    "Вы ввели неверный логин или пароль!": "You have entered an incorrect username or password!"
 }
