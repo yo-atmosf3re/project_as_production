@@ -19,6 +19,10 @@ i18n
         backend: {
             loadPath: '/locales/{{lng}}/{{ns}}.json',
         },
+        react: {
+            // ? Отключает задержку перед загрузкой переводов;
+            // useSuspense: false,
+        },
     });
 
 export default i18n;

@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { THEME } from 'app/providers/ThemeProvider';
-import { AppLink, AppLinkTheme } from './AppLink';
+import { AppLink, APP_LINK_THEME } from './AppLink';
 
 export default {
     title: 'shared/AppLink',
@@ -16,31 +16,30 @@ export default {
     },
 } as ComponentMeta<typeof AppLink>;
 
-// eslint-disable-next-line react/jsx-props-no-spreading
 const Template: ComponentStory<typeof AppLink> = (args) => <AppLink {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
     children: 'App link',
-    theme: AppLinkTheme.PRIMARY,
+    theme: APP_LINK_THEME.PRIMARY,
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
     children: 'App link',
-    theme: AppLinkTheme.SECONDARY,
+    theme: APP_LINK_THEME.SECONDARY,
 };
 Secondary.decorators = [ThemeDecorator(THEME.DARK)];
 
 export const Red = Template.bind({});
 Red.args = {
     children: 'Red link',
-    theme: AppLinkTheme.RED,
+    theme: APP_LINK_THEME.RED,
 };
 
 export const RedDark = Template.bind({});
 RedDark.args = {
     children: 'Red link',
-    theme: AppLinkTheme.RED,
+    theme: APP_LINK_THEME.RED,
 };
 RedDark.decorators = [ThemeDecorator(THEME.DARK)];

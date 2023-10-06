@@ -12,7 +12,6 @@ export default {
     },
 } as ComponentMeta<typeof User>;
 
-// eslint-disable-next-line react/jsx-props-no-spreading
 const Template: ComponentStory<typeof User> = (args) => <User {...args} />;
 
 export const Light = Template.bind({});

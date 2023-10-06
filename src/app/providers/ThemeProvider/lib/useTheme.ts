@@ -1,5 +1,6 @@
 import { useContext } from 'react';
-import { THEME, ThemeContext, LOCAL_STORAGE_THEME_KEY } from './ThemeContext';
+import { THEME_LS_KEY } from 'shared/const/localstorage';
+import { THEME, ThemeContext } from './ThemeContext';
 
 interface UseThemeResult {
     toggleTheme: () => void;
@@ -15,7 +16,7 @@ export const useTheme = (): UseThemeResult => {
         setTheme(newTheme);
         // " Вешаем глобальный класс с цветовой темой для исключения лишних действий и переопределений;
         document.body.className = newTheme;
-        localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
+        localStorage.setItem(THEME_LS_KEY, newTheme);
     };
 
     return {

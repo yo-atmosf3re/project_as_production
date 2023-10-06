@@ -1,5 +1,6 @@
 import React from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { useTranslation } from 'react-i18next';
 import cls from './User.module.scss';
 
 interface UserPropsI {
@@ -9,10 +10,12 @@ interface UserPropsI {
 export const User: React.FC<UserPropsI> = ({
     className,
 }) => {
-    const test = '1';
+    const { t } = useTranslation();
     return (
         <div className={classNames(cls.user, {}, [className])}>
-            User
+            {
+                t('Пользователь')
+            }
         </div>
     );
 };

@@ -1,12 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { Schema } from '../types/Schema'
 
-const initialState = {};
+const initialState: Schema = {};
 
-export const slice = createSlice({
-    name: '{{pascalCase}}',
+export const Slice = createSlice({
+    name: 'slice',
     initialState,
     reducers: {},
 });
 
-export const { actions: sliceActions } = slice;
-export const { reducer: sliceReducer } = slice;
+export const { actions: SliceActions } = Slice;
+export const { reducer: SliceReducer } = Slice;

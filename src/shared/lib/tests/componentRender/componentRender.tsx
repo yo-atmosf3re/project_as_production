@@ -18,7 +18,9 @@ export const componentRender = (component: ReactNode, {
 }: ComponentRouteOptions = {}) => render(
     <StoreProvider initialState={initialState}>
         <MemoryRouter>
-            <I18nextProvider i18n={i18nForTests}>
+            <I18nextProvider
+                i18n={i18nForTests}
+            >
                 {
                     component
                 }

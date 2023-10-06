@@ -5,7 +5,7 @@ import { LangSwitcher } from 'shared/ui/LangSwitcher';
 import { Button } from 'shared/ui/Button';
 import { useTranslation } from 'react-i18next';
 import { BUTTON_THEME, BUTTON_SIZE } from 'shared/ui/Button/ui/Button';
-import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
+import { AppLink, APP_LINK_THEME } from 'shared/ui/AppLink/AppLink';
 import { ROUTES_PATH } from 'shared/config/routeConfig/routeConfig';
 import AboutIcon from 'shared/assets/icons/about-us.svg';
 import MainIcon from 'shared/assets/icons/main.svg';
@@ -47,7 +47,7 @@ export const Sidebar: React.FC<NavbarPropsI> = ({
             </Button>
             <div className={cls.items}>
                 <AppLink
-                    theme={AppLinkTheme.SECONDARY}
+                    theme={APP_LINK_THEME.SECONDARY}
                     to={ROUTES_PATH.main}
                     className={cls.item}
                 >
@@ -61,7 +61,7 @@ export const Sidebar: React.FC<NavbarPropsI> = ({
                     </span>
                 </AppLink>
                 <AppLink
-                    theme={AppLinkTheme.SECONDARY}
+                    theme={APP_LINK_THEME.SECONDARY}
                     to={ROUTES_PATH.about}
                     className={cls.item}
                 >
