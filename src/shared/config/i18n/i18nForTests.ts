@@ -1,5 +1,4 @@
 import i18n from 'i18next';
-// import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
 // ? Настройка библиотеки i18n для тестов jest, многие поля схожи с основной настройкой данной библиотеки;
@@ -10,14 +9,11 @@ i18n
     .init({
         lng: 'ru',
         fallbackLng: 'ru',
+
         debug: false,
 
         interpolation: {
             escapeValue: false,
-        },
-
-        react: {
-            useSuspense: false,
         },
 
         resources: { ru: { translations: {} } },

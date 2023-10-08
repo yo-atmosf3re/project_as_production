@@ -20,6 +20,9 @@ export const parameters = {
             date: /Date$/,
         },
     },
+    decorators: [
+        TranslationDecorator,
+    ],
 };
 
 // ? addDecorator - функция добавления декораторов к Storybook;
@@ -27,7 +30,7 @@ export const parameters = {
 // ? Добавляет декоратор для предоставления глобальных стилей сторисам во всем Storybook;
 addDecorator(StyleDecorator);
 // Добавляет декоратор для добавления поддержки перевода сторисам в Storybook. Используется там где есть тексты, которые нужно перевести;
-// addDecorator(TranslationDecorator);
+addDecorator(TranslationDecorator);
 // ? Добавляет декоратор для применения темы LIGHT ко всем сторисам в Storybook по-умолчанию, в самой сторис можно переназначить тему, воспользовавшись этим же декоратором;
 addDecorator(ThemeDecorator(THEME.LIGHT));
 // ? Добавляет декоратор для добавления маршрутизации к сторисам в Storybook. Используется, если в сторис нужны маршруты, URL-адреса для правильного функционирования;

@@ -63,7 +63,7 @@ export const LoginForm: React.FC<LoginFormPropsI> = memo(({
             <Input
                 autofocus
                 type="text"
-                className={classNames(cls.input)}
+                className={cls.input}
                 placeholder={
                     t('Введите логин')
                 }
@@ -72,7 +72,7 @@ export const LoginForm: React.FC<LoginFormPropsI> = memo(({
             />
             <Input
                 type="text"
-                className={classNames(cls.input)}
+                className={cls.input}
                 placeholder={
                     t('Введите пароль')
                 }
@@ -82,7 +82,7 @@ export const LoginForm: React.FC<LoginFormPropsI> = memo(({
             <Button
                 onClick={onClickLogin}
                 theme={BUTTON_THEME.OUTLINE}
-                className={classNames(cls['login-button'])}
+                className={cls['login-button']}
                 disabled={isLoading}
             >
                 {

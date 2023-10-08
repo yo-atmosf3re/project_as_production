@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { render } from 'react-dom';
 import { StoreProvider } from 'app/providers/StoreProvider';
 import { BrowserRouter } from 'react-router-dom';
@@ -13,7 +14,9 @@ render(
         <BrowserRouter>
             <ErrorBoundary>
                 <ThemeProvider>
-                    <App />
+                    <Suspense fallback="">
+                        <App />
+                    </Suspense>
                 </ThemeProvider>
             </ErrorBoundary>
         </BrowserRouter>

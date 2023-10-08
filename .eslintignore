@@ -1,2 +1,3 @@
 # Игнорирование для .vscode;
 .vscode/
+.config/storybook/webpack.config.ts

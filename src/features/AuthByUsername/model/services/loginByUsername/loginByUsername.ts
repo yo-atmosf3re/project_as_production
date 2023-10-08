@@ -18,7 +18,9 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsernamePropsI, { r
         try {
             const response = await axios.post<User>('http://localhost:7777/login', authData);
 
-            if (!response.data) throw new Error();
+            if (!response.data) {
+                throw new Error();
+            }
 
             // ? Записываем и сохраняем ответ в LS, переведя эти данные в строку, потому что в LS можно сохранять только строки;
             // " Имитация сохранения т.н токена;

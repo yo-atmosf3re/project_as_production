@@ -3,6 +3,7 @@
       "public/locales",
    ],
    "i18n-ally.keystyle": "flat",
+   "window.title": "production as project",
    // "i18n-ally.keystyle": "nested",
    // "i18n-ally.extract.ignoredByFiles": {},
    // "i18n-ally.displayLanguage": "ru",

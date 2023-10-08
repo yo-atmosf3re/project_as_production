@@ -7,10 +7,12 @@ export const BugButton: React.FC = () => {
     const { t } = useTranslation();
     const [error, setError] = useState<boolean>(false);
 
-    const throwErrorHandle = () => setError((prev) => !prev);
+    const throwErrorHandle = () => setError(true);
 
     useEffect(() => {
-        if (error) throw new Error('Some error');
+        if (error) {
+            throw new Error('Some error');
+        }
     }, [error]);
 
     return (
