@@ -12,9 +12,6 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-    // decorators: [
-    //     TranslationDecorator,
-    // ],
 } as ComponentMeta<typeof LoginForm>;
 
 const Template: ComponentStory<typeof LoginForm> = (args) => <LoginForm {...args} />;
