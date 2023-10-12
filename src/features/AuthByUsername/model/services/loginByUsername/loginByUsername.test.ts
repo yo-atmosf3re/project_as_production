@@ -1,6 +1,4 @@
-import { StateSchema } from 'app/providers/StoreProvider';
 import axios from 'axios';
-import { Dispatch } from 'redux';
 import { userActions } from 'entitites/User';
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 import { loginByUsername } from './loginByUsername';
