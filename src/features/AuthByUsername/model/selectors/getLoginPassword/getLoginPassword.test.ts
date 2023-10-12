@@ -16,12 +16,8 @@ describe('getLoginPassword', () => {
     });
 
     test('Should return part of state with password, but with empty object', () => {
-        const state: DeepPartial<StateSchema> = {
-            loginForm: {},
-        };
+        const state: DeepPartial<StateSchema> = {};
 
-        expect(getLoginPassword(state as StateSchema)).toEqual(
-            '',
-        );
+        expect(getLoginPassword(state as StateSchema)).toEqual('');
     });
 });

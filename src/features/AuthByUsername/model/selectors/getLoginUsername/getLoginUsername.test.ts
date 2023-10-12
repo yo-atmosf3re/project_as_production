@@ -16,12 +16,8 @@ describe('getLoginUsername', () => {
     });
 
     test('Should return part of state with username, but with empty object', () => {
-        const state: DeepPartial<StateSchema> = {
-            loginForm: {},
-        };
+        const state: DeepPartial<StateSchema> = {};
 
-        expect(getLoginUsername(state as StateSchema)).toEqual(
-            '',
-        );
+        expect(getLoginUsername(state as StateSchema)).toEqual('');
     });
 });

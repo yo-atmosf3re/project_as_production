@@ -17,14 +17,14 @@ export enum BUTTON_SIZE {
     L = 'size_l',
 }
 /**
- * Кнопка с возможностью кастомизации.
+ * Кнопка с возможностью кастомизации;
  *
- * @param className - дополнительный класс для кнопки.
- * @param children - содержимое кнопки.
- * @param theme - тема кнопки.
- * @param square - флаг, указывающий, что кнопка должна быть квадратной.
- * @param size - размер кнопки.
- * @param disabled - возможность отключить кнопку.
+ * @param className - дополнительный класс для кнопки;
+ * @param children - содержимое кнопки;
+ * @param theme - тема кнопки;
+ * @param square - флаг, указывающий, что кнопка должна быть квадратной;
+ * @param size - размер кнопки;
+ * @param disabled - возможность отключить кнопку;
  */
 interface ButtonPropsI extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;

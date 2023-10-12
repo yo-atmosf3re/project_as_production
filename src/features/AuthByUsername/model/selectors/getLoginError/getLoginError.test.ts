@@ -15,13 +15,9 @@ describe('getLoginError', () => {
         );
     });
 
-    test('Should return part of state with error, but with empty object', () => {
-        const state: DeepPartial<StateSchema> = {
-            loginForm: {},
-        };
+    test('Should return undefined with empty state', () => {
+        const state: DeepPartial<StateSchema> = {};
 
-        expect(getLoginError(state as StateSchema)).toEqual(
-            '',
-        );
+        expect(getLoginError(state as StateSchema)).toEqual(undefined);
     });
 });
