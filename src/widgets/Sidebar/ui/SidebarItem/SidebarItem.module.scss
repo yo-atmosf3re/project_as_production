@@ -1,0 +1,29 @@
+.item {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+
+    svg {
+        flex-shrink: 0;
+    }
+}
+
+.link {
+    margin-left: 10px;
+    opacity: 1;
+    transition: 0.4s opacity;
+    flex-shrink: 0;
+}
+
+.icon {
+    fill: var(--inverted-secondary-color);
+}
+
+.collapsed {
+    .link {
+        opacity: 0;
+        cursor: default;
+        transition-property: opacity;
+        transition-duration: 0.4s;
+    }
+}

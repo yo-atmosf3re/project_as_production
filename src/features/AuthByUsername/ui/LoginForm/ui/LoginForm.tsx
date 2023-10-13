@@ -4,10 +4,11 @@ import { useTranslation } from 'react-i18next';
 import { Button } from 'shared/ui/Button';
 import { Input } from 'shared/ui/Input';
 import { BUTTON_THEME } from 'shared/ui/Button/ui/Button';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Text } from 'shared/ui/Text';
 import { TEXT_THEME } from 'shared/ui/Text/ui/Text';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getLoginUsername } from '../../../model/selectors/getLoginUsername/getLoginUsername';
 import { getLoginPassword } from '../../../model/selectors/getLoginPassword/getLoginPassword';
 import { getLoginError } from '../../../model/selectors/getLoginError/getLoginError';
@@ -18,6 +19,7 @@ import cls from './LoginForm.module.scss';
 
 export interface LoginFormPropsI {
     className?: string;
+    onSuccess: () => void;
 }
 
 const INITIAL_REDUCERS: ReducersList = {
@@ -26,10 +28,10 @@ const INITIAL_REDUCERS: ReducersList = {
 
 // ? Форма для логина;
 const LoginForm: React.FC<LoginFormPropsI> = memo(({
-    className,
+    className, onSuccess,
 }) => {
     const { t } = useTranslation('loginForm');
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const username = useSelector(getLoginUsername);
     const password = useSelector(getLoginPassword);
     const error = useSelector(getLoginError);
@@ -43,9 +45,12 @@ const LoginForm: React.FC<LoginFormPropsI> = memo(({
         dispatch(loginActions.setPassword(value));
     }, [dispatch]);
 
-    const onClickLogin = useCallback(() => {
-        dispatch(loginByUsername({ username, password }));
-    }, [dispatch, username, password]);
+    const onClickLogin = useCallback(async () => {
+        const result = await dispatch(loginByUsername({ username, password }));
+        if (result.meta.requestStatus === 'fulfilled') {
+            onSuccess();
+        }
+    }, [onSuccess, dispatch, password, username]);
 
     return (
         <DynamicModuleLoader

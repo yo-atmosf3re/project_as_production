@@ -34,6 +34,9 @@ export function createReduxStore(
     return store;
 }
 
+// ? Вытягиваем тип для dispatch из функции createReduxStore(), обращаясь напрямую к полю dispatch, потом передаём этот тип в хук useAppDispatch;
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];
+
 // ! Попытка сделать типизацию для внедрении reducerManager: хотелось убрать ts-ignore, была найдена issues на GH где описана данная проблема и представлены примеры по её решению. Позже вернусь к этому;
 // ! Рекомендованная реализация;
 // const reducerManager: ReducerManagerI<StateSchema> = createReducerManager({
