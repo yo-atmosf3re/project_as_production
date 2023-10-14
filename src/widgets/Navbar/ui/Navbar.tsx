@@ -1,5 +1,5 @@
 /* eslint-disable max-len, i18next/no-literal-string, @typescript-eslint/no-unused-vars */
-import React from 'react';
+import React, { memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { Modal } from 'shared/ui/Modal';
@@ -15,7 +15,7 @@ interface NavbarPropsI {
 }
 
 // ? Компонента-навбар;
-export const Navbar: React.FC<NavbarPropsI> = ({
+export const Navbar: React.FC<NavbarPropsI> = memo(({
     className,
 }) => {
     const { t } = useTranslation('navbar');
@@ -73,4 +73,4 @@ export const Navbar: React.FC<NavbarPropsI> = ({
             }
         </div>
     );
-};
+});

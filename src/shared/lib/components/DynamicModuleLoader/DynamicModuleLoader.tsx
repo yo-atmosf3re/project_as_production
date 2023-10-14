@@ -3,7 +3,7 @@
 import { Reducer } from '@reduxjs/toolkit';
 import { ReduxStoreWithManagerI } from 'app/providers/StoreProvider';
 import { StateSchemaKey } from 'app/providers/StoreProvider/config/StateSchema';
-import React, { useEffect } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import { useDispatch, useStore } from 'react-redux';
 
 // ? Типизация для массива редьюсеров, где ключами будут ключи из StateSchemaKey, а значениями будут Reducer;
@@ -23,6 +23,7 @@ export type ReducersListEntry = [StateSchemaKey, Reducer];
 interface DynamicModuleLoaderPropsI {
     reducers: ReducersList;
     removeAfterUnmount?: boolean;
+    children?: ReactNode;
 }
 
 // ? Компонента-обёртка для того, чтобы была возможность инкапсулировать логику с внедрением асинхронных редьюсеров. Удобная возможность при указании всего лишь двух пропсов использовать редакс менеджер;

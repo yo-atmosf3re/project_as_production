@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { ModsType, classNames } from 'shared/lib/classNames/classNames';
 import cls from './Text.module.scss';
 
@@ -23,7 +23,7 @@ interface TextPropsI {
 }
 
 // ? Кастомный текстовый компонент, который отрисовывает либо яркий и более крупный title, либо более блеклый и мелкий text. Можно отрисовыывать то и то;
-export const Text: React.FC<TextPropsI> = ({
+export const Text: React.FC<TextPropsI> = memo(({
     className, text, title,
     theme = TEXT_THEME.PRIMARY,
 }) => {
@@ -64,4 +64,4 @@ export const Text: React.FC<TextPropsI> = ({
             }
         </div>
     );
-};
+});

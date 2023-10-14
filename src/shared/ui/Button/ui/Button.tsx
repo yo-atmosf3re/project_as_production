@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes } from 'react';
+import React, { ButtonHTMLAttributes, ReactNode, memo } from 'react';
 import { ModsType, classNames } from 'shared/lib/classNames/classNames';
 import cls from './Button.module.scss';
 
@@ -32,10 +32,12 @@ interface ButtonPropsI extends ButtonHTMLAttributes<HTMLButtonElement> {
     square?: boolean;
     size?: BUTTON_SIZE;
     disabled?: boolean;
+    children: ReactNode;
 }
 
 // ? Кастомизированная компонента-кнопка;
-export const Button: React.FC<ButtonPropsI> = ({
+// ? Почему можно оборачивать Button-компоненту в memo? Ведь у неё же есть children, а если у компоненты есть children, то делать этого не нужно, потому что children может являться древовидной структурой из нескольких вложенных друг в друга тегов и так далее. Но в случае с кнопкой - children это примитив, то есть текст, и примитивы мемоизировать не сложно и не затруднительно, потому что они сравниваются по значению, а не по ссылке как объекты в случае древововидной структуры вложенных тегов/компонентов и так далее. Поэтому можно и нужно мемоизировать в memo такие компоненты;
+export const Button: React.FC<ButtonPropsI> = memo(({
     className, children, theme, square,
     disabled,
     size = BUTTON_SIZE.M,
@@ -59,4 +61,4 @@ export const Button: React.FC<ButtonPropsI> = ({
             {children}
         </button>
     );
-};
+});

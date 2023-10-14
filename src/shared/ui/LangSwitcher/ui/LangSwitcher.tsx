@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { Button } from 'shared/ui/Button';
@@ -11,7 +11,7 @@ interface LangSwitcherPropsI {
 }
 
 // ? Компонента, которая отвечает за переключение языка на проекте;
-export const LangSwitcher: React.FC<LangSwitcherPropsI> = ({
+export const LangSwitcher: React.FC<LangSwitcherPropsI> = memo(({
     className, short,
 }) => {
     const { t, i18n } = useTranslation();
@@ -31,4 +31,4 @@ export const LangSwitcher: React.FC<LangSwitcherPropsI> = ({
             }
         </Button>
     );
-};
+});

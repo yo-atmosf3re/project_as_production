@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTheme, THEME } from 'app/providers/ThemeProvider';
 import LightIcon from 'shared/assets/icons/theme-light.svg';
@@ -12,7 +12,7 @@ interface ThemeSwitcherPropsI {
 }
 
 // ? Компонента, которая переключает цветовые темы во всём приложении;
-export const ThemeSwitcher: React.FC<ThemeSwitcherPropsI> = ({
+export const ThemeSwitcher: React.FC<ThemeSwitcherPropsI> = memo(({
     className,
 }) => {
     const { theme, toggleTheme } = useTheme();
@@ -30,4 +30,4 @@ export const ThemeSwitcher: React.FC<ThemeSwitcherPropsI> = ({
             }
         </Button>
     );
-};
+});
