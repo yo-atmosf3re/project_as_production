@@ -1,17 +1,17 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Profile } from './Profile';
+import { ProfileCard } from './ProfileCard';
 
 export default {
-    title: 'shared/Profile',
-    component: Profile,
+    title: 'shared/ProfileCard',
+    component: ProfileCard,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as ComponentMeta<typeof Profile>;
+} as ComponentMeta<typeof ProfileCard>;
 
 // eslint-disable-next-line react/jsx-props-no-spreading
-const Template: ComponentStory<typeof Profile> = (args) => <Profile {...args} />;
+const Template: ComponentStory<typeof ProfileCard> = (args) => <ProfileCard {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {

@@ -13,7 +13,6 @@ interface LoginByUsernamePropsI {
 // ? Типизируем rejectValue так, как нужно нам. В данном случае ошибка будет представлена в виде строки, но в других случаях это может быть, что угодно;
 // eslint-disable-next-line max-len
 export const loginByUsername = createAsyncThunk<User, LoginByUsernamePropsI, ThunkConfigI<string>>(
-// export const loginByUsername = createAsyncThunk<User, LoginByUsernamePropsI, {rejectValue: string}>(
     // ? В данном примере, createAsyncThunk<User, LoginByUsernameProps> указывает на то, что создаваемое событие будет возвращать значения типа User и принимать в качестве аргумента значения типа LoginByUsernameProps;
     'login/loginByUsername',
     async (authData, thunkApi) => {
