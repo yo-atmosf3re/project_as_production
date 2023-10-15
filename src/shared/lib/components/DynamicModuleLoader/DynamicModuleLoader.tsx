@@ -2,17 +2,17 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 import { Reducer } from '@reduxjs/toolkit';
 import { ReduxStoreWithManagerI } from 'app/providers/StoreProvider';
-import { StateSchemaKey } from 'app/providers/StoreProvider/config/StateSchema';
+import { StateSchemaKeyType } from 'app/providers/StoreProvider/config/StateSchema';
 import React, { ReactNode, useEffect } from 'react';
 import { useDispatch, useStore } from 'react-redux';
 
 // ? Типизация для массива редьюсеров, где ключами будут ключи из StateSchemaKey, а значениями будут Reducer;
 export type ReducersList = {
-    [keyReducer in StateSchemaKey]?: Reducer;
+    [keyReducer in StateSchemaKeyType]?: Reducer;
 }
 
 // ? Кортеж для Object.entries;
-export type ReducersListEntry = [StateSchemaKey, Reducer];
+export type ReducersListEntry = [StateSchemaKeyType, Reducer];
 
 /**
  * Позволяет использовать RTK-менеджер инкапсулировано, передавая в аргументы этой функции объект с ключём в виде названия редьюсера их StateSchema и значением в виде редьюсера, которому пренадлежит данный ключ-имя, а так же флаг, который указывает на то будет ли удаляться редьюсер или нет при размонтировании UI-компоненты;

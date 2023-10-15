@@ -1,7 +1,7 @@
 import {
     ReducersMapObject, combineReducers,
 } from '@reduxjs/toolkit';
-import { ReducerManagerI, StateSchema, StateSchemaKey } from './StateSchema';
+import { ReducerManagerI, StateSchema, StateSchemaKeyType } from './StateSchema';
 
 // ? Функция-менеджер для редьюсеров, нужна для code splitting;
 export function createReducerManager(initialReducers: ReducersMapObject<StateSchema>): ReducerManagerI {
@@ -12,7 +12,7 @@ export function createReducerManager(initialReducers: ReducersMapObject<StateSch
     let combinedReducer = combineReducers(reducers);
 
     // ? Массив, который содержит названия редьюсеров. StateSchemaKey это keyof StateSchem'ы. В этом массиве содержатся ключи на удаление;
-    let keysToRemove: StateSchemaKey[] = [];
+    let keysToRemove: StateSchemaKeyType[] = [];
 
     return {
     // ? Возвращает текущий объект с редьюсерами;

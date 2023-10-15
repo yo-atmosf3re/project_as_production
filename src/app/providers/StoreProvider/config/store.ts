@@ -1,6 +1,9 @@
 import { ReducersMapObject, configureStore } from '@reduxjs/toolkit';
 import { counterReducer } from 'entitites/Counter';
 import { userReducer } from 'entitites/User';
+import { $API } from 'shared/api/api';
+import { To } from 'history';
+import { NavigateOptions } from 'react-router';
 import { StateSchema } from './StateSchema';
 import { createReducerManager } from './reducerManager';
 
@@ -9,6 +12,7 @@ import { createReducerManager } from './reducerManager';
 export function createReduxStore(
     initialState?: StateSchema,
     asyncReducers?: ReducersMapObject<StateSchema>,
+    navigate?: (to: To, options?: NavigateOptions) => void,
 ) {
     const rootReducers: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
@@ -16,15 +20,24 @@ export function createReduxStore(
         user: userReducer,
     };
 
-    // ! Классическая реализация;
     const reducerManager = createReducerManager(rootReducers);
 
-    // ! Классическая реализация;
-    const store = configureStore<StateSchema>({
+    const store = configureStore({
         reducer: reducerManager.reduce,
         // ? Отключаем девтулзы для прода;
         devTools: __IS_DEV__,
         preloadedState: initialState,
+        // ? Для того, чтобы не импортировать инстанс аксиоса в каждый asyncThunk, мы просто его подключаем здесь через extra как middleware. В extraArgument можно передать, что угодно;
+        // " Middleware - программный слой, который отрабатывает какие-то действия перед их отправкой в reducer и после их выхода из reducer;
+        middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+            thunk: {
+                extraArgument: {
+                    api: $API,
+                    // ? Добавляем для удобного доступа к навигации useNavigate() из RRD;
+                    navigate,
+                },
+            },
+        }),
     });
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
