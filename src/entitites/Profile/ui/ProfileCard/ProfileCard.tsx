@@ -6,11 +6,12 @@ import { Text } from 'shared/ui/Text';
 import { Button } from 'shared/ui/Button';
 import { BUTTON_THEME } from 'shared/ui/Button/ui/Button';
 import { Input } from 'shared/ui/Input';
+import { useTheme } from 'app/providers/ThemeProvider';
 import { getProfileData, getProfileError, getProfileIsLoading } from '../../index';
 import cls from './ProfileCard.module.scss';
 
 interface ProfileCardPropsI {
-    className ?: string;
+    className?: string;
 }
 
 export const ProfileCard: React.FC<ProfileCardPropsI > = ({
@@ -20,9 +21,15 @@ export const ProfileCard: React.FC<ProfileCardPropsI > = ({
     const data = useSelector(getProfileData);
     const isLoading = useSelector(getProfileIsLoading);
     const error = useSelector(getProfileError);
+    const { theme } = useTheme();
+    const buttonClassCondition = theme === 'app_light_theme';
+    const buttonThemeCondition = buttonClassCondition ? BUTTON_THEME.CLEAR : BUTTON_THEME.OUTLINE;
+    console.log(buttonClassCondition, 'Class button');
+
+    console.log(classNames(cls['profile-card']), 'CLASS NAMES');
     return (
         <div
-            className={classNames(cls.profile, {}, [className])}
+            className={classNames(cls['profile-card'], { }, [className])}
         >
             <div
                 className={cls.header}
@@ -32,7 +39,8 @@ export const ProfileCard: React.FC<ProfileCardPropsI > = ({
                 }
                 />
                 <Button
-                    theme={BUTTON_THEME.OUTLINE}
+                    className={classNames(cls['edit-button'], { [cls['light-button']]: buttonClassCondition }, [])}
+                    theme={buttonThemeCondition}
                 >
                     {
                         t('Редактировать')
@@ -47,12 +55,14 @@ export const ProfileCard: React.FC<ProfileCardPropsI > = ({
                     placeholder={
                         t('Ваше имя')
                     }
+                    className={cls.input}
                 />
                 <Input
                     value={data?.lastname}
                     placeholder={
                         t('Ваше фамилия')
                     }
+                    className={cls.input}
                 />
             </div>
         </div>
