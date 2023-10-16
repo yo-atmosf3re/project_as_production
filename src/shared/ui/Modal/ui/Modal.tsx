@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { ReactNode } from 'react';
+import React, { MutableRefObject, ReactNode } from 'react';
 import { ModsType, classNames } from 'shared/lib/classNames/classNames';
 import { Portal } from 'shared/ui/Portal/ui/Portal';
 import cls from './Modal.module.scss';
@@ -34,7 +34,7 @@ export const Modal: React.FC<ModalPropsI> = ({
         [cls['is-closing']]: isClosing,
     };
 
-    const timerRef = React.useRef<ReturnType<typeof setTimeout>>();
+    const timerRef = React.useRef() as MutableRefObject<ReturnType<typeof setTimeout>>;
 
     const closeHandler = React.useCallback(() => {
         if (onClose) {

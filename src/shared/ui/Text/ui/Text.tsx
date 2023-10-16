@@ -30,7 +30,7 @@ export const Text: React.FC<TextPropsI> = memo(({
     const mods: ModsType = {
         [cls[theme]]: true,
     };
-    const additionalClasses: string[] = [
+    const additionalClasses: Array<string | undefined> = [
         className,
     ];
     return (

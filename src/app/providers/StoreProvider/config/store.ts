@@ -1,10 +1,10 @@
-import { ReducersMapObject, configureStore } from '@reduxjs/toolkit';
+import { CombinedState, ReducersMapObject, configureStore } from '@reduxjs/toolkit';
 import { counterReducer } from 'entitites/Counter';
 import { userReducer } from 'entitites/User';
 import { $API } from 'shared/api/api';
 import { To } from 'history';
 import { NavigateOptions } from 'react-router';
-import { StateSchema } from './StateSchema';
+import { StateSchema, ThunkExtraArgumentsI } from './StateSchema';
 import { createReducerManager } from './reducerManager';
 
 // ? Создание такой функции нужно для того, чтобы можно было переиспользовать и пересоздавать store. Это нужно для jest, storybook;
@@ -22,8 +22,17 @@ export function createReduxStore(
 
     const reducerManager = createReducerManager(rootReducers);
 
+    // ? Для более удобного взаимодействия с типами;
+    const extraArguments: ThunkExtraArgumentsI = {
+        api: $API,
+        // ? Добавляем для удобного доступа к навигации useNavigate() из RRD;
+        navigate,
+    };
+
     const store = configureStore({
-        reducer: reducerManager.reduce,
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        reducer: reducerManager.reduce as Reducers<CombinedState<StateSchema>>,
         // ? Отключаем девтулзы для прода;
         devTools: __IS_DEV__,
         preloadedState: initialState,
@@ -31,11 +40,7 @@ export function createReduxStore(
         // " Middleware - программный слой, который отрабатывает какие-то действия перед их отправкой в reducer и после их выхода из reducer;
         middleware: (getDefaultMiddleware) => getDefaultMiddleware({
             thunk: {
-                extraArgument: {
-                    api: $API,
-                    // ? Добавляем для удобного доступа к навигации useNavigate() из RRD;
-                    navigate,
-                },
+                extraArgument: extraArguments,
             },
         }),
     });

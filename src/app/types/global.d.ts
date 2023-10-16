@@ -30,3 +30,11 @@ declare module '*.jpeg';
 declare const __IS_DEV__: boolean;
 // ? Глобавльная константа, переменная окружения - определение URL сервера;
 declare const __API__: string;
+
+/**
+ * Собственноручно написанный DeepPartial.
+ * DeepPartial - даёт возможность частично или полностью скопировать state. Некоторые свойства, при их наличии, могут полностью скопированы (глубоко) или нет - при их отсутствии;
+ */
+type DeepPartial<T> = T extends object ? {
+   [P in keyof T]?: DeepPartial<T[P]>;
+} : T;

@@ -1,4 +1,3 @@
-import { DeepPartial } from 'redux';
 import {
     LoginSchema,
 } from '../types/LoginSchema';

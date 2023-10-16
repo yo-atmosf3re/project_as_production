@@ -1,13 +1,6 @@
-import axios from 'axios';
 import { userActions } from 'entitites/User';
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 import { loginByUsername } from './loginByUsername';
-
-// ? Мокаем axios;
-jest.mock('axios');
-
-// ? Подключение типизации, теперь более глубокие методы axios замоканы и типизация подхватывается автоматически;
-const mockedAxios = jest.mocked(axios, true);
 
 describe('loginByUsername', () => {
     test('CreateAsynThunk function loginByUsername should be call correct dispatch with correct data and argument, call post request has been called, status result has been fulfilled, dispatch has been called 3 times, payload has been correct', async () => {
@@ -16,26 +9,25 @@ describe('loginByUsername', () => {
             id: '1',
         };
 
-        mockedAxios.post.mockReturnValue(Promise.resolve({ data: userValue }));
-
         const thunk = new TestAsyncThunk(loginByUsername);
+        thunk.api.post.mockReturnValue(Promise.resolve({ data: userValue }));
         const result = await thunk.callThunk({ username: '1', password: '1' });
 
         expect(thunk.dispatch).toHaveBeenCalledWith(userActions.setAuthData(userValue));
         expect(thunk.dispatch).toHaveBeenCalledTimes(3);
-        expect(mockedAxios.post).toHaveBeenCalled();
+        expect(thunk.api.post).toHaveBeenCalled();
         expect(result.meta.requestStatus).toBe('fulfilled');
         expect(result.payload).toEqual(userValue);
     });
 
     test('CreateAsynThunk function loginByUsername should be return status code 403, dispatch has been called 2 times', async () => {
-        mockedAxios.post.mockReturnValue(Promise.resolve({ status: 403 }));
         const thunk = new TestAsyncThunk(loginByUsername);
+        thunk.api.post.mockReturnValue(Promise.resolve({ status: 403 }));
         const result = await thunk.callThunk({ username: '1', password: '1' });
 
         // ? Если произошла какая-то ошибка и статус rejected, то диспатч вызывается всего два раза: первый раз при вызове loginByUsername, а второй при return thunkAPI.rejectWithValue();
         expect(thunk.dispatch).toHaveBeenCalledTimes(2);
-        expect(mockedAxios.post).toHaveBeenCalled();
+        expect(thunk.api.post).toHaveBeenCalled();
         expect(result.meta.requestStatus).toBe('rejected');
         expect(result.payload).toEqual('error');
     });

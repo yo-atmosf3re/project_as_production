@@ -11,11 +11,8 @@ export type ReducersList = {
     [keyReducer in StateSchemaKeyType]?: Reducer;
 }
 
-// ? Кортеж для Object.entries;
-export type ReducersListEntry = [StateSchemaKeyType, Reducer];
-
 /**
- * Позволяет использовать RTK-менеджер инкапсулировано, передавая в аргументы этой функции объект с ключём в виде названия редьюсера их StateSchema и значением в виде редьюсера, которому пренадлежит данный ключ-имя, а так же флаг, который указывает на то будет ли удаляться редьюсер или нет при размонтировании UI-компоненты;
+ * Позволяет использовать RTK-менеджер инкапсулировано, передавая в аргументы этой функции объект с ключём в виде названия редьюсера из StateSchema и значением в виде редьюсера, которому пренадлежит данный ключ-имя, а так же флаг, который указывает на то будет ли удаляться редьюсер или нет при размонтировании UI-компоненты;
  *
  * @param reducers - сам редьюсер;
  * @param removeAfterUnmount - удалять редьюсер при размонтировании UI-компоненты, которая обёрнута в DynamicModuleLoader, или нет;
@@ -35,17 +32,17 @@ export const DynamicModuleLoader: React.FC<DynamicModuleLoaderPropsI> = ({
     useEffect(() => {
         // ? Преобразуем объект reducers в массив с массивами, в котором каждый массив будет представлять собой пару ключ-значение из объекта reducers. Затем для каждого такого массива выполняем логику callback'a, который передан в forEach, а именно - работаем с редакс менеджером. Логика по размонтированию редьюсеров работает аналогично;
         Object.entries(reducers)
-            .forEach(([keyReducer, reducer]: ReducersListEntry) => {
-                store.reducerManager.add(keyReducer, reducer);
+            .forEach(([keyReducer, reducer]) => {
+                store.reducerManager.add(keyReducer as StateSchemaKeyType, reducer);
                 dispatch({ type: `@INIT ${keyReducer} reducer` });
             });
 
         return () => {
             if (removeAfterUnmount) {
                 Object.entries(reducers)
-                    .forEach(([keyReducer]: ReducersListEntry) => {
+                    .forEach(([keyReducer]) => {
                         dispatch({ type: `@DESTROY ${keyReducer} reducer` });
-                        store.reducerManager.remove('loginForm');
+                        store.reducerManager.remove(keyReducer as StateSchemaKeyType);
                     });
             }
         };

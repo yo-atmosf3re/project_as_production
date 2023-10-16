@@ -13,13 +13,14 @@ export const useTheme = (): UseThemeResult => {
 
     const toggleTheme = (): void => {
         const newTheme: THEME = theme === THEME.DARK ? THEME.LIGHT : THEME.DARK;
-        setTheme(newTheme);
+        setTheme?.(newTheme);
         // " Вешаем глобальный класс с цветовой темой для исключения лишних действий и переопределений;
         document.body.className = newTheme;
         localStorage.setItem(THEME_LS_KEY, newTheme);
     };
 
     return {
-        theme, toggleTheme,
+        theme: theme || THEME.LIGHT,
+        toggleTheme,
     };
 };

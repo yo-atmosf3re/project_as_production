@@ -1,11 +1,11 @@
-import { DeepPartial, ReducersMapObject } from '@reduxjs/toolkit';
 import { Story } from '@storybook/react';
 import { StateSchema, StoreProvider } from 'app/providers/StoreProvider';
 import { profileReducer } from 'entitites/Profile';
 import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice';
+import { ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 
 // ? Дефолтная инициализация асинхронных редьюсеров, если они не переданы в ручную при использовании декораторов;
-const DEFAULT_ASYNC_REDUCERS: DeepPartial<ReducersMapObject<StateSchema>> = {
+const DEFAULT_ASYNC_REDUCERS: ReducersList = {
     loginForm: loginReducer,
     profile: profileReducer,
 };
@@ -14,7 +14,7 @@ const DEFAULT_ASYNC_REDUCERS: DeepPartial<ReducersMapObject<StateSchema>> = {
 // ? Здесь так же используется DeepPartical, потому что в обычном StateSchema может быть слишком много ненужных полей;
 export const StoreDecorator = (
     state: DeepPartial<StateSchema>,
-    asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>,
+    asyncReducers?: ReducersList,
 ) => (StoryComponent: Story) => (
     <StoreProvider
         initialState={state}

@@ -1,6 +1,4 @@
 import { StateSchema } from 'app/providers/StoreProvider';
-// ? DeepPartial - даёт возможность частично или полностью скопировать state. Некоторые свойства, при их наличии, могут полностью скопированы (глубоко) или нет - при их отсутствии;
-import { DeepPartial } from '@reduxjs/toolkit';
 import { getCounter } from '../getCounter/getCounter';
 
 describe('getCounter', () => {
