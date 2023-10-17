@@ -4,6 +4,7 @@
 
 .placeholder {
     margin-right: 5px;
+    opacity: 0.9;
 }
 
 .input {
@@ -13,10 +14,22 @@
     width: 100%;
     color: transparent;
     text-shadow: 0 0 0 var(--secondary-color);
+    opacity: 0.9;
 
     &:focus {
         outline: none;
     }
+}
+
+.readonly {
+    .input,
+    .placeholder {
+        opacity: 1;
+    }
+}
+
+.angle-bracket {
+    animation: blink 1.25s forwards infinite;
 }
 
 .caret-wrapper {

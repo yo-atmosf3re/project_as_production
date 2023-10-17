@@ -1,31 +1,16 @@
 .profile-card {
     padding: 20px;
-
-    // border: 2px solid var(--inverted-bg-color);
     box-shadow: var(--shadow-color);
     border-radius: 10px;
 }
 
-.header {
-    display: flex;
-}
-
-.edit-button {
-    margin-left: auto;
-}
-
-.light-button {
-    padding: 6px 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: var(--primary-color);
-    color: #fff;
-}
-
-.data {
-    margin-top: 30px;
-}
-
 .input {
     margin-top: 10px;
+}
+
+.loading,
+.error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

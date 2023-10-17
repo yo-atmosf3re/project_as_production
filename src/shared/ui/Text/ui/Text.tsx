@@ -7,6 +7,12 @@ export enum TEXT_THEME {
     ERROR = 'error'
 }
 
+export enum TEXT_ALIGN {
+    RIGHT = 'right',
+    LEFT = 'left',
+    CENTER = 'center',
+}
+
 /**
  * Кнопка с возможностью кастомизации;
  *
@@ -14,21 +20,25 @@ export enum TEXT_THEME {
  * @param title - более яркий и, чуть выше среднего размера, текст;
  * @param text - слегка бледный и обычного размера текст;
  * @param theme - тема текста;
+ * @param align - выравнивание текста - справа, слева или по-центру;
  */
 interface TextPropsI {
     className?: string;
     title?: string;
     text?: string;
     theme?: TEXT_THEME;
+    align?: TEXT_ALIGN;
 }
 
 // ? Кастомный текстовый компонент, который отрисовывает либо яркий и более крупный title, либо более блеклый и мелкий text. Можно отрисовыывать то и то;
 export const Text: React.FC<TextPropsI> = memo(({
     className, text, title,
     theme = TEXT_THEME.PRIMARY,
+    align = TEXT_ALIGN.LEFT,
 }) => {
     const mods: ModsType = {
         [cls[theme]]: true,
+        [cls[align]]: true,
     };
     const additionalClasses: Array<string | undefined> = [
         className,

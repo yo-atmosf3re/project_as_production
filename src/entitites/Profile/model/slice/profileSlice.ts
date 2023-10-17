@@ -12,7 +12,24 @@ const initialState: ProfileSchema = {
 export const profileSlice = createSlice({
     name: 'profile',
     initialState,
-    reducers: {},
+    reducers: {
+        // ? Меняем статус readonly, нужен для инпутов в карточке профиля;
+        setReadonly: (state, action: PayloadAction<boolean>) => {
+            state.readonly = action.payload;
+        },
+        // ? Ставим формы в режим "Для чтения", сбрасываем введенные пользователем изменения, присваивая значение data для form;
+        cancelEdit: (state) => {
+            state.readonly = true;
+            state.form = state.data;
+        },
+        // ? Общий action для обновления всей data. Создаёт новый объект, переносит туда старую data, а затем новую data из action.payload, перезатерая старые поля объекта;
+        updateProfile: (state, action: PayloadAction<ProfileI>) => {
+            state.form = {
+                ...state.data,
+                ...action.payload,
+            };
+        },
+    },
     extraReducers: (builder) => {
         // " Ниже extraReducers используется для обработки трех разных случаев, связанных с асинхронным действием loginByUsername: пока действие ожидает выполнения (pending), когда действие успешно завершается (fulfilled) и когда действие отклоняется (rejected);
         // ? Каждый вызов addCase привязывает определенный редьюсер (имеющий два аргумента: состояние и действие) к соответствующему action;
@@ -23,8 +40,10 @@ export const profileSlice = createSlice({
             })
             .addCase(fetchProfileData.fulfilled, (state, action: PayloadAction<ProfileI>) => {
                 state.isLoading = false;
-                // ? Получаем данные и присваиваем их в state;
+                // ? Получаем данные и присваиваем их в state. Данные data не будут изменяться, они будут получены один раз с сервера. Это нужно для отслеживания изменений и возможности откатить данные назад, нажав кнопку "Отменить" в UI;
                 state.data = action.payload;
+                // ? data меняться не будет, а form меняться будет при каждом изменении полей ввода пользователем;
+                state.form = action.payload;
             })
             .addCase(fetchProfileData.rejected, (state, action) => {
                 state.isLoading = false;
