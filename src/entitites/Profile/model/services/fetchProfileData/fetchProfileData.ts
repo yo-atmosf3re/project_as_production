@@ -2,10 +2,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfigI } from 'app/providers/StoreProvider';
 import { ProfileI } from '../../types/profile';
 
-// interface FetchProfileDataPropsI {
-//     username: string;
-//     password: string
-// }
 // eslint-disable-next-line max-len
 export const fetchProfileData = createAsyncThunk<ProfileI, void, ThunkConfigI<string>>(
     'profile/fetchProfileData',

@@ -5,9 +5,9 @@ import { {{pascalCase}} } from './{{pascalCase}}';
 export default {
     title: 'shared/{{pascalCase}}',
     component: {{pascalCase}},
-argTypes: {
-    backgroundColor: { control: 'color' },
-},
+    argTypes: {
+        backgroundColor: { control: 'color' },
+    },
 } as ComponentMeta<typeof{{pascalCase}}>;
 
 // eslint-disable-next-line react/jsx-props-no-spreading

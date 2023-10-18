@@ -41,8 +41,9 @@ export interface ThunkExtraArgumentsI {
     navigate?: (to: To, options?: NavigateOptions) => void;
 }
 
-// ? ;
+// ? Тип для конфигурации createAsyncThunk, который указывается в дженериках этой функции;
 export interface ThunkConfigI<T> {
     rejectValue: T;
     extra: ThunkExtraArgumentsI;
+    state: StateSchema;
 }

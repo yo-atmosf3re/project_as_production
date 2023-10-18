@@ -6,7 +6,7 @@ import { Button } from 'shared/ui/Button';
 import { Text } from 'shared/ui/Text';
 import { BUTTON_THEME } from 'shared/ui/Button/ui/Button';
 import { useSelector } from 'react-redux';
-import { getProfileReadonly } from 'entitites/Profile';
+import { getProfileReadonly, updateProfileData } from 'entitites/Profile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { profileActions } from 'entitites/Profile/model/slice/profileSlice';
 import cls from './ProfilePageHeader.module.scss';
@@ -36,8 +36,9 @@ export const ProfilePageHeader: React.FC<ProfilePageHeaderPropsI> = ({
     }, [dispatch]);
 
     const onSaveEditHandler = useCallback(() => {
-        console.log('Some function, which should to save data');
-    }, []);
+        dispatch(updateProfileData());
+        dispatch(profileActions.setReadonly(true));
+    }, [dispatch]);
 
     return (
         <div

@@ -1,43 +1,43 @@
 {
-    "posts": [
-        {
-            "id": "1",
-            "title": "json-server",
-            "userId": "1"
-        },
-        {
-            "id": "2",
-            "title": "json-server",
-            "userId": "2"
-        }
-    ],
-    "comments": [
-        {
-            "id": "1",
-            "body": "some comment",
-            "postId": "1"
-        }
-    ],
-    "users": [
-        {
-            "id": "1",
-            "username": "1",
-            "password": "1"
-        },
-        {
-            "id": "2",
-            "username": "2",
-            "password": "2"
-        }
-    ],
-    "profile": {
-        "first": "Ernesto",
-        "lastname": "Chrome",
-        "age": "25",
-        "currency": "RUB",
-        "country": "Russia",
-        "city": "Moscow",
-        "username": "admin",
-        "avatar": "https://geek-nose.com/wp-content/uploads/2017/03/1-12-767x428.jpg"
+  "posts": [
+    {
+      "id": "1",
+      "title": "json-server",
+      "userId": "1"
+    },
+    {
+      "id": "2",
+      "title": "json-server",
+      "userId": "2"
     }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "body": "some comment",
+      "postId": "1"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "1",
+      "password": "1"
+    },
+    {
+      "id": "2",
+      "username": "2",
+      "password": "2"
+    }
+  ],
+  "profile": {
+    "first": "Alex",
+    "lastname": "Chrome",
+    "age": "25",
+    "currency": "RUB",
+    "country": "Russia",
+    "city": "Moscow",
+    "username": "admin",
+    "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3BmkXlsD4r-eEEvco19fRWuYvo6QH2FieN977N2BX&s"
+  }
 }

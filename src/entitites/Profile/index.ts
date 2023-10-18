@@ -9,6 +9,10 @@ export {
 } from './model/services/fetchProfileData/fetchProfileData';
 
 export {
+    updateProfileData,
+} from './model/services/updateProfileData/updateProfileData';
+
+export {
     ProfileI, ProfileSchema,
 } from './model/types/profile';
 

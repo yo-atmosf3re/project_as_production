@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { ProfileI, ProfileSchema } from '../types/profile';
-import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData';
+import { fetchProfileData, updateProfileData } from '../../index';
 
 const initialState: ProfileSchema = {
     readonly: true,
@@ -31,7 +31,7 @@ export const profileSlice = createSlice({
         },
     },
     extraReducers: (builder) => {
-        // " Ниже extraReducers используется для обработки трех разных случаев, связанных с асинхронным действием loginByUsername: пока действие ожидает выполнения (pending), когда действие успешно завершается (fulfilled) и когда действие отклоняется (rejected);
+        // " Ниже extraReducers используется для обработки трех разных случаев, связанных с асинхронным действием fetchProfileData: пока действие ожидает выполнения (pending), когда действие успешно завершается (fulfilled) и когда действие отклоняется (rejected);
         // ? Каждый вызов addCase привязывает определенный редьюсер (имеющий два аргумента: состояние и действие) к соответствующему action;
         builder
             .addCase(fetchProfileData.pending, (state) => {
@@ -48,8 +48,21 @@ export const profileSlice = createSlice({
             .addCase(fetchProfileData.rejected, (state, action) => {
                 state.isLoading = false;
                 state.error = action.payload;
+            })
+            .addCase(updateProfileData.pending, (state) => {
+                state.error = undefined;
+                state.isLoading = true;
+            })
+            .addCase(updateProfileData.fulfilled, (state, action: PayloadAction<ProfileI>) => {
+                state.isLoading = false;
+                state.data = action.payload;
+                state.form = action.payload;
+            })
+            .addCase(updateProfileData.rejected, (state, action) => {
+                state.isLoading = false;
+                state.error = action.payload;
             });
-        // ? Таким образом, extraReducers позволяет определить логику, когда определенное асинхронное действие выполняется, завершается или отклоняется, и обновляет соответствующие поля состояния;
+        // ? Таким образом, extraReducers позволяет определить логику, когда определенное асинхронное действие выполняется, завершается или отклоняется, и обновляет соответствующие поля state;
     },
 });
 
