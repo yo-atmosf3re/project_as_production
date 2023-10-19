@@ -3,13 +3,16 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import {
     ProfileCard, fetchProfileData,
-    getProfileError, getProfileForm, getProfileIsLoading, getProfileReadonly, profileReducer,
+    getProfileError, getProfileForm, getProfileIsLoading, getProfileReadonly, getProfileValidateErrors, profileReducer,
 } from 'entitites/Profile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { profileActions } from 'entitites/Profile/model/slice/profileSlice';
 import { CURRENCY } from 'entitites/Currency';
 import { COUNTRY } from 'entitites/Country';
+import { Text, TEXT_THEME } from 'shared/ui/Text';
+import { VALIDATE_PROFILE_ERROR } from 'entitites/Profile/model/types/profile';
+import { useTranslation } from 'react-i18next';
 import cls from './ProfilePage.module.scss';
 import { ProfilePageHeader } from './ProfilePageHeader';
 
@@ -25,12 +28,22 @@ const INITIAL_REDUCERS: ReducersList = {
 const ProfilePage: React.FC<ProfilePagePropsI> = ({
     className,
 }) => {
+    const { t } = useTranslation('profile');
     const dispatch = useAppDispatch();
     // ? Получаем дублированные данные из стейта, изменяем и работаем уже дальше с ними, а если нужно вернуть вводимые значения к дефолтным - это легко происходит в экшене cancelEdit, который активируется в ProfilePageHeader в обработчике событий;
     const formData = useSelector(getProfileForm);
     const isLoading = useSelector(getProfileIsLoading);
     const error = useSelector(getProfileError);
     const readonly = useSelector(getProfileReadonly);
+    const validateErrors = useSelector(getProfileValidateErrors);
+
+    // const validateErrorTranslates = {
+    //     [VALIDATE_PROFILE_ERROR.INCORRECT_AGE]: t('Некорректный возраст'),
+    //     [VALIDATE_PROFILE_ERROR.INCORRECT_COUNTRY]: t('Некорректный регион'),
+    //     [VALIDATE_PROFILE_ERROR.INCORRECT_USER_DATA]: t('Некорректные данные пользователя. Имя и фамилия обязательны!'),
+    //     [VALIDATE_PROFILE_ERROR.NO_DATA]: t('Данные не указаны'),
+    //     [VALIDATE_PROFILE_ERROR.SERVER_ERROR]: t('Серверная ошибка при сохранении'),
+    // };
 
     useEffect(() => {
         dispatch(fetchProfileData());
@@ -93,7 +106,22 @@ const ProfilePage: React.FC<ProfilePagePropsI> = ({
             <div className={classNames(cls.profile, {}, [className])}>
                 <ProfilePageHeader
                     isLoading={isLoading}
+                    validateErrors={validateErrors}
                 />
+                {
+                    // validateErrors?.length
+                    //     ? validateErrors.map(
+                    //         (error) => (
+                    //             <Text
+                    //                 key={`${error}-${(Math.random()).toString().replace('.', '')}`}
+                    //                 theme={TEXT_THEME.ERROR}
+                    //                 // ? Обращаемся к объекту validateErrorTranslates по ключу, ключом будет являться error. Ключи validateErrorTranslates и ключи error идентичны, поэтому вернётся сопоставимое по ключу значение, а значением будет являться перевод;
+                    //                 text={validateErrorTranslates[error]}
+                    //             />
+                    //         ),
+                    //     )
+                    //     : null
+                }
                 <ProfileCard
                     data={formData}
                     isLoading={isLoading}

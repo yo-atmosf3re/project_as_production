@@ -1,24 +1,34 @@
-import React, { Fragment, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTheme } from 'app/providers/ThemeProvider';
 import { Button } from 'shared/ui/Button';
-import { Text } from 'shared/ui/Text';
+import { TEXT_THEME, Text } from 'shared/ui/Text';
 import { BUTTON_THEME } from 'shared/ui/Button/ui/Button';
 import { useSelector } from 'react-redux';
 import { getProfileReadonly, updateProfileData } from 'entitites/Profile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { profileActions } from 'entitites/Profile/model/slice/profileSlice';
+import { VALIDATE_PROFILE_ERROR } from 'entitites/Profile/model/types/profile';
 import cls from './ProfilePageHeader.module.scss';
 
+interface ValidateErrorTranslatesI {
+    INCORRECT_AGE: VALIDATE_PROFILE_ERROR.INCORRECT_AGE;
+    INCORRECT_COUNTRY: VALIDATE_PROFILE_ERROR.INCORRECT_COUNTRY;
+    INCORRECT_USER_DATA: VALIDATE_PROFILE_ERROR.INCORRECT_USER_DATA;
+    NO_DATA: VALIDATE_PROFILE_ERROR.NO_DATA;
+    SERVER_ERROR: VALIDATE_PROFILE_ERROR.SERVER_ERROR;
+}
 interface ProfilePageHeaderPropsI {
     className?: string;
     isLoading?: boolean;
+    validateErrors?: VALIDATE_PROFILE_ERROR[];
 }
 
 // ? Заголов карточки профиля, который содержит кнопку "Редактировать", "Изменить", "Отменить" и так далее;
 export const ProfilePageHeader: React.FC<ProfilePageHeaderPropsI> = ({
     className, isLoading,
+    validateErrors,
 }) => {
     const { t } = useTranslation('profile');
     const { theme } = useTheme();
@@ -26,6 +36,14 @@ export const ProfilePageHeader: React.FC<ProfilePageHeaderPropsI> = ({
     const buttonThemeCondition = buttonClassCondition ? BUTTON_THEME.CLEAR : BUTTON_THEME.OUTLINE;
     const readonly = useSelector(getProfileReadonly);
     const dispatch = useAppDispatch();
+
+    const validateErrorTranslates = {
+        [VALIDATE_PROFILE_ERROR.INCORRECT_AGE]: t('Некорректный возраст'),
+        [VALIDATE_PROFILE_ERROR.INCORRECT_COUNTRY]: t('Некорректный регион'),
+        [VALIDATE_PROFILE_ERROR.INCORRECT_USER_DATA]: t('Некорректные данные пользователя. Имя и фамилия обязательны!'),
+        [VALIDATE_PROFILE_ERROR.NO_DATA]: t('Данные не указаны'),
+        [VALIDATE_PROFILE_ERROR.SERVER_ERROR]: t('Серверная ошибка при сохранении'),
+    };
 
     const onEditHandler = useCallback(() => {
         dispatch(profileActions.setReadonly(false));
@@ -43,10 +61,36 @@ export const ProfilePageHeader: React.FC<ProfilePageHeaderPropsI> = ({
         <div
             className={classNames(cls['profile-header'], {}, [className])}
         >
-            <Text title={
-                t('Профиль')
-            }
-            />
+            <div
+                className={cls['profile-info']}
+            >
+                <Text title={
+                    t('Профиль')
+                }
+                />
+                {
+                    validateErrorTranslates && validateErrors?.length
+                        ? (
+                            <div
+                                className={cls['errors-card']}
+                            >
+                                {
+                                    validateErrors.map(
+                                        (error) => (
+                                            <Text
+                                                key={`${error}-${(Math.random()).toString().replace('.', '')}`}
+                                                theme={TEXT_THEME.ERROR}
+                                                // ? Обращаемся к объекту validateErrorTranslates по ключу, ключом будет являться error. Ключи validateErrorTranslates и ключи error идентичны, поэтому вернётся сопоставимое по ключу значение, а значением будет являться перевод;
+                                                text={validateErrorTranslates[error]}
+                                            />
+                                        ),
+                                    )
+                                }
+                            </div>
+                        )
+                        : null
+                }
+            </div>
             {
                 readonly
                     ? (
@@ -105,3 +149,18 @@ export const ProfilePageHeader: React.FC<ProfilePageHeaderPropsI> = ({
         </div>
     );
 };
+
+// {
+//     validateErrorTranslates && validateErrors?.length
+//         ? validateErrors.map(
+//             (error) => (
+//                 <Text
+//                     key={`${error}-${(Math.random()).toString().replace('.', '')}`}
+//                     theme={TEXT_THEME.ERROR}
+//                     // ? Обращаемся к объекту validateErrorTranslates по ключу, ключом будет являться error. Ключи validateErrorTranslates и ключи error идентичны, поэтому вернётся сопоставимое по ключу значение, а значением будет являться перевод;
+//                     text={validateErrorTranslates[error]}
+//                 />
+//             ),
+//         )
+//         : null
+// }

@@ -20,6 +20,7 @@ export const profileSlice = createSlice({
         // ? Ставим формы в режим "Для чтения", сбрасываем введенные пользователем изменения, присваивая значение data для form;
         cancelEdit: (state) => {
             state.readonly = true;
+            state.validateError = undefined;
             state.form = state.data;
         },
         // ? Общий action для обновления всей data. Создаёт новый объект, переносит туда старую data, а затем новую data из action.payload, перезатерая старые поля объекта;
@@ -34,6 +35,7 @@ export const profileSlice = createSlice({
         // " Ниже extraReducers используется для обработки трех разных случаев, связанных с асинхронным действием fetchProfileData: пока действие ожидает выполнения (pending), когда действие успешно завершается (fulfilled) и когда действие отклоняется (rejected);
         // ? Каждый вызов addCase привязывает определенный редьюсер (имеющий два аргумента: состояние и действие) к соответствующему action;
         builder
+            // ? fetchProfileData;
             .addCase(fetchProfileData.pending, (state) => {
                 state.error = undefined;
                 state.isLoading = true;
@@ -49,8 +51,9 @@ export const profileSlice = createSlice({
                 state.isLoading = false;
                 state.error = action.payload;
             })
+            // ? updateProfileData;
             .addCase(updateProfileData.pending, (state) => {
-                state.error = undefined;
+                state.validateError = undefined;
                 state.isLoading = true;
             })
             .addCase(updateProfileData.fulfilled, (state, action: PayloadAction<ProfileI>) => {
@@ -58,10 +61,11 @@ export const profileSlice = createSlice({
                 state.data = action.payload;
                 state.form = action.payload;
                 state.readonly = true;
+                state.validateError = undefined;
             })
             .addCase(updateProfileData.rejected, (state, action) => {
                 state.isLoading = false;
-                state.error = action.payload;
+                state.validateError = action.payload;
             });
         // ? Таким образом, extraReducers позволяет определить логику, когда определенное асинхронное действие выполняется, завершается или отклоняется, и обновляет соответствующие поля state;
     },

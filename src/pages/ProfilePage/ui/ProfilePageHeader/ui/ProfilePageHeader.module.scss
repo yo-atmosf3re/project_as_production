@@ -1,10 +1,48 @@
 .profile-header {
     display: flex;
+    position: relative;
     margin-bottom: 20px;
+}
+
+.profile-info {
+    flex: 0 0 300px;
 }
 
 .buttons {
     margin-left: auto;
+}
+
+.errors-card {
+    // display: block;
+    position: absolute;
+    max-width: 200px;
+    padding: 10px;
+    box-shadow: var(--shadow-color);
+    border-radius: 6px;
+    background: var(--inverted-bg-color);
+    animation: fade 0.3s ease-in forwards;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 0.25;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    75% {
+        opacity: 0.75;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 // ? Класс какой-то кнопки, которая может быть добавлена в заголовок страницы профиля;
@@ -22,7 +60,7 @@
 .cancel-light {
     padding: 6px 15px;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 6px;
     background-color: var(--primary-color);
     color: #fff;
 

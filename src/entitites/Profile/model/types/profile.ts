@@ -1,6 +1,15 @@
 import { COUNTRY } from 'entitites/Country';
 import { CURRENCY } from 'entitites/Currency';
 
+// ? Типы валидационных ошибок;
+export enum VALIDATE_PROFILE_ERROR {
+    INCORRECT_USER_DATA = 'INCORRECT_USER_DATA',
+    INCORRECT_AGE = 'INCORRECT_AGE',
+    INCORRECT_COUNTRY = 'INCORRECT_COUNTRY',
+    NO_DATA = 'NO_DATA',
+    SERVER_ERROR = 'SERVER_ERROR',
+}
+
 export interface ProfileI {
     first?: string;
     lastname?: string;
@@ -20,4 +29,6 @@ export interface ProfileSchema {
     isLoading: boolean;
     error?: string;
     readonly: boolean;
+    // ? Может быть undefined, что означает, что ошибок, а так как их может быть несколько, то это массив;
+    validateError?: VALIDATE_PROFILE_ERROR[];
 }
