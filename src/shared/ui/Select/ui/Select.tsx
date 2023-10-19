@@ -22,12 +22,13 @@ interface SelectPropsI {
     options?: SelectOptionI[];
     value?: string;
     onChange?: (value: string) => void;
+    readonly?: boolean;
 }
 
 // ? Переиспользуемая компонента select, входящая в комплект UI-kit проекта;
 export const Select: React.FC<SelectPropsI> = memo(({
     className, label, options,
-    value, onChange,
+    value, onChange, readonly,
 }) => {
     const mods: ModsType = {};
     const additionalClasses: Array<string | undefined> = [className];
@@ -49,7 +50,7 @@ export const Select: React.FC<SelectPropsI> = memo(({
 
     return (
         <div
-            className={classNames(cls['select-wrapper'], {}, [])}
+            className={classNames(cls['select-wrapper'], {}, additionalClasses)}
         >
             {
                 label
@@ -65,9 +66,10 @@ export const Select: React.FC<SelectPropsI> = memo(({
                     : null
             }
             <select
-                className={classNames(cls.select, mods, additionalClasses)}
+                className={classNames(cls.select, mods, [])}
                 value={value}
                 onChange={onChangeHandler}
+                disabled={readonly}
             >
                 {
                     optionsList

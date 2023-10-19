@@ -37,7 +37,6 @@ export const ProfilePageHeader: React.FC<ProfilePageHeaderPropsI> = ({
 
     const onSaveEditHandler = useCallback(() => {
         dispatch(updateProfileData());
-        dispatch(profileActions.setReadonly(true));
     }, [dispatch]);
 
     return (

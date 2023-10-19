@@ -1,12 +1,12 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import ProfilePage from './ProfilePage';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { THEME } from 'app/providers/ThemeProvider';
+import ProfilePage from './ProfilePage';
 
 export default {
-    title: 'shared/ProfilePage',
+    title: 'pages/ProfilePage',
     component: ProfilePage,
     argTypes: {
         backgroundColor: { control: 'color' },
@@ -22,4 +22,4 @@ Light.decorators = [StoreDecorator({})];
 export const Dark = Template.bind({});
 Dark.args = {};
 Dark.decorators = [StoreDecorator({}),
-ThemeDecorator(THEME.DARK)];
+    ThemeDecorator(THEME.DARK)];

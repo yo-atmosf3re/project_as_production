@@ -8,7 +8,7 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as ComponentMeta<typeof{{pascalCase}}>;
+} as ComponentMeta<typeof {{pascalCase}}>;
 
 // eslint-disable-next-line react/jsx-props-no-spreading
 const Template: ComponentStory<typeof {{ pascalCase }}> = (args) => <{{ pascalCase }} { ...args } />;

@@ -1,9 +1,10 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ProfilePageHeader } from './ProfilePageHeader';
 
 export default {
-    title: 'shared/ProfilePageHeader',
+    title: 'pages/ProfilePageHeader',
     component: ProfilePageHeader,
     argTypes: {
         backgroundColor: { control: 'color' },
@@ -16,3 +17,8 @@ export const Primary = Template.bind({});
 Primary.args = {
 
 };
+Primary.decorators = [StoreDecorator({
+    profile: {
+        // isLoading: false,
+    },
+})];

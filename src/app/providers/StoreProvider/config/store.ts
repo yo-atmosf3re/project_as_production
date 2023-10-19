@@ -1,4 +1,6 @@
-import { CombinedState, ReducersMapObject, configureStore } from '@reduxjs/toolkit';
+import {
+    CombinedState, Reducer, ReducersMapObject, configureStore,
+} from '@reduxjs/toolkit';
 import { counterReducer } from 'entitites/Counter';
 import { userReducer } from 'entitites/User';
 import { $API } from 'shared/api/api';
@@ -30,9 +32,8 @@ export function createReduxStore(
     };
 
     const store = configureStore({
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        reducer: reducerManager.reduce as Reducers<CombinedState<StateSchema>>,
+
+        reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
         // ? Отключаем девтулзы для прода;
         devTools: __IS_DEV__,
         preloadedState: initialState,

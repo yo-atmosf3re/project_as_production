@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { THEME_LS_KEY } from 'shared/const/localstorage';
 import { THEME, ThemeContext } from '../lib/ThemeContext';
 
-// ? Const, которой присвоено значение из LS с использованием ключа LOCAL_STORAGE_THEME_KEY, и если значение из LS не определено, то присваивается значение THEME.LIGHT;
+// ? Const, которой присвоено значение из LS с использованием ключа THEME_LS_KEY, и если значение из LS не определено, то присваивается значение THEME.LIGHT по-умолчанию;
 const DEFAULT_THEME = localStorage.getItem(THEME_LS_KEY) as THEME || THEME.LIGHT;
 
 // ? Свойство initialTheme в данном интерфейсе позволяет установить изначальную тему самостоятельно, если тема не проинициализирована, то она устанавливается по-умолчанию;

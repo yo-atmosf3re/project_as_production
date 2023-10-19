@@ -8,7 +8,7 @@ import { useDispatch, useStore } from 'react-redux';
 
 // ? Типизация для массива редьюсеров, где ключами будут ключи из StateSchemaKey, а значениями будут Reducer;
 export type ReducersList = {
-    [keyReducer in StateSchemaKeyType]?: Reducer;
+    [name in StateSchemaKeyType]?: Reducer;
 }
 
 /**
@@ -32,17 +32,17 @@ export const DynamicModuleLoader: React.FC<DynamicModuleLoaderPropsI> = ({
     useEffect(() => {
         // ? Преобразуем объект reducers в массив с массивами, в котором каждый массив будет представлять собой пару ключ-значение из объекта reducers. Затем для каждого такого массива выполняем логику callback'a, который передан в forEach, а именно - работаем с редакс менеджером. Логика по размонтированию редьюсеров работает аналогично;
         Object.entries(reducers)
-            .forEach(([keyReducer, reducer]) => {
-                store.reducerManager.add(keyReducer as StateSchemaKeyType, reducer);
-                dispatch({ type: `@INIT ${keyReducer} reducer` });
+            .forEach(([name, reducer]) => {
+                store.reducerManager.add(name as StateSchemaKeyType, reducer);
+                dispatch({ type: `@INIT ${name} reducer` });
             });
 
         return () => {
             if (removeAfterUnmount) {
                 Object.entries(reducers)
-                    .forEach(([keyReducer]) => {
-                        dispatch({ type: `@DESTROY ${keyReducer} reducer` });
-                        store.reducerManager.remove(keyReducer as StateSchemaKeyType);
+                    .forEach(([name, reducer]) => {
+                        store.reducerManager.remove(name as StateSchemaKeyType);
+                        dispatch({ type: `@DESTROY ${name} reducer` });
                     });
             }
         };

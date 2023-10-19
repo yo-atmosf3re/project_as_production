@@ -4,6 +4,11 @@ import { AboutPage } from 'pages/AboutPage';
 import { NotFoundPage } from 'pages/NotFoundPage';
 import { ProfilePage } from 'pages/ProfilePage';
 
+// ? Объединяем в один тип RoureProps из RRD, добавляем поле authOnly, которое если true, то блокирует роуты;
+type AppRoutesPropsType = RouteProps & {
+    authOnly?: boolean;
+}
+
 export enum APP_ROUTES {
     MAIN = 'main',
     ABOUT = 'about',
@@ -21,7 +26,7 @@ export const ROUTES_PATH: Record<APP_ROUTES, string> = {
     [APP_ROUTES.NOT_FOUND]: '*',
 };
 
-export const routeConfig: Record<APP_ROUTES, RouteProps> = {
+export const routeConfig: Record<APP_ROUTES, AppRoutesPropsType> = {
     [APP_ROUTES.MAIN]: {
         path: ROUTES_PATH.main,
         element: <MainPage />,
@@ -33,6 +38,7 @@ export const routeConfig: Record<APP_ROUTES, RouteProps> = {
     [APP_ROUTES.PROFILE]: {
         path: ROUTES_PATH.profile,
         element: <ProfilePage />,
+        authOnly: true,
     },
     // ? Последний маршрут;
     [APP_ROUTES.NOT_FOUND]: {

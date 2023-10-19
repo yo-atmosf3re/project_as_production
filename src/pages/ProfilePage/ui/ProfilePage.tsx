@@ -8,6 +8,8 @@ import {
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { profileActions } from 'entitites/Profile/model/slice/profileSlice';
+import { CURRENCY } from 'entitites/Currency';
+import { COUNTRY } from 'entitites/Country';
 import cls from './ProfilePage.module.scss';
 import { ProfilePageHeader } from './ProfilePageHeader';
 
@@ -75,6 +77,14 @@ const ProfilePage: React.FC<ProfilePagePropsI> = ({
         }));
     }, [dispatch]);
 
+    const onChangeCurrency = useCallback((currency: CURRENCY) => {
+        dispatch(profileActions.updateProfile({ currency }));
+    }, [dispatch]);
+
+    const onChangeCountry = useCallback((country: COUNTRY) => {
+        dispatch(profileActions.updateProfile({ country }));
+    }, [dispatch]);
+
     return (
         <DynamicModuleLoader
             removeAfterUnmount
@@ -95,6 +105,8 @@ const ProfilePage: React.FC<ProfilePagePropsI> = ({
                     onChangeCityHandler={onChangeCity}
                     onChangeUsernameHandler={onChangeUsername}
                     onChangeAvatarHandler={onChangeAvatar}
+                    onChangeCurrencyHandler={onChangeCurrency}
+                    onChangeCountryHandler={onChangeCountry}
                 />
             </div>
         </DynamicModuleLoader>

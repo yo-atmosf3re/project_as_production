@@ -21,8 +21,6 @@
 
     &:focus {
         outline: none;
-        border-color: var(--secondary-color);
-        box-shadow: var(--shadow-color);
     }
 
     &::-ms-expand {
@@ -33,5 +31,6 @@
 .option {
     color: var(--inverted-primary-color);
     background: var(--inverted-bg-color);
+    background: none;
     border: none;
 }

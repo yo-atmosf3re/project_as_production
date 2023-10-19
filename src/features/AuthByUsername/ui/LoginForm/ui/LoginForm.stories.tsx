@@ -20,19 +20,19 @@ Error.decorators = [StoreDecorator({
     },
 })];
 
-export const Okay = Template.bind({});
-Okay.args = {};
-Okay.decorators = [StoreDecorator({
-    loginForm: {
-        username: '1',
-        password: '1',
-    },
-})];
+// export const Okay = Template.bind({});
+// Okay.args = {};
+// Okay.decorators = [StoreDecorator({
+//     loginForm: {
+//         username: '1',
+//         password: '1',
+//     },
+// })];
 
-export const Loading = Template.bind({});
-Loading.args = {};
-Loading.decorators = [StoreDecorator({
-    loginForm: {
-        isLoading: true,
-    },
-})];
+// export const Loading = Template.bind({});
+// Loading.args = {};
+// Loading.decorators = [StoreDecorator({
+//     loginForm: {
+//         isLoading: true,
+//     },
+// })];

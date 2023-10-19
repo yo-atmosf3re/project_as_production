@@ -6,6 +6,8 @@ import { Input } from 'shared/ui/Input';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { TEXT_ALIGN, TEXT_THEME } from 'shared/ui/Text/ui/Text';
 import { Avatar } from 'shared/ui/Avatar';
+import { CURRENCY, CurrencySelect } from 'entitites/Currency';
+import { COUNTRY, CountrySelect } from 'entitites/Country';
 import {
     ProfileI,
 } from '../../index';
@@ -24,6 +26,8 @@ interface ProfileCardPropsI {
     onChangeAgeHandler?: (value?: string) => void;
     onChangeUsernameHandler?: (value?: string) => void;
     onChangeAvatarHandler?: (value?: string) => void;
+    onChangeCurrencyHandler?: (currency: CURRENCY) => void;
+    onChangeCountryHandler?: (country: COUNTRY) => void;
 }
 
 // ? Компонента с карточкой пользователя. Удобно тем, что можно создать большое количество экземпляров этой компоненты, передавая в неё массив профилей, например;
@@ -32,6 +36,7 @@ export const ProfileCard: React.FC<ProfileCardPropsI > = ({
     onChangeFirstnameHandler, onChangeLastnameHandler,
     onChangeAgeHandler, onChangeCityHandler,
     onChangeAvatarHandler, onChangeUsernameHandler,
+    onChangeCurrencyHandler, onChangeCountryHandler,
 }) => {
     const { t } = useTranslation('profile');
 
@@ -148,6 +153,18 @@ export const ProfileCard: React.FC<ProfileCardPropsI > = ({
                     }
                     readonly={readonly}
                     className={cls.input}
+                />
+                <CurrencySelect
+                    value={data?.currency}
+                    onChange={onChangeCurrencyHandler}
+                    className={cls.input}
+                    readonly={readonly}
+                />
+                <CountrySelect
+                    value={data?.country}
+                    onChange={onChangeCountryHandler}
+                    className={cls.input}
+                    readonly={readonly}
                 />
             </div>
         </div>

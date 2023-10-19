@@ -6,7 +6,7 @@ import { Button } from 'shared/ui/Button';
 import { BUTTON_THEME, BUTTON_SIZE } from 'shared/ui/Button/ui/Button';
 import cls from './Sidebar.module.scss';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
-import { SidebarItemsList } from '../../model/items';
+import { SidebarItemsList } from '../../model/sidebarItems';
 
 interface NavbarPropsI {
     className?: string;

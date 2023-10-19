@@ -20,9 +20,6 @@ export const parameters = {
             date: /Date$/,
         },
     },
-    decorators: [
-        TranslationDecorator,
-    ],
 };
 
 // ? addDecorator - функция добавления декораторов к Storybook;
