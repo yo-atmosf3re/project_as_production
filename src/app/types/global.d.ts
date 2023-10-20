@@ -30,6 +30,8 @@ declare module '*.jpeg';
 declare const __IS_DEV__: boolean;
 // ? Глобавльная константа, переменная окружения - определение URL сервера;
 declare const __API__: string;
+// ? Глобавльная константа, переменная окружения - определение среды выполнения кода в зависимости от значения этой переменной;
+declare const __PROJECT__: 'storybook' | 'fronted' | 'jest';
 
 /**
  * Собственноручно написанный DeepPartial.

@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Avatar } from './Avatar';
 // ? Картинка для тестов, чтобы не грузить её откуда-либо потом и не тратить время на загрузку;
-import AvatarImage from './avatar_image_for_test.jpg';
+import AvatarImage from '../../../assets/tests/avatar_image_for_test.jpg';
 
 export default {
     title: 'shared/Avatar',

@@ -12,13 +12,6 @@ import { profileActions } from 'entitites/Profile/model/slice/profileSlice';
 import { VALIDATE_PROFILE_ERROR } from 'entitites/Profile/model/types/profile';
 import cls from './ProfilePageHeader.module.scss';
 
-interface ValidateErrorTranslatesI {
-    INCORRECT_AGE: VALIDATE_PROFILE_ERROR.INCORRECT_AGE;
-    INCORRECT_COUNTRY: VALIDATE_PROFILE_ERROR.INCORRECT_COUNTRY;
-    INCORRECT_USER_DATA: VALIDATE_PROFILE_ERROR.INCORRECT_USER_DATA;
-    NO_DATA: VALIDATE_PROFILE_ERROR.NO_DATA;
-    SERVER_ERROR: VALIDATE_PROFILE_ERROR.SERVER_ERROR;
-}
 interface ProfilePageHeaderPropsI {
     className?: string;
     isLoading?: boolean;
