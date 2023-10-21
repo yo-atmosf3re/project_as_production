@@ -61,6 +61,8 @@ export default {
     moduleNameMapper: {
         '\\.(s?css)$': 'identity-obj-proxy',
         '\\.svg': path.resolve(__dirname, 'jestEmptyComponent'),
+        // ? Добавляет поддержку нижеперечисленных файлов в среде Jest;
+        '.+\\.(png|jpg|ttf|woff|woff2)$': 'identity-obj-proxy',
     },
 
     // Indicates which provider should be used to instrument code for coverage

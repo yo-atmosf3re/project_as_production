@@ -10,8 +10,6 @@ import { useSelector } from 'react-redux';
 import { profileActions } from 'entitites/Profile/model/slice/profileSlice';
 import { CURRENCY } from 'entitites/Currency';
 import { COUNTRY } from 'entitites/Country';
-import { Text, TEXT_THEME } from 'shared/ui/Text';
-import { VALIDATE_PROFILE_ERROR } from 'entitites/Profile/model/types/profile';
 import { useTranslation } from 'react-i18next';
 import cls from './ProfilePage.module.scss';
 import { ProfilePageHeader } from './ProfilePageHeader';
