@@ -26,6 +26,11 @@ export const updateProfileData = createAsyncThunk<ProfileI, void, ThunkConfigI<V
             // @ts-ignore
             // ? Обновляем данные с помощью put, телом запроса служит formData;
             const response = await extra.api.put<ProfileI>('/profile', formData);
+
+            if (!response.data) {
+                throw new Error();
+            }
+
             return response.data;
         } catch (error) {
             console.log(error);

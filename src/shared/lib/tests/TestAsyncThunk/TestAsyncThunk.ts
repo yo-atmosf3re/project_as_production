@@ -19,6 +19,7 @@ type ActionCreatorType<Return, Argument, RejectedValue> =
  * @param Return - тип того, что вернётся в return и то, что возвращает сам asyncThunk;
  * @param Argument - тип для аргумента;
  * @param RejectedValue - тип того, что вернётся в случае ошибки;
+ * @constructor state - для начальной инициализации стейта при создании экземпляра этого класса, чтобы функция getState возвращала нужную и правильную часть state. Для каких-то сценариев может быть необходимо задавать какое-то дефолтное значение для state;
  */
 export class TestAsyncThunk<Return, Argument, RejectedValue> {
     // ? Для мока;
@@ -38,10 +39,13 @@ export class TestAsyncThunk<Return, Argument, RejectedValue> {
     navigate: jest.MockedFn<any>;
 
     // ? При создании экземпляра объекта передаём функцию actionCreator, мокаем dispatch и getState;
-    constructor(actionCreator: ActionCreatorType<Return, Argument, RejectedValue>) {
+    constructor(
+        actionCreator: ActionCreatorType<Return, Argument, RejectedValue>,
+        state?: DeepPartial<StateSchema>,
+    ) {
         this.actionCreator = actionCreator;
         this.dispatch = jest.fn();
-        this.getState = jest.fn();
+        this.getState = jest.fn(() => state as StateSchema);
 
         // ? Вместо того, чтобы создавать mockedAxios в каждом тесте, храним его в этом файле, присваиваем его this.api при каждом создании экземпляра класса;
         this.api = mockedAxios;

@@ -12,6 +12,11 @@ export const fetchProfileData = createAsyncThunk<ProfileI, void, ThunkConfigI<st
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             const response = await extra.api.get<ProfileI>('/profile');
+
+            if (!response.data) {
+                throw new Error();
+            }
+
             return response.data;
         } catch (error) {
             console.log(error);
