@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfigI } from 'app/providers/StoreProvider';
 import { ProfileI } from '../../types/profile';
 
-// eslint-disable-next-line max-len
+// ? Получение данных по профилю;
 export const fetchProfileData = createAsyncThunk<ProfileI, void, ThunkConfigI<string>>(
     'profile/fetchProfileData',
     // ? Т.к это get-запрос, то и в аргументе не будет никакой authDat'ы

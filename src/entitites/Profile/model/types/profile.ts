@@ -30,5 +30,5 @@ export interface ProfileSchema {
     error?: string;
     readonly: boolean;
     // ? Может быть undefined, что означает, что ошибок, а так как их может быть несколько, то это массив;
-    validateError?: VALIDATE_PROFILE_ERROR[];
+    validateErrors?: VALIDATE_PROFILE_ERROR[];
 }

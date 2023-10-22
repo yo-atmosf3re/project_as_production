@@ -9,6 +9,7 @@ const initialState: ProfileSchema = {
     data: undefined,
 };
 
+// ? Слайс для сущности Profile;
 export const profileSlice = createSlice({
     name: 'profile',
     initialState,
@@ -20,7 +21,7 @@ export const profileSlice = createSlice({
         // ? Ставим формы в режим "Для чтения", сбрасываем введенные пользователем изменения, присваивая значение data для form;
         cancelEdit: (state) => {
             state.readonly = true;
-            state.validateError = undefined;
+            state.validateErrors = undefined;
             state.form = state.data;
         },
         // ? Общий action для обновления всей data. Создаёт новый объект, переносит туда старую data, а затем новую data из action.payload, перезатерая старые поля объекта;
@@ -53,7 +54,7 @@ export const profileSlice = createSlice({
             })
             // ? updateProfileData;
             .addCase(updateProfileData.pending, (state) => {
-                state.validateError = undefined;
+                state.validateErrors = undefined;
                 state.isLoading = true;
             })
             .addCase(updateProfileData.fulfilled, (state, action: PayloadAction<ProfileI>) => {
@@ -61,11 +62,11 @@ export const profileSlice = createSlice({
                 state.data = action.payload;
                 state.form = action.payload;
                 state.readonly = true;
-                state.validateError = undefined;
+                state.validateErrors = undefined;
             })
             .addCase(updateProfileData.rejected, (state, action) => {
                 state.isLoading = false;
-                state.validateError = action.payload;
+                state.validateErrors = action.payload;
             });
         // ? Таким образом, extraReducers позволяет определить логику, когда определенное асинхронное действие выполняется, завершается или отклоняется, и обновляет соответствующие поля state;
     },
