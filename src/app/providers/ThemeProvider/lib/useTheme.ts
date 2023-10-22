@@ -12,8 +12,26 @@ export const useTheme = (): UseThemeResult => {
     const { theme, setTheme } = useContext(ThemeContext);
 
     const toggleTheme = (): void => {
-        const newTheme: THEME = theme === THEME.DARK ? THEME.LIGHT : THEME.DARK;
+        // const newTheme: THEME = theme === THEME.DARK ? THEME.LIGHT : THEME.DARK;
+
+        // ? Добавление больше двух подразумевает под собой использование более удобной конструкции с switch-case;
+        let newTheme: THEME;
+
+        switch (theme) {
+        case THEME.DARK:
+            newTheme = THEME.LIGHT;
+            break;
+        case THEME.LIGHT:
+            newTheme = THEME.JUNGLE;
+            break;
+        case THEME.JUNGLE:
+            newTheme = THEME.DARK;
+            break;
+        default:
+            newTheme = THEME.LIGHT;
+        }
         setTheme?.(newTheme);
+
         // " Вешаем глобальный класс с цветовой темой для исключения лишних действий и переопределений;
         document.body.className = newTheme;
         localStorage.setItem(THEME_LS_KEY, newTheme);

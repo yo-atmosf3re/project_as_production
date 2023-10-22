@@ -1,7 +1,6 @@
 import { updateProfileData } from 'entitites/Profile';
 import { COUNTRY } from 'entitites/Country';
 import { CURRENCY } from 'entitites/Currency';
-import { IsLoading } from '../../ui/ProfileCard/ProfileCard.stories';
 import { profileActions, profileReducer } from './profileSlice';
 import { ProfileSchema, VALIDATE_PROFILE_ERROR } from '../types/profile';
 
