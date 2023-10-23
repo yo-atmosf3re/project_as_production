@@ -13,9 +13,9 @@ export const {{pascalCase}}: React.FC<{{pascalCase}}PropsI> = ({
     const {t} = useTranslation();
     return (
         <div 
-        className={classNames(cls.{{pascalCase}}, {},   [className])
+            className={classNames(cls.{{pascalCase}}, {},   [className])
         }>
-        {{pascalCase}}
+            {{pascalCase}}
         </div>
-    )
-}
+    );
+};

@@ -6,7 +6,7 @@ export default {
     title: 'shared/{{pascalCase}}',
     component: {{pascalCase}},
     argTypes: {
-        backgroundColor: {control: 'color'},
+        backgroundColor: { control: 'color' },
     },
 } as ComponentMeta<typeof {{pascalCase}}>;
 
