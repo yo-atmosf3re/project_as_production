@@ -5,7 +5,7 @@ import { NotFoundPage } from 'pages/NotFoundPage';
 import { ProfilePage } from 'pages/ProfilePage';
 
 // ? Объединяем в один тип RoureProps из RRD, добавляем поле authOnly, которое если true, то блокирует роуты;
-type AppRoutesPropsType = RouteProps & {
+export type AppRoutesPropsType = RouteProps & {
     authOnly?: boolean;
 }
 
