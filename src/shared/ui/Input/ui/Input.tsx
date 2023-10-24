@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, {
-    InputHTMLAttributes, SelectHTMLAttributes, memo, useEffect, useRef, useState,
+    InputHTMLAttributes, memo, useEffect, useRef, useState,
 } from 'react';
-import { ModsType, classNames } from 'shared/lib/classNames/classNames';
+import { ModsType, classNames } from '../../../lib/classNames/classNames';
 import cls from './Input.module.scss';
 
 // ? Omit позволяет забрать из типа все пропсы, но исключить какие-то, которые не нужны. Первый аргумент - это то, что нужно забрать, а вторым аргументом - то, что нужно исключить. В этом случае это value и onChange. Потом расширяемся от этого типа, сохранив все пропсы инпута, исключив value и onChange, описав потом их самостоятельно;
@@ -22,7 +22,15 @@ interface SelectHandlerI extends React.ChangeEventHandler<HTMLInputElement> {
     target?: EventTarget & HTMLInputElement
 }
 
-// ? Кастомный инпут, напоминает стилистикой терминал;
+// ?
+/**
+ * Компонента-кастомный инпут, входящая в комплект UI-kit проекта, напоминает стилистикой терминал;
+ * @param className
+ * @param value
+ * @param onChange
+ * @param autofocus - флаг отвечающий за фокус на инпуте;
+ * @param readonly - передаёт этот флаг в свойство readOnly самого инпута (для чтения инпут или нет);
+ */
 export const Input: React.FC<InputPropsI> = memo(({
     className, value, onChange,
     type = 'text',

@@ -75,6 +75,7 @@ module.exports = {
                     'data-testid',
                     'to',
                     'keyReducer',
+                    'border',
                 ],
             },
         ],

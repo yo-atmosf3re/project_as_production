@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { ModsType, classNames } from 'shared/lib/classNames/classNames';
+import { ModsType, classNames } from '../../../lib/classNames/classNames';
 import cls from './Text.module.scss';
 
 export enum TEXT_THEME {
@@ -13,32 +13,41 @@ export enum TEXT_ALIGN {
     CENTER = 'center',
 }
 
-/**
- * Кнопка с возможностью кастомизации;
- *
- * @param className - дополнительный класс для кнопки;
- * @param title - более яркий и, чуть выше среднего размера, текст;
- * @param text - слегка бледный и обычного размера текст;
- * @param theme - тема текста;
- * @param align - выравнивание текста - справа, слева или по-центру;
- */
+export enum TEXT_SIZE {
+    S = 'size-s',
+    M = 'size-m',
+    L = 'size-l',
+}
+
 interface TextPropsI {
     className?: string;
     title?: string;
     text?: string;
     theme?: TEXT_THEME;
     align?: TEXT_ALIGN;
+    size?: TEXT_SIZE;
 }
 
-// ? Кастомный текстовый компонент, который отрисовывает либо яркий и более крупный title, либо более блеклый и мелкий text. Можно отрисовыывать то и то;
+/**
+ * Кастомный текстовый компонент, входящий в комплект UI-kit проекта, который отрисовывает либо яркий и более крупный title, либо более блёклый и мелкий text. Можно отрисовывать то и то;
+ *
+ * @param className
+ * @param title - более яркий и, чуть выше среднего размера, текст;
+ * @param text - слегка бледный и обычного размера текст;
+ * @param theme - тема текста, для доступа используется TEXT_THEME enum;
+ * @param align - выравнивание текста - справа, слева или по-центру, для доступа используется TEXT_ALIGN enum;
+ * @param size - размера текста - S, M, L, для доступа используется TEXT_SIZE enum;
+ */
 export const Text: React.FC<TextPropsI> = memo(({
     className, text, title,
     theme = TEXT_THEME.PRIMARY,
     align = TEXT_ALIGN.LEFT,
+    size = TEXT_SIZE.M,
 }) => {
     const mods: ModsType = {
         [cls[theme]]: true,
         [cls[align]]: true,
+        [cls[size]]: true,
     };
     const additionalClasses: Array<string | undefined> = [
         className,

@@ -2,9 +2,10 @@ import {
     ReducersMapObject, AnyAction, CombinedState, Reducer, EnhancedStore,
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
-import { CounterSchema } from 'entitites/Counter';
-import { ProfileSchema } from 'entitites/Profile';
-import { UserSchema } from 'entitites/User';
+import { ArticleDetailsSchema } from 'entities/Article';
+import { CounterSchema } from 'entities/Counter';
+import { ProfileSchema } from 'entities/Profile';
+import { UserSchema } from 'entities/User';
 import { LoginSchema } from 'features/AuthByUsername';
 import { To } from 'history';
 import { NavigateOptions } from 'react-router';
@@ -17,6 +18,7 @@ export interface StateSchema {
     // * Асинхронные редьюсеры, которые впоследствии будут добавляться с помощью редьюсер-менеджера;
     loginForm?: LoginSchema;
     profile?: ProfileSchema;
+    articleDetails?: ArticleDetailsSchema;
 }
 
 // ? Ключи редьюсеров - то есть их названия;

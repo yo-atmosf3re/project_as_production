@@ -2,14 +2,13 @@ import React, { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTheme } from 'app/providers/ThemeProvider';
-import { Button } from 'shared/ui/Button';
+import { Button, BUTTON_THEME } from 'shared/ui/Button';
 import { TEXT_THEME, Text } from 'shared/ui/Text';
-import { BUTTON_THEME } from 'shared/ui/Button/ui/Button';
 import { useSelector } from 'react-redux';
-import { getProfileReadonly, updateProfileData } from 'entitites/Profile';
+import { getProfileReadonly, updateProfileData } from 'entities/Profile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { profileActions } from 'entitites/Profile/model/slice/profileSlice';
-import { VALIDATE_PROFILE_ERROR } from 'entitites/Profile/model/types/profile';
+import { profileActions } from 'entities/Profile/model/slice/profileSlice';
+import { VALIDATE_PROFILE_ERROR } from 'entities/Profile/model/types/profile';
 import cls from './ProfilePageHeader.module.scss';
 
 interface ProfilePageHeaderPropsI {

@@ -3,14 +3,15 @@ import { AppRouter } from 'app/providers/router';
 import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
 import { Suspense, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getUserInited, userActions } from 'entitites/User';
+import { useSelector } from 'react-redux';
+import { getUserInited, userActions } from 'entities/User';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useTheme } from './providers/ThemeProvider';
 
 // ? Корневой компонент;
 const App = () => {
     const { theme } = useTheme();
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     // ? Отрисовываем AppRouter после инициализации авторизационных данных;
     const inited = useSelector(getUserInited);
 

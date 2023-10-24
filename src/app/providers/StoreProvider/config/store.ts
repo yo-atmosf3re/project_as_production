@@ -1,8 +1,8 @@
 import {
     CombinedState, Reducer, ReducersMapObject, configureStore,
 } from '@reduxjs/toolkit';
-import { counterReducer } from 'entitites/Counter';
-import { userReducer } from 'entitites/User';
+import { counterReducer } from 'entities/Counter';
+import { userReducer } from 'entities/User';
 import { $API } from 'shared/api/api';
 import { To } from 'history';
 import { NavigateOptions } from 'react-router';

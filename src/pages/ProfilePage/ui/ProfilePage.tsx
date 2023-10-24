@@ -4,12 +4,12 @@ import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/Dynamic
 import {
     ProfileCard, fetchProfileData,
     getProfileError, getProfileForm, getProfileIsLoading, getProfileReadonly, getProfileValidateErrors, profileReducer,
-} from 'entitites/Profile';
+} from 'entities/Profile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { profileActions } from 'entitites/Profile/model/slice/profileSlice';
-import { CURRENCY } from 'entitites/Currency';
-import { COUNTRY } from 'entitites/Country';
+import { profileActions } from 'entities/Profile/model/slice/profileSlice';
+import { CURRENCY } from 'entities/Currency';
+import { COUNTRY } from 'entities/Country';
 import { useTranslation } from 'react-i18next';
 import cls from './ProfilePage.module.scss';
 import { ProfilePageHeader } from './ProfilePageHeader';

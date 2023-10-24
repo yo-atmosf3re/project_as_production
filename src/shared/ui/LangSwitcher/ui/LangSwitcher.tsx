@@ -1,8 +1,7 @@
 import React, { memo } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Button } from 'shared/ui/Button';
-import { BUTTON_THEME } from 'shared/ui/Button/ui/Button';
+import { Button, BUTTON_THEME } from 'shared/ui/Button';
+import { classNames } from '../../../lib/classNames/classNames';
 import cls from './LangSwitcher.module.scss';
 
 interface LangSwitcherPropsI {
@@ -10,7 +9,11 @@ interface LangSwitcherPropsI {
    short?: boolean;
 }
 
-// ? Компонента, которая отвечает за переключение языка на проекте;
+/**
+ * Компонента, входящая в комплект UI-kit проекта, которая отвечает за переключение языков на проекте;
+ * @param className
+ * @param short - флаг, который отвечает за отображение надписи текущего языка в коротком или длинном виде;
+ */
 export const LangSwitcher: React.FC<LangSwitcherPropsI> = memo(({
     className, short,
 }) => {

@@ -1,14 +1,7 @@
 import React, { CSSProperties, useMemo } from 'react';
-import { ModsType, classNames } from 'shared/lib/classNames/classNames';
+import { ModsType, classNames } from '../../../lib/classNames/classNames';
 import cls from './Avatar.module.scss';
-/**
- * Компонента для передачи аватара, который можно настроить под себя различными пропсами;
- *
- * @param className - дополнительный класс для img;
- * @param src - ссылка на img;
- * @param alt - альтернативный текст для изображения;
- * @param size - размер img;
-*/
+
 interface AvatarPropsI {
     className?: string;
     src? : string;
@@ -16,7 +9,14 @@ interface AvatarPropsI {
     size?: number;
 }
 
-// ? Переиспользуемая компонента для вставки аватаров, входящая в комплект UI-kit проекта;
+/**
+ * Компонента для передачи аватара, входящая в комплект UI-kit проекта, которую можно настроить под себя различными пропсами;
+ *
+ * @param className - дополнительный класс для img;
+ * @param src - ссылка на img;
+ * @param alt - альтернативный текст для изображения;
+ * @param size - размер img;
+*/
 export const Avatar: React.FC<AvatarPropsI> = ({
     className, src, alt, size,
 }) => {

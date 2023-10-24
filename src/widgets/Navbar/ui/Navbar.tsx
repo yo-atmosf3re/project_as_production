@@ -3,11 +3,11 @@ import React, { memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { Modal } from 'shared/ui/Modal';
-import { Button } from 'shared/ui/Button';
-import { BUTTON_THEME } from 'shared/ui/Button/ui/Button';
+import { Button, BUTTON_THEME } from 'shared/ui/Button';
 import { LoginModal } from 'features/AuthByUsername/ui';
-import { useDispatch, useSelector } from 'react-redux';
-import { getUserAuthData, userActions } from 'entitites/User';
+import { useSelector } from 'react-redux';
+import { getUserAuthData, userActions } from 'entities/User';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import cls from './Navbar.module.scss';
 
 interface NavbarPropsI {
@@ -22,7 +22,7 @@ export const Navbar: React.FC<NavbarPropsI> = memo(({
     const [isAuthModal, setIsAuthModal] = React.useState(false);
     // ? Авторизационные данные;
     const authData = useSelector(getUserAuthData);
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const onCloseModal = React.useCallback(() => {
         setIsAuthModal(false);

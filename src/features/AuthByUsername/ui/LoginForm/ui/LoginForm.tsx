@@ -1,9 +1,8 @@
 import React, { memo, useCallback } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Button } from 'shared/ui/Button';
+import { Button, BUTTON_THEME } from 'shared/ui/Button';
 import { Input } from 'shared/ui/Input';
-import { BUTTON_THEME } from 'shared/ui/Button/ui/Button';
 import { useSelector } from 'react-redux';
 import { Text } from 'shared/ui/Text';
 import { TEXT_THEME } from 'shared/ui/Text/ui/Text';

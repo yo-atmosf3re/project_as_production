@@ -1,5 +1,5 @@
 import React, { ButtonHTMLAttributes, ReactNode, memo } from 'react';
-import { ModsType, classNames } from 'shared/lib/classNames/classNames';
+import { ModsType, classNames } from '../../../lib/classNames/classNames';
 import cls from './Button.module.scss';
 
 export enum BUTTON_THEME {
@@ -17,16 +17,7 @@ export enum BUTTON_SIZE {
     XL = 'size_xl',
     L = 'size_l',
 }
-/**
- * Кнопка с возможностью кастомизации;
- *
- * @param className - дополнительный класс для кнопки;
- * @param children - содержимое кнопки;
- * @param theme - тема кнопки;
- * @param square - флаг, указывающий, что кнопка должна быть квадратной;
- * @param size - размер кнопки;
- * @param disabled - возможность отключить кнопку;
- */
+
 interface ButtonPropsI extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
     theme?: BUTTON_THEME;
@@ -36,14 +27,23 @@ interface ButtonPropsI extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: ReactNode;
 }
 
-// ? Кастомизированная компонента-кнопка;
 // ? Почему можно оборачивать Button-компоненту в memo? Ведь у неё же есть children, а если у компоненты есть children, то делать этого не нужно, потому что children может являться древовидной структурой из нескольких вложенных друг в друга тегов и так далее. Но в случае с кнопкой - children это примитив, то есть текст, и примитивы мемоизировать не сложно и не затруднительно, потому что они сравниваются по значению, а не по ссылке как объекты в случае древововидной структуры вложенных тегов/компонентов и так далее. Поэтому можно и нужно мемоизировать в memo такие компоненты;
+/**
+ * Кнопка с возможностью кастомизации, входящая в комплект UI-kit проекта;
+ *
+ * @param className
+ * @param children - содержимое кнопки;
+ * @param theme - тема кнопки, для доступа используется BUTTON_THEME enum;
+ * @param square - флаг, указывающий, что кнопка должна быть квадратной;
+ * @param size - размер кнопки, для доступа используется BUTTON_SIZE enum;
+ * @param disabled - возможность отключить кнопку;
+ */
 export const Button: React.FC<ButtonPropsI> = memo(({
     className, children,
     theme = BUTTON_THEME.OUTLINE,
+    size = BUTTON_SIZE.M,
     square,
     disabled,
-    size = BUTTON_SIZE.M,
     ...otherProps
 }) => {
     const mods: ModsType = {

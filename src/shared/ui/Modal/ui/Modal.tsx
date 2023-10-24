@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { MutableRefObject, ReactNode } from 'react';
-import { ModsType, classNames } from 'shared/lib/classNames/classNames';
 import { Portal } from 'shared/ui/Portal/ui/Portal';
+import { ModsType, classNames } from '../../../lib/classNames/classNames';
 import cls from './Modal.module.scss';
 
 interface ModalPropsI {
@@ -15,8 +15,15 @@ interface ModalPropsI {
 
 const ANIMATION_DELAY = 300;
 
-// ? Модальное окно, обёрнутое в реактовский Portal. Внутри логика по плавному открытию-закрытию этого модального окна;
 // ? Modal пример той компоненты, которую не нужно мемоизировать, потому что у неё вложенная древовидная структура, которая подвержена каким-то постоянным изменениям;
+/**
+ * Компонента-модальное окно, которая входит в UI-kit проекта, обёрнутое в реактовский Portal. Внутри логика по плавному открытию-закрытию этого модального окна;
+ * @param className
+ * @param children
+ * @param isOpen - флаг отображения модального окна;
+ * @param onClose - передаваемый коллбэк, на основании которого происходит плавное закрытие модального окна;
+ * @param lazy - флаг, который устанавливает ленивую загрузку для модального окна;
+ */
 export const Modal: React.FC<ModalPropsI> = ({
     className, children, isOpen, onClose, lazy,
 }) => {
