@@ -17,7 +17,7 @@
     max-width: 200px;
     padding: 10px;
     box-shadow: var(--shadow-color);
-    border-radius: 6px;
+    border-radius: var(--border-radius-m);
     background: var(--inverted-bg-color);
     animation: fade 0.3s ease-in forwards;
 }
@@ -59,7 +59,7 @@
 .cancel-light {
     padding: 6px 15px;
     border: 1px solid #ddd;
-    border-radius: 6px;
+    border-radius: var(--border-radius-m);
     background-color: var(--primary-color);
     color: #fff;
 

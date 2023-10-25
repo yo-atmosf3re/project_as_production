@@ -1,5 +1,5 @@
 .button-tggltheme {
-    border-radius: 5px;
+    border-radius: var(--border-radius-m);
     background: linear-gradient(to bottom, #0073b1, #00a6d4);
     padding: 5px 10px;
     color: #fff;

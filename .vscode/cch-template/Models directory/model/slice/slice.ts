@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { Schema } from '../types/Schema'
+import { Schema } from '../types/Schema';
 
 const initialState: Schema = {};
 

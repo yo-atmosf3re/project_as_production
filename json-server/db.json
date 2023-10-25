@@ -109,13 +109,15 @@
       "id": "1",
       "username": "1",
       "password": "1",
-      "role": "ADMIN"
+      "role": "ADMIN",
+      "avatar": "https://copp15.ru/Portals/0/ModuleFiles/i.jpg"
     },
     {
       "id": "2",
       "username": "2",
       "password": "2",
-      "role": "USER"
+      "role": "USER",
+      "avatar": "https://img.24live.co/avatar/0e43e4c8944711e78cbcf23c913e91ea_1525708454.jpeg"
     }
   ],
   "profile": {

@@ -33,7 +33,7 @@
     color: #fff;
     background-color: #1a237e;
     border: none;
-    border-radius: 8px;
+    border-radius: var(--border-radius-l);
     cursor: pointer;
     transition:
         background-color 0.3s ease,

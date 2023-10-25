@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfigI } from 'app/providers/StoreProvider';
-import { User, userActions } from 'entities/User';
+import { UserI, userActions } from 'entities/User';
 import { USER_LS_KEY } from 'shared/const/localstorage';
 
 interface LoginByUsernamePropsI {
@@ -13,7 +13,7 @@ interface LoginByUsernamePropsI {
 // ? Типизируем rejectValue так, как нужно нам. В данном случае ошибка будет представлена в виде строки, но в других случаях это может быть, что угодно;
 // eslint-disable-next-line max-len
 export const loginByUsername = createAsyncThunk<
-    User,
+    UserI,
     LoginByUsernamePropsI,
     ThunkConfigI<string>>(
         // ? В данном примере, createAsyncThunk<User, LoginByUsernameProps> указывает на то, что создаваемое событие будет возвращать значения типа User и принимать в качестве аргумента значения типа LoginByUsernameProps;
@@ -23,7 +23,7 @@ export const loginByUsername = createAsyncThunk<
             try {
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
-                const response = await extra.api.post<User>('/login', authData);
+                const response = await extra.api.post<UserI>('/login', authData);
 
                 if (!response.data) {
                     throw new Error();

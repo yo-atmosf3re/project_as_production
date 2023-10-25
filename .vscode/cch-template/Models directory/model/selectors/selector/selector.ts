@@ -1,3 +1,3 @@
-const selector = () => {
-
-}
+export const selector = () => {
+    console.log();
+};
