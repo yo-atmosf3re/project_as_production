@@ -1,0 +1,12 @@
+.addСomment-form {
+    padding: 10px;
+    box-shadow: var(--shadow-color);
+    border-radius: var(--border-radius-m);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input {
+    flex-grow: 1;
+}

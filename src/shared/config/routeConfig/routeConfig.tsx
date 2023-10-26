@@ -25,7 +25,7 @@ export enum APP_ROUTES {
 export const ROUTES_PATH: Record<APP_ROUTES, string> = {
     [APP_ROUTES.MAIN]: '/',
     [APP_ROUTES.ABOUT]: '/about',
-    [APP_ROUTES.PROFILE]: '/profile',
+    [APP_ROUTES.PROFILE]: '/profile/', // ! Сюда ещё + :id, но id будет в routeConfig'e;
     [APP_ROUTES.ARTICLES]: '/articles',
     [APP_ROUTES.ARTICLE_DETAILS]: '/articles/', // ! Сюда ещё + :id, но id будет в routeConfig'e;
     // ? Последний маршрут;
@@ -42,7 +42,7 @@ export const routeConfig: Record<APP_ROUTES, AppRoutesPropsType> = {
         element: <AboutPage />,
     },
     [APP_ROUTES.PROFILE]: {
-        path: ROUTES_PATH.profile,
+        path: `${ROUTES_PATH.profile}:id`,
         element: <ProfilePage />,
         authOnly: true,
     },

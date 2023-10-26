@@ -22,10 +22,10 @@ interface DynamicModuleLoaderPropsI {
  * Позволяет использовать RTK-менеджер инкапсулировано, передавая в аргументы этой функции объект с ключём в виде названия редьюсера из StateSchema и значением в виде редьюсера, которому пренадлежит данный ключ-имя, а так же флаг, который указывает на то будет ли удаляться редьюсер или нет при размонтировании UI-компоненты;
  *
  * @param reducers - сам редьюсер;
- * @param removeAfterUnmount - удалять редьюсер при размонтировании UI-компоненты, которая обёрнута в DynamicModuleLoader, или нет;
+ * @param removeAfterUnmount - удалять редьюсер при размонтировании UI-компоненты, которая обёрнута в DynamicModuleLoader, или нет. По умолчанию true;
  */
 export const DynamicModuleLoader: React.FC<DynamicModuleLoaderPropsI> = ({
-    children, reducers, removeAfterUnmount,
+    children, reducers, removeAfterUnmount = true,
 }) => {
     const dispatch = useAppDispatch();
     const store = useStore() as ReduxStoreWithManagerI;

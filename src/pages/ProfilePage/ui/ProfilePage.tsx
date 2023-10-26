@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import {
@@ -11,6 +11,8 @@ import { profileActions } from 'entities/Profile/model/slice/profileSlice';
 import { CURRENCY } from 'entities/Currency';
 import { COUNTRY } from 'entities/Country';
 import { useTranslation } from 'react-i18next';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { useParams } from 'react-router-dom';
 import cls from './ProfilePage.module.scss';
 import { ProfilePageHeader } from './ProfilePageHeader';
 
@@ -28,6 +30,7 @@ const ProfilePage: React.FC<ProfilePagePropsI> = ({
 }) => {
     const { t } = useTranslation('profile');
     const dispatch = useAppDispatch();
+    const { id } = useParams<{id: string}>();
     // ? Получаем дублированные данные из стейта, изменяем и работаем уже дальше с ними, а если нужно вернуть вводимые значения к дефолтным - это легко происходит в экшене cancelEdit, который активируется в ProfilePageHeader в обработчике событий;
     const formData = useSelector(getProfileForm);
     const isLoading = useSelector(getProfileIsLoading);
@@ -35,19 +38,11 @@ const ProfilePage: React.FC<ProfilePagePropsI> = ({
     const readonly = useSelector(getProfileReadonly);
     const validateErrors = useSelector(getProfileValidateErrors);
 
-    // const validateErrorTranslates = {
-    //     [VALIDATE_PROFILE_ERROR.INCORRECT_AGE]: t('Некорректный возраст'),
-    //     [VALIDATE_PROFILE_ERROR.INCORRECT_COUNTRY]: t('Некорректный регион'),
-    //     [VALIDATE_PROFILE_ERROR.INCORRECT_USER_DATA]: t('Некорректные данные пользователя. Имя и фамилия обязательны!'),
-    //     [VALIDATE_PROFILE_ERROR.NO_DATA]: t('Данные не указаны'),
-    //     [VALIDATE_PROFILE_ERROR.SERVER_ERROR]: t('Серверная ошибка при сохранении'),
-    // };
-
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchProfileData());
+    useInitialEffect(() => {
+        if (id) {
+            dispatch(fetchProfileData(id));
         }
-    }, [dispatch]);
+    });
 
     const onChangeFirstname = useCallback((value?: string) => {
         dispatch(profileActions.updateProfile({
@@ -100,7 +95,6 @@ const ProfilePage: React.FC<ProfilePagePropsI> = ({
 
     return (
         <DynamicModuleLoader
-            removeAfterUnmount
             reducers={INITIAL_REDUCERS}
         >
             <div className={classNames(cls.profile, {}, [className])}>
@@ -108,20 +102,6 @@ const ProfilePage: React.FC<ProfilePagePropsI> = ({
                     isLoading={isLoading}
                     validateErrors={validateErrors}
                 />
-                {
-                    // validateErrors?.length
-                    //     ? validateErrors.map(
-                    //         (error) => (
-                    //             <Text
-                    //                 key={`${error}-${(Math.random()).toString().replace('.', '')}`}
-                    //                 theme={TEXT_THEME.ERROR}
-                    //                 // ? Обращаемся к объекту validateErrorTranslates по ключу, ключом будет являться error. Ключи validateErrorTranslates и ключи error идентичны, поэтому вернётся сопоставимое по ключу значение, а значением будет являться перевод;
-                    //                 text={validateErrorTranslates[error]}
-                    //             />
-                    //         ),
-                    //     )
-                    //     : null
-                }
                 <ProfileCard
                     data={formData}
                     isLoading={isLoading}

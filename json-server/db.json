@@ -95,13 +95,31 @@
       "id": "2",
       "text": "some comment 2",
       "articleId": "1",
-      "userId": "1"
+      "userId": "2"
     },
     {
       "id": "3",
       "text": "some comment 3",
       "articleId": "1",
       "userId": "1"
+    },
+    {
+      "id": "4",
+      "text": "some comment 4",
+      "articleId": "1",
+      "userId": "2"
+    },
+    {
+      "id": "5",
+      "text": "some comment 5",
+      "articleId": "1",
+      "userId": "1"
+    },
+    {
+      "id": "6",
+      "text": "some comment 6",
+      "articleId": "1",
+      "userId": "2"
     }
   ],
   "users": [
@@ -120,14 +138,28 @@
       "avatar": "https://img.24live.co/avatar/0e43e4c8944711e78cbcf23c913e91ea_1525708454.jpeg"
     }
   ],
-  "profile": {
-    "first": "Ernesto",
-    "lastname": "Chrome",
-    "age": 25,
-    "currency": "USD",
-    "country": "Russia",
-    "city": "Moscow",
-    "username": "",
-    "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3BmkXlsD4r-eEEvco19fRWuYvo6QH2FieN977N2BX&s"
-  }
+  "profile": [
+    {
+      "id": "1",
+      "first": "Ernesto",
+      "lastname": "Chrome",
+      "age": 25,
+      "currency": "USD",
+      "country": "Russia",
+      "city": "Moscow",
+      "username": "ADMIN",
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3BmkXlsD4r-eEEvco19fRWuYvo6QH2FieN977N2BX&s"
+    },
+    {
+      "id": "2",
+      "first": "Alex",
+      "lastname": "Manson",
+      "age": 42,
+      "currency": "EUR",
+      "country": "Armenia",
+      "city": "Erevan",
+      "username": "USER",
+      "avatar": "https://copp15.ru/Portals/0/ModuleFiles/i.jpg"
+    }
+  ]
 }

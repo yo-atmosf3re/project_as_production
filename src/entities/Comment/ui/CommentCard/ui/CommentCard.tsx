@@ -3,6 +3,8 @@ import { Text } from 'shared/ui/Text';
 import { ModsType, classNames } from 'shared/lib/classNames/classNames';
 import { Avatar } from 'shared/ui/Avatar';
 import { Skeleton } from 'shared/ui/Skeleton';
+import { AppLink } from 'shared/ui/AppLink';
+import { ROUTES_PATH } from 'shared/config/routeConfig/routeConfig';
 import { CommentI } from '../../../model/types/comment';
 import cls from './CommentCard.module.scss';
 
@@ -56,7 +58,10 @@ export const CommentCard: React.FC<CommentCardPropsI> = ({
         <div
             className={classNames(cls['comment-card'], mods, [className])}
         >
-            <div className={cls['comment-header']}>
+            <AppLink
+                to={`${ROUTES_PATH.profile}${comment.user.id}`}
+                className={cls['comment-header']}
+            >
                 {
                     comment.user.avatar
                         ? (
@@ -71,7 +76,8 @@ export const CommentCard: React.FC<CommentCardPropsI> = ({
                     className={cls['comment-username']}
                     title={comment.user.username}
                 />
-            </div>
+            </AppLink>
+
             <Text
                 className={cls['comment-text']}
                 text={comment.text}

@@ -17,7 +17,7 @@ describe('fetchProfileData', () => {
     test('CreateAsynThunk function fetchProfileData should be call get request has been called, status result has been fulfilled, payload has been correct', async () => {
         const thunk = new TestAsyncThunk(fetchProfileData);
         thunk.api.get.mockReturnValue(Promise.resolve({ data: DATA }));
-        const result = await thunk.callThunk();
+        const result = await thunk.callThunk('1');
 
         expect(thunk.api.get).toHaveBeenCalled();
         expect(result.meta.requestStatus).toBe('fulfilled');
@@ -27,7 +27,7 @@ describe('fetchProfileData', () => {
     test('CreateAsynThunk function fetchProfileData should be return status code 403', async () => {
         const thunk = new TestAsyncThunk(fetchProfileData);
         thunk.api.get.mockReturnValue(Promise.resolve({ status: 403 }));
-        const result = await thunk.callThunk();
+        const result = await thunk.callThunk('1');
 
         expect(result.meta.requestStatus).toBe('rejected');
     });

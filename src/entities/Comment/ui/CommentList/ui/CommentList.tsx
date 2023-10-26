@@ -33,6 +33,7 @@ export const CommentList: React.FC<CommentListPropsI> = ({
                 comments?.length
                     ? comments.map((comment) => (
                         <CommentCard
+                            key={comment.id + comment.text}
                             isLoading={isLoading}
                             className={cls.comment}
                             comment={comment}

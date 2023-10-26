@@ -15,11 +15,13 @@ interface SidebarItemProps {
 // ? Один из элементов в сайдбаре, при нажатии на который можно перейти на определенную страницу;
 export const SidebarItem = memo(({ item, collapsed }: SidebarItemProps) => {
     const { t } = useTranslation();
-    const { Icon, path, text } = item;
+    const {
+        Icon, path, text, authOnly,
+    } = item;
 
     const isAuth = useSelector(getUserAuthData);
 
-    if (item.authOnly && !isAuth) {
+    if (authOnly && !isAuth) {
         return null;
     }
 

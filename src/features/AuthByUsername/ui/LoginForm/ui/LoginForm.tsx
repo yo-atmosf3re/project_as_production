@@ -54,7 +54,6 @@ const LoginForm: React.FC<LoginFormPropsI> = memo(({
     return (
         <DynamicModuleLoader
             reducers={INITIAL_REDUCERS}
-            removeAfterUnmount
         >
             <div
                 className={classNames(cls['login-form'], {}, [className])}

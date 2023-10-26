@@ -9,6 +9,7 @@ import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/Dynamic
 import { useSelector } from 'react-redux';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { AddCommentForm } from 'features/AddCommentForm';
 import {
     getArticleCommentsIsLoading,
 } from '../model/selectors/getArticleCommentsIsLoading/getArticleCommentsIsLoading';
@@ -56,7 +57,6 @@ const ArticleDetailsPage: React.FC<ArticleDetailsPagePropsI> = ({
     return (
         <DynamicModuleLoader
             reducers={INITIAL_REDUCERS}
-            removeAfterUnmount
         >
             <div
                 className={classNames(cls['article-detials'], {}, [className])}
@@ -70,6 +70,7 @@ const ArticleDetailsPage: React.FC<ArticleDetailsPagePropsI> = ({
                         t('Комментарии')
                     }
                 />
+                <AddCommentForm />
                 <CommentList
                     isLoading={commetsIsLoading}
                     comments={comments}
