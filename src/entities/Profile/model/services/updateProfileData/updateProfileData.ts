@@ -25,7 +25,7 @@ export const updateProfileData = createAsyncThunk<ProfileI, void, ThunkConfigI<V
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             // ? Обновляем данные с помощью put, телом запроса служит formData;
-            const response = await extra.api.put<ProfileI>('/profile', formData);
+            const response = await extra.api.put<ProfileI>(`/profile/${formData?.id}`, formData);
 
             if (!response.data) {
                 throw new Error();

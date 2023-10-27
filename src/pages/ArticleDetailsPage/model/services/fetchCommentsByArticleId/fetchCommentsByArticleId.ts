@@ -7,7 +7,7 @@ import { CommentI } from 'entities/Comment';
  * @param id - айди статьи, для которой будут запрашиваться нужные комментарии;
  */
 export const fetchCommentsByArticleId = createAsyncThunk<CommentI[], string | undefined, ThunkConfigI<string>>(
-    'article/fetchCommentsByArticleId',
+    'articleDetails/fetchCommentsByArticleId',
     async (articleId, thunkApi) => {
         const { extra, rejectWithValue } = thunkApi;
 

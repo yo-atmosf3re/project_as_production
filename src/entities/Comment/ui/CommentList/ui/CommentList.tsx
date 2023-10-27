@@ -25,9 +25,22 @@ export const CommentList: React.FC<CommentListPropsI> = ({
 }) => {
     const { t } = useTranslation();
     const mods: ModsType = {};
+
+    if (isLoading) {
+        return (
+            <div
+                className={classNames(cls['comment-list'], mods, [className])}
+            >
+                <CommentCard isLoading />
+                <CommentCard isLoading />
+                <CommentCard isLoading />
+            </div>
+        );
+    }
+
     return (
         <div
-            className={classNames(cls.CommentList, mods, [className])}
+            className={classNames(cls['comment-list'], mods, [className])}
         >
             {
                 comments?.length

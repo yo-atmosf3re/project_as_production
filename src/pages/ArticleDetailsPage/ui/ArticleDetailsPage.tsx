@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
 import { Text } from 'shared/ui/Text';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -16,6 +16,7 @@ import {
 import cls from './ArticleDetailsPage.module.scss';
 import { articleDetailsCommetsReducer, getArticleComments } from '../model/slice/articleDetailsCommentSlice';
 import { fetchCommentsByArticleId } from '../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+import { addCommentForArticle } from '../model/services/addCommentForArticle/addCommentForArticle';
 
 interface ArticleDetailsPagePropsI {
     className?: string;
@@ -37,6 +38,10 @@ const ArticleDetailsPage: React.FC<ArticleDetailsPagePropsI> = ({
     const dispatch = useAppDispatch();
     const comments = useSelector(getArticleComments.selectAll);
     const commetsIsLoading = useSelector(getArticleCommentsIsLoading);
+
+    const onSendComment = useCallback((text: string) => {
+        dispatch(addCommentForArticle(text));
+    }, [dispatch]);
 
     useInitialEffect(() => {
         dispatch(fetchCommentsByArticleId(id));
@@ -70,7 +75,9 @@ const ArticleDetailsPage: React.FC<ArticleDetailsPagePropsI> = ({
                         t('Комментарии')
                     }
                 />
-                <AddCommentForm />
+                <AddCommentForm
+                    onSendComment={onSendComment}
+                />
                 <CommentList
                     isLoading={commetsIsLoading}
                     comments={comments}

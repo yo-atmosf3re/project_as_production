@@ -11,21 +11,23 @@ import { getCommentFormError } from '../../../model/selectors/getCommentFormErro
 import { addCommentFormActions, addCommentFormReducer } from '../../../model/slice/addCommentFormSlice';
 import cls from './AddCommentForm.module.scss';
 
-interface AddCommentFormPropsI {
+export interface AddCommentFormPropsI {
     className?: string;
+    onSendComment: (text: string) => void;
 }
 
 const INITIAL_REDUCERS: ReducersList = {
     addCommentForm: addCommentFormReducer,
 };
 
-// ? Пример того как нужно правильно и хорошо изолировать feature;
+// ? Пример того как нужно правильно и хорошо изолировать feature. Функция отправки комментария делигирована на вышестоящий компонент;
 /**
- * Компонента, отвечающая за добавление комментариев;
+ * Компонента, отвечающая за добавление комментариев.;
  * @param className
+ * @param onSendComment - функция для отправки комментария;
  */
 const AddCommentForm: React.FC<AddCommentFormPropsI> = ({
-    className,
+    className, onSendComment,
 }) => {
     const { t } = useTranslation();
     const text = useSelector(getCommentFormText);
@@ -35,6 +37,11 @@ const AddCommentForm: React.FC<AddCommentFormPropsI> = ({
     const onCommentTextHandler = useCallback((value: string) => {
         dispatch(addCommentFormActions.setText(value));
     }, [dispatch]);
+
+    const onSendHandler = useCallback(() => {
+        onSendComment(text || '');
+        onCommentTextHandler('');
+    }, [onCommentTextHandler, onSendComment, text]);
 
     return (
         <DynamicModuleLoader
@@ -51,7 +58,9 @@ const AddCommentForm: React.FC<AddCommentFormPropsI> = ({
                     value={text}
                     onChange={onCommentTextHandler}
                 />
-                <Button>
+                <Button
+                    onClick={onSendHandler}
+                >
                     {
                         t('Отправить')
                     }

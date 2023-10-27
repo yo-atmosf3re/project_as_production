@@ -10,7 +10,7 @@ import cls from './CommentCard.module.scss';
 
 interface CommentCardPropsI {
     className?: string;
-    comment: CommentI;
+    comment?: CommentI;
     isLoading?: boolean;
 }
 
@@ -29,7 +29,7 @@ export const CommentCard: React.FC<CommentCardPropsI> = ({
     if (isLoading) {
         return (
             <div
-                className={classNames(cls['comment-card'], mods, [className])}
+                className={classNames(cls['comment-card'], mods, [className, cls['comment-loading']])}
             >
                 <div className={cls['comment-header']}>
                     <Skeleton
@@ -54,19 +54,21 @@ export const CommentCard: React.FC<CommentCardPropsI> = ({
         );
     }
 
+    if (!comment) return null;
+
     return (
         <div
             className={classNames(cls['comment-card'], mods, [className])}
         >
             <AppLink
-                to={`${ROUTES_PATH.profile}${comment.user.id}`}
+                to={`${ROUTES_PATH.profile}${comment?.user.id}`}
                 className={cls['comment-header']}
             >
                 {
-                    comment.user.avatar
+                    comment?.user.avatar
                         ? (
                             <Avatar
-                                src={comment.user.avatar}
+                                src={comment?.user.avatar}
                                 size={30}
                             />
                         )
@@ -74,13 +76,13 @@ export const CommentCard: React.FC<CommentCardPropsI> = ({
                 }
                 <Text
                     className={cls['comment-username']}
-                    title={comment.user.username}
+                    title={comment?.user.username}
                 />
             </AppLink>
 
             <Text
                 className={cls['comment-text']}
-                text={comment.text}
+                text={comment?.text}
             />
         </div>
     );

@@ -5,10 +5,11 @@ import { useTheme } from 'app/providers/ThemeProvider';
 import { Button, BUTTON_THEME } from 'shared/ui/Button';
 import { TEXT_THEME, Text } from 'shared/ui/Text';
 import { useSelector } from 'react-redux';
-import { getProfileReadonly, updateProfileData } from 'entities/Profile';
+import { getProfileData, getProfileReadonly, updateProfileData } from 'entities/Profile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { profileActions } from 'entities/Profile/model/slice/profileSlice';
 import { VALIDATE_PROFILE_ERROR } from 'entities/Profile/model/types/profile';
+import { getUserAuthData } from 'entities/User';
 import cls from './ProfilePageHeader.module.scss';
 
 interface ProfilePageHeaderPropsI {
@@ -24,10 +25,15 @@ export const ProfilePageHeader: React.FC<ProfilePageHeaderPropsI> = ({
 }) => {
     const { t } = useTranslation('profile');
     const { theme } = useTheme();
-    const buttonClassCondition = theme === 'app_light_theme';
-    const buttonThemeCondition = buttonClassCondition ? BUTTON_THEME.CLEAR : BUTTON_THEME.OUTLINE;
+    const authData = useSelector(getUserAuthData);
+    const profileData = useSelector(getProfileData);
     const readonly = useSelector(getProfileReadonly);
     const dispatch = useAppDispatch();
+
+    const buttonClassCondition = theme === 'app_light_theme';
+    const buttonThemeCondition = buttonClassCondition ? BUTTON_THEME.CLEAR : BUTTON_THEME.OUTLINE;
+    // ? Если id пользователя не равен id просматриваемого пользователя, то редактирование профиля будет недоступно;
+    const canEdit = authData?.id === profileData?.id;
 
     const validateErrorTranslates = {
         [VALIDATE_PROFILE_ERROR.INCORRECT_AGE]: t('Некорректный возраст'),
@@ -84,75 +90,66 @@ export const ProfilePageHeader: React.FC<ProfilePageHeaderPropsI> = ({
                 }
             </div>
             {
-                readonly
-                    ? (
-                        <Button
-                            className={
-                                classNames(cls['edit-button'], { [cls['light-button']]: buttonClassCondition }, [])
-                            }
-                            theme={buttonThemeCondition}
-                            onClick={onEditHandler}
-                            disabled={isLoading}
-                        >
-                            {
-                                t('Редактировать')
-                            }
-                        </Button>
-                    )
-                    : (
-                        <div
-                            className={cls.buttons}
-                        >
-                            <Button
-                                className={
-                                    classNames(
-                                        cls['some-button'],
-                                        { [cls['cancel-light']]: buttonClassCondition },
-                                        [],
-                                    )
-                                }
-                                theme={BUTTON_THEME.OUTLINE_RED}
-                                onClick={onCancelEditHandler}
-                                disabled={isLoading}
-                            >
-                                {
-                                    t('Отменить')
-                                }
-                            </Button>
-                            <Button
-                                className={
-                                    classNames(
-                                        cls['edit-button'],
-                                        { [cls['light-button']]: buttonClassCondition },
-                                        [],
-                                    )
-                                }
-                                theme={buttonThemeCondition}
-                                onClick={onSaveEditHandler}
-                                disabled={isLoading}
-                            >
-                                {
-                                    t('Сохранить')
-                                }
-                            </Button>
-                        </div>
-                    )
+                canEdit && (
+                    <div className={cls.buttons}>
+                        {readonly
+                            ? (
+                                <Button
+                                    className={
+                                        classNames(
+                                            cls['edit-button'],
+                                            { [cls['light-button']]: buttonClassCondition },
+                                            [],
+                                        )
+                                    }
+                                    theme={buttonThemeCondition}
+                                    onClick={onEditHandler}
+                                    disabled={isLoading}
+                                >
+                                    {
+                                        t('Редактировать')
+                                    }
+                                </Button>
+                            )
+                            : (
+                                <>
+                                    <Button
+                                        className={
+                                            classNames(
+                                                cls['some-button'],
+                                                { [cls['cancel-light']]: buttonClassCondition },
+                                                [],
+                                            )
+                                        }
+                                        theme={BUTTON_THEME.OUTLINE_RED}
+                                        onClick={onCancelEditHandler}
+                                        disabled={isLoading}
+                                    >
+                                        {
+                                            t('Отменить')
+                                        }
+                                    </Button>
+                                    <Button
+                                        className={
+                                            classNames(
+                                                cls['edit-button'],
+                                                { [cls['light-button']]: buttonClassCondition },
+                                                [],
+                                            )
+                                        }
+                                        theme={buttonThemeCondition}
+                                        onClick={onSaveEditHandler}
+                                        disabled={isLoading}
+                                    >
+                                        {
+                                            t('Сохранить')
+                                        }
+                                    </Button>
+                                </>
+                            )}
+                    </div>
+                )
             }
         </div>
     );
 };
-
-// {
-//     validateErrorTranslates && validateErrors?.length
-//         ? validateErrors.map(
-//             (error) => (
-//                 <Text
-//                     key={`${error}-${(Math.random()).toString().replace('.', '')}`}
-//                     theme={TEXT_THEME.ERROR}
-//                     // ? Обращаемся к объекту validateErrorTranslates по ключу, ключом будет являться error. Ключи validateErrorTranslates и ключи error идентичны, поэтому вернётся сопоставимое по ключу значение, а значением будет являться перевод;
-//                     text={validateErrorTranslates[error]}
-//                 />
-//             ),
-//         )
-//         : null
-// }
