@@ -1,0 +1,90 @@
+// .article-list_item {
+
+// }
+
+.SMALL {
+    width: 230px;
+
+    .image-wrapper {
+        width: 200px;
+        height: 200px;
+        position: relative;
+    }
+
+    .image {
+        width: 200px;
+        height: 200px;
+    }
+
+    .date {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .info-wrapper {
+        display: flex;
+        align-items: center;
+        margin-top: 8px;
+    }
+
+    .types p {
+        width: 115px;
+        white-space: nowrap;
+
+        // ? Скрываем текст, который выходит за ширину параграфа;
+        overflow: hidden;
+
+        // ? Добавляем многоточие к концу текста, который был обрезан из-за ограниченной ширины параграфа;
+        text-overflow: ellipsis;
+    }
+
+    .views {
+        margin-left: auto;
+        margin-right: 8px;
+    }
+
+    .title {
+        margin-top: 8px;
+
+        & p {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}
+
+// .BIG {
+//     .card {
+
+//     }
+
+//     .image-wrapper {
+
+//     }
+
+//     .image {
+
+//     }
+
+//     .date {
+
+//     }
+
+//     .info-wrapper {
+
+//     }
+
+//     .types {
+
+//     }
+
+//     .views {
+
+//     }
+
+//     .title {
+
+//     }
+// }

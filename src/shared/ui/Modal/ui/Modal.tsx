@@ -31,7 +31,7 @@ export const Modal: React.FC<ModalPropsI> = ({
     // ? Помещаем в состояние вмонтирован компонент или нет;
     const [isMounted, setIsMounted] = React.useState(false);
 
-    const additionalClasses = [
+    const additionalClasses: Array<string | undefined> = [
         className,
         'app_modal',
     ];

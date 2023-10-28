@@ -101,6 +101,12 @@ export interface ArticleI {
     blocks: ArticleBlockI[];
 }
 
-export interface ArticleSchema {
-
+/**
+ * Перечисление, которое отвечает за выбор отображения статей;
+ * @param BIG - отображение в виде списка;
+ * @param SMALL - отображение в виде плиток;
+ */
+export enum ARTICLE_VIEW {
+    BIG = 'BIG',
+    SMALL = 'SMALL',
 }
