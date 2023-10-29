@@ -1,9 +1,7 @@
-// .article-list_item {
-
-// }
-
 .SMALL {
     width: 230px;
+    transition: 0.15s;
+    cursor: pointer;
 
     .image-wrapper {
         width: 200px;
@@ -17,9 +15,19 @@
     }
 
     .date {
+        display: none;
         position: absolute;
         top: 0;
         right: 0;
+    }
+
+    &:hover {
+        opacity: 0.7;
+        transform: scale(1.01);
+
+        .date {
+            display: block;
+        }
     }
 
     .info-wrapper {
@@ -55,36 +63,43 @@
     }
 }
 
-// .BIG {
-//     .card {
+.BIG {
+    .views {
+        margin-left: auto;
+    }
 
-//     }
+    .header {
+        display: flex;
+        align-items: center;
+    }
 
-//     .image-wrapper {
+    .username {
+        margin-left: 8px;
+    }
 
-//     }
+    .date {
+        margin-left: auto;
+    }
 
-//     .image {
+    .title {
+        margin-top: 8px;
+    }
 
-//     }
+    .image {
+        width: 100%;
+        max-height: 250px;
+        object-fit: cover;
+        margin: 16px 0;
+    }
 
-//     .date {
+    .footer {
+        display: flex;
+        align-items: center;
+        margin-top: 16px;
+    }
 
-//     }
-
-//     .info-wrapper {
-
-//     }
-
-//     .types {
-
-//     }
-
-//     .views {
-
-//     }
-
-//     .title {
-
-//     }
-// }
+    .text-block {
+        max-height: 200px;
+        overflow-y: hidden;
+    }
+}

@@ -168,7 +168,7 @@ export const ArticleDetails: React.FC<ArticleDetailsPropsI> = memo(({
                         Svg={CalendarIcon}
                     />
                     <Text
-                        text={article?.createAt}
+                        text={article?.createdAt}
                     />
                 </div>
                 {

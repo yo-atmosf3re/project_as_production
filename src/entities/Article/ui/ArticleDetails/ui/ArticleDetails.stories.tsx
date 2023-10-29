@@ -7,7 +7,7 @@ import { ARTICLE_BLOCK_TYPE, ARTICLE_TYPE, ArticleI } from '../../../model/types
 import { ArticleDetails } from './ArticleDetails';
 
 export default {
-    title: 'entities/ArticleDetails',
+    title: 'entities/Article/ArticleDetails',
     component: ArticleDetails,
     argTypes: {
         backgroundColor: { control: 'color' },
@@ -28,7 +28,12 @@ const article: ArticleI = {
     subtitle: 'Что нового за JS за 2023 год?',
     img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
     views: 1022,
-    createAt: '11.11.2021',
+    createdAt: '11.11.2021',
+    user: {
+        id: '1',
+        username: 'Alex',
+        avatar: '',
+    },
     type: [ARTICLE_TYPE.IT],
     blocks: [
         {

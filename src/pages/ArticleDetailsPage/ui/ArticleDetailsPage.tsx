@@ -3,13 +3,15 @@ import { Text } from 'shared/ui/Text';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ArticleDetails } from 'entities/Article';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { CommentList } from 'entities/Comment';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useSelector } from 'react-redux';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { AddCommentForm } from 'features/AddCommentForm';
+import { BUTTON_THEME, Button } from 'shared/ui/Button';
+import { ROUTES_PATH } from 'shared/config/routeConfig/routeConfig';
 import {
     getArticleCommentsIsLoading,
 } from '../model/selectors/getArticleCommentsIsLoading/getArticleCommentsIsLoading';
@@ -36,8 +38,13 @@ const ArticleDetailsPage: React.FC<ArticleDetailsPagePropsI> = ({
     const { t } = useTranslation('article');
     const { id } = useParams<{id: string}>();
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
     const comments = useSelector(getArticleComments.selectAll);
     const commetsIsLoading = useSelector(getArticleCommentsIsLoading);
+
+    const onBackToList = useCallback(() => {
+        navigate(ROUTES_PATH.articles);
+    }, [navigate]);
 
     const onSendComment = useCallback((text: string) => {
         dispatch(addCommentForArticle(text));
@@ -66,6 +73,14 @@ const ArticleDetailsPage: React.FC<ArticleDetailsPagePropsI> = ({
             <div
                 className={classNames(cls['article-detials'], {}, [className])}
             >
+                <Button
+                    theme={BUTTON_THEME.OUTLINE}
+                    onClick={onBackToList}
+                >
+                    {
+                        t('Назад к списку')
+                    }
+                </Button>
                 <ArticleDetails
                     id={id}
                 />

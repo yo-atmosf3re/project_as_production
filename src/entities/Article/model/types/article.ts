@@ -1,3 +1,5 @@
+import { UserI } from '../../../User/models/types/user';
+
 /**
  * Типы блоков в статье;
  * @enum {string}
@@ -83,20 +85,22 @@ export enum ARTICLE_TYPE {
  * @interface
  *  @param id - уникальный идентификатор статьи;
     @param title - заголовок;
+    @param user - информация о пользователе;
     @param subtitle - подзаголовок;
     @param img - путь до изображения;
     @param views - количество просмотров;
-    @param createAt - дата создания;
+    @param createdAt - дата создания;
     @param type - типы статьи;
     @param blocks - блоки статьи;
  */
 export interface ArticleI {
     id: string;
     title: string;
+    user: UserI;
     subtitle: string;
     img: string;
     views: number;
-    createAt: string;
+    createdAt: string;
     type: ARTICLE_TYPE[];
     blocks: ArticleBlockI[];
 }

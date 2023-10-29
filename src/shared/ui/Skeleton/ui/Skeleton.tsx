@@ -14,11 +14,12 @@ interface SkeletonPropsI {
  * @param className
  * @param height - высота, указывается в процентах или в пикселях (например 100, или '50%');
  * @param width - ширина, указывается в процентах или в пикселях (например 100, или '50%');
- * @param border - border-radius;
+ * @param border - border-radius (принимает значения в px, % и так далее), по-умолчанию 6px;
  * @returns
  */
 export const Skeleton: React.FC<SkeletonPropsI> = ({
-    className, height, width, border,
+    className, height, width,
+    border = '6px',
 }) => {
     const mods: ModsType = {
 
