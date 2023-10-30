@@ -1,14 +1,25 @@
-/* eslint-disable max-len */
 import React, { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ArticleList } from 'entities/Article';
-import { ARTICLE_VIEW } from 'entities/Article/model/types/article';
+import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { useSelector } from 'react-redux';
 import cls from './ArticlesPage.module.scss';
+import { articlesPageReducer, getArticles } from '../model/slice/articlesPageSlice';
+import { fetchArticlesList } from '../model/services/fetchArticlesList/fetchArticlesList';
+import { getArticlesPageIsLoading } from '../model/selectors/getArticlesPageIsLoading/getArticlesPageIsLoading';
+import { getArticlesPageError } from '../model/selectors/getArticlesPageError/getArticlesPageError';
+import { getArticlesPageView } from '../model/selectors/getArticlesPageView/getArticlesPageView';
 
 interface ArticlesPagePropsI {
     className?: string;
 }
+
+const INITIAL_REDUCERS: ReducersList = {
+    articlesPage: articlesPageReducer,
+};
 
 /**
  * Страница со списком всех статей, содержит поиск по статьям, фильтры;
@@ -18,17 +29,30 @@ const ArticlesPage: React.FC<ArticlesPagePropsI> = ({
     className,
 }) => {
     const { t } = useTranslation('article');
+    const dispatch = useAppDispatch();
+    const articles = useSelector(getArticles.selectAll);
+    const isLoading = useSelector(getArticlesPageIsLoading);
+    const error = useSelector(getArticlesPageError);
+    const view = useSelector(getArticlesPageView);
+
+    useInitialEffect(() => {
+        dispatch(fetchArticlesList());
+    });
 
     return (
-        <div
-            className={classNames(cls['article-page'], {}, [className])}
+        <DynamicModuleLoader
+            reducers={INITIAL_REDUCERS}
         >
-            <ArticleList
-                isLoading
-                view={ARTICLE_VIEW.BIG}
-                articles={[]}
-            />
-        </div>
+            <div
+                className={classNames(cls['article-page'], {}, [className])}
+            >
+                <ArticleList
+                    isLoading={isLoading}
+                    view={view}
+                    articles={articles}
+                />
+            </div>
+        </DynamicModuleLoader>
     );
 };
 

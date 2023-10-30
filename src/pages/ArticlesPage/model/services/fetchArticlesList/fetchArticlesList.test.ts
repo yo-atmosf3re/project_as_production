@@ -1,4 +1,4 @@
-describe('selector', () => {
+describe('fetchArticlesList', () => {
     test(' ', () => {
         // expect().toEqual();
     });
