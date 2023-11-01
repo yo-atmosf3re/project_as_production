@@ -5,3 +5,6 @@ export const USER_LS_KEY = 'user';
 
 // ? Ключ для сохранения темы, которую установил пользователь;
 export const THEME_LS_KEY = 'theme';
+
+// ? Ключ для сохранения вида отображения списка статей, которую установил пользователь;
+export const ARTICLES_VIEW_LS_KEY = 'articles_view';

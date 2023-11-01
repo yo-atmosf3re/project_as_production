@@ -7,15 +7,6 @@ export interface SelectOptionI {
     content: string;
 }
 
-/**
- * Кастомная компонента selector, которую можно настроить под себя различными пропсами;
- *
- * @param className - дополнительный класс для select;
- * @param  - ;
- * @param  - ;
- * @param  - ;
- * @param  - ;
-*/
 interface SelectPropsI {
     className?: string;
     label?: string;
@@ -25,7 +16,17 @@ interface SelectPropsI {
     readonly?: boolean;
 }
 
-// ? Переиспользуемая компонента select, входящая в комплект UI-kit проекта;
+// ? Переиспользуемая компонента select, ;
+/**
+ * Кастомная компонента select, входящая в комплект UI-kit проекта, которую можно настроить под себя различными пропсами;
+ *
+ * @param className - дополнительный класс для select;
+ * @param label - описание/название рядом с select;
+ * @param options
+ * @param readonly - флаг по которому добавляется disabled для select;
+ * @param value
+ * @param onChange
+*/
 export const Select: React.FC<SelectPropsI> = memo(({
     className, label, options,
     value, onChange, readonly,

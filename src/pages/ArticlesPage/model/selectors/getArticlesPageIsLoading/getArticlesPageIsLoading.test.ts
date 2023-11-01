@@ -14,9 +14,9 @@ describe('getArticlesPageIsLoading', () => {
         );
     });
 
-    test('Should return undefined with empty state', () => {
+    test('Should return false with empty state, because false it\'s default value', () => {
         const state: DeepPartial<StateSchema> = {};
 
-        expect(getArticlesPageIsLoading(state as StateSchema)).toEqual(undefined);
+        expect(getArticlesPageIsLoading(state as StateSchema)).toEqual(false);
     });
 });

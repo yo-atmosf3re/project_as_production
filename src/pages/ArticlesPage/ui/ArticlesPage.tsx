@@ -1,13 +1,13 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { ArticleList } from 'entities/Article';
+import { ARTICLE_VIEW, ArticleList, ArticleViewSelector } from 'entities/Article';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useSelector } from 'react-redux';
 import cls from './ArticlesPage.module.scss';
-import { articlesPageReducer, getArticles } from '../model/slice/articlesPageSlice';
+import { articlesPageActions, articlesPageReducer, getArticles } from '../model/slice/articlesPageSlice';
 import { fetchArticlesList } from '../model/services/fetchArticlesList/fetchArticlesList';
 import { getArticlesPageIsLoading } from '../model/selectors/getArticlesPageIsLoading/getArticlesPageIsLoading';
 import { getArticlesPageError } from '../model/selectors/getArticlesPageError/getArticlesPageError';
@@ -22,7 +22,7 @@ const INITIAL_REDUCERS: ReducersList = {
 };
 
 /**
- * Страница со списком всех статей, содержит поиск по статьям, фильтры;
+ * Страница со списком всех статей, содержит поиск по статьям, фильтры, переключатель отображения вида статей;
  * @param className
  */
 const ArticlesPage: React.FC<ArticlesPagePropsI> = ({
@@ -35,8 +35,13 @@ const ArticlesPage: React.FC<ArticlesPagePropsI> = ({
     const error = useSelector(getArticlesPageError);
     const view = useSelector(getArticlesPageView);
 
+    const onChangeView = useCallback((view: ARTICLE_VIEW) => {
+        dispatch(articlesPageActions.setView(view));
+    }, [dispatch]);
+
     useInitialEffect(() => {
         dispatch(fetchArticlesList());
+        dispatch(articlesPageActions.initState());
     });
 
     return (
@@ -46,6 +51,10 @@ const ArticlesPage: React.FC<ArticlesPagePropsI> = ({
             <div
                 className={classNames(cls['article-page'], {}, [className])}
             >
+                <ArticleViewSelector
+                    view={view}
+                    onViewClickHandler={onChangeView}
+                />
                 <ArticleList
                     isLoading={isLoading}
                     view={view}
