@@ -12,6 +12,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { AddCommentForm } from 'features/AddCommentForm';
 import { BUTTON_THEME, Button } from 'shared/ui/Button';
 import { ROUTES_PATH } from 'shared/config/routeConfig/routeConfig';
+import { Page } from 'shared/ui/Page';
 import {
     getArticleCommentsIsLoading,
 } from '../model/selectors/getArticleCommentsIsLoading/getArticleCommentsIsLoading';
@@ -56,13 +57,13 @@ const ArticleDetailsPage: React.FC<ArticleDetailsPagePropsI> = ({
 
     if (!id) {
         return (
-            <div
+            <Page
                 className={classNames(cls['article-detials'], {}, [className])}
             >
                 {
                     t('Статья не найдена!')
                 }
-            </div>
+            </Page>
         );
     }
 
@@ -70,7 +71,7 @@ const ArticleDetailsPage: React.FC<ArticleDetailsPagePropsI> = ({
         <DynamicModuleLoader
             reducers={INITIAL_REDUCERS}
         >
-            <div
+            <Page
                 className={classNames(cls['article-detials'], {}, [className])}
             >
                 <Button
@@ -97,7 +98,7 @@ const ArticleDetailsPage: React.FC<ArticleDetailsPagePropsI> = ({
                     isLoading={commetsIsLoading}
                     comments={comments}
                 />
-            </div>
+            </Page>
         </DynamicModuleLoader>
     );
 };

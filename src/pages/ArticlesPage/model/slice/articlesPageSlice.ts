@@ -20,27 +20,37 @@ export const articlesPageSlice = createSlice({
         error: undefined,
         ids: [],
         entities: {},
-        view: ARTICLE_VIEW.SMALL,
+        view: ARTICLE_VIEW.BIG,
+        page: 1,
+        hasMore: true,
     }),
     reducers: {
         setView: (state, action: PayloadAction<ARTICLE_VIEW>) => {
             state.view = action.payload;
             localStorage.setItem(ARTICLES_VIEW_LS_KEY, action.payload);
         },
+        setPage: (state, action: PayloadAction<number>) => {
+            state.page = action.payload;
+        },
         initState: (state) => {
-            state.view = localStorage.getItem(ARTICLES_VIEW_LS_KEY) as ARTICLE_VIEW;
+            const view = localStorage.getItem(ARTICLES_VIEW_LS_KEY) as ARTICLE_VIEW;
+            state.view = view;
+            // ? Подгрузка четырёх больших, либо девять маленьких статей, в зависимости от view, которое установил пользователь;
+            state.limit = view === ARTICLE_VIEW.BIG ? 4 : 9;
         },
     },
     extraReducers: (builder) => {
         builder
             .addCase(fetchArticlesList.pending, (state) => {
-                state.isLoading = true;
                 state.error = undefined;
+                state.isLoading = true;
             })
             .addCase(fetchArticlesList.fulfilled, (state, action: PayloadAction<ArticleI[]>) => {
                 state.isLoading = false;
-                // ? Принимает массив сущностей из action.payload, передаёт их в state (заменяет их, если они уже существуют);
-                articlesAdapter.setAll(state, action.payload);
+                // ? Принимает массив сущностей из action.payload, передаёт их в state в конец;
+                articlesAdapter.addMany(state, action.payload);
+                // ? Уточняем наличие данных на сервере: если есть хотя бы один элемент в массиве, то hasMore будет true, иначе пустой массив сигнализирует о том, что данных больше нет (нужно для подгрузки данных в ArticlesPage по этому флагу);
+                state.hasMore = action.payload.length > 0;
             })
             .addCase(fetchArticlesList.rejected, (state, action) => {
                 state.isLoading = false;

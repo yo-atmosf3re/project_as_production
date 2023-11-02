@@ -32,7 +32,7 @@ export const Sidebar: React.FC<NavbarPropsI> = memo(({
     )), [collapsed, sidebarItemsList]);
 
     return (
-        <div
+        <menu
             data-testid="sidebar"
             className={classNames(cls.sidebar, { [cls.collapsed]: !collapsed }, [className])}
         >
@@ -60,6 +60,6 @@ export const Sidebar: React.FC<NavbarPropsI> = memo(({
                     short={collapsed}
                 />
             </div>
-        </div>
+        </menu>
     );
 });

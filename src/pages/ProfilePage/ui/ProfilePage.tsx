@@ -13,6 +13,7 @@ import { COUNTRY } from 'entities/Country';
 import { useTranslation } from 'react-i18next';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useParams } from 'react-router-dom';
+import { Page } from 'shared/ui/Page';
 import cls from './ProfilePage.module.scss';
 import { ProfilePageHeader } from './ProfilePageHeader';
 
@@ -24,7 +25,10 @@ const INITIAL_REDUCERS: ReducersList = {
     profile: profileReducer,
 };
 
-// ? Содержит в себе отрисовку страницы профиля: карточки пользователя/пользователей, заголовок страницы, логику по взаимодействию пользователя со страницей профиля;
+/**
+ * Содержит в себе отрисовку страницы профиля: карточки пользователя/пользователей, заголовок страницы, логику по взаимодействию пользователя со страницей профиля;
+ * @param className
+ */
 const ProfilePage: React.FC<ProfilePagePropsI> = ({
     className,
 }) => {
@@ -97,7 +101,7 @@ const ProfilePage: React.FC<ProfilePagePropsI> = ({
         <DynamicModuleLoader
             reducers={INITIAL_REDUCERS}
         >
-            <div className={classNames(cls.profile, {}, [className])}>
+            <Page className={classNames(cls.profile, {}, [className])}>
                 <ProfilePageHeader
                     isLoading={isLoading}
                     validateErrors={validateErrors}
@@ -116,7 +120,7 @@ const ProfilePage: React.FC<ProfilePagePropsI> = ({
                     onChangeCurrencyHandler={onChangeCurrency}
                     onChangeCountryHandler={onChangeCountry}
                 />
-            </div>
+            </Page>
         </DynamicModuleLoader>
     );
 };

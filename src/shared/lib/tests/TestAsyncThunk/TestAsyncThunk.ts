@@ -20,7 +20,7 @@ type ActionCreatorType<Return, Argument, RejectedValue> =
  * @param Return - тип того, что вернётся в return и то, что возвращает сам asyncThunk;
  * @param Argument - тип для аргумента;
  * @param RejectedValue - тип того, что вернётся в случае ошибки;
- * @constructor state - для начальной инициализации стейта при создании экземпляра этого класса, чтобы функция getState возвращала нужную и правильную часть state. Для каких-то сценариев может быть необходимо задавать какое-то дефолтное значение для state;
+ * @constructor `state` - для начальной инициализации `state` при создании экземпляра этого класса, чтобы функция `getState` возвращала нужную и правильную часть `state`. Для каких-то сценариев может быть необходимо задавать какое-то дефолтное значение для `state`;
  */
 export class TestAsyncThunk<Return, Argument, RejectedValue> {
     // ? Для мока;

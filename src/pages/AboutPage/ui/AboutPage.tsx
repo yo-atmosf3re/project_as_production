@@ -1,15 +1,18 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { Page } from 'shared/ui/Page';
 
-// ? Компонента с информацией о приложении;
+/**
+ * Компонента с информацией о приложении;
+ */
 const AboutPage = () => {
     const { t } = useTranslation('about');
     return (
-        <div>
+        <Page>
             {
                 t('О сайте')
             }
-        </div>
+        </Page>
     );
 };
 

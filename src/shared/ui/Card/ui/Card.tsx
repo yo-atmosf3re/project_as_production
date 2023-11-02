@@ -9,7 +9,7 @@ interface CardPropsI extends HTMLAttributes<HTMLDivElement> {
 }
 
 /**
- * Компонента-карточка, входящая в состав UI-kit проекта. Стилизует children этой компоненты в подобие блока в виде карточки-блока;
+ * Компонента-карточка, входящая в комплект UI-kit проекта. Стилизует children этой компоненты в подобие блока в виде карточки-блока;
  * @param className
  * @param children
  * @returns

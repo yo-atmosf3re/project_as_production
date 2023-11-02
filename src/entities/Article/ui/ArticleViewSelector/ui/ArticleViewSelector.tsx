@@ -44,6 +44,7 @@ export const ArticleViewSelector: React.FC<ArticleViewSelectorPropsI> = ({
             {
                 VIEW_TYPES.map((viewType) => (
                     <Button
+                        key={String(viewType.icon)}
                         theme={BUTTON_THEME.CLEAR}
                         onClick={onClickHandler(viewType.view)}
                         className={classNames('', { [cls['not-selected']]: viewType.view !== view })}

@@ -40,18 +40,6 @@ export const ArticleList: React.FC<ArticleListPropsI> = ({
 }) => {
     const { t } = useTranslation();
 
-    if (isLoading) {
-        return (
-            <div
-                className={classNames(cls['article-list'], {}, [className, cls[view]])}
-            >
-                {
-                    GET_SKELETONS(view)
-                }
-            </div>
-        );
-    }
-
     const renderArticle = (article: ArticleI) => (
         <ArticleListItem
             article={article}
@@ -68,6 +56,11 @@ export const ArticleList: React.FC<ArticleListPropsI> = ({
             {
                 articles.length > 0
                     ? articles.map(renderArticle)
+                    : null
+            }
+            {
+                isLoading
+                    ? GET_SKELETONS(view)
                     : null
             }
         </div>

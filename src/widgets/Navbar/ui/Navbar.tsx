@@ -40,7 +40,7 @@ export const Navbar: React.FC<NavbarPropsI> = memo(({
     // ? Такая альтернативная отрисовка вызывается только в том случае, если есть какие-то авторизационные данные у пользователя - пользователь вошёл в аккаунт, как это работает: приложение запускается, в App.tsx отрабатывает useEffect, внутри которого вызывается функция с инициализацией данных пользователя, в LS сохраняется токен пользователя (если его там нет);
     if (authData) {
         return (
-            <div className={classNames(cls.navbar)}>
+            <header className={classNames(cls.navbar)}>
                 <Button
                     className={cls.links}
                     theme={BUTTON_THEME.CLEAR_INVERTED}
@@ -48,12 +48,12 @@ export const Navbar: React.FC<NavbarPropsI> = memo(({
                 >
                     {t('Выйти')}
                 </Button>
-            </div>
+            </header>
         );
     }
 
     return (
-        <div className={classNames(cls.navbar)}>
+        <header className={classNames(cls.navbar)}>
             <Button
                 className={cls.links}
                 theme={BUTTON_THEME.CLEAR_INVERTED}
@@ -71,6 +71,6 @@ export const Navbar: React.FC<NavbarPropsI> = memo(({
                     )
                     : null
             }
-        </div>
+        </header>
     );
 });

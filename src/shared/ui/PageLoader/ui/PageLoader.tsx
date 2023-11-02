@@ -8,7 +8,7 @@ interface PageLoaderPropsI {
 }
 
 /**
- * Компонента, входящая в состав UI-kit проекта, которая является страницей-прелоудером;
+ * Компонента, входящая в комплект UI-kit проекта, которая является страницей-прелоудером;
  * @param className
  */
 export const PageLoader: React.FC<PageLoaderPropsI> = ({

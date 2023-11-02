@@ -7,7 +7,7 @@ interface LoaderPropsI {
 }
 
 /**
- * Компонента-лоудер, входящая в состав UI-kit проекта;
+ * Компонента-лоудер, входящая в комплект UI-kit проекта;
  * @param className
  */
 export const Loader: React.FC<LoaderPropsI> = ({
