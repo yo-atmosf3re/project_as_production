@@ -40,3 +40,10 @@ declare const __PROJECT__: 'storybook' | 'fronted' | 'jest';
 type DeepPartial<T> = T extends object ? {
    [P in keyof T]?: DeepPartial<T[P]>;
 } : T;
+
+/**
+ * Классический Record, но с опциональными свойствами. Даёт возможность создавать объекты с опциональными свойствами;
+ */
+type OptionalRecord<K extends keyof any, T> = {
+    [P in K]?: T;
+};

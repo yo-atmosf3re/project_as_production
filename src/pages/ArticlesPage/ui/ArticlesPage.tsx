@@ -9,11 +9,11 @@ import { useSelector } from 'react-redux';
 import { Page } from 'shared/ui/Page';
 import cls from './ArticlesPage.module.scss';
 import { articlesPageActions, articlesPageReducer, getArticles } from '../model/slice/articlesPageSlice';
-import { fetchArticlesList } from '../model/services/fetchArticlesList/fetchArticlesList';
 import { getArticlesPageIsLoading } from '../model/selectors/getArticlesPageIsLoading/getArticlesPageIsLoading';
 import { getArticlesPageError } from '../model/selectors/getArticlesPageError/getArticlesPageError';
 import { getArticlesPageView } from '../model/selectors/getArticlesPageView/getArticlesPageView';
 import { fetchNextArticlesPage } from '../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
+import { initArticlesPage } from '../model/services/initArticlesPage/initArticlesPage';
 
 interface ArticlesPagePropsI {
     className?: string;
@@ -46,14 +46,12 @@ const ArticlesPage: React.FC<ArticlesPagePropsI> = ({
     }, [dispatch]);
 
     useInitialEffect(() => {
-        dispatch(articlesPageActions.initState());
-        dispatch(fetchArticlesList({
-            page: 1,
-        }));
+        dispatch(initArticlesPage());
     });
 
     return (
         <DynamicModuleLoader
+            removeAfterUnmount={false}
             reducers={INITIAL_REDUCERS}
         >
             <Page

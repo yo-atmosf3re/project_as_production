@@ -14,12 +14,12 @@ interface StoreProviderPropsI {
 export const StoreProvider: React.FC<StoreProviderPropsI> = ({
     children, initialState, asyncReducers,
 }) => {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const store = createReduxStore(
         initialState as StateSchema,
         asyncReducers as ReducersMapObject<StateSchema>,
-        navigate,
+        // navigate,
     );
 
     return (

@@ -1,7 +1,9 @@
 import {
     ReducersMapObject, combineReducers,
 } from '@reduxjs/toolkit';
-import { ReducerManagerI, StateSchema, StateSchemaKeyType } from './StateSchema';
+import {
+    MountedReducersType, ReducerManagerI, StateSchema, StateSchemaKeyType,
+} from './StateSchema';
 
 // ? Функция-менеджер для редьюсеров, нужна для code splitting;
 export function createReducerManager(initialReducers: ReducersMapObject<StateSchema>): ReducerManagerI {
@@ -14,9 +16,15 @@ export function createReducerManager(initialReducers: ReducersMapObject<StateSch
     // ? Массив, который содержит названия редьюсеров. StateSchemaKey это keyof StateSchem'ы. В этом массиве содержатся ключи на удаление;
     let keysToRemove: StateSchemaKeyType[] = [];
 
+    const mountedReducers: MountedReducersType = {};
+
     return {
-    // ? Возвращает текущий объект с редьюсерами;
+        // ? Возвращает текущий объект с редьюсерами;
         getReducerMap: () => reducers,
+
+        // ! Да, это слегка дублирует функционал getReducerMap, но да ладно, тут можно использовать и такой кейс, ничего страшного;
+        // ? Возвращает объект с проинициализированными и вмонтированными редьюсерами;
+        getMountedReducers: () => mountedReducers,
 
         // ? Удаляет редьюсеры, если массив с ключами содержит ключи. Копирует стейт, затем, если в стейте содержатся редьюсеры, ключи которых есть в keysToRemove, то удаляет их, а затем очищает массив keysToRemove после всего цицла forEach. Если ключей на удаление нет, то применяет combinedReducer() с переданным в reduce state и action;
         reduce: (state, action) => {
@@ -38,6 +46,7 @@ export function createReducerManager(initialReducers: ReducersMapObject<StateSch
             }
 
             reducers[key] = reducer;
+            mountedReducers[key] = true;
             combinedReducer = combineReducers(reducers);
         },
 
@@ -49,6 +58,7 @@ export function createReducerManager(initialReducers: ReducersMapObject<StateSch
 
             delete reducers[key];
             keysToRemove.push(key);
+            mountedReducers[key] = false;
             combinedReducer = combineReducers(reducers);
         },
     };

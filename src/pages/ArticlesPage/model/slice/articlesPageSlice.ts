@@ -23,6 +23,7 @@ export const articlesPageSlice = createSlice({
         view: ARTICLE_VIEW.BIG,
         page: 1,
         hasMore: true,
+        _inited: false,
     }),
     reducers: {
         setView: (state, action: PayloadAction<ARTICLE_VIEW>) => {
@@ -37,6 +38,7 @@ export const articlesPageSlice = createSlice({
             state.view = view;
             // ? Подгрузка четырёх больших, либо девять маленьких статей, в зависимости от view, которое установил пользователь;
             state.limit = view === ARTICLE_VIEW.BIG ? 4 : 9;
+            state._inited = true;
         },
     },
     extraReducers: (builder) => {

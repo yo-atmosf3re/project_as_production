@@ -30,12 +30,15 @@ export interface StateSchema {
 // ? Ключи редьюсеров - то есть их названия;
 export type StateSchemaKeyType = keyof StateSchema;
 
+export type MountedReducersType = OptionalRecord<StateSchemaKeyType, boolean>;
+
 // ? Типизация для редакс-менеджера;
 export interface ReducerManagerI {
     getReducerMap: () => ReducersMapObject<StateSchema>;
     reduce: (state: StateSchema, action: AnyAction) => CombinedState<StateSchema>;
     add: (key: StateSchemaKeyType, reducer: Reducer) => void;
     remove: (key: StateSchemaKeyType) => void;
+    getMountedReducers: () => MountedReducersType;
 }
 
 // ? Расширяем типизацию для редеакс стора совместно с reducerManager;
@@ -46,7 +49,7 @@ export interface ReduxStoreWithManagerI extends EnhancedStore<StateSchema> {
 // ? Типизация для extra, которые добавлены в качестве middleware для asyncThunk;
 export interface ThunkExtraArgumentsI {
     api: AxiosInstance;
-    navigate?: (to: To, options?: NavigateOptions) => void;
+    // navigate?: (to: To, options?: NavigateOptions) => void;
 }
 
 // ? Тип для конфигурации createAsyncThunk, который указывается в дженериках этой функции;

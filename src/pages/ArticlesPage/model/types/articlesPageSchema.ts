@@ -9,6 +9,7 @@ import { ARTICLE_VIEW, ArticleI } from 'entities/Article';
  * @param page - номер страницы;
  * @param limit - лимит, количество загружаемых статей за один раз;
  * @param hasMore - флаг, показывающий загружены ли все статьи или есть ещё статьи доступные для загрузки;
+ * @param _inited - флаг, сигнализирующий об инициализации стейта. Изменяется лишь единожды при инициализации приложения;
  */
 export interface ArticlesPageSchema extends EntityState<ArticleI> {
     isLoading?: boolean;
@@ -17,4 +18,5 @@ export interface ArticlesPageSchema extends EntityState<ArticleI> {
     page: number;
     limit?: number;
     hasMore: boolean;
+    _inited: boolean;
 }

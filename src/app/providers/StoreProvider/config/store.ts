@@ -14,7 +14,7 @@ import { createReducerManager } from './reducerManager';
 export function createReduxStore(
     initialState?: StateSchema,
     asyncReducers?: ReducersMapObject<StateSchema>,
-    navigate?: (to: To, options?: NavigateOptions) => void,
+    // navigate?: (to: To, options?: NavigateOptions) => void,
 ) {
     const rootReducers: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
@@ -28,7 +28,7 @@ export function createReduxStore(
     const extraArguments: ThunkExtraArgumentsI = {
         api: $API,
         // ? Добавляем для удобного доступа к навигации useNavigate() из RRD;
-        navigate,
+        // navigate,
     };
 
     const store = configureStore({

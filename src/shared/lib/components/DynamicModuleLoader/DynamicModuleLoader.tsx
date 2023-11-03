@@ -30,11 +30,19 @@ export const DynamicModuleLoader: React.FC<DynamicModuleLoaderPropsI> = ({
     const dispatch = useAppDispatch();
     const store = useStore() as ReduxStoreWithManagerI;
     useEffect(() => {
+        // ? Объект с вмонтированными редьюсерами;
+        const mountedReducers = store.reducerManager.getMountedReducers();
+
         // ? Преобразуем объект reducers в массив с массивами, в котором каждый массив будет представлять собой пару ключ-значение из объекта reducers. Затем для каждого такого массива выполняем логику callback'a, который передан в forEach, а именно - работаем с редакс менеджером. Логика по размонтированию редьюсеров работает аналогично;
         Object.entries(reducers)
             .forEach(([name, reducer]) => {
-                store.reducerManager.add(name as StateSchemaKeyType, reducer);
-                dispatch({ type: `@INIT ${name} reducer` });
+                // ? Находим редьюсер в цикле, возвращаем флаг;
+                const mounted = mountedReducers[name as StateSchemaKeyType];
+                // ? Выполянем инициализацию только в том случае, если редьюсер ещё не вмонтирован;
+                if (!mounted) {
+                    store.reducerManager.add(name as StateSchemaKeyType, reducer);
+                    dispatch({ type: `@INIT ${name} reducer` });
+                }
             });
 
         return () => {
