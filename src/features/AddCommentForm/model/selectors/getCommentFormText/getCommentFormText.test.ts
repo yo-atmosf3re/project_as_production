@@ -14,9 +14,9 @@ describe('getCommentFormText', () => {
         );
     });
 
-    test('Should return undefined because of state is empty', () => {
+    test('Should return undefined because of state is empty and empty string it\'s default value', () => {
         const state: DeepPartial<StateSchema> = {};
 
-        expect(getCommentFormText(state as StateSchema)).toEqual(undefined);
+        expect(getCommentFormText(state as StateSchema)).toEqual('');
     });
 });
