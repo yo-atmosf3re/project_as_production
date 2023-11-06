@@ -8,16 +8,16 @@ import { ProfileSchema } from 'entities/Profile';
 import { UserSchema } from 'entities/User';
 import { AddCommentFormSchema } from 'features/AddCommentForm';
 import { LoginSchema } from 'features/AuthByUsername';
-import { To } from 'history';
+import { ScrollRestorationSchema } from 'features/ScrollRestoration';
 import { ArticleDetailsCommentsSchema } from 'pages/ArticleDetailsPage';
 import { ArticlesPageSchema } from 'pages/ArticlesPage';
-import { NavigateOptions } from 'react-router';
 
 // ? Типизация корневного редьюсера;
 export interface StateSchema {
     // * Обычные редьюсеры;
     counter: CounterSchema;
     user: UserSchema;
+    scrollRestoration: ScrollRestorationSchema;
     // * Асинхронные редьюсеры, которые впоследствии будут добавляться с помощью редьюсер-менеджера;
     loginForm?: LoginSchema;
     profile?: ProfileSchema;
