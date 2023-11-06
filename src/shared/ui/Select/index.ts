@@ -1,3 +1,1 @@
-import { Select } from './ui/Select';
-
-export { Select };
+export { Select, SelectOptionI } from './ui/Select';

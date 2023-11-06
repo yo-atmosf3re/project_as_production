@@ -1,13 +1,27 @@
 import { UserI } from '../../../User/models/types/user';
 
 /**
- * Типы блоков в статье;
- * @enum {string}
+ * Перечисление видов блоков в статье;
+ * @param CODE - блок с кодом;
+ * @param IMAGE - блок с изображением;
+ * @param TEXT - блок с текстом;
  */
 export enum ARTICLE_BLOCK_TYPE {
-    CODE = 'CODE', // блок с кодом
-    IMAGE = 'IMAGE', // блок с изображением
-    TEXT = 'TEXT' // блок с текстом
+    CODE = 'CODE',
+    IMAGE = 'IMAGE',
+    TEXT = 'TEXT'
+}
+
+/**
+ * Перечисление полей, по которым будет воспроизводиться сортировка статей;
+ * @param VIEWS - сортировка по просмотрам;
+ * @param TITLE - сортировка по названию статьи;
+ * @param CREATED - сортировка по дате создания;
+ */
+export enum ARTICLE_SORT_FIELD {
+    VIEWS = 'views',
+    TITLE = 'title',
+    CREATED = 'createdAt'
 }
 
 /**
@@ -23,7 +37,7 @@ export interface ArticleBlockBaseI {
 
 /**
  * Интерфейс блока статьи с кодом;
- * @interface
+
  * @extends {ArticleBlockBaseI} - расширяется от базового класса блока статьи, где в качестве свойств указаны id, type;
  * @param type - тип блока CODE;
  * @param code - сам код, который будет помещён в блок;
@@ -35,7 +49,6 @@ export interface ArticleCodeBlockI extends ArticleBlockBaseI {
 
 /**
  * Интерфейс блока статьи с изображением;
- * @interface
  * @extends {ArticleBlockBaseI} - расширяется от базового класса блока статьи, где в качестве свойств указаны id, type;
  * @param type - тип блока IMAGE;
  * @param title - заголовок для изображения;
@@ -49,7 +62,6 @@ export interface ArticleImageBlockI extends ArticleBlockBaseI {
 
 /**
  * Интерфейс блока статьи с текстом;
- * @interface
  * @extends {ArticleBlockBaseI} - расширяется от базового класса блока статьи, где в качестве свойств указаны id, type;
  * @param type - тип блока TEXT;
  * @param paragraphs - массив с параграфами;
@@ -82,7 +94,6 @@ export enum ARTICLE_TYPE {
 
 /**
  * Интерфейс статьи;
- * @interface
  *  @param id - уникальный идентификатор статьи;
     @param title - заголовок;
     @param user - информация о пользователе;

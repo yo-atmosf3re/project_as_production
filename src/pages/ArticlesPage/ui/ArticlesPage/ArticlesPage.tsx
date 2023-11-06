@@ -1,19 +1,20 @@
 import React, { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { ARTICLE_VIEW, ArticleList, ArticleViewSelector } from 'entities/Article';
+import { ARTICLE_VIEW, ArticleList } from 'entities/Article';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useSelector } from 'react-redux';
 import { Page } from 'widgets/Page';
 import cls from './ArticlesPage.module.scss';
-import { articlesPageActions, articlesPageReducer, getArticles } from '../model/slice/articlesPageSlice';
-import { getArticlesPageIsLoading } from '../model/selectors/getArticlesPageIsLoading/getArticlesPageIsLoading';
-import { getArticlesPageError } from '../model/selectors/getArticlesPageError/getArticlesPageError';
-import { getArticlesPageView } from '../model/selectors/getArticlesPageView/getArticlesPageView';
-import { fetchNextArticlesPage } from '../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
-import { initArticlesPage } from '../model/services/initArticlesPage/initArticlesPage';
+import { articlesPageActions, articlesPageReducer, getArticles } from '../../model/slice/articlesPageSlice';
+import { getArticlesPageIsLoading } from '../../model/selectors/getArticlesPageIsLoading/getArticlesPageIsLoading';
+import { getArticlesPageError } from '../../model/selectors/getArticlesPageError/getArticlesPageError';
+import { getArticlesPageView } from '../../model/selectors/getArticlesPageView/getArticlesPageView';
+import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
+import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
+import { ArticlesPageFilters } from '../ArticlesPageFilters';
 
 interface ArticlesPagePropsI {
     className?: string;
@@ -37,10 +38,6 @@ const ArticlesPage: React.FC<ArticlesPagePropsI> = ({
     const view = useSelector(getArticlesPageView);
     const error = useSelector(getArticlesPageError);
 
-    const onChangeView = useCallback((view: ARTICLE_VIEW) => {
-        dispatch(articlesPageActions.setView(view));
-    }, [dispatch]);
-
     const onLoadNextPart = useCallback(() => {
         dispatch(fetchNextArticlesPage());
     }, [dispatch]);
@@ -58,14 +55,12 @@ const ArticlesPage: React.FC<ArticlesPagePropsI> = ({
                 onScrollEnd={onLoadNextPart}
                 className={classNames(cls['article-page'], {}, [className])}
             >
-                <ArticleViewSelector
-                    view={view}
-                    onViewClickHandler={onChangeView}
-                />
+                <ArticlesPageFilters />
                 <ArticleList
                     isLoading={isLoading}
                     view={view}
                     articles={articles}
+                    className={cls.list}
                 />
             </Page>
         </DynamicModuleLoader>

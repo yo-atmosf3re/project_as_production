@@ -2,7 +2,7 @@ import { StateSchema } from 'app/providers/StoreProvider';
 import { getScrollRestoration } from './getScrollRestoration';
 
 describe('getScrollRestoration', () => {
-    test('Should return part of state with error', () => {
+    test('Should return part of state with scroll object', () => {
         const state: DeepPartial<StateSchema> = {
             scrollRestoration: {
                 scroll: {

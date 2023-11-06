@@ -11,12 +11,14 @@ import { StateSchema } from 'app/providers/StoreProvider';
 import { useSelector } from 'react-redux';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useThrottle } from 'shared/lib/hooks/useThrottle/useThrottle';
+import { ARTICLE_VIEW } from 'entities/Article';
 import cls from './Page.module.scss';
 
 interface PagePropsI {
     className?: string;
     children: ReactNode;
     onScrollEnd?: () => void;
+    viewType?: ARTICLE_VIEW;
 }
 
 /**
@@ -24,10 +26,11 @@ interface PagePropsI {
  * @param className
  * @param children - содержимое, которое представляет из себя компоненту-страницу из сущности pages;
  * @param onScrollEnd - коллбэк, который передаётся в кастомный хук `useInfiniteScroll`, чтобы была возможность отрабатывать какую-либо логику при пересечении элементов в области видимости пользователя;
+ * @param viewType - тип отображения статей, в зависимости от типа условно определяются классы scss для блока-триггера. Для BIG блок-триггер имеет некоторые размера, а для SMALL класс стилей отсутствует вовсе. Это нужно для более плавного и своевременного отклика `IO Observable`, который используется в `useInfiniteScroll` (такое решение может быть временным);
  * @return `children`
  */
 export const Page: React.FC<PagePropsI> = memo(({
-    className, children, onScrollEnd,
+    className, children, onScrollEnd, viewType: view,
 }) => {
     const mods: ModsType = {};
     const additionalClasses = [className];
@@ -71,9 +74,16 @@ export const Page: React.FC<PagePropsI> = memo(({
             {
                 children
             }
-            <div
-                ref={triggerRef}
-            />
+            {
+                onScrollEnd
+                    ? (
+                        <div
+                            className={view === ARTICLE_VIEW.BIG ? cls.trigger : ''}
+                            ref={triggerRef}
+                        />
+                    )
+                    : null
+            }
         </section>
     );
 });
