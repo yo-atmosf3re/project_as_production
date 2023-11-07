@@ -30,7 +30,7 @@ interface PagePropsI {
  * @return `children`
  */
 export const Page: React.FC<PagePropsI> = memo(({
-    className, children, onScrollEnd, viewType: view,
+    className, children, onScrollEnd, viewType,
 }) => {
     const mods: ModsType = {};
     const additionalClasses = [className];
@@ -78,7 +78,7 @@ export const Page: React.FC<PagePropsI> = memo(({
                 onScrollEnd
                     ? (
                         <div
-                            className={view === ARTICLE_VIEW.BIG ? cls.trigger : ''}
+                            className={viewType === ARTICLE_VIEW.BIG ? cls.trigger : ''}
                             ref={triggerRef}
                         />
                     )

@@ -36,7 +36,7 @@ export const ArticlesPageFilters: React.FC<ArticlesPageFiltersPropsI> = ({
                     view={view}
                     onViewClickHandler={onChangeView}
                 />
-                <ArticleViewSelector />
+                {/* <ArticleViewSelector /> */}
             </div>
             <Card
                 className={cls.search}
