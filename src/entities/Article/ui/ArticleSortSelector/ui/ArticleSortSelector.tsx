@@ -15,7 +15,7 @@ interface ArticleSortSelectorPropsI {
 }
 
 /**
- * Компонента, которая содержит в себе селекторы с выбором сортировки. Все данные в эту компоненту приходят из вне - `ArticlesPage`;
+ * Компонента, которая содержит в себе селекторы с выбором сортировки. Все данные в эту компоненту приходят из `ArticlesPage`;
  * @param className
  * @param sort - вид сортировки;
  * @param order - порядок сортировки;
@@ -36,7 +36,7 @@ export const ArticleSortSelector: React.FC<ArticleSortSelectorPropsI> = ({
             value: 'desc',
             content: t('убыванию'),
         },
-    ], []);
+    ], [t]);
 
     const sortFieldOptions = useMemo<SelectOptionI[]>(() => [
         {
@@ -51,7 +51,7 @@ export const ArticleSortSelector: React.FC<ArticleSortSelectorPropsI> = ({
             value: ARTICLE_SORT_FIELD.VIEWS,
             content: t('просмотрам'),
         },
-    ], []);
+    ], [t]);
 
     return (
         <div
