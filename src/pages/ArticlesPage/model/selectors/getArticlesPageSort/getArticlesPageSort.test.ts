@@ -1,5 +1,5 @@
 import { StateSchema } from 'app/providers/StoreProvider';
-import { ARTICLE_SORT_FIELD } from 'entities/Article/model/types/article';
+import { ARTICLE_SORT_FIELD } from 'entities/Article';
 import { getArticlesPageSort } from './getArticlesPageSort';
 
 describe('getArticlesPageSort', () => {
