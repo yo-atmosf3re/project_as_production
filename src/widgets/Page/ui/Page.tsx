@@ -77,8 +77,15 @@ export const Page: React.FC<PagePropsI> = memo(({
             {
                 onScrollEnd
                     ? (
+                        // ! Старый вариант, после закомментированного кода описан новый, который будет в дальнейшем протестирован;
+                        // <div
+                        // className={viewType === ARTICLE_VIEW.BIG ? cls.trigger : ''}
+                        // ref={triggerRef}
+                        //     className={cls.trigger}
+                        //     ref={triggerRef}
+                        // />
                         <div
-                            className={viewType === ARTICLE_VIEW.BIG ? cls.trigger : ''}
+                            className={cls.trigger}
                             ref={triggerRef}
                         />
                     )

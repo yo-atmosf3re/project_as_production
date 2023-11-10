@@ -1,41 +1,41 @@
-import React, { ChangeEvent, memo, useMemo } from 'react';
+import React, { ChangeEvent, useMemo } from 'react';
 import { ModsType, classNames } from '../../../lib/classNames/classNames';
 import cls from './Select.module.scss';
 
-export interface SelectOptionI {
-    value: string;
+export interface SelectOptionI<T extends string> {
+    value: T;
     content: string;
 }
 
-interface SelectPropsI {
+interface SelectPropsI<T extends string> {
     className?: string;
     label?: string;
-    options?: SelectOptionI[];
-    value?: string;
-    onChange?: (value: string) => void;
+    options?: SelectOptionI<T>[];
+    value?: T;
+    onChange?: (value: T) => void;
     readonly?: boolean;
 }
 
-// ? Переиспользуемая компонента select, ;
 /**
- * Кастомная компонента select, входящая в комплект UI-kit проекта, которую можно настроить под себя различными пропсами;
- *
- * @param className - дополнительный класс для select;
+ * Кастомная компонента select, входящая в комплект UI-kit проекта, которую можно настроить под себя различными пропсами. Поддерживает дженерики, где `T` тип принимаемого значения;
+ * @param className
  * @param label - описание/название рядом с select;
- * @param options
  * @param readonly - флаг по которому добавляется disabled для select;
- * @param value
- * @param onChange
+ * @param options - массив с `option`, где value - это `T`, а `content` это обычный `string`;
+ * @param value - принмает тип `T`;
+ * @param onChange - обработчик, в аргументах которого принимается `T`;
 */
-export const Select: React.FC<SelectPropsI> = memo(({
+export const Select = <T extends string>({
+    // ? Для корректной работы с дженериками и типизации было убрано memo. Позже будет исправлено;
     className, label, options,
     value, onChange, readonly,
-}) => {
+}: SelectPropsI<T>) => {
     const mods: ModsType = {};
     const additionalClasses: Array<string | undefined> = [className];
 
     const onChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
-        onChange?.(e.target.value);
+        // ? В этом месте каст типов допустим, потому что есть типы контролируется из вышестоящего уровня, а именно - из пропсов, и кроме нужно типа Т сюда ничего не попадёт;
+        onChange?.(e.target.value as T);
     };
 
     const optionsList: JSX.Element[] | undefined = useMemo(() => options
@@ -78,4 +78,4 @@ export const Select: React.FC<SelectPropsI> = memo(({
             </select>
         </div>
     );
-});
+};

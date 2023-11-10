@@ -2,21 +2,29 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfigI } from 'app/providers/StoreProvider';
 import { ArticleI } from 'entities/Article';
 import { getArticlesPageLimit } from '../../selectors/getArticlesPageLimit/getArticlesPageLimit';
+import { getArticlesPageOrder } from '../../selectors/getArticlesPageOrder/getArticlesPageOrder';
+import { getArticlesPageSearch } from '../../selectors/getArticlesPageSearch/getArticlesPageSearch';
+import { getArticlesPageSort } from '../../selectors/getArticlesPageSort/getArticlesPageSort';
+import { getArticlesPageNumber } from '../../selectors/getArticlesPageNumber/getArticlesPageNumber';
 
 interface FetchArticlesListPropsI {
-    page?: number;
+    replace?: boolean;
 }
 
 /**
- * Получение комментариев для конкретной статьи по id;
- * @param id - айди статьи, для которой будут запрашиваться нужные комментарии;
+ * Запрос списка статей с применением различных фильтров;
+ * @param replace - флаг сигнализирующий о том, применяется ли какая-либо сортировка или фильтр, и в зависимости от этого флага выполняется различная логика при работе с состояниями AT-функции;
  */
 export const fetchArticlesList = createAsyncThunk<ArticleI[], FetchArticlesListPropsI, ThunkConfigI<string>>(
     'articlesPage/fetchArticlesList',
-    async ({ page = 1 }, thunkApi) => {
+    async (_, thunkApi) => {
         const { extra, rejectWithValue, getState } = thunkApi;
 
         const limit = getArticlesPageLimit(getState());
+        const order = getArticlesPageOrder(getState());
+        const sort = getArticlesPageSort(getState());
+        const search = getArticlesPageSearch(getState());
+        const page = getArticlesPageNumber(getState());
 
         try {
             const response = await extra.api.get<ArticleI[]>('/articles', {
@@ -26,6 +34,10 @@ export const fetchArticlesList = createAsyncThunk<ArticleI[], FetchArticlesListP
                     // ? Обращаемся к пагинации и лимиту;
                     _limit: limit,
                     _page: page,
+                    // ? Обращаемся к сортировке, порядку и поиску;
+                    _sort: sort,
+                    _order: order,
+                    q: search,
                 },
             });
             if (!response.data) {

@@ -22,7 +22,8 @@ describe('fetchNextArticlesPage', () => {
         // ? Проверка на количество количество вызываемых раз функции dispatch: четыре раза потому, что вызывается fulfilled, pending и два раза dispatch внутри fetchNextArticlesPage;
         expect(thunk.dispatch).toBeCalledTimes(4);
         // ? Проверяем правильность аргумента, который передан в fetchArticlesList: у page значение 3, потому что в момент инициализации тестового стейта у page значение 2, а при вызове fetchNextArticlesPage вызывается fetchArticlesList, который увелчивает значение page на 1;
-        expect(fetchArticlesList).toHaveBeenCalledWith({ page: 3 });
+        // ! Теперь в эту функцию никакие аргументы не передаются!
+        expect(fetchArticlesList).toHaveBeenCalledWith({});
     });
 
     test('Function fetchArticlesList has been not called, because hasMore it\'s false', async () => {

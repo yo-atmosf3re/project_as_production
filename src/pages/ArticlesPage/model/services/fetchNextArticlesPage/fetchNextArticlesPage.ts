@@ -23,9 +23,7 @@ export const fetchNextArticlesPage = createAsyncThunk<void, void, ThunkConfigI<s
             // ? Устанавливаем следующую страницу;
             dispatch(articlesPageActions.setPage(page + 1));
             // ? Запрашиваем порцию статей с новой (следующей) страницы;
-            dispatch(fetchArticlesList({
-                page: page + 1,
-            }));
+            dispatch(fetchArticlesList({}));
         }
     },
 );

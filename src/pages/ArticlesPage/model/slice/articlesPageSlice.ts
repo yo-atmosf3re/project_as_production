@@ -2,7 +2,6 @@ import { PayloadAction, createEntityAdapter, createSlice } from '@reduxjs/toolki
 import { ARTICLE_VIEW, ArticleI, ARTICLE_SORT_FIELD } from 'entities/Article';
 import { StateSchema } from 'app/providers/StoreProvider';
 import { ARTICLES_VIEW_LS_KEY } from 'shared/const/localstorage';
-
 import { SortOrderType } from 'shared/types';
 import { ArticlesPageSchema } from '../types/articlesPageSchema';
 import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList';
@@ -58,16 +57,27 @@ export const articlesPageSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(fetchArticlesList.pending, (state) => {
+            .addCase(fetchArticlesList.pending, (state, action) => {
                 state.error = undefined;
                 state.isLoading = true;
+
+                // ? Очищаем state в случае наличия какой-либо сортировки или фильтрации;
+                if (action.meta.arg.replace) {
+                    articlesAdapter.removeAll(state);
+                }
             })
-            .addCase(fetchArticlesList.fulfilled, (state, action: PayloadAction<ArticleI[]>) => {
+            .addCase(fetchArticlesList.fulfilled, (state, action) => {
                 state.isLoading = false;
-                // ? Принимает массив сущностей из action.payload, передаёт их в state в конец;
-                articlesAdapter.addMany(state, action.payload);
                 // ? Уточняем наличие данных на сервере: если есть хотя бы один элемент в массиве, то hasMore будет true, иначе пустой массив сигнализирует о том, что данных больше нет (нужно для подгрузки данных в ArticlesPage по этому флагу);
                 state.hasMore = action.payload.length > 0;
+
+                // ? Флаг replace сигнализирует о применении какой-либо сортировки или фильтра, и если такое происходит, то данные запрашиваются полностью и затираются старые. В блоке else происходит добавление данных в конец для поддержки бесконечного скролла (стандартное поведение, до внедрения флага replace);
+                if (action.meta.arg.replace) {
+                    articlesAdapter.setAll(state, action.payload);
+                } else {
+                    // ? Принимает массив сущностей из action.payload, передаёт их в state в конец;
+                    articlesAdapter.addMany(state, action.payload);
+                }
             })
             .addCase(fetchArticlesList.rejected, (state, action) => {
                 state.isLoading = false;
