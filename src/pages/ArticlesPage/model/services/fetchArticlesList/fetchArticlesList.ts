@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfigI } from 'app/providers/StoreProvider';
 import { ArticleI } from 'entities/Article';
+import { addQueryParams } from 'shared/lib/url/addQueryParams/addQueryParams';
 import { getArticlesPageLimit } from '../../selectors/getArticlesPageLimit/getArticlesPageLimit';
 import { getArticlesPageOrder } from '../../selectors/getArticlesPageOrder/getArticlesPageOrder';
 import { getArticlesPageSearch } from '../../selectors/getArticlesPageSearch/getArticlesPageSearch';
@@ -27,6 +28,10 @@ export const fetchArticlesList = createAsyncThunk<ArticleI[], FetchArticlesListP
         const page = getArticlesPageNumber(getState());
 
         try {
+            // ? Теперь все данные по сортировке и поиску отображаются динамически в URL (даёт возможность сохранить ссылку на страницу с введёнными вышеперечисленными параметрами);
+            addQueryParams({
+                sort, order, search,
+            });
             const response = await extra.api.get<ArticleI[]>('/articles', {
                 params: {
                     // ? Это поле нужно для того, чтобы отрисовывать аватар пользователя, если view будет со значением BIG;

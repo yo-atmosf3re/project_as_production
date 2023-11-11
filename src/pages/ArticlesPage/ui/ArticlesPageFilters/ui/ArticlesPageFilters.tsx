@@ -8,6 +8,7 @@ import { Card } from 'shared/ui/Card';
 import { Input } from 'shared/ui/Input';
 import { ArticleSortSelector } from 'entities/Article/ui/ArticleSortSelector';
 import { SortOrderType } from 'shared/types';
+import { useDebouce } from 'shared/lib/hooks/useDebounce/useDebounce';
 import { fetchArticlesList } from '../../../model/services/fetchArticlesList/fetchArticlesList';
 import { getArticlesPageSearch } from '../../../model/selectors/getArticlesPageSearch/getArticlesPageSearch';
 import { getArticlesPageOrder } from '../../../model/selectors/getArticlesPageOrder/getArticlesPageOrder';
@@ -35,6 +36,8 @@ export const ArticlesPageFilters: React.FC<ArticlesPageFiltersPropsI> = ({
         dispatch(fetchArticlesList({ replace: true }));
     }, [dispatch]);
 
+    const debouncedFetchData = useDebouce(fetchData, 500);
+
     const onChangeView = useCallback((view: ARTICLE_VIEW) => {
         dispatch(articlesPageActions.setView(view));
     }, [dispatch]);
@@ -54,8 +57,9 @@ export const ArticlesPageFilters: React.FC<ArticlesPageFiltersPropsI> = ({
     const onChangeSearch = useCallback((search: string) => {
         dispatch(articlesPageActions.setSearch(search));
         dispatch(articlesPageActions.setPage(1));
-        fetchData();
-    }, [dispatch, fetchData]);
+        // ? Подгрузка данных будет происходит с использованием debounce, а ввод текста будет без задержки;
+        debouncedFetchData();
+    }, [dispatch, debouncedFetchData]);
 
     return (
         <div
