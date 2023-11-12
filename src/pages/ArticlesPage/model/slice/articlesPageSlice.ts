@@ -1,5 +1,7 @@
 import { PayloadAction, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
-import { ARTICLE_VIEW, ArticleI, ARTICLE_SORT_FIELD } from 'entities/Article';
+import {
+    ARTICLE_VIEW, ArticleI, ARTICLE_SORT_FIELD, ARTICLE_TYPE,
+} from 'entities/Article';
 import { StateSchema } from 'app/providers/StoreProvider';
 import { ARTICLES_VIEW_LS_KEY } from 'shared/const/localstorage';
 import { SortOrderType } from 'shared/types';
@@ -29,6 +31,7 @@ export const articlesPageSlice = createSlice({
         search: '',
         order: 'asc',
         _inited: false,
+        type: ARTICLE_TYPE.ALL,
     }),
     reducers: {
         setView: (state, action: PayloadAction<ARTICLE_VIEW>) => {
@@ -46,6 +49,9 @@ export const articlesPageSlice = createSlice({
         },
         setSearch: (state, action: PayloadAction<string>) => {
             state.search = action.payload;
+        },
+        setType: (state, action: PayloadAction<ARTICLE_TYPE>) => {
+            state.type = action.payload;
         },
         initState: (state) => {
             const view = localStorage.getItem(ARTICLES_VIEW_LS_KEY) as ARTICLE_VIEW;
@@ -68,8 +74,8 @@ export const articlesPageSlice = createSlice({
             })
             .addCase(fetchArticlesList.fulfilled, (state, action) => {
                 state.isLoading = false;
-                // ? Уточняем наличие данных на сервере: если есть хотя бы один элемент в массиве, то hasMore будет true, иначе пустой массив сигнализирует о том, что данных больше нет (нужно для подгрузки данных в ArticlesPage по этому флагу);
-                state.hasMore = action.payload.length > 0;
+                // ? Уточняем наличие данных на сервере: если с сервера пришло статей большее или равное количество limit (означает, что данные нужно подгрузить ещё), то hasMore будет true, иначе если false, то данные подгружаться больше не будут, потому что, если, например, пришло 5 статей, а лимит 10, то подгрузка больше не нужна (нужно для подгрузки данных в ArticlesPage по этому флагу);
+                state.hasMore = action.payload.length >= state.limit;
 
                 // ? Флаг replace сигнализирует о применении какой-либо сортировки или фильтра, и если такое происходит, то данные запрашиваются полностью и затираются старые. В блоке else происходит добавление данных в конец для поддержки бесконечного скролла (стандартное поведение, до внедрения флага replace);
                 if (action.meta.arg.replace) {

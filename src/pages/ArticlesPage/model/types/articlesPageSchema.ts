@@ -1,5 +1,7 @@
 import { EntityState } from '@reduxjs/toolkit';
-import { ARTICLE_VIEW, ArticleI, ARTICLE_SORT_FIELD } from 'entities/Article';
+import {
+    ARTICLE_VIEW, ArticleI, ARTICLE_SORT_FIELD, ARTICLE_TYPE,
+} from 'entities/Article';
 
 import { SortOrderType } from 'shared/types';
 
@@ -15,6 +17,7 @@ import { SortOrderType } from 'shared/types';
  * @param order - порядок сортировки, asc - прямой, desc - обратный;
  * @param sort - вид поля из перечисления, по которому будет воспроизводиться сортировка;
  * @param search - поисковая строка, по которой будет поиск нужной статьи;
+ * @param type - тема статьи, для доступа используется ARTICLE_TYPE;
  */
 export interface ArticlesPageSchema extends EntityState<ArticleI> {
     isLoading?: boolean;
@@ -26,5 +29,6 @@ export interface ArticlesPageSchema extends EntityState<ArticleI> {
     order: SortOrderType;
     sort: ARTICLE_SORT_FIELD;
     search: string;
+    type: ARTICLE_TYPE;
     _inited: boolean;
 }

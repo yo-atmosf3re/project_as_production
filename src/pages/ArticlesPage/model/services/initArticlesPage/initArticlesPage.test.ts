@@ -17,7 +17,7 @@ describe('initArticlesPage', () => {
                 _inited: false,
             },
         });
-        await thunk.callThunk();
+        await thunk.callThunk(new URLSearchParams());
         expect(thunk.dispatch).toBeCalledTimes(4);
         expect(fetchArticlesList).toHaveBeenCalled();
     });
@@ -34,7 +34,7 @@ describe('initArticlesPage', () => {
                 _inited: true,
             },
         });
-        await thunk.callThunk();
+        await thunk.callThunk(new URLSearchParams());
         expect(thunk.dispatch).toBeCalledTimes(2);
         expect(fetchArticlesList).not.toHaveBeenCalled();
     });

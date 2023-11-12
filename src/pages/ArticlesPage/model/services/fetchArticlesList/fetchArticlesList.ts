@@ -1,12 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfigI } from 'app/providers/StoreProvider';
-import { ArticleI } from 'entities/Article';
+import { ARTICLE_TYPE, ArticleI } from 'entities/Article';
 import { addQueryParams } from 'shared/lib/url/addQueryParams/addQueryParams';
-import { getArticlesPageLimit } from '../../selectors/getArticlesPageLimit/getArticlesPageLimit';
-import { getArticlesPageOrder } from '../../selectors/getArticlesPageOrder/getArticlesPageOrder';
-import { getArticlesPageSearch } from '../../selectors/getArticlesPageSearch/getArticlesPageSearch';
-import { getArticlesPageSort } from '../../selectors/getArticlesPageSort/getArticlesPageSort';
-import { getArticlesPageNumber } from '../../selectors/getArticlesPageNumber/getArticlesPageNumber';
+import {
+    getArticlesPageLimit, getArticlesPageOrder,
+    getArticlesPageSearch, getArticlesPageSort,
+    getArticlesPageNumber, getArticlesPageType,
+} from '../../selectors';
 
 interface FetchArticlesListPropsI {
     replace?: boolean;
@@ -26,11 +26,12 @@ export const fetchArticlesList = createAsyncThunk<ArticleI[], FetchArticlesListP
         const sort = getArticlesPageSort(getState());
         const search = getArticlesPageSearch(getState());
         const page = getArticlesPageNumber(getState());
+        const type = getArticlesPageType(getState());
 
         try {
-            // ? Теперь все данные по сортировке и поиску отображаются динамически в URL (даёт возможность сохранить ссылку на страницу с введёнными вышеперечисленными параметрами);
+            // ? Теперь все данные по сортировке и поиску отображаются динамически в URL (даёт возможность сохранить ссылку на страницу с введёнными нижеперечисленными параметрами);
             addQueryParams({
-                sort, order, search,
+                sort, order, search, type,
             });
             const response = await extra.api.get<ArticleI[]>('/articles', {
                 params: {
@@ -43,6 +44,8 @@ export const fetchArticlesList = createAsyncThunk<ArticleI[], FetchArticlesListP
                     _sort: sort,
                     _order: order,
                     q: search,
+                    // ? Если тип ALL, то на сервер type не отправится, и вернутся все статьи, иначе отправляется type, который вернёт определённые статьи;
+                    type: type === ARTICLE_TYPE.ALL ? undefined : type,
                 },
             });
             if (!response.data) {

@@ -2,6 +2,8 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { Text } from 'shared/ui/Text';
+import { TEXT_SIZE } from 'shared/ui/Text/ui/Text';
 import { ARTICLE_VIEW, ArticleI } from '../../../model/types/article';
 import cls from './ArticleList.module.scss';
 import { ArticleListItem } from '../../ArticleListItem';
@@ -38,7 +40,7 @@ export const ArticleList: React.FC<ArticleListPropsI> = ({
     articles, isLoading,
     view = ARTICLE_VIEW.SMALL,
 }) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation('article');
 
     const renderArticle = (article: ArticleI) => (
         <ArticleListItem
@@ -48,6 +50,21 @@ export const ArticleList: React.FC<ArticleListPropsI> = ({
             key={article.id}
         />
     );
+
+    if (!isLoading && !articles.length) {
+        return (
+            <div
+                className={classNames(cls['article-list'], {}, [className, cls[view]])}
+            >
+                <Text
+                    title={
+                        t('Статьи не найдены!')
+                    }
+                    size={TEXT_SIZE.L}
+                />
+            </div>
+        );
+    }
 
     return (
         <div

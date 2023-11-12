@@ -81,12 +81,13 @@ export type ArticleBlockI = ArticleCodeBlockI | ArticleImageBlockI | ArticleText
 
 /**
  * Типы статей;
- * @enum {string}
+ * @param ALL - статьи по всем темам;
  * @param IT - информационные технологии;
  * @param SCIENCE - наука;
  * @param ECONOMICS - экономика;
  */
 export enum ARTICLE_TYPE {
+    ALL = 'all',
     IT = 'IT',
     SCIENCE = 'SCIENCE',
     ECONOMICS = 'ECONOMICS'

@@ -1,19 +1,25 @@
 import React, { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { ARTICLE_SORT_FIELD, ARTICLE_VIEW, ArticleViewSelector } from 'entities/Article';
+import {
+    ARTICLE_SORT_FIELD, ARTICLE_VIEW, ArticleViewSelector, ARTICLE_TYPE,
+    ArticleSortSelector,
+} from 'entities/Article';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { Card } from 'shared/ui/Card';
 import { Input } from 'shared/ui/Input';
-import { ArticleSortSelector } from 'entities/Article/ui/ArticleSortSelector';
+
 import { SortOrderType } from 'shared/types';
 import { useDebouce } from 'shared/lib/hooks/useDebounce/useDebounce';
+import { ArticleTypeTabs } from 'entities/Article/ui/ArticleTypeTabs';
+import {
+    getArticlesPageType, getArticlesPageSearch,
+    getArticlesPageOrder, getArticlesPageSort,
+    getArticlesPageView,
+} from '../../../model/selectors';
 import { fetchArticlesList } from '../../../model/services/fetchArticlesList/fetchArticlesList';
-import { getArticlesPageSearch } from '../../../model/selectors/getArticlesPageSearch/getArticlesPageSearch';
-import { getArticlesPageOrder } from '../../../model/selectors/getArticlesPageOrder/getArticlesPageOrder';
-import { getArticlesPageSort } from '../../../model/selectors/getArticlesPageSort/getArticlesPageSort';
-import { getArticlesPageView } from '../../../model/selectors/getArticlesPageView/getArticlesPageView';
+
 import { articlesPageActions } from '../../../model/slice/articlesPageSlice';
 import cls from './ArticlesPageFilters.module.scss';
 
@@ -30,6 +36,7 @@ export const ArticlesPageFilters: React.FC<ArticlesPageFiltersPropsI> = ({
     const order = useSelector(getArticlesPageOrder);
     const sort = useSelector(getArticlesPageSort);
     const search = useSelector(getArticlesPageSearch);
+    const type = useSelector(getArticlesPageType);
 
     // ? Избавляясь от лишних сайд-эффектов, передаём эту функцию в каждый обработчик;
     const fetchData = useCallback(() => {
@@ -61,6 +68,12 @@ export const ArticlesPageFilters: React.FC<ArticlesPageFiltersPropsI> = ({
         debouncedFetchData();
     }, [dispatch, debouncedFetchData]);
 
+    const onChangeType = useCallback((value: ARTICLE_TYPE) => {
+        dispatch(articlesPageActions.setType(value));
+        dispatch(articlesPageActions.setPage(1));
+        fetchData();
+    }, [dispatch, fetchData]);
+
     return (
         <div
             className={classNames(cls['articles-page_filters'], {}, [className])}
@@ -90,6 +103,11 @@ export const ArticlesPageFilters: React.FC<ArticlesPageFiltersPropsI> = ({
                     }
                 />
             </Card>
+            <ArticleTypeTabs
+                value={type}
+                onChangeType={onChangeType}
+                className={cls.tabs}
+            />
         </div>
     );
 };
