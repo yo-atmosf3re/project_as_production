@@ -4,8 +4,10 @@ import { getArticleCommentsError } from './getArticleCommentsError';
 describe('getArticleCommentsError', () => {
     test('Should return part of state with error', () => {
         const state: DeepPartial<StateSchema> = {
-            articleDetailsComments: {
-                error: 'Error',
+            articleDetailsPage: {
+                comments: {
+                    error: 'Error',
+                },
             },
         };
 

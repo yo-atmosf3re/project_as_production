@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { HTMLAttributeAnchorTarget, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text } from 'shared/ui/Text';
@@ -9,6 +9,7 @@ import { Avatar } from 'shared/ui/Avatar';
 import { BUTTON_THEME, Button } from 'shared/ui/Button';
 import { useNavigate } from 'react-router-dom';
 import { ROUTES_PATH } from 'shared/config/routeConfig/routeConfig';
+import { AppLink } from 'shared/ui/AppLink';
 import {
     ARTICLE_BLOCK_TYPE, ARTICLE_VIEW, ArticleI, ArticleTextBlockI,
 } from '../../../model/types/article';
@@ -19,24 +20,27 @@ interface ArticleListItemPropsI {
     className?: string;
     article: ArticleI;
     view: ARTICLE_VIEW;
+    target?: HTMLAttributeAnchorTarget;
 }
 /**
  * Компонента, которая является элементом списка статей, которые отрисовываются в ArticleList;
  * @param className
  * @param article - статья для отрисовки;
  * @param view - тип отображения статьи в списке ArticleList (по-умолчанию SMALL, определено из родительской компоненты), для доступа используется enum ARTICLE_VIEW;
+ * @param target - классический атрибут `target` тега `a`;
  */
 export const ArticleListItem: React.FC<ArticleListItemPropsI> = ({
     className,
     article,
     view,
+    target,
 }) => {
     const { t } = useTranslation('article');
     const navigate = useNavigate();
 
-    const onOpenArticleHandler = useCallback(() => {
-        navigate(ROUTES_PATH.article_details + article.id);
-    }, [article.id, navigate]);
+    // const onOpenArticleHandler = useCallback(() => {
+    //     navigate(ROUTES_PATH.article_details + article.id);
+    // }, [article.id, navigate]);
 
     const types = (
         <Text
@@ -57,6 +61,7 @@ export const ArticleListItem: React.FC<ArticleListItemPropsI> = ({
         </>
     );
 
+    // ? Для доступности и для возможности открывать статьи в новой вкладке добавлена обёртка в виде AppLink;
     if (view === 'BIG') {
         // ? Первый текстовый блок, который будет отображаться в карточке как начальный;
         const textBlock = article.blocks.find((block) => block.type === ARTICLE_BLOCK_TYPE.TEXT) as ArticleTextBlockI;
@@ -102,14 +107,18 @@ export const ArticleListItem: React.FC<ArticleListItemPropsI> = ({
                             : null
                     }
                     <div className={cls.footer}>
-                        <Button
-                            onClick={onOpenArticleHandler}
-                            theme={BUTTON_THEME.OUTLINE}
+                        <AppLink
+                            target={target}
+                            to={ROUTES_PATH.article_details + article.id}
                         >
-                            {
-                                t('Читать далее...')
-                            }
-                        </Button>
+                            <Button
+                                theme={BUTTON_THEME.OUTLINE}
+                            >
+                                {
+                                    t('Читать далее...')
+                                }
+                            </Button>
+                        </AppLink>
                         {views}
                     </div>
                 </Card>
@@ -118,12 +127,13 @@ export const ArticleListItem: React.FC<ArticleListItemPropsI> = ({
     }
 
     return (
-        <div
+        <AppLink
+            target={target}
+            to={ROUTES_PATH.article_details + article.id}
             className={classNames(cls['article-item'], {}, [className, cls[view]])}
         >
             <Card
                 className={cls.card}
-                onClick={onOpenArticleHandler}
             >
                 <div className={cls['image-wrapper']}>
                     <img
@@ -149,6 +159,6 @@ export const ArticleListItem: React.FC<ArticleListItemPropsI> = ({
                     className={cls.title}
                 />
             </Card>
-        </div>
+        </AppLink>
     );
 };

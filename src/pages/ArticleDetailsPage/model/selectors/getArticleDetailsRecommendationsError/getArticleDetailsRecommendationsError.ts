@@ -1,5 +1,7 @@
 import { StateSchema } from 'app/providers/StoreProvider';
 
 export const
-    getArticleDetailsRecommendationsError = (state: StateSchema) => state
-        . articleDetailsPageRecommendations?.error;
+    getArticleDetailsRecommendationsError = (state: StateSchema) => {
+        return state
+            .articleDetailsPage?.recommendations.error;
+    };

@@ -18,24 +18,24 @@ import {
     getArticleCommentsIsLoading,
 } from '../model/selectors/getArticleCommentsIsLoading/getArticleCommentsIsLoading';
 import cls from './ArticleDetailsPage.module.scss';
-import { articleDetailsCommetsReducer, getArticleComments } from '../model/slice/articleDetailsCommentSlice';
+import { getArticleComments } from '../model/slice/articleDetailsCommentSlice';
 import { fetchCommentsByArticleId } from '../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { addCommentForArticle } from '../model/services/addCommentForArticle/addCommentForArticle';
 import { getArticleDetailsRecommendationsError }
     from '../model/selectors/getArticleDetailsRecommendationsError/getArticleDetailsRecommendationsError';
-import { articleDetailsPageRecommendationsReducer, getArticleDetailsRecommendations }
+import { getArticleDetailsRecommendations }
     from '../model/slice/articleDetailsPageRecommendationsSlice';
 import { getArticleDetailsRecommendationsIsLoading }
     from '../model/selectors/getArticleDetailsRecommendationsIsLoading/getArticleDetailsRecommendationsIsLoading';
 import { fetchArticleRecommendations } from '../model/services/fetchArticleRecommendations/fetchArticleRecommendations';
+import { articleDetailsPageReducer } from '../model/slice';
 
 interface ArticleDetailsPagePropsI {
     className?: string;
 }
 
 const INITIAL_REDUCERS: ReducersList = {
-    articleDetailsComments: articleDetailsCommetsReducer,
-    articleDetailsPageRecommendations: articleDetailsPageRecommendationsReducer,
+    articleDetailsPage: articleDetailsPageReducer,
 };
 
 /**
@@ -100,7 +100,6 @@ const ArticleDetailsPage: React.FC<ArticleDetailsPagePropsI> = ({
                 />
                 <Text
                     size={TEXT_SIZE.L}
-                    className={cls.recommendations}
                     title={
                         t('Рекомендуем')
                     }
@@ -108,6 +107,8 @@ const ArticleDetailsPage: React.FC<ArticleDetailsPagePropsI> = ({
                 <ArticleList
                     articles={recommendations}
                     isLoading={recommendationsIsLoading}
+                    className={cls.recommendations}
+                    target="_blank"
                 />
                 <Text
                     size={TEXT_SIZE.L}

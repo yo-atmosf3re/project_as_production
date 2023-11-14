@@ -20,19 +20,23 @@
     display: flex;
 }
 
-// .page-wrapper {
-// flex-grow: 1;
-// padding: 20px;
+*::-webkit-scrollbar {
+    // ? Ширина scrollbar;
+    width: 12px;
+}
 
-// ? Чтобы кнопка сворачивания сайдбара не залазила на основной контент;
-// padding-left: 45px;
+*::-webkit-scrollbar-track {
+    // ? Цвет дорожки;
+    background: var(--card-bg);
+}
 
-// ? Убирает внешний скролл и убирает нехватающие 50 пикселей снизу от всего контента;
-// height: calc(100vh - var(--navbar-height));
+*::-webkit-scrollbar-thumb {
+    // ? Цвет плашки;
+    background-color: var(--inverted-bg-color);
 
-// ? Скролл на внутренней части где контент, но чтобы сайдбар и навбар оставались неподвижными;
-// overflow-y: auto;
+    // ? Закругления плашки;
+    border-radius: 20px;
 
-// ? Для того, чтобы контентная основная часть не прижимала содержимое сайдбара;
-// flex-shrink: 100;
-// }
+    // ? Padding вокруг плашки;
+    border: 1px solid  var(--inverted-bg-color);
+}

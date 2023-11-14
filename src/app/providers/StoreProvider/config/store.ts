@@ -4,8 +4,6 @@ import {
 import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
 import { $API } from 'shared/api/api';
-import { To } from 'history';
-import { NavigateOptions } from 'react-router';
 import { scrollRestorationReducer } from 'features/ScrollRestoration';
 import { StateSchema, ThunkExtraArgumentsI } from './StateSchema';
 import { createReducerManager } from './reducerManager';
@@ -15,7 +13,6 @@ import { createReducerManager } from './reducerManager';
 export function createReduxStore(
     initialState?: StateSchema,
     asyncReducers?: ReducersMapObject<StateSchema>,
-    // navigate?: (to: To, options?: NavigateOptions) => void,
 ) {
     const rootReducers: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
@@ -29,8 +26,6 @@ export function createReduxStore(
     // ? Для более удобного взаимодействия с типами;
     const extraArguments: ThunkExtraArgumentsI = {
         api: $API,
-        // ? Добавляем для удобного доступа к навигации useNavigate() из RRD;
-        // navigate,
     };
 
     const store = configureStore({

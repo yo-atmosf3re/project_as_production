@@ -1,5 +1,5 @@
 /* eslint-disable react/no-array-index-key */
-import React from 'react';
+import React, { HTMLAttributeAnchorTarget } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text } from 'shared/ui/Text';
@@ -14,6 +14,7 @@ interface ArticleListPropsI {
     articles: ArticleI[];
     isLoading?: boolean;
     view?: ARTICLE_VIEW;
+    target?: HTMLAttributeAnchorTarget;
 }
 
 const GET_SKELETONS = (view: ARTICLE_VIEW) => (
@@ -34,11 +35,13 @@ const GET_SKELETONS = (view: ARTICLE_VIEW) => (
  * @param articles - массив со статьями;
  * @param isLoading - состояние загрузки;
  * @param view - тип отображения списка со статьями (по-умолчанию SMALL), для доступа используется enum ARTICLE_VIEW;
+ * @param target - классический атрибут `target` тега `a`. В нужном месте, где отрисовывается `ArticleList`, можно настроить `target`, который прокидывается в дочерние `ArticleListItem`;
 */
 export const ArticleList: React.FC<ArticleListPropsI> = ({
     className,
     articles, isLoading,
     view = ARTICLE_VIEW.SMALL,
+    target,
 }) => {
     const { t } = useTranslation('article');
 
@@ -47,6 +50,7 @@ export const ArticleList: React.FC<ArticleListPropsI> = ({
             article={article}
             view={view}
             className={cls.card}
+            target={target}
             key={article.id}
         />
     );

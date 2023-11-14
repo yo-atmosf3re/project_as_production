@@ -15,7 +15,7 @@ const commentsAdapter = createEntityAdapter<CommentI>({
 
 // ? Получаем комментарии с помощью селектора. Возвращает либо стейт с комментариями, либо изначальный стейт, указанный ниже. Используем это в компонентах. При использовании, getSelectors() предоставляет доступ к некоторым функциям - получение всех идентификаторов, получение всех сущностей, получение всего, получение общего числа сущностей, получение сущности по идентификатору;
 export const getArticleComments = commentsAdapter.getSelectors<StateSchema>(
-    (state) => state.articleDetailsComments || commentsAdapter.getInitialState(),
+    (state) => state.articleDetailsPage?.comments || commentsAdapter.getInitialState(),
 );
 
 const articleDetailsCommentSlice = createSlice({

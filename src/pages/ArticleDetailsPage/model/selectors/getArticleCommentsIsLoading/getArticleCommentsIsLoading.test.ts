@@ -4,8 +4,10 @@ import { getArticleCommentsIsLoading } from './getArticleCommentsIsLoading';
 describe('getArticleCommentsIsLoading', () => {
     test('Should return part of state with isLoading', () => {
         const state: DeepPartial<StateSchema> = {
-            articleDetailsComments: {
-                isLoading: true,
+            articleDetailsPage: {
+                comments: {
+                    isLoading: true,
+                },
             },
         };
 

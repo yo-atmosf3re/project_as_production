@@ -9,7 +9,8 @@ import { UserSchema } from 'entities/User';
 import { AddCommentFormSchema } from 'features/AddCommentForm';
 import { LoginSchema } from 'features/AuthByUsername';
 import { ScrollRestorationSchema } from 'features/ScrollRestoration';
-import { ArticleDetailsCommentsSchema, ArticleDetailsPageRecommendationsSchemaI } from 'pages/ArticleDetailsPage';
+import { ArticleDetailsPageSchema }
+    from 'pages/ArticleDetailsPage';
 import { ArticlesPageSchema } from 'pages/ArticlesPage';
 
 // ? Типизация корневного редьюсера;
@@ -22,10 +23,9 @@ export interface StateSchema {
     loginForm?: LoginSchema;
     profile?: ProfileSchema;
     articleDetails?: ArticleDetailsSchema;
-    articleDetailsComments?: ArticleDetailsCommentsSchema;
-    articleDetailsPageRecommendations?: ArticleDetailsPageRecommendationsSchemaI;
     addCommentForm?: AddCommentFormSchema;
     articlesPage?: ArticlesPageSchema;
+    articleDetailsPage?: ArticleDetailsPageSchema;
 }
 
 // ? Ключи редьюсеров - то есть их названия;
