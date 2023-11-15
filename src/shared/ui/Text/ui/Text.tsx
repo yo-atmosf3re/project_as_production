@@ -2,17 +2,33 @@ import React, { memo } from 'react';
 import { ModsType, classNames } from '../../../lib/classNames/classNames';
 import cls from './Text.module.scss';
 
+/**
+ * Цветовые темы для текста;
+ * @param PRIMARY - text - использует secondary-color, title - использует primary-color;
+ * @param INVERTED - ;
+ * @param ERROR - text - тёмно-красный, title - светло-красный;
+ */
 export enum TEXT_THEME {
     PRIMARY = 'primary',
+    INVERTED = 'inverted',
     ERROR = 'error'
 }
 
+/**
+ * Направление текста;
+ */
 export enum TEXT_ALIGN {
     RIGHT = 'right',
     LEFT = 'left',
     CENTER = 'center',
 }
 
+/**
+ * Размер текста;
+ * @param S - text - 12px, title - 16px;
+ * @param M - text - 16px, title - 24px;
+ * @param L - text - 24px, title - 32px;
+ */
 export enum TEXT_SIZE {
     S = 'size-s',
     M = 'size-m',

@@ -1,13 +1,14 @@
-/* eslint-disable max-len, i18next/no-literal-string, @typescript-eslint/no-unused-vars */
 import React, { memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Modal } from 'shared/ui/Modal';
 import { Button, BUTTON_THEME } from 'shared/ui/Button';
 import { LoginModal } from 'features/AuthByUsername/ui';
 import { useSelector } from 'react-redux';
 import { getUserAuthData, userActions } from 'entities/User';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Text, TEXT_THEME } from 'shared/ui/Text';
+import { APP_LINK_THEME, AppLink } from 'shared/ui/AppLink';
+import { ROUTES_PATH } from 'shared/config/routeConfig/routeConfig';
 import cls from './Navbar.module.scss';
 
 interface NavbarPropsI {
@@ -15,9 +16,7 @@ interface NavbarPropsI {
 }
 
 // ? Компонента-навбар;
-export const Navbar: React.FC<NavbarPropsI> = memo(({
-    className,
-}) => {
+export const Navbar: React.FC<NavbarPropsI> = memo(() => {
     const { t } = useTranslation('navbar');
     const [isAuthModal, setIsAuthModal] = React.useState(false);
     // ? Авторизационные данные;
@@ -41,6 +40,22 @@ export const Navbar: React.FC<NavbarPropsI> = memo(({
     if (authData) {
         return (
             <header className={classNames(cls.navbar)}>
+                <Text
+                    theme={TEXT_THEME.INVERTED}
+                    className={cls['app-name']}
+                    title={
+                        t('LOGO')
+                    }
+                />
+                <AppLink
+                    className={cls['create-article_button']}
+                    to={ROUTES_PATH.article_create}
+                    theme={APP_LINK_THEME.SECONDARY}
+                >
+                    {
+                        t('Создать статью')
+                    }
+                </AppLink>
                 <Button
                     className={cls.links}
                     theme={BUTTON_THEME.CLEAR_INVERTED}

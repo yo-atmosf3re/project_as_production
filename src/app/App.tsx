@@ -26,11 +26,10 @@ const App = () => {
                 <div className="content-page">
                     <Sidebar />
                     {
-                        // inited
-                        //     ? <AppRouter />
-                        //     : null
+                        inited
+                            ? <AppRouter />
+                            : null
                     }
-                    {inited && <AppRouter />}
                 </div>
             </Suspense>
         </div>

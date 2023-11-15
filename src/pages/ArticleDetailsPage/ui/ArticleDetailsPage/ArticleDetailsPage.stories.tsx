@@ -1,7 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { ArticleI } from 'entities/Article';
-import { ARTICLE_TYPE, ARTICLE_BLOCK_TYPE } from 'entities/Article/model/types/article';
+import { ARTICLE_TYPE, ARTICLE_BLOCK_TYPE, ArticleI } from 'entities/Article';
 import ArticleDetailsPage from './ArticleDetailsPage';
 
 export default {

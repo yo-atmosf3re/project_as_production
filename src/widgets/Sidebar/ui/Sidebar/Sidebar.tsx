@@ -20,6 +20,7 @@ export const Sidebar: React.FC<NavbarPropsI> = memo(({
     const sidebarItemsList = useSelector(getSidebarItems);
 
     const onToggleHandler = () => {
+        console.log('Clicked');
         setCollapsed((prev) => !prev);
     };
 

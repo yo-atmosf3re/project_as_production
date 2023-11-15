@@ -16,19 +16,21 @@ import { Page } from 'widgets/Page';
 import { TEXT_SIZE } from 'shared/ui/Text/ui/Text';
 import {
     getArticleCommentsIsLoading,
-} from '../model/selectors/getArticleCommentsIsLoading/getArticleCommentsIsLoading';
+} from '../../model/selectors/getArticleCommentsIsLoading/getArticleCommentsIsLoading';
 import cls from './ArticleDetailsPage.module.scss';
-import { getArticleComments } from '../model/slice/articleDetailsCommentSlice';
-import { fetchCommentsByArticleId } from '../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
-import { addCommentForArticle } from '../model/services/addCommentForArticle/addCommentForArticle';
+import { getArticleComments } from '../../model/slice/articleDetailsCommentSlice';
+import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 import { getArticleDetailsRecommendationsError }
-    from '../model/selectors/getArticleDetailsRecommendationsError/getArticleDetailsRecommendationsError';
+    from '../../model/selectors/getArticleDetailsRecommendationsError/getArticleDetailsRecommendationsError';
 import { getArticleDetailsRecommendations }
-    from '../model/slice/articleDetailsPageRecommendationsSlice';
+    from '../../model/slice/articleDetailsPageRecommendationsSlice';
 import { getArticleDetailsRecommendationsIsLoading }
-    from '../model/selectors/getArticleDetailsRecommendationsIsLoading/getArticleDetailsRecommendationsIsLoading';
-import { fetchArticleRecommendations } from '../model/services/fetchArticleRecommendations/fetchArticleRecommendations';
-import { articleDetailsPageReducer } from '../model/slice';
+    from '../../model/selectors/getArticleDetailsRecommendationsIsLoading/getArticleDetailsRecommendationsIsLoading';
+import { fetchArticleRecommendations }
+    from '../../model/services/fetchArticleRecommendations/fetchArticleRecommendations';
+import { articleDetailsPageReducer } from '../../model/slice';
+import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader';
 
 interface ArticleDetailsPagePropsI {
     className?: string;
@@ -48,16 +50,12 @@ const ArticleDetailsPage: React.FC<ArticleDetailsPagePropsI> = ({
     const { t } = useTranslation('article');
     const { id } = useParams<{id: string}>();
     const dispatch = useAppDispatch();
-    const navigate = useNavigate();
+
     const comments = useSelector(getArticleComments.selectAll);
     const commetsIsLoading = useSelector(getArticleCommentsIsLoading);
     const recommendations = useSelector(getArticleDetailsRecommendations.selectAll);
     const recommendationsIsLoading = useSelector(getArticleDetailsRecommendationsIsLoading);
     const recommendationsError = useSelector(getArticleDetailsRecommendationsError);
-
-    const onBackToList = useCallback(() => {
-        navigate(ROUTES_PATH.articles);
-    }, [navigate]);
 
     const onSendComment = useCallback((text: string) => {
         dispatch(addCommentForArticle(text));
@@ -87,14 +85,7 @@ const ArticleDetailsPage: React.FC<ArticleDetailsPagePropsI> = ({
             <Page
                 className={classNames(cls['article-detials'], {}, [className])}
             >
-                <Button
-                    theme={BUTTON_THEME.OUTLINE}
-                    onClick={onBackToList}
-                >
-                    {
-                        t('Назад к списку')
-                    }
-                </Button>
+                <ArticleDetailsPageHeader />
                 <ArticleDetails
                     id={id}
                 />
