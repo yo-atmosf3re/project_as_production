@@ -12,7 +12,11 @@ interface SidebarItemProps {
     collapsed: boolean;
 }
 
-// ? Один из элементов в сайдбаре, при нажатии на который можно перейти на определенную страницу;
+/**
+ * Один из элементов в сайдбаре, при нажатии на который можно перейти на определенную страницу;
+ * @param item - элемент сайдбара;
+ * @param collapsed - флаг свёрнутого состояния;
+ */
 export const SidebarItem = memo(({ item, collapsed }: SidebarItemProps) => {
     const { t } = useTranslation();
     const {
