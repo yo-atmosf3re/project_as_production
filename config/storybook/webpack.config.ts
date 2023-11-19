@@ -17,6 +17,8 @@ export default ({ config }: { config: webpack.Configuration }) => {
         entry: '',
         // ? Путь к папке исходных файлов;
         src: path.resolve(__dirname, '..', '..', 'src'),
+        buildLocales: '',
+        locales: '',
     };
     // ? Добавляем путь к папке исходных файлов в список папок, которые webpack будет искать при разрешении модулей;
     config!.resolve!.modules!.push(paths.src);
