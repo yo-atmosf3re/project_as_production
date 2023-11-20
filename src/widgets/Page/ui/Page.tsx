@@ -21,6 +21,8 @@ interface PagePropsI {
     viewType?: ARTICLE_VIEW;
 }
 
+export const PAGE_ID = 'PAGE_ID';
+
 /**
  * Компонента-обёртка для контентной части, чтобы инкапсулировать контентные стили, обернуть в семантический тег. Исключает использование контентных стилей на всё приложение, делая их модульными. Содержит в себе логику по контролю скролла;
  * @param className
@@ -57,7 +59,6 @@ export const Page: React.FC<PagePropsI> = memo(({
 
     // ? Сохраняем данные о скролле в стейт;
     const onScrollHandler = useThrottle((e: UIEvent<HTMLDivElement>) => {
-        console.log('Scroll');
         dispatch(scrollRestorationActions.setScrollPosition({
             position: e.currentTarget.scrollTop,
             // ? В качестве пути используем часть URL-пути, которое начинается с "/";
@@ -70,6 +71,7 @@ export const Page: React.FC<PagePropsI> = memo(({
             className={classNames(cls['page-wrapper'], mods, additionalClasses)}
             ref={wrapperRef}
             onScroll={onScrollHandler}
+            id={PAGE_ID}
         >
             {
                 children
@@ -77,13 +79,6 @@ export const Page: React.FC<PagePropsI> = memo(({
             {
                 onScrollEnd
                     ? (
-                        // ! Старый вариант, после закомментированного кода описан новый, который будет в дальнейшем протестирован;
-                        // <div
-                        // className={viewType === ARTICLE_VIEW.BIG ? cls.trigger : ''}
-                        // ref={triggerRef}
-                        //     className={cls.trigger}
-                        //     ref={triggerRef}
-                        // />
                         <div
                             className={cls.trigger}
                             ref={triggerRef}

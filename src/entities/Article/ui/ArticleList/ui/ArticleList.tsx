@@ -1,9 +1,13 @@
 /* eslint-disable react/no-array-index-key */
-import React, { HTMLAttributeAnchorTarget } from 'react';
+import React, {
+    HTMLAttributeAnchorTarget, MutableRefObject, useRef,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text } from 'shared/ui/Text';
 import { TEXT_SIZE } from 'shared/ui/Text/ui/Text';
+import { List, ListRowProps, WindowScroller } from 'react-virtualized';
+import { PAGE_ID } from 'widgets/Page/ui/Page';
 import { ARTICLE_VIEW, ArticleI } from '../../../model/types/article';
 import cls from './ArticleList.module.scss';
 import { ArticleListItem } from '../../ArticleListItem';
@@ -17,10 +21,10 @@ interface ArticleListPropsI {
     target?: HTMLAttributeAnchorTarget;
 }
 
-const GET_SKELETONS = (view: ARTICLE_VIEW) => (
+const GET_SKELETONS = (view: ARTICLE_VIEW): JSX.Element[] => (
     new Array(view === ARTICLE_VIEW.SMALL ? 9 : 3)
         .fill(0)
-        .map((item, index) => (
+        .map((_, index) => (
             <ArticleListItemSkeleton
                 className={cls.card}
                 key={index}
@@ -29,8 +33,10 @@ const GET_SKELETONS = (view: ARTICLE_VIEW) => (
         ))
 );
 
+const ITEM_WIDTH = 300;
+
 /**
- * Компонента, которая отрисовывает список статей.
+ * Компонента, которая отрисовывает список статей;
  * @param className
  * @param articles - массив со статьями;
  * @param isLoading - состояние загрузки;
@@ -45,15 +51,46 @@ export const ArticleList: React.FC<ArticleListPropsI> = ({
 }) => {
     const { t } = useTranslation('article');
 
-    const renderArticle = (article: ArticleI) => (
-        <ArticleListItem
-            article={article}
-            view={view}
-            className={cls.card}
-            target={target}
-            key={article.id}
-        />
-    );
+    const ref = useRef() as MutableRefObject<HTMLDivElement>;
+
+    const isBig = view === ARTICLE_VIEW.BIG;
+
+    const itemsPerRow = isBig ? 1 : 3;
+
+    const rowCount = isBig ? articles.length : Math.ceil(articles.length / itemsPerRow);
+
+    const rowRender = ({
+        index, key, style,
+    }: ListRowProps) => {
+        const items = [];
+        const fromIndex = index * itemsPerRow;
+        const toIndex = Math.min(fromIndex + itemsPerRow, articles.length);
+
+        for (let i = fromIndex; i < toIndex; i += 1) {
+            items.push(
+                <ArticleListItem
+                    article={articles[index]}
+                    view={view}
+                    className={cls.card}
+                    target={target}
+                    key={`str${i}`}
+                />,
+            );
+        }
+
+        return (
+            <div
+                ref={ref}
+                key={key}
+                style={style}
+                className={cls.row}
+            >
+                {
+                    items
+                }
+            </div>
+        );
+    };
 
     if (!isLoading && !articles.length) {
         return (
@@ -71,19 +108,36 @@ export const ArticleList: React.FC<ArticleListPropsI> = ({
     }
 
     return (
-        <div
-            className={classNames(cls['article-list'], {}, [className, cls[view]])}
+        <WindowScroller
+            onScroll={() => console.log('scroll')}
+            scrollElement={document.getElementById(PAGE_ID) as Element}
         >
-            {
-                articles.length > 0
-                    ? articles.map(renderArticle)
-                    : null
-            }
-            {
-                isLoading
-                    ? GET_SKELETONS(view)
-                    : null
-            }
-        </div>
+            {({
+                width, height, registerChild,
+                onChildScroll, isScrolling, scrollTop,
+            }) => (
+                <div
+                    ref={registerChild}
+                    className={classNames(cls['article-list'], {}, [className, cls[view]])}
+                >
+                    <List
+                        height={height ?? 700}
+                        rowCount={rowCount}
+                        rowHeight={isBig ? 700 : 330}
+                        rowRenderer={rowRender}
+                        width={width ? width - 80 : 700}
+                        autoHeight
+                        onScroll={onChildScroll}
+                        isScrolling={isScrolling}
+                        scrollTop={scrollTop}
+                    />
+                    {
+                        isLoading
+                            ? GET_SKELETONS(view)
+                            : null
+                    }
+                </div>
+            )}
+        </WindowScroller>
     );
 };

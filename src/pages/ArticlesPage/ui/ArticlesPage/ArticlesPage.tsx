@@ -40,7 +40,6 @@ const ArticlesPage: React.FC<ArticlesPagePropsI> = ({
     const view = useSelector(getArticlesPageView);
     const error = useSelector(getArticlesPageError);
     const [searchParams] = useSearchParams();
-    console.log(searchParams, 'searchParams');
 
     const onLoadNextPart = useCallback(() => {
         dispatch(fetchNextArticlesPage());
