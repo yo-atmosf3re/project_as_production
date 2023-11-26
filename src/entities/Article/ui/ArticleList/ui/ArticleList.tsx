@@ -90,7 +90,7 @@ export const ArticleList: React.FC<ArticleListPropsI> = ({
     );
 };
 
-// ! Закомментированный ниже код относится к реализации с помощью react-virtualized@9.21.21;
+// ! Закомментированный ниже код относится к реализации с помощью react-virtualized@9.22.3;
 // ! Закомментировано потому что ломается работа webpack;
 // const ref = useRef() as MutableRefObject<HTMLDivElement>;
 // const isBig = view === ARTICLE_VIEW.BIG;
