@@ -7,7 +7,6 @@ import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/Dynamic
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getCommentFormText } from '../../../model/selectors/getCommentFormText/getCommentFormText';
-import { getCommentFormError } from '../../../model/selectors/getCommentFormError/getCommentFormError';
 import { addCommentFormActions, addCommentFormReducer } from '../../../model/slice/addCommentFormSlice';
 import cls from './AddCommentForm.module.scss';
 
@@ -31,7 +30,6 @@ const AddCommentForm: React.FC<AddCommentFormPropsI> = ({
 }) => {
     const { t } = useTranslation();
     const text = useSelector(getCommentFormText);
-    const error = useSelector(getCommentFormError);
     const dispatch = useAppDispatch();
 
     const onCommentTextHandler = useCallback((value: string) => {

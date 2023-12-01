@@ -3,15 +3,13 @@ import { Text } from 'shared/ui/Text';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ArticleDetails, ArticleList } from 'entities/Article';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { CommentList } from 'entities/Comment';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useSelector } from 'react-redux';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { AddCommentForm } from 'features/AddCommentForm';
-import { BUTTON_THEME, Button } from 'shared/ui/Button';
-import { ROUTES_PATH } from 'shared/config/routeConfig/routeConfig';
 import { Page } from 'widgets/Page';
 import { TEXT_SIZE } from 'shared/ui/Text/ui/Text';
 import {
@@ -21,8 +19,6 @@ import cls from './ArticleDetailsPage.module.scss';
 import { getArticleComments } from '../../model/slice/articleDetailsCommentSlice';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
-import { getArticleDetailsRecommendationsError }
-    from '../../model/selectors/getArticleDetailsRecommendationsError/getArticleDetailsRecommendationsError';
 import { getArticleDetailsRecommendations }
     from '../../model/slice/articleDetailsPageRecommendationsSlice';
 import { getArticleDetailsRecommendationsIsLoading }
@@ -55,7 +51,6 @@ const ArticleDetailsPage: React.FC<ArticleDetailsPagePropsI> = ({
     const commetsIsLoading = useSelector(getArticleCommentsIsLoading);
     const recommendations = useSelector(getArticleDetailsRecommendations.selectAll);
     const recommendationsIsLoading = useSelector(getArticleDetailsRecommendationsIsLoading);
-    const recommendationsError = useSelector(getArticleDetailsRecommendationsError);
 
     const onSendComment = useCallback((text: string) => {
         dispatch(addCommentForArticle(text));

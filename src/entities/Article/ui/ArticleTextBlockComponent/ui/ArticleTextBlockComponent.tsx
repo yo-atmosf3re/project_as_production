@@ -1,6 +1,5 @@
 import React, { memo } from 'react';
-import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { ModsType, classNames } from 'shared/lib/classNames/classNames';
 import { Text } from 'shared/ui/Text';
 import { ArticleTextBlockI } from '../../../model/types/article';
 import cls from './ArticleTextBlockComponent.module.scss';
@@ -13,10 +12,10 @@ interface ArticleTextBlockComponentPropsI {
 export const ArticleTextBlockComponent: React.FC<ArticleTextBlockComponentPropsI> = memo(({
     className, block,
 }) => {
-    const { t } = useTranslation();
+    const mods: ModsType = {};
     return (
         <div
-            className={classNames(cls['articleBlock-text'], {}, [className])}
+            className={classNames(cls['articleBlock-text'], mods, [className])}
         >
             {
                 block.title

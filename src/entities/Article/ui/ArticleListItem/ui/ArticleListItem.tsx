@@ -1,4 +1,4 @@
-import React, { HTMLAttributeAnchorTarget, useCallback } from 'react';
+import React, { HTMLAttributeAnchorTarget } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text } from 'shared/ui/Text';
@@ -7,7 +7,6 @@ import { Icon } from 'shared/ui/Icon';
 import { Card } from 'shared/ui/Card';
 import { Avatar } from 'shared/ui/Avatar';
 import { BUTTON_THEME, Button } from 'shared/ui/Button';
-import { useNavigate } from 'react-router-dom';
 import { ROUTES_PATH } from 'shared/config/routeConfig/routeConfig';
 import { AppLink } from 'shared/ui/AppLink';
 import {
@@ -36,7 +35,6 @@ export const ArticleListItem: React.FC<ArticleListItemPropsI> = ({
     target,
 }) => {
     const { t } = useTranslation('article');
-    const navigate = useNavigate();
 
     // const onOpenArticleHandler = useCallback(() => {
     //     navigate(ROUTES_PATH.article_details + article.id);

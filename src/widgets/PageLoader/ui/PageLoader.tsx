@@ -1,6 +1,6 @@
 import React from 'react';
 import { Loader } from 'shared/ui/Loader';
-import { classNames } from '../../../lib/classNames/classNames';
+import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './PageLoader.module.scss';
 
 interface PageLoaderPropsI {
@@ -8,7 +8,7 @@ interface PageLoaderPropsI {
 }
 
 /**
- * Компонента, входящая в комплект UI-kit проекта, которая является страницей-прелоудером;
+ * Компонента, являющаяся имплементацией компоненты Loader, которая является страницей-прелоудером;
  * @param className
  */
 export const PageLoader: React.FC<PageLoaderPropsI> = ({

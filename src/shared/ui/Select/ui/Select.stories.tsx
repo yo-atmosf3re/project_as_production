@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { ThemeDecorator } from '../../../config/storybook/ThemeDecorator/ThemeDecorator';
 import { THEME } from 'app/providers/ThemeProvider';
+import { ThemeDecorator } from '../../../config/storybook/ThemeDecorator/ThemeDecorator';
 import { Select } from './Select';
 
 export default {

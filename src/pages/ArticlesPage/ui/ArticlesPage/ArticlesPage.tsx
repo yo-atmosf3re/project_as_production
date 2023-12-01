@@ -1,5 +1,4 @@
 import React, { memo, useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ArticleList } from 'entities/Article';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
@@ -11,7 +10,7 @@ import { useSearchParams } from 'react-router-dom';
 import cls from './ArticlesPage.module.scss';
 import { articlesPageReducer, getArticles } from '../../model/slice/articlesPageSlice';
 import {
-    getArticlesPageIsLoading, getArticlesPageError,
+    getArticlesPageIsLoading,
     getArticlesPageView,
 } from '../../model/selectors';
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
@@ -33,12 +32,10 @@ const INITIAL_REDUCERS: ReducersList = {
 const ArticlesPage: React.FC<ArticlesPagePropsI> = ({
     className,
 }) => {
-    const { t } = useTranslation('article');
     const dispatch = useAppDispatch();
     const articles = useSelector(getArticles.selectAll);
     const isLoading = useSelector(getArticlesPageIsLoading);
     const view = useSelector(getArticlesPageView);
-    const error = useSelector(getArticlesPageError);
     const [searchParams] = useSearchParams();
 
     const onLoadNextPart = useCallback(() => {

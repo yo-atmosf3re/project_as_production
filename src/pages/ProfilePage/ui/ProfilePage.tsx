@@ -10,7 +10,6 @@ import { useSelector } from 'react-redux';
 import { profileActions } from 'entities/Profile/model/slice/profileSlice';
 import { CURRENCY } from 'entities/Currency';
 import { COUNTRY } from 'entities/Country';
-import { useTranslation } from 'react-i18next';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useParams } from 'react-router-dom';
 import { Page } from 'widgets/Page';
@@ -32,7 +31,6 @@ const INITIAL_REDUCERS: ReducersList = {
 const ProfilePage: React.FC<ProfilePagePropsI> = ({
     className,
 }) => {
-    const { t } = useTranslation('profile');
     const dispatch = useAppDispatch();
     const { id } = useParams<{id: string}>();
     // ? Получаем дублированные данные из стейта, изменяем и работаем уже дальше с ними, а если нужно вернуть вводимые значения к дефолтным - это легко происходит в экшене cancelEdit, который активируется в ProfilePageHeader в обработчике событий;

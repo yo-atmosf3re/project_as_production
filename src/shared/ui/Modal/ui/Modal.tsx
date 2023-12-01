@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { MutableRefObject, ReactNode } from 'react';
-import { Portal } from 'shared/ui/Portal/ui/Portal';
+import { Portal } from '../../Portal';
 import { ModsType, classNames } from '../../../lib/classNames/classNames';
 import cls from './Modal.module.scss';
 

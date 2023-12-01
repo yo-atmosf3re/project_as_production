@@ -28,11 +28,10 @@ export const PAGE_ID = 'PAGE_ID';
  * @param className
  * @param children - содержимое, которое представляет из себя компоненту-страницу из сущности pages;
  * @param onScrollEnd - коллбэк, который передаётся в кастомный хук `useInfiniteScroll`, чтобы была возможность отрабатывать какую-либо логику при пересечении элементов в области видимости пользователя;
- * @param viewType - тип отображения статей, в зависимости от типа условно определяются классы scss для блока-триггера. Для BIG блок-триггер имеет некоторые размера, а для SMALL класс стилей отсутствует вовсе. Это нужно для более плавного и своевременного отклика `IO Observable`, который используется в `useInfiniteScroll` (такое решение может быть временным);
  * @return `children`
  */
 export const Page: React.FC<PagePropsI> = memo(({
-    className, children, onScrollEnd, viewType,
+    className, children, onScrollEnd,
 }) => {
     const mods: ModsType = {};
     const additionalClasses = [className];
