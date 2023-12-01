@@ -3,14 +3,14 @@ import { useTheme, THEME } from 'app/providers/ThemeProvider';
 import LightIcon from 'shared/assets/icons/theme-light.svg';
 import DarkIcon from 'shared/assets/icons/theme-dark.svg';
 import { Button, BUTTON_THEME } from 'shared/ui/Button';
-import { classNames } from '../../../lib/classNames/classNames';
+import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './ThemeSwitcher.module.scss';
 
 interface ThemeSwitcherPropsI {
    className?: string;
 }
 /**
- * Компонента, входящая в комплект UI-kit проекта, которая переключает цветовые темы во всём приложении;
+ * Компонента, которая переключает цветовые темы во всём приложении;
  * @param className
  */
 export const ThemeSwitcher: React.FC<ThemeSwitcherPropsI> = memo(({
