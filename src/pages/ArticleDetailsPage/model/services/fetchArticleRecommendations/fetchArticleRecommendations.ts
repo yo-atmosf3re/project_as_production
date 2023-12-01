@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfigI } from 'app/providers/StoreProvider';
 import { ArticleI } from 'entities/Article';
-import { CommentI } from 'entities/Comment';
 
 /**
  * Получение статей для списка рекомендаций на странице ArticleDetailsPage. Возвращает 4 статьи за один запрос;

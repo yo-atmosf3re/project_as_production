@@ -1,3 +1,0 @@
-const selector = () => {
-    console.log();
-};
