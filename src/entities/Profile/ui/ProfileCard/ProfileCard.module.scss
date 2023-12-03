@@ -3,21 +3,3 @@
     box-shadow: var(--shadow-color);
     border-radius: var(--border-radius-xl);
 }
-
-.input {
-    margin-top: 10px;
-}
-
-.loading,
-.error {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.avatar-wrapper {
-    display: flex;
-    width: 100%;
-
-    // justify-content: center;
-}

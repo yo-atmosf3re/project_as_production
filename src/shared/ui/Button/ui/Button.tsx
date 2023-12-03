@@ -2,6 +2,16 @@ import React, { ButtonHTMLAttributes, ReactNode, memo } from 'react';
 import { ModsType, classNames } from '../../../lib/classNames/classNames';
 import cls from './Button.module.scss';
 
+/**
+ * Различные стилизованные темы для кнопки;
+ * @param CLEAR - чистая кнопка с обнулёнными стилями;
+ * @param CLEAR_INVERTED - аналогичная по стилям CLEAR, но с другим цветом текста внутри;
+ * @param OUTLINE - кнопка с обводкой, без заднего фона;
+ * @param OUTLINE_RED - аналогичная по стилям OUTLINE, но с светло-красным цветом текста внутри;
+ * @param OUTLINE_INVERTED - аналогичная по стилям OUTLINE, но с другим цветом текста внутри;
+ * @param BACKGROUND - кнопка с заданным задним фоном из css-переменной `--bg-color`, имеет заданный цвет текста внутри, не имеет обводки;
+ * @param BACKGROUND_INVERTED - аналогичная по стилям с BACKGROUND, но с другим цветом заднего фона, текста;
+ */
 export enum BUTTON_THEME {
     CLEAR = 'clear',
     CLEAR_INVERTED = 'clear-inverted',
@@ -12,10 +22,16 @@ export enum BUTTON_THEME {
     BACKGROUND_INVERTED = 'backgroundInverted'
 }
 
+/**
+ * Размеры кнопки, значения которых соответствуют значениям css-переменным из global.scss (используются размеры из переменных, которые ответственны за размер шрифтов);
+ * @param M
+ * @param L
+ * @param XL
+ */
 export enum BUTTON_SIZE {
     M = 'size_m',
-    XL = 'size_xl',
     L = 'size_l',
+    XL = 'size_xl',
 }
 
 interface ButtonPropsI extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -33,9 +49,9 @@ interface ButtonPropsI extends ButtonHTMLAttributes<HTMLButtonElement> {
  *
  * @param className
  * @param children - содержимое кнопки;
- * @param theme - тема кнопки, для доступа используется BUTTON_THEME enum;
+ * @param theme - тема кнопки, для доступа используется BUTTON_THEME enum (по-умолчанию - OUTLINE);
  * @param square - флаг, указывающий, что кнопка должна быть квадратной;
- * @param size - размер кнопки, для доступа используется BUTTON_SIZE enum;
+ * @param size - размер кнопки, для доступа используется BUTTON_SIZE enum (по-умолчанию - M);
  * @param disabled - возможность отключить кнопку;
  */
 export const Button: React.FC<ButtonPropsI> = memo(({

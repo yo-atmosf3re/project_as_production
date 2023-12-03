@@ -10,6 +10,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { profileActions } from 'entities/Profile/model/slice/profileSlice';
 import { VALIDATE_PROFILE_ERROR } from 'entities/Profile/model/types/profile';
 import { getUserAuthData } from 'entities/User';
+import { HStack } from 'shared/ui/Stack';
 import cls from './ProfilePageHeader.module.scss';
 
 interface ProfilePageHeaderPropsI {
@@ -56,12 +57,12 @@ export const ProfilePageHeader: React.FC<ProfilePageHeaderPropsI> = ({
     }, [dispatch]);
 
     return (
-        <div
+        <HStack
+            max
+            justify="between"
             className={classNames(cls['profile-header'], {}, [className])}
         >
-            <div
-                className={cls['profile-info']}
-            >
+            <>
                 <Text title={
                     t('Профиль')
                 }
@@ -88,47 +89,13 @@ export const ProfilePageHeader: React.FC<ProfilePageHeaderPropsI> = ({
                         )
                         : null
                 }
-            </div>
+            </>
             {
                 canEdit && (
                     <div className={cls.buttons}>
-                        {readonly
-                            ? (
-                                <Button
-                                    className={
-                                        classNames(
-                                            cls['edit-button'],
-                                            { [cls['light-button']]: buttonClassCondition },
-                                            [],
-                                        )
-                                    }
-                                    theme={buttonThemeCondition}
-                                    onClick={onEditHandler}
-                                    disabled={isLoading}
-                                >
-                                    {
-                                        t('Редактировать')
-                                    }
-                                </Button>
-                            )
-                            : (
-                                <>
-                                    <Button
-                                        className={
-                                            classNames(
-                                                cls['some-button'],
-                                                { [cls['cancel-light']]: buttonClassCondition },
-                                                [],
-                                            )
-                                        }
-                                        theme={BUTTON_THEME.OUTLINE_RED}
-                                        onClick={onCancelEditHandler}
-                                        disabled={isLoading}
-                                    >
-                                        {
-                                            t('Отменить')
-                                        }
-                                    </Button>
+                        {
+                            readonly
+                                ? (
                                     <Button
                                         className={
                                             classNames(
@@ -138,18 +105,56 @@ export const ProfilePageHeader: React.FC<ProfilePageHeaderPropsI> = ({
                                             )
                                         }
                                         theme={buttonThemeCondition}
-                                        onClick={onSaveEditHandler}
+                                        onClick={onEditHandler}
                                         disabled={isLoading}
                                     >
                                         {
-                                            t('Сохранить')
+                                            t('Редактировать')
                                         }
                                     </Button>
-                                </>
-                            )}
+                                )
+                                : (
+                                    <HStack
+                                        gap="8"
+                                    >
+                                        <Button
+                                            className={
+                                                classNames(
+                                                    cls['some-button'],
+                                                    { [cls['cancel-light']]: buttonClassCondition },
+                                                    [],
+                                                )
+                                            }
+                                            theme={BUTTON_THEME.OUTLINE_RED}
+                                            onClick={onCancelEditHandler}
+                                            disabled={isLoading}
+                                        >
+                                            {
+                                                t('Отменить')
+                                            }
+                                        </Button>
+                                        <Button
+                                            className={
+                                                classNames(
+                                                    cls['edit-button'],
+                                                    { [cls['light-button']]: buttonClassCondition },
+                                                    [],
+                                                )
+                                            }
+                                            theme={buttonThemeCondition}
+                                            onClick={onSaveEditHandler}
+                                            disabled={isLoading}
+                                        >
+                                            {
+                                                t('Сохранить')
+                                            }
+                                        </Button>
+                                    </HStack>
+                                )
+                        }
                     </div>
                 )
             }
-        </div>
+        </HStack>
     );
 };

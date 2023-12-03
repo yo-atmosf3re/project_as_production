@@ -13,6 +13,7 @@ import { COUNTRY } from 'entities/Country';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useParams } from 'react-router-dom';
 import { Page } from 'widgets/Page';
+import { VStack } from 'shared/ui/Stack';
 import cls from './ProfilePage.module.scss';
 import { ProfilePageHeader } from './ProfilePageHeader';
 
@@ -100,24 +101,29 @@ const ProfilePage: React.FC<ProfilePagePropsI> = ({
             reducers={INITIAL_REDUCERS}
         >
             <Page className={classNames(cls.profile, {}, [className])}>
-                <ProfilePageHeader
-                    isLoading={isLoading}
-                    validateErrors={validateErrors}
-                />
-                <ProfileCard
-                    data={formData}
-                    isLoading={isLoading}
-                    error={error}
-                    readonly={readonly}
-                    onChangeFirstnameHandler={onChangeFirstname}
-                    onChangeLastnameHandler={onChangeLastname}
-                    onChangeAgeHandler={onChangeAge}
-                    onChangeCityHandler={onChangeCity}
-                    onChangeUsernameHandler={onChangeUsername}
-                    onChangeAvatarHandler={onChangeAvatar}
-                    onChangeCurrencyHandler={onChangeCurrency}
-                    onChangeCountryHandler={onChangeCountry}
-                />
+                <VStack
+                    max
+                    gap="16"
+                >
+                    <ProfilePageHeader
+                        isLoading={isLoading}
+                        validateErrors={validateErrors}
+                    />
+                    <ProfileCard
+                        data={formData}
+                        isLoading={isLoading}
+                        error={error}
+                        readonly={readonly}
+                        onChangeFirstnameHandler={onChangeFirstname}
+                        onChangeLastnameHandler={onChangeLastname}
+                        onChangeAgeHandler={onChangeAge}
+                        onChangeCityHandler={onChangeCity}
+                        onChangeUsernameHandler={onChangeUsername}
+                        onChangeAvatarHandler={onChangeAvatar}
+                        onChangeCurrencyHandler={onChangeCurrency}
+                        onChangeCountryHandler={onChangeCountry}
+                    />
+                </VStack>
             </Page>
         </DynamicModuleLoader>
     );

@@ -5,7 +5,7 @@ import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDeco
 import { PageLoader } from './PageLoader';
 
 export default {
-    title: 'shared/PageLoader',
+    title: 'widget/PageLoader',
     component: PageLoader,
     argTypes: {
         backgroundColor: { control: 'color' },
