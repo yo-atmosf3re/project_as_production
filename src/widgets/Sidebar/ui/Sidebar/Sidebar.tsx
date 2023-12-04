@@ -4,7 +4,7 @@ import { LangSwitcher } from 'shared/ui/LangSwitcher';
 import { Button, BUTTON_THEME, BUTTON_SIZE } from 'shared/ui/Button';
 import { useSelector } from 'react-redux';
 import { ThemeSwitcher } from 'features/ThemeSwitcher';
-import { VStack } from 'shared/ui/Stack';
+import { HStack, VStack } from 'shared/ui/Stack';
 import cls from './Sidebar.module.scss';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import { getSidebarItems } from '../../model/selectors/getSidebarItems';
@@ -57,13 +57,16 @@ export const Sidebar: React.FC<NavbarPropsI> = memo(({
                     itemsList
                 }
             </VStack>
-            <div className={cls.switchers}>
+            <HStack
+                justify="center"
+                className={cls.switchers}
+            >
                 <ThemeSwitcher />
                 <LangSwitcher
                     className={cls.lang}
                     short={collapsed}
                 />
-            </div>
+            </HStack>
         </menu>
     );
 });

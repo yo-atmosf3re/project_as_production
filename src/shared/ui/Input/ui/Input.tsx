@@ -3,6 +3,7 @@
 import React, {
     InputHTMLAttributes, memo, useEffect, useRef, useState,
 } from 'react';
+import { HStack } from '../../../ui/Stack';
 import { ModsType, classNames } from '../../../lib/classNames/classNames';
 import cls from './Input.module.scss';
 
@@ -89,8 +90,8 @@ export const Input: React.FC<InputPropsI> = memo(({
         );
 
     return (
-        <div
-            className={classNames(cls['input-wrapper'], mods, [className])}
+        <HStack
+            className={classNames('', mods, [className])}
         >
             {
                 placeholder
@@ -126,6 +127,6 @@ export const Input: React.FC<InputPropsI> = memo(({
                         : null
                 }
             </div>
-        </div>
+        </HStack>
     );
 });

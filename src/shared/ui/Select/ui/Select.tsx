@@ -1,4 +1,5 @@
 import React, { ChangeEvent, useMemo } from 'react';
+import { HStack } from '../../../ui/Stack';
 import { ModsType, classNames } from '../../../lib/classNames/classNames';
 import cls from './Select.module.scss';
 
@@ -50,8 +51,8 @@ export const Select = <T extends string>({
         )), [options]);
 
     return (
-        <div
-            className={classNames(cls['select-wrapper'], {}, additionalClasses)}
+        <HStack
+            className={classNames('', {}, additionalClasses)}
         >
             {
                 label
@@ -76,6 +77,6 @@ export const Select = <T extends string>({
                     optionsList
                 }
             </select>
-        </div>
+        </HStack>
     );
 };

@@ -9,6 +9,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Text, TEXT_THEME } from 'shared/ui/Text';
 import { APP_LINK_THEME, AppLink } from 'shared/ui/AppLink';
 import { ROUTES_PATH } from 'shared/config/routeConfig/routeConfig';
+import { HStack } from 'shared/ui/Stack';
 import cls from './Navbar.module.scss';
 
 interface NavbarPropsI {
@@ -39,7 +40,10 @@ export const Navbar: React.FC<NavbarPropsI> = memo(() => {
     // ? Такая альтернативная отрисовка вызывается только в том случае, если есть какие-то авторизационные данные у пользователя - пользователь вошёл в аккаунт, как это работает: приложение запускается, в App.tsx отрабатывает useEffect, внутри которого вызывается функция с инициализацией данных пользователя, в LS сохраняется токен пользователя (если его там нет);
     if (authData) {
         return (
-            <header className={classNames(cls.navbar)}>
+            <HStack
+                align="center"
+                className={classNames(cls.navbar)}
+            >
                 <Text
                     theme={TEXT_THEME.INVERTED}
                     className={cls['app-name']}
@@ -63,12 +67,15 @@ export const Navbar: React.FC<NavbarPropsI> = memo(() => {
                 >
                     {t('Выйти')}
                 </Button>
-            </header>
+            </HStack>
         );
     }
 
     return (
-        <header className={classNames(cls.navbar)}>
+        <HStack
+            align="center"
+            className={classNames(cls.navbar)}
+        >
             <Button
                 className={cls.links}
                 theme={BUTTON_THEME.CLEAR_INVERTED}
@@ -86,6 +93,6 @@ export const Navbar: React.FC<NavbarPropsI> = memo(() => {
                     )
                     : null
             }
-        </header>
+        </HStack>
     );
 });

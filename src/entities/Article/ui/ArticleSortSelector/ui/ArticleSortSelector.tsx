@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Select, SelectOptionI } from 'shared/ui/Select';
 import { SortOrderType } from 'shared/types';
+import { HStack } from 'shared/ui/Stack';
 import { ARTICLE_SORT_FIELD } from '../../../index';
-import cls from './ArticleSortSelector.module.scss';
 
 interface ArticleSortSelectorPropsI {
     className?: string;
@@ -55,8 +55,10 @@ export const ArticleSortSelector: React.FC<ArticleSortSelectorPropsI> = ({
     ], [t]);
 
     return (
-        <div
-            className={classNames(cls['article-sort_selector'], {}, [className])}
+        <HStack
+            gap="32"
+            align="center"
+            className={classNames('', {}, [className])}
         >
             <Select<ARTICLE_SORT_FIELD>
                 options={sortFieldOptions}
@@ -73,8 +75,7 @@ export const ArticleSortSelector: React.FC<ArticleSortSelectorPropsI> = ({
                 label={
                     t('по')
                 }
-                className={cls.order}
             />
-        </div>
+        </HStack>
     );
 };

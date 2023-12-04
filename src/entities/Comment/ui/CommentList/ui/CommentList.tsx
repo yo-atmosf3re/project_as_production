@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { ModsType, classNames } from 'shared/lib/classNames/classNames';
 import { Text } from 'shared/ui/Text';
-import cls from './CommentList.module.scss';
+import { VStack } from 'shared/ui/Stack';
 import { CommentCard } from '../../CommentCard';
 import { CommentI } from '../../../model/types/comment';
 
@@ -28,19 +28,23 @@ export const CommentList: React.FC<CommentListPropsI> = ({
 
     if (isLoading) {
         return (
-            <div
-                className={classNames(cls['comment-list'], mods, [className])}
+            <VStack
+                gap="16"
+                max
+                className={classNames('', mods, [className])}
             >
                 <CommentCard isLoading />
                 <CommentCard isLoading />
                 <CommentCard isLoading />
-            </div>
+            </VStack>
         );
     }
 
     return (
-        <div
-            className={classNames(cls['comment-list'], mods, [className])}
+        <VStack
+            gap="16"
+            max
+            className={classNames('', mods, [className])}
         >
             {
                 comments?.length
@@ -48,7 +52,6 @@ export const CommentList: React.FC<CommentListPropsI> = ({
                         <CommentCard
                             key={comment.id + comment.text}
                             isLoading={isLoading}
-                            className={cls.comment}
                             comment={comment}
                         />
                     ))
@@ -60,6 +63,6 @@ export const CommentList: React.FC<CommentListPropsI> = ({
                         />
                     )
             }
-        </div>
+        </VStack>
     );
 };

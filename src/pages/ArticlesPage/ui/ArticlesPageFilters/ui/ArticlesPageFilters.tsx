@@ -13,6 +13,7 @@ import { Input } from 'shared/ui/Input';
 import { SortOrderType } from 'shared/types';
 import { useDebouce } from 'shared/lib/hooks/useDebounce/useDebounce';
 import { ArticleTypeTabs } from 'entities/Article/ui/ArticleTypeTabs';
+import { HStack } from 'shared/ui/Stack';
 import {
     getArticlesPageType, getArticlesPageSearch,
     getArticlesPageOrder, getArticlesPageSort,
@@ -76,10 +77,11 @@ export const ArticlesPageFilters: React.FC<ArticlesPageFiltersPropsI> = ({
 
     return (
         <div
-            className={classNames(cls['articles-page_filters'], {}, [className])}
+            className={classNames('', {}, [className])}
         >
-            <div
-                className={cls['sort-wrapper']}
+            <HStack
+                align="center"
+                justify="between"
             >
                 <ArticleSortSelector
                     order={order}
@@ -91,7 +93,7 @@ export const ArticlesPageFilters: React.FC<ArticlesPageFiltersPropsI> = ({
                     view={view}
                     onViewClickHandler={onChangeView}
                 />
-            </div>
+            </HStack>
             <Card
                 className={cls.search}
             >

@@ -2,6 +2,7 @@ import React from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { Page } from 'widgets/Page';
+import { HStack } from 'shared/ui/Stack';
 import cls from './NotFoundPage.module.scss';
 
 interface NotFoundPagePropsI {
@@ -17,10 +18,17 @@ export const NotFoundPage: React.FC<NotFoundPagePropsI> = ({
 }) => {
     const { t } = useTranslation('notFoundPage');
     return (
-        <Page className={classNames(cls.notFoundPage, {}, [className])}>
-            {
-                t('Страница не найдена')
-            }
+        <Page
+            className={classNames(cls['nf-page'], {}, [className])}
+        >
+            <HStack
+                justify="center"
+                align="center"
+            >
+                {
+                    t('Страница не найдена')
+                }
+            </HStack>
         </Page>
     );
 };

@@ -6,6 +6,7 @@ import { ROUTES_PATH } from 'shared/config/routeConfig/routeConfig';
 import { Button, BUTTON_THEME } from 'shared/ui/Button';
 import { useSelector } from 'react-redux';
 import { getArticleDetailsData } from 'entities/Article';
+import { HStack } from 'shared/ui/Stack';
 import { getCanEditArticle } from '../../../model/selectors/getCanEditArticle/getCanEditArticle';
 import cls from './ArticleDetailsPageHeader.module.scss';
 
@@ -34,8 +35,11 @@ export const ArticleDetailsPageHeader: React.FC<ArticleDetailsPageHeaderPropsI> 
     }, [article?.id, navigate]);
 
     return (
-        <div
-            className={classNames(cls['article-details_header'], {}, [className])}
+        <HStack
+            max
+            justify="between"
+            // className={classNames(cls['article-details_header'], {}, [className])}
+            className={classNames('', {}, [className])}
         >
             <Button
                 theme={BUTTON_THEME.OUTLINE}
@@ -60,6 +64,6 @@ export const ArticleDetailsPageHeader: React.FC<ArticleDetailsPageHeaderPropsI> 
                     )
                     : null
             }
-        </div>
+        </HStack>
     );
 };

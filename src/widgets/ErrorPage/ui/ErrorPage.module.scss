@@ -1,20 +1,16 @@
-.errorPage {
+.error-page {
     width: 100%;
     height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
     background-color: #bbc0fb;
 }
 
-.errorText {
+.error-text {
     color: black;
     font-size: 150px;
     margin-bottom: 68px;
 }
 
-.errorDescription {
+.error-description {
     color: black;
     font-size: 20px;
     margin: 10px 0;

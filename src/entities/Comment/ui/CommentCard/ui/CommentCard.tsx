@@ -5,6 +5,7 @@ import { Avatar } from 'shared/ui/Avatar';
 import { Skeleton } from 'shared/ui/Skeleton';
 import { AppLink } from 'shared/ui/AppLink';
 import { ROUTES_PATH } from 'shared/config/routeConfig/routeConfig';
+import { HStack, VStack } from 'shared/ui/Stack';
 import { CommentI } from '../../../model/types/comment';
 import cls from './CommentCard.module.scss';
 
@@ -28,7 +29,9 @@ export const CommentCard: React.FC<CommentCardPropsI> = ({
 
     if (isLoading) {
         return (
-            <div
+            <VStack
+                max
+                gap="8"
                 className={classNames(cls['comment-card'], mods, [className, cls['comment-loading']])}
             >
                 <div className={cls['comment-header']}>
@@ -50,40 +53,47 @@ export const CommentCard: React.FC<CommentCardPropsI> = ({
                     border="6px"
                     className={cls['comment-text']}
                 />
-            </div>
+            </VStack>
         );
     }
 
     if (!comment) return null;
 
     return (
-        <div
+        <VStack
+            max
+            gap="8"
             className={classNames(cls['comment-card'], mods, [className])}
         >
+
             <AppLink
                 to={`${ROUTES_PATH.profile}${comment?.user.id}`}
-                className={cls['comment-header']}
             >
-                {
-                    comment?.user.avatar
-                        ? (
-                            <Avatar
-                                src={comment?.user.avatar}
-                                size={30}
-                            />
-                        )
-                        : null
-                }
-                <Text
-                    className={cls['comment-username']}
-                    title={comment?.user.username}
-                />
+                <HStack
+                    gap="8"
+                    align="center"
+                >
+                    {
+                        comment?.user.avatar
+                            ? (
+                                <Avatar
+                                    src={comment?.user.avatar}
+                                    size={30}
+                                />
+                            )
+                            : null
+                    }
+                    <Text
+                        className={cls['comment-username']}
+                        title={comment?.user.username}
+                    />
+                </HStack>
             </AppLink>
 
             <Text
                 className={cls['comment-text']}
                 text={comment?.text}
             />
-        </div>
+        </VStack>
     );
 };

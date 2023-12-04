@@ -8,6 +8,7 @@ import { Text } from 'shared/ui/Text';
 import { TEXT_THEME } from 'shared/ui/Text/ui/Text';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { VStack } from 'shared/ui/Stack';
 import { getLoginUsername } from '../../../model/selectors/getLoginUsername/getLoginUsername';
 import { getLoginPassword } from '../../../model/selectors/getLoginPassword/getLoginPassword';
 import { getLoginError } from '../../../model/selectors/getLoginError/getLoginError';
@@ -55,7 +56,7 @@ const LoginForm: React.FC<LoginFormPropsI> = memo(({
         <DynamicModuleLoader
             reducers={INITIAL_REDUCERS}
         >
-            <div
+            <VStack
                 className={classNames(cls['login-form'], {}, [className])}
             >
                 <Text
@@ -105,7 +106,7 @@ const LoginForm: React.FC<LoginFormPropsI> = memo(({
                         t('Войти')
                     }
                 </Button>
-            </div>
+            </VStack>
         </DynamicModuleLoader>
     );
 });

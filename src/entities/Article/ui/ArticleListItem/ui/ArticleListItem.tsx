@@ -9,6 +9,7 @@ import { Avatar } from 'shared/ui/Avatar';
 import { BUTTON_THEME, Button } from 'shared/ui/Button';
 import { ROUTES_PATH } from 'shared/config/routeConfig/routeConfig';
 import { AppLink } from 'shared/ui/AppLink';
+import { HStack } from 'shared/ui/Stack';
 import {
     ARTICLE_BLOCK_TYPE, ARTICLE_VIEW, ArticleI, ArticleTextBlockI,
 } from '../../../model/types/article';
@@ -35,10 +36,6 @@ export const ArticleListItem: React.FC<ArticleListItemPropsI> = ({
     target,
 }) => {
     const { t } = useTranslation('article');
-
-    // const onOpenArticleHandler = useCallback(() => {
-    //     navigate(ROUTES_PATH.article_details + article.id);
-    // }, [article.id, navigate]);
 
     const types = (
         <Text
@@ -68,7 +65,9 @@ export const ArticleListItem: React.FC<ArticleListItemPropsI> = ({
                 className={classNames(cls['article-item'], {}, [className, cls[view]])}
             >
                 <Card className={cls.card}>
-                    <div className={cls.header}>
+                    <HStack
+                        align="center"
+                    >
                         <Avatar
                             size={30}
                             src={article.user.avatar}
@@ -81,7 +80,7 @@ export const ArticleListItem: React.FC<ArticleListItemPropsI> = ({
                             text={article.createdAt}
                             className={cls.date}
                         />
-                    </div>
+                    </HStack>
                     <Text
                         text={article.title}
                         className={cls.title}
@@ -104,7 +103,11 @@ export const ArticleListItem: React.FC<ArticleListItemPropsI> = ({
                             )
                             : null
                     }
-                    <div className={cls.footer}>
+                    <HStack
+                        className={cls.footer}
+                        align="center"
+                        gap="16"
+                    >
                         <AppLink
                             target={target}
                             to={ROUTES_PATH.article_details + article.id}
@@ -117,8 +120,10 @@ export const ArticleListItem: React.FC<ArticleListItemPropsI> = ({
                                 }
                             </Button>
                         </AppLink>
-                        {views}
-                    </div>
+                        {
+                            views
+                        }
+                    </HStack>
                 </Card>
             </div>
         );
@@ -144,14 +149,17 @@ export const ArticleListItem: React.FC<ArticleListItemPropsI> = ({
                         className={cls.date}
                     />
                 </div>
-                <div className={cls['info-wrapper']}>
+                <HStack
+                    className={cls['info-wrapper']}
+                    align="center"
+                >
                     {
                         types
                     }
                     {
                         views
                     }
-                </div>
+                </HStack>
                 <Text
                     text={article.title}
                     className={cls.title}

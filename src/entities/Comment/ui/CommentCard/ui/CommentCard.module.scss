@@ -4,19 +4,6 @@
     border-radius: var(--border-radius-m);
 }
 
-.comment-header {
-    display: flex;
-    align-items: center;
-}
-
-.comment-text {
-    margin-top: 10px;
-}
-
-.comment-username {
-    margin-left: 10px;
-}
-
 .comment-loading {
     box-shadow: none;
 }

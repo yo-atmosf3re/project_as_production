@@ -1,5 +1,6 @@
 import React, { ReactNode, useCallback } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { HStack } from '../../../ui/Stack';
 import { CARD_THEME, Card } from '../../Card';
 import cls from './Tabs.module.scss';
 
@@ -29,7 +30,8 @@ export const Tabs: React.FC<TabsPropsI> = ({
         onTabClick(tab);
     }, [onTabClick]);
     return (
-        <div
+        <HStack
+            gap="8"
             className={classNames(cls.tabs, {}, [className])}
         >
             {
@@ -46,6 +48,6 @@ export const Tabs: React.FC<TabsPropsI> = ({
                     </Card>
                 ))
             }
-        </div>
+        </HStack>
     );
 };
