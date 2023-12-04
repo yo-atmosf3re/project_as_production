@@ -41,6 +41,7 @@ export const Navbar: React.FC<NavbarPropsI> = memo(() => {
     if (authData) {
         return (
             <HStack
+                role="heading"
                 align="center"
                 className={classNames(cls.navbar)}
             >
@@ -73,6 +74,7 @@ export const Navbar: React.FC<NavbarPropsI> = memo(() => {
 
     return (
         <HStack
+            role="heading"
             align="center"
             className={classNames(cls.navbar)}
         >

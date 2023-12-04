@@ -44,6 +44,15 @@ interface TextPropsI {
     size?: TEXT_SIZE;
 }
 
+export type HeaderTagType = 'h1' | 'h2' | 'h3';
+
+// ? Маппер для сопоставления размера шрифта с HTML-тегом;
+const MAP_SIZE_TO_HEADER_TAG: Record<TEXT_SIZE, HeaderTagType> = {
+    [TEXT_SIZE.S]: 'h3',
+    [TEXT_SIZE.M]: 'h2',
+    [TEXT_SIZE.L]: 'h1',
+};
+
 /**
  * Кастомный текстовый компонент, входящий в комплект UI-kit проекта, который отрисовывает либо яркий и более крупный title, либо более блёклый и мелкий text. Можно отрисовывать то и то;
  *
@@ -60,11 +69,16 @@ export const Text: React.FC<TextPropsI> = memo(({
     align = TEXT_ALIGN.LEFT,
     size = TEXT_SIZE.M,
 }) => {
+    // ? Название с большой буквы, потому что используется как JSX-компонента;
+    // ? Используется для отрисовки title для сохранения семантики;
+    const HeaderTag: HeaderTagType = MAP_SIZE_TO_HEADER_TAG[size];
+
     const mods: ModsType = {
         [cls[theme]]: true,
         [cls[align]]: true,
         [cls[size]]: true,
     };
+
     const additionalClasses: Array<string | undefined> = [
         className,
     ];
@@ -76,12 +90,12 @@ export const Text: React.FC<TextPropsI> = memo(({
             {
                 title
                     ? (
-                        <p
+                        <HeaderTag
                             data-testid="title"
                             className={cls.title}
                         >
                             {title}
-                        </p>
+                        </HeaderTag>
                     )
                     : null
             }

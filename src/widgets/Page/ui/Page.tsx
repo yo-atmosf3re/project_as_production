@@ -66,7 +66,7 @@ export const Page: React.FC<PagePropsI> = memo(({
     }, 500);
 
     return (
-        <section
+        <main
             className={classNames(cls['page-wrapper'], mods, additionalClasses)}
             ref={wrapperRef}
             onScroll={onScrollHandler}
@@ -85,6 +85,6 @@ export const Page: React.FC<PagePropsI> = memo(({
                     )
                     : null
             }
-        </section>
+        </main>
     );
 });

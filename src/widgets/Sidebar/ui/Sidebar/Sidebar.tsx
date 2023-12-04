@@ -33,7 +33,7 @@ export const Sidebar: React.FC<NavbarPropsI> = memo(({
     )), [collapsed, sidebarItemsList]);
 
     return (
-        <menu
+        <aside
             data-testid="sidebar"
             className={classNames(cls.sidebar, { [cls.collapsed]: !collapsed }, [className])}
         >
@@ -50,6 +50,7 @@ export const Sidebar: React.FC<NavbarPropsI> = memo(({
                 }
             </Button>
             <VStack
+                role="navigation"
                 className={cls.items}
                 gap="8"
             >
@@ -67,6 +68,6 @@ export const Sidebar: React.FC<NavbarPropsI> = memo(({
                     short={collapsed}
                 />
             </HStack>
-        </menu>
+        </aside>
     );
 });
