@@ -8,13 +8,13 @@ interface {{pascalCase}}PropsI {
 }
 
 export const {{pascalCase}}: React.FC<{{pascalCase}}PropsI> = ({
-    className
+    className,
 }) => {
-    const {t} = useTranslation();
+    const { t } = useTranslation();
     return (
-        <div 
-            className={classNames(cls.{{pascalCase}}, {},   [className])
-        }>
+        <div
+            className={classNames(cls.{{pascalCase}}, {}, [className])}
+        >
             {{pascalCase}}
         </div>
     );
