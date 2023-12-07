@@ -5,7 +5,7 @@ import cls from './Text.module.scss';
 /**
  * Цветовые темы для текста;
  * @param PRIMARY - text - использует secondary-color, title - использует primary-color;
- * @param INVERTED - ;
+ * @param INVERTED - text - использует inverted-secondary-color, title - использует inverted-primary-color;
  * @param ERROR - text - тёмно-красный, title - светло-красный;
  */
 export enum TEXT_THEME {

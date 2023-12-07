@@ -26,7 +26,11 @@ const INITIAL_REDUCERS: ReducersList = {
     loginForm: loginReducer,
 };
 
-// ? Форма для логина;
+/**
+ * Компонента с формой авторизации;
+ * @param className
+ * @param onSuccess - содержит логику по открытию/закрытию модального окна с формой логина;
+ */
 const LoginForm: React.FC<LoginFormPropsI> = memo(({
     className, onSuccess,
 }) => {

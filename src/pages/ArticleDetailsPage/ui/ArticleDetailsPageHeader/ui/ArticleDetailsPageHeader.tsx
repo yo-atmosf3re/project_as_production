@@ -38,7 +38,6 @@ export const ArticleDetailsPageHeader: React.FC<ArticleDetailsPageHeaderPropsI> 
         <HStack
             max
             justify="between"
-            // className={classNames(cls['article-details_header'], {}, [className])}
             className={classNames('', {}, [className])}
         >
             <Button

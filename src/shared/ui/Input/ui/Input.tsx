@@ -23,13 +23,12 @@ interface SelectHandlerI extends React.ChangeEventHandler<HTMLInputElement> {
     target?: EventTarget & HTMLInputElement
 }
 
-// ?
 /**
  * Компонента-кастомный инпут, входящая в комплект UI-kit проекта, напоминает стилистикой терминал;
  * @param className
  * @param value
  * @param onChange
- * @param autofocus - флаг отвечающий за фокус на инпуте;
+ * @param autofocus - флаг, отвечающий за фокус на инпуте;
  * @param readonly - передаёт этот флаг в свойство readOnly самого инпута (для чтения инпут или нет);
  */
 export const Input: React.FC<InputPropsI> = memo(({
@@ -106,6 +105,7 @@ export const Input: React.FC<InputPropsI> = memo(({
             }
             <div className={cls['caret-wrapper']}>
                 <input
+                    ref={ref}
                     type={type}
                     value={value}
                     readOnly={readonly}

@@ -21,6 +21,7 @@ const MainPage = () => {
                 <div>333</div>
                 <ListBox
                     defaultValue="Выберите значение"
+                    // eslint-disable-next-line @typescript-eslint/no-empty-function
                     onChange={(value: string) => {}}
                     value={undefined}
                     items={[
