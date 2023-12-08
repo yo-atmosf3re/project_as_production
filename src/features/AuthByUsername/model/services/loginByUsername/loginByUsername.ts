@@ -38,7 +38,6 @@ export const loginByUsername = createAsyncThunk<
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 extra.navigate('/about');
-
                 return response.data;
             } catch (error) {
                 console.log(error, 'Login');

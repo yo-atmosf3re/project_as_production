@@ -124,6 +124,14 @@ export const ArticleDetails: React.FC<ArticleDetailsPropsI> = memo(({
         // ? Состояние, если есть ошибка;
     } else if (error) {
         // ? Состояние успешного получения данных;
+        content = (
+            <Text
+                align={TEXT_ALIGN.CENTER}
+                title={
+                    t('Произошла ошибка при загрузке статьи.')
+                }
+            />
+        );
     } else {
         content = (
             <>

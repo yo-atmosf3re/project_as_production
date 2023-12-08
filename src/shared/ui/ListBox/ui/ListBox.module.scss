@@ -16,7 +16,7 @@
     z-index: 10000;
     border-radius: var(--border-radius-xxl);
     box-shadow: var(--shadow-color);
-    width: 100%;
+
 }
 
 .item {
@@ -29,4 +29,8 @@
 
 .disabled {
     opacity: 0.7;
+}
+
+.options-top {
+    bottom: 100%;
 }
