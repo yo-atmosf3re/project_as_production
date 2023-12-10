@@ -7,6 +7,10 @@ interface {{pascalCase}}PropsI {
     className?: string;
 }
 
+/**
+ *
+ * @param className
+ */
 export const {{pascalCase}}: React.FC<{{pascalCase}}PropsI> = ({
     className,
 }) => {

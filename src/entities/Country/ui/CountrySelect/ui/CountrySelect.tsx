@@ -41,7 +41,7 @@ export const CountrySelect: React.FC<CountrySelectPropsI> = memo(({
             }
             onChange={onChangeHandler}
             readonly={readonly}
-            direction="top"
+            direction="top right"
         />
     );
 });

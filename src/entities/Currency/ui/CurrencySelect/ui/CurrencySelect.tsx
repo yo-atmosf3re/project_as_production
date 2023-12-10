@@ -40,7 +40,7 @@ export const CurrencySelect: React.FC<CurrencySelectPropsI> = memo(({
             }
             items={OPTIONS}
             readonly={readonly}
-            direction="top"
+            direction="top right"
         />
     );
 });

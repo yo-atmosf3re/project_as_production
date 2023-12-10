@@ -1,3 +1,1 @@
-import { {{pascalCase}} } from './ui/{{pascalCase}}';
-
-export { {{pascalCase}} };
+export { {{pascalCase}} } from './ui/{{pascalCase}}';

@@ -10,6 +10,8 @@ import { Text, TEXT_THEME } from 'shared/ui/Text';
 import { APP_LINK_THEME, AppLink } from 'shared/ui/AppLink';
 import { ROUTES_PATH } from 'shared/config/routeConfig/routeConfig';
 import { HStack } from 'shared/ui/Stack';
+import { Dropdown } from 'shared/ui/Dropdown';
+import { Avatar } from 'shared/ui/Avatar';
 import cls from './Navbar.module.scss';
 
 interface NavbarPropsI {
@@ -61,13 +63,26 @@ export const Navbar: React.FC<NavbarPropsI> = memo(() => {
                         t('Создать статью')
                     }
                 </AppLink>
-                <Button
-                    className={cls.links}
-                    theme={BUTTON_THEME.CLEAR_INVERTED}
-                    onClick={onLogoutModal}
-                >
-                    {t('Выйти')}
-                </Button>
+                <Dropdown
+                    direction="bottom left"
+                    className={cls.dropdown}
+                    items={[
+                        {
+                            content: t('Профиль'),
+                            href: ROUTES_PATH.profile + authData.id,
+                        },
+                        {
+                            content: t('Выйти'),
+                            onClick: onLogoutModal,
+                        },
+                    ]}
+                    trigger={(
+                        <Avatar
+                            size={30}
+                            src={authData.avatar}
+                        />
+                    )}
+                />
             </HStack>
         );
     }
