@@ -5,6 +5,7 @@ import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
 import { $API } from 'shared/api/api';
 import { scrollRestorationReducer } from 'features/ScrollRestoration';
+import { rtkApi } from 'shared/api/rtkApi';
 import { StateSchema, ThunkExtraArgumentsI } from './StateSchema';
 import { createReducerManager } from './reducerManager';
 
@@ -19,6 +20,8 @@ export function createReduxStore(
         counter: counterReducer,
         user: userReducer,
         scrollRestoration: scrollRestorationReducer,
+        // ? Добавляем RTK Query редьюсеры как обычные, а не асинхронные;
+        [rtkApi.reducerPath]: rtkApi.reducer,
     };
 
     const reducerManager = createReducerManager(rootReducers);
@@ -40,7 +43,8 @@ export function createReduxStore(
             thunk: {
                 extraArgument: extraArguments,
             },
-        }),
+            // ? Добавляем RTK Query API в middleware;
+        }).concat(rtkApi.middleware),
     });
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment

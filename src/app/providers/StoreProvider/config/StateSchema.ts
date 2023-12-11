@@ -12,6 +12,7 @@ import { ScrollRestorationSchema } from 'features/ScrollRestoration';
 import { ArticleDetailsPageSchema }
     from 'pages/ArticleDetailsPage';
 import { ArticlesPageSchema } from 'pages/ArticlesPage';
+import { rtkApi } from 'shared/api/rtkApi';
 
 // ? Типизация корневного редьюсера;
 export interface StateSchema {
@@ -19,6 +20,8 @@ export interface StateSchema {
     counter: CounterSchema;
     user: UserSchema;
     scrollRestoration: ScrollRestorationSchema;
+    // ? Типизация для редьюсеров, добавленных с помощью RTK Query;
+    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
     // * Асинхронные редьюсеры, которые впоследствии будут добавляться с помощью редьюсер-менеджера;
     loginForm?: LoginSchema;
     profile?: ProfileSchema;

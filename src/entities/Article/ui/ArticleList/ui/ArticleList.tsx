@@ -4,8 +4,7 @@ import React, {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Text } from 'shared/ui/Text';
-import { TEXT_SIZE } from 'shared/ui/Text/ui/Text';
+import { Text, TEXT_SIZE } from 'shared/ui/Text';
 import { ARTICLE_VIEW, ArticleI } from '../../../model/types/article';
 import cls from './ArticleList.module.scss';
 import { ArticleListItem } from '../../ArticleListItem';

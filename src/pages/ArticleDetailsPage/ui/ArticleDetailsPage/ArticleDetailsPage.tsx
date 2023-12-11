@@ -1,8 +1,8 @@
 import React, { memo, useCallback } from 'react';
-import { Text } from 'shared/ui/Text';
+import { Text, TEXT_SIZE } from 'shared/ui/Text';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { ArticleDetails, ArticleList } from 'entities/Article';
+import { ArticleDetails } from 'entities/Article';
 import { useParams } from 'react-router-dom';
 import { CommentList } from 'entities/Comment';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
@@ -11,8 +11,8 @@ import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEf
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { AddCommentForm } from 'features/AddCommentForm';
 import { Page } from 'widgets/Page';
-import { TEXT_SIZE } from 'shared/ui/Text/ui/Text';
 import { VStack } from 'shared/ui/Stack';
+import { ArticleRecommenadtionsList } from 'features/ArticleRecommenadtionsList';
 import {
     getArticleCommentsIsLoading,
 } from '../../model/selectors/getArticleCommentsIsLoading/getArticleCommentsIsLoading';
@@ -20,12 +20,6 @@ import cls from './ArticleDetailsPage.module.scss';
 import { getArticleComments } from '../../model/slice/articleDetailsCommentSlice';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
-import { getArticleDetailsRecommendations }
-    from '../../model/slice/articleDetailsPageRecommendationsSlice';
-import { getArticleDetailsRecommendationsIsLoading }
-    from '../../model/selectors/getArticleDetailsRecommendationsIsLoading/getArticleDetailsRecommendationsIsLoading';
-import { fetchArticleRecommendations }
-    from '../../model/services/fetchArticleRecommendations/fetchArticleRecommendations';
 import { articleDetailsPageReducer } from '../../model/slice';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader';
 
@@ -50,8 +44,6 @@ const ArticleDetailsPage: React.FC<ArticleDetailsPagePropsI> = ({
 
     const comments = useSelector(getArticleComments.selectAll);
     const commetsIsLoading = useSelector(getArticleCommentsIsLoading);
-    const recommendations = useSelector(getArticleDetailsRecommendations.selectAll);
-    const recommendationsIsLoading = useSelector(getArticleDetailsRecommendationsIsLoading);
 
     const onSendComment = useCallback((text: string) => {
         dispatch(addCommentForArticle(text));
@@ -59,7 +51,6 @@ const ArticleDetailsPage: React.FC<ArticleDetailsPagePropsI> = ({
 
     useInitialEffect(() => {
         dispatch(fetchCommentsByArticleId(id));
-        dispatch(fetchArticleRecommendations());
     });
 
     if (!id) {
@@ -89,18 +80,7 @@ const ArticleDetailsPage: React.FC<ArticleDetailsPagePropsI> = ({
                     <ArticleDetails
                         id={id}
                     />
-                    <Text
-                        size={TEXT_SIZE.L}
-                        title={
-                            t('Рекомендуем')
-                        }
-                    />
-                    <ArticleList
-                        articles={recommendations}
-                        isLoading={recommendationsIsLoading}
-                        className={cls.recommendations}
-                        target="_blank"
-                    />
+                    <ArticleRecommenadtionsList />
                     <Text
                         size={TEXT_SIZE.L}
                         className={cls['comment-title']}
