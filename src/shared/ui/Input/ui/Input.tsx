@@ -3,9 +3,9 @@
 import React, {
     InputHTMLAttributes, memo, useEffect, useRef, useState,
 } from 'react';
-import { HStack } from '../../../ui/Stack';
 import { ModsType, classNames } from '../../../lib/classNames/classNames';
 import cls from './Input.module.scss';
+import { HStack } from '../../../ui/Stack';
 
 // ? Omit позволяет забрать из типа все пропсы, но исключить какие-то, которые не нужны. Первый аргумент - это то, что нужно забрать, а вторым аргументом - то, что нужно исключить. В этом случае это value и onChange. Потом расширяемся от этого типа, сохранив все пропсы инпута, исключив value и onChange, описав потом их самостоятельно;
 type HTMLInputPropsType = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readOnly'>
