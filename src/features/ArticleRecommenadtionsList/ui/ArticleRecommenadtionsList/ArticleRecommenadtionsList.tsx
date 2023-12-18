@@ -12,9 +12,7 @@ interface ArticleRecommenadtionsListPropsI {
 /**
  * Декомпозиция логики, которая связана с запросом рекомендованных статей (для очистки `ArticleDetailsPage`), и применение здесь RTK Query;
  */
-export const ArticleRecommenadtionsList: React.FC<ArticleRecommenadtionsListPropsI> = memo(({
-    className,
-}) => {
+export const ArticleRecommenadtionsList: React.FC<ArticleRecommenadtionsListPropsI> = memo(() => {
     const { t } = useTranslation();
     const { data: article, isLoading, error } = useArticleRecommendationsList(3);
 

@@ -3,21 +3,9 @@
       "public/locales",
    ],
    "i18n-ally.keystyle": "flat",
-   "window.title": "production as project",
+   "window.title": "PAP",
    "editor.tokenColorCustomizations": {
       "comments": "",
       "textMateRules": []
    },
-   // "i18n-ally.keystyle": "nested",
-   // "i18n-ally.extract.ignoredByFiles": {},
-   // "i18n-ally.displayLanguage": "ru",
-   // "i18n-ally.enabledFrameworks": [
-   //    "react"
-   // ],
-   // "i18n-ally.extract.keygenStyle": "kebab-case",
-   // "i18n-ally.extract.keyPrefix": "",
-   // "i18n-ally.sourceLanguage": "ru",
-   // "i18n-ally.extract.autoDetect": true,
-   // "i18n-ally.translate.fallbackToKey": true,
-   // "i18n-ally.ignoredLocales": []
 }
