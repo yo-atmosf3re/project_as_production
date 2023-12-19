@@ -1,21 +1,16 @@
 import React, { memo, useCallback } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { ArticleList } from 'entities/Article';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { useSelector } from 'react-redux';
 import { Page } from 'widgets/Page';
 import { useSearchParams } from 'react-router-dom';
-import cls from './ArticlesPage.module.scss';
-import { articlesPageReducer, getArticles } from '../../model/slice/articlesPageSlice';
-import {
-    getArticlesPageIsLoading,
-    getArticlesPageView,
-} from '../../model/selectors';
-import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
+import cls from './ArticlesPage.module.scss';
+import { articlesPageReducer } from '../../model/slice/articlesPageSlice';
+import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import { ArticlesPageFilters } from '../ArticlesPageFilters';
+import { ArticleInfiteList } from '../ArticleInfiteList';
 
 interface ArticlesPagePropsI {
     className?: string;
@@ -33,9 +28,6 @@ const ArticlesPage: React.FC<ArticlesPagePropsI> = ({
     className,
 }) => {
     const dispatch = useAppDispatch();
-    const articles = useSelector(getArticles.selectAll);
-    const isLoading = useSelector(getArticlesPageIsLoading);
-    const view = useSelector(getArticlesPageView);
     const [searchParams] = useSearchParams();
 
     const onLoadNextPart = useCallback(() => {
@@ -56,12 +48,7 @@ const ArticlesPage: React.FC<ArticlesPagePropsI> = ({
                 className={classNames(cls['article-page'], {}, [className])}
             >
                 <ArticlesPageFilters />
-                <ArticleList
-                    isLoading={isLoading}
-                    view={view}
-                    articles={articles}
-                    className={cls.list}
-                />
+                <ArticleInfiteList />
             </Page>
         </DynamicModuleLoader>
     );

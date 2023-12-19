@@ -19,5 +19,6 @@
     "Рекомендуем": "Recommended",
     "Редактировать": "Edit",
     "Редактирование статьи с ID =": "Editing an article by ID =",
-    "Создание новой статьи": "Creatng a new article"
+    "Создание новой статьи": "Creatng a new article",
+    "Ошибка при загрузке статей": "Error loading articles"
 }
