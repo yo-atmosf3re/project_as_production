@@ -5,24 +5,24 @@ import { useTheme } from 'app/providers/ThemeProvider';
 import { Button, BUTTON_THEME } from 'shared/ui/Button';
 import { TEXT_THEME, Text } from 'shared/ui/Text';
 import { useSelector } from 'react-redux';
-import { getProfileData, getProfileReadonly, updateProfileData } from 'entities/Profile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { profileActions } from 'entities/Profile/model/slice/profileSlice';
-import { VALIDATE_PROFILE_ERROR } from 'entities/Profile/model/types/profile';
+import {
+    getProfileData, getProfileIsLoading, getProfileReadonly, getProfileValidateErrors, VALIDATE_PROFILE_ERROR,
+} from 'features/EditableProfileCard';
 import { getUserAuthData } from 'entities/User';
 import { HStack } from 'shared/ui/Stack';
+
+import { updateProfileData } from 'features/EditableProfileCard/models/services/updateProfileData/updateProfileData';
+import { profileActions } from 'features/EditableProfileCard/models/slice/profileSlice';
 import cls from './ProfilePageHeader.module.scss';
 
 interface ProfilePageHeaderPropsI {
     className?: string;
-    isLoading?: boolean;
-    validateErrors?: VALIDATE_PROFILE_ERROR[];
 }
 
 // ? Заголов карточки профиля, который содержит кнопку "Редактировать", "Изменить", "Отменить" и так далее;
 export const ProfilePageHeader: React.FC<ProfilePageHeaderPropsI> = ({
-    className, isLoading,
-    validateErrors,
+    className,
 }) => {
     const { t } = useTranslation('profile');
     const { theme } = useTheme();
@@ -30,6 +30,8 @@ export const ProfilePageHeader: React.FC<ProfilePageHeaderPropsI> = ({
     const profileData = useSelector(getProfileData);
     const readonly = useSelector(getProfileReadonly);
     const dispatch = useAppDispatch();
+    const isLoading = useSelector(getProfileIsLoading);
+    const validateErrors = useSelector(getProfileValidateErrors);
 
     const buttonClassCondition = theme === 'app_light_theme';
     const buttonThemeCondition = buttonClassCondition ? BUTTON_THEME.CLEAR : BUTTON_THEME.OUTLINE;

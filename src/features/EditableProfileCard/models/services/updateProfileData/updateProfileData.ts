@@ -1,8 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfigI } from 'app/providers/StoreProvider';
-import { ProfileI, VALIDATE_PROFILE_ERROR } from '../../types/profile';
+import { ProfileI } from 'entities/Profile';
 import { getProfileForm } from '../../selectors/getProfileForm/getProfileForm';
 import { validateProfileData } from '../validateProfileData/validateProfileData';
+import { VALIDATE_PROFILE_ERROR } from '../../types/EditableProfileCardSchema';
 
 // ? AsyncThunk, который отправляет введённые пользователем данные на сервер. В дженериках ThunkConfigI указываем тип с перечислением возможных ошибок для того, чтобы более корректно работать с валидацией;
 export const updateProfileData = createAsyncThunk<ProfileI, void, ThunkConfigI<VALIDATE_PROFILE_ERROR[]>>(
@@ -38,4 +39,4 @@ export const updateProfileData = createAsyncThunk<ProfileI, void, ThunkConfigI<V
         }
     },
 );
-// " В компонентах используем useSelector(), а в AT-функциях getState()
+// " В компонентах используем useSelector(), а в AT-функциях getState();

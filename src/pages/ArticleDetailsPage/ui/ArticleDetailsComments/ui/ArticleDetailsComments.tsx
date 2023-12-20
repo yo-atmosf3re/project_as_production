@@ -20,13 +20,13 @@ interface ArticleDetailsCommentsPropsI {
 }
 
 /**
- *
+ * Компонента, внутри которой декомпозирована логика с отрисовкой блока с комментариями (добавление комментариев, их отображение);
  * @param className
  */
 export const ArticleDetailsComments: React.FC<ArticleDetailsCommentsPropsI> = ({
     className, id,
 }) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation('article');
 
     const dispatch = useAppDispatch();
 

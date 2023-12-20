@@ -12,7 +12,7 @@ interface ArticleInfiteListPropsI {
 }
 
 /**
- *
+ * Компонента, внутри которой декомпозирована логика по отрисовке списка со статьями;
  * @param className
  */
 export const ArticleInfiteList: React.FC<ArticleInfiteListPropsI> = ({

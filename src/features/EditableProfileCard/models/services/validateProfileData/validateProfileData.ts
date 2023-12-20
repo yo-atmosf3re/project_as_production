@@ -1,4 +1,5 @@
-import { ProfileI, VALIDATE_PROFILE_ERROR } from '../../types/profile';
+import { ProfileI } from 'entities/Profile';
+import { VALIDATE_PROFILE_ERROR } from '../../types/EditableProfileCardSchema';
 
 // ? Функция для валидации, которая принимает в качестве аргумента профиль. Простой функционал сбора ошибок в массив errors, который эта функция возвращает. Данная функция вызывается в updateProfileData(). При отсутствии переданного profile возвращает NO_DATA ошибку;
 export const validateProfileData = (profile?: ProfileI): VALIDATE_PROFILE_ERROR[] => {
