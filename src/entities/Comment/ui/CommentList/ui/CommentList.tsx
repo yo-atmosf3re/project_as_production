@@ -21,7 +21,8 @@ interface CommentListPropsI {
  * @param isLoading - состояние загрузки;
  */
 export const CommentList: React.FC<CommentListPropsI> = ({
-    className, comments, isLoading,
+    className, comments,
+    isLoading,
 }) => {
     const { t } = useTranslation();
     const mods: ModsType = {};

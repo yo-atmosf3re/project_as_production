@@ -13,6 +13,7 @@ import { getProfileIsLoading } from '../../models/selectors/getProfileIsLoading/
 import { getProfileReadonly } from '../../models/selectors/getProfileReadonly/getProfileReadonly';
 import { fetchProfileData } from '../../models/services/fetchProfileData/fetchProfileData';
 import { profileActions, profileReducer } from '../../models/slice/profileSlice';
+import { EditableProfilePageHeader } from '../EditableProfilePageHeader';
 
 interface EditableProfileCardPropsI {
     className?: string;
@@ -95,6 +96,7 @@ export const EditableProfileCard: React.FC<EditableProfileCardPropsI> = memo(({
         <DynamicModuleLoader
             reducers={INITIAL_REDUCERS}
         >
+            <EditableProfilePageHeader />
             <ProfileCard
                 data={formData}
                 isLoading={isLoading}

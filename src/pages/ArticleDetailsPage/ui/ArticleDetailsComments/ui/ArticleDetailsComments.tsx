@@ -7,6 +7,7 @@ import { AddCommentForm } from 'features/AddCommentForm';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { VStack } from 'shared/ui/Stack';
 import { fetchCommentsByArticleId } from '../../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { addCommentForArticle } from '../../../model/services/addCommentForArticle/addCommentForArticle';
 import { getArticleComments } from '../../../model/slice/articleDetailsCommentSlice';
@@ -42,8 +43,9 @@ export const ArticleDetailsComments: React.FC<ArticleDetailsCommentsPropsI> = ({
     }, [dispatch]);
 
     return (
-        <div
-            className={classNames(cls.ArticleDetailsComments, {}, [className])}
+        <VStack
+            gap="16"
+            className={classNames('', {}, [className])}
         >
             <Text
                 size={TEXT_SIZE.L}
@@ -59,6 +61,6 @@ export const ArticleDetailsComments: React.FC<ArticleDetailsCommentsPropsI> = ({
                 isLoading={commetsIsLoading}
                 comments={comments}
             />
-        </div>
+        </VStack>
     );
 };

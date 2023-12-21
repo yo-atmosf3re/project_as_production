@@ -48,7 +48,9 @@ const ArticlesPage: React.FC<ArticlesPagePropsI> = ({
                 className={classNames(cls['article-page'], {}, [className])}
             >
                 <ArticlesPageFilters />
-                <ArticleInfiteList />
+                <ArticleInfiteList
+                    className={cls.list}
+                />
             </Page>
         </DynamicModuleLoader>
     );

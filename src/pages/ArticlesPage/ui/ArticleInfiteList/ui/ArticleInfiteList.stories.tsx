@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ArticleInfiteList } from './ArticleInfiteList';
 
 export default {
-    title: 'shared/ArticleInfiteList',
+    title: 'pages/ArticlePage/ArticleInfiteList',
     component: ArticleInfiteList,
     argTypes: {
         backgroundColor: { control: 'color' },

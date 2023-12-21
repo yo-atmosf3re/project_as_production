@@ -34,7 +34,10 @@ export const CommentCard: React.FC<CommentCardPropsI> = ({
                 gap="8"
                 className={classNames(cls['comment-card'], mods, [className, cls['comment-loading']])}
             >
-                <div className={cls['comment-header']}>
+                <VStack
+                    gap="8"
+                    className={cls['comment-header']}
+                >
                     <Skeleton
                         width={30}
                         height={30}
@@ -46,7 +49,7 @@ export const CommentCard: React.FC<CommentCardPropsI> = ({
                         border="6px"
                         className={cls['comment-username']}
                     />
-                </div>
+                </VStack>
                 <Skeleton
                     width="100%"
                     height={50}

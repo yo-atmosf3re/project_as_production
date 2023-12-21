@@ -6,22 +6,21 @@ import { Button, BUTTON_THEME } from 'shared/ui/Button';
 import { TEXT_THEME, Text } from 'shared/ui/Text';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import {
-    getProfileData, getProfileIsLoading, getProfileReadonly, getProfileValidateErrors, VALIDATE_PROFILE_ERROR,
-} from 'features/EditableProfileCard';
 import { getUserAuthData } from 'entities/User';
 import { HStack } from 'shared/ui/Stack';
-
-import { updateProfileData } from 'features/EditableProfileCard/models/services/updateProfileData/updateProfileData';
-import { profileActions } from 'features/EditableProfileCard/models/slice/profileSlice';
-import cls from './ProfilePageHeader.module.scss';
+import { profileActions } from '../../../models/slice/profileSlice';
+import { updateProfileData } from '../../../models/services/updateProfileData/updateProfileData';
+import {
+    getProfileData, getProfileIsLoading, getProfileReadonly, getProfileValidateErrors, VALIDATE_PROFILE_ERROR,
+} from '../../../index';
+import cls from './EditableProfilePageHeader.module.scss';
 
 interface ProfilePageHeaderPropsI {
     className?: string;
 }
 
 // ? Заголов карточки профиля, который содержит кнопку "Редактировать", "Изменить", "Отменить" и так далее;
-export const ProfilePageHeader: React.FC<ProfilePageHeaderPropsI> = ({
+export const EditableProfilePageHeader: React.FC<ProfilePageHeaderPropsI> = ({
     className,
 }) => {
     const { t } = useTranslation('profile');
