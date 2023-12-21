@@ -65,6 +65,16 @@ export default {
         '.+\\.(png|jpg|ttf|woff|woff2)$': 'identity-obj-proxy',
     },
 
+    reporters: [
+        'default',
+        ['jest-html-reporters', {
+            publicPath: '<rootDir>/reports/unit',
+            filename: 'report.html',
+            openReport: true,
+            inlineSource: true,
+        }],
+    ],
+
     // Indicates which provider should be used to instrument code for coverage
     // coverageProvider: "babel",
 
