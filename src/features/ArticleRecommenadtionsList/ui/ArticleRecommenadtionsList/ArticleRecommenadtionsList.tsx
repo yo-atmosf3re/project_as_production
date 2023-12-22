@@ -16,7 +16,7 @@ export const ArticleRecommenadtionsList: React.FC<ArticleRecommenadtionsListProp
     const { t } = useTranslation();
     const { data: article, isLoading, error } = useArticleRecommendationsList(3);
 
-    if (isLoading || error) {
+    if (isLoading || error || !article) {
         return null;
     }
 
