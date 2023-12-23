@@ -42,6 +42,7 @@ interface TextPropsI {
     theme?: TEXT_THEME;
     align?: TEXT_ALIGN;
     size?: TEXT_SIZE;
+    'data-testid'?: string;
 }
 
 export type HeaderTagType = 'h1' | 'h2' | 'h3';
@@ -68,6 +69,7 @@ export const Text: React.FC<TextPropsI> = memo(({
     theme = TEXT_THEME.PRIMARY,
     align = TEXT_ALIGN.LEFT,
     size = TEXT_SIZE.M,
+    'data-testid': dataTestId = 'Text',
 }) => {
     // ? Название с большой буквы, потому что используется как JSX-компонента;
     // ? Используется для отрисовки title для сохранения семантики;
@@ -91,7 +93,7 @@ export const Text: React.FC<TextPropsI> = memo(({
                 title
                     ? (
                         <HeaderTag
-                            data-testid="title"
+                            data-testid={`${dataTestId}.Header`}
                             className={cls.title}
                         >
                             {title}
@@ -103,7 +105,7 @@ export const Text: React.FC<TextPropsI> = memo(({
                 text
                     ? (
                         <p
-                            data-testid="text"
+                            data-testid={`${dataTestId}.Paragraph`}
                             className={cls.text}
                         >
                             {text}

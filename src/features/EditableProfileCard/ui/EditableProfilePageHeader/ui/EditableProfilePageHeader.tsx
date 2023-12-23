@@ -82,6 +82,7 @@ export const EditableProfilePageHeader: React.FC<ProfilePageHeaderPropsI> = ({
                                                 theme={TEXT_THEME.ERROR}
                                                 // ? Обращаемся к объекту validateErrorTranslates по ключу, ключом будет являться error. Ключи validateErrorTranslates и ключи error идентичны, поэтому вернётся сопоставимое по ключу значение, а значением будет являться перевод;
                                                 text={validateErrorTranslates[error]}
+                                                data-testid="EditableProfilePageHeader.Error"
                                             />
                                         ),
                                     )
