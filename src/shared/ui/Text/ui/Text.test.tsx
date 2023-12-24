@@ -9,7 +9,7 @@ describe('Text test', () => {
                 text="Some text"
             />,
         );
-        expect(screen.getByTestId('text')).toHaveTextContent('Some text');
+        expect(screen.getByTestId('Text.Paragraph')).toHaveTextContent('Some text');
     });
 
     test('Render title', () => {
@@ -18,7 +18,7 @@ describe('Text test', () => {
                 title="Some title"
             />,
         );
-        expect(screen.getByTestId('title')).toHaveTextContent('Some title');
+        expect(screen.getByTestId('Text.Header')).toHaveTextContent('Some title');
     });
 
     test('Render with both variants', () => {
@@ -29,8 +29,8 @@ describe('Text test', () => {
             />,
         );
 
-        const title = screen.getByTestId('title');
-        const text = screen.getByTestId('text');
+        const title = screen.getByTestId('Text.Header');
+        const text = screen.getByTestId('Text.Paragraph');
 
         expect(title).toBeInTheDocument();
         expect(text).toBeInTheDocument();
