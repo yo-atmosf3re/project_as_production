@@ -115,6 +115,7 @@ export const ProfileCard: React.FC<ProfileCardPropsI > = ({
                 }
                 readonly={readonly}
                 className={cls.input}
+                data-testid="ProfileCard.firstname"
             />
             <Input
                 value={data?.lastname}
@@ -124,6 +125,7 @@ export const ProfileCard: React.FC<ProfileCardPropsI > = ({
                 }
                 readonly={readonly}
                 className={cls.input}
+                data-testid="ProfileCard.lastname"
             />
             <Input
                 value={data?.age}

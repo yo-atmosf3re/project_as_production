@@ -109,6 +109,7 @@ export const EditableProfilePageHeader: React.FC<ProfilePageHeaderPropsI> = ({
                                         theme={buttonThemeCondition}
                                         onClick={onEditHandler}
                                         disabled={isLoading}
+                                        data-testid="EditableProfilePageHeader.EditButton"
                                     >
                                         {
                                             t('Редактировать')
@@ -130,6 +131,7 @@ export const EditableProfilePageHeader: React.FC<ProfilePageHeaderPropsI> = ({
                                             theme={BUTTON_THEME.OUTLINE_RED}
                                             onClick={onCancelEditHandler}
                                             disabled={isLoading}
+                                            data-testid="EditableProfilePageHeader.CancelButton"
                                         >
                                             {
                                                 t('Отменить')
@@ -146,6 +148,7 @@ export const EditableProfilePageHeader: React.FC<ProfilePageHeaderPropsI> = ({
                                             theme={buttonThemeCondition}
                                             onClick={onSaveEditHandler}
                                             disabled={isLoading}
+                                            data-testid="EditableProfilePageHeader.SaveButton"
                                         >
                                             {
                                                 t('Сохранить')
