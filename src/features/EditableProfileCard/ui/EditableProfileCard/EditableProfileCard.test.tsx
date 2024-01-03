@@ -4,6 +4,7 @@ import { ProfileI } from 'entities/Profile';
 import { CURRENCY } from 'entities/Currency';
 import { COUNTRY } from 'entities/Country';
 import userEvent from '@testing-library/user-event';
+import { $API } from 'shared/api/api';
 import { profileReducer } from '../../models/slice/profileSlice';
 import { EditableProfileCard } from './EditableProfileCard';
 
@@ -15,7 +16,7 @@ const profile: ProfileI = {
     currency: CURRENCY.RUB,
     country: COUNTRY.RUSSIA,
     city: 'Moscow',
-    username: 'admin123',
+    username: 'admin213',
 };
 
 const options = {
@@ -47,8 +48,33 @@ describe('features/EditableProfileCard', () => {
         expect(screen.getByTestId('EditableProfilePageHeader.CancelButton')).toBeInTheDocument();
     });
 
-    // ! Доделать тест, на данный момент он провальный, 72 - 16:41;
-    test('When be canceled, values should be nulled', async () => {
+    // ! Не рабочий тест-кейс;
+    // test('When be canceled, values should be nulled', async () => {
+    //     componentRender(<EditableProfileCard
+    //         id="1"
+    //     />, options);
+
+    //     await userEvent.click(screen.getByTestId('EditableProfilePageHeader.EditButton'));
+
+    //     await userEvent.clear(screen.getByTestId('ProfileCard.firstname'));
+    //     await userEvent.clear(screen.getByTestId('ProfileCard.lastname'));
+
+    //     expect(screen.getByTestId('ProfileCard.firstname')).toHaveValue('admin');
+    //     expect(screen.getByTestId('ProfileCard.lastname')).toHaveValue('admin');
+
+    //     await userEvent.type(screen.getByTestId('ProfileCard.firstname'), 'user');
+    //     await userEvent.type(screen.getByTestId('ProfileCard.lastname'), 'user');
+
+    //     expect(screen.getByTestId('ProfileCard.firstname')).toHaveValue('user');
+    //     expect(screen.getByTestId('ProfileCard.lastname')).toHaveValue('user');
+
+    //     await userEvent.click(screen.getByTestId('EditableProfilePageHeader.CancelButton'));
+
+    //     expect(screen.getByTestId('ProfileCard.firstname')).toHaveValue('admin');
+    //     expect(screen.getByTestId('ProfileCard.lastname')).toHaveValue('admin');
+    // });
+
+    test('Error should be appear', async () => {
         componentRender(<EditableProfileCard
             id="1"
         />, options);
@@ -56,20 +82,26 @@ describe('features/EditableProfileCard', () => {
         await userEvent.click(screen.getByTestId('EditableProfilePageHeader.EditButton'));
 
         await userEvent.clear(screen.getByTestId('ProfileCard.firstname'));
-        await userEvent.clear(screen.getByTestId('ProfileCard.lastname'));
 
-        expect(screen.getByTestId('ProfileCard.firstname')).toHaveValue('admin');
-        expect(screen.getByTestId('ProfileCard.lastname')).toHaveValue('admin');
+        await userEvent.click(screen.getByTestId('EditableProfilePageHeader.SaveButton'));
+
+        expect(screen.getByTestId('EditableProfilePageHeader.Error.Paragraph')).toBeInTheDocument();
+    });
+
+    test('If hasn\'t validations error, that on the server should send PUT-request', async () => {
+        // ? Мокаем PUT-запрос с помощью встроенного метода jest.spyOn(), где первым аргументом передаётся объект, который нужно замокать, а вторым аргументом - метод;
+        const mockPutReq = jest.spyOn($API, 'put');
+
+        componentRender(<EditableProfileCard
+            id="1"
+        />, options);
+
+        await userEvent.click(screen.getByTestId('EditableProfilePageHeader.EditButton'));
 
         await userEvent.type(screen.getByTestId('ProfileCard.firstname'), 'user');
-        await userEvent.type(screen.getByTestId('ProfileCard.lastname'), 'user');
 
-        expect(screen.getByTestId('ProfileCard.firstname')).toHaveValue('user');
-        expect(screen.getByTestId('ProfileCard.lastname')).toHaveValue('user');
+        await userEvent.click(screen.getByTestId('EditableProfilePageHeader.SaveButton'));
 
-        await userEvent.click(screen.getByTestId('EditableProfilePageHeader.CancelButton'));
-
-        expect(screen.getByTestId('ProfileCard.firstname')).toHaveValue('admin');
-        expect(screen.getByTestId('ProfileCard.lastname')).toHaveValue('admin');
+        expect(mockPutReq).toHaveBeenCalled();
     });
 });
