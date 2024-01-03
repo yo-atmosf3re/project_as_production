@@ -7,7 +7,7 @@ import userEvent from '@testing-library/user-event';
 import { profileReducer } from '../../models/slice/profileSlice';
 import { EditableProfileCard } from './EditableProfileCard';
 
-const PROFILE: ProfileI = {
+const profile: ProfileI = {
     id: '1',
     first: 'admin',
     lastname: 'admin',
@@ -18,12 +18,12 @@ const PROFILE: ProfileI = {
     username: 'admin123',
 };
 
-const OPTIONS = {
+const options = {
     initialState: {
         profile: {
             readonly: true,
-            data: PROFILE,
-            form: PROFILE,
+            data: profile,
+            form: profile,
         },
         user: {
             authData: {
@@ -41,21 +41,25 @@ describe('features/EditableProfileCard', () => {
     test('Readonly value should be changed', async () => {
         componentRender(<EditableProfileCard
             id="1"
-        />, OPTIONS);
+        />, options);
 
         await userEvent.click(screen.getByTestId('EditableProfilePageHeader.EditButton'));
         expect(screen.getByTestId('EditableProfilePageHeader.CancelButton')).toBeInTheDocument();
     });
 
+    // ! Доделать тест, на данный момент он провальный, 72 - 16:41;
     test('When be canceled, values should be nulled', async () => {
         componentRender(<EditableProfileCard
             id="1"
-        />, OPTIONS);
+        />, options);
 
         await userEvent.click(screen.getByTestId('EditableProfilePageHeader.EditButton'));
 
         await userEvent.clear(screen.getByTestId('ProfileCard.firstname'));
         await userEvent.clear(screen.getByTestId('ProfileCard.lastname'));
+
+        expect(screen.getByTestId('ProfileCard.firstname')).toHaveValue('admin');
+        expect(screen.getByTestId('ProfileCard.lastname')).toHaveValue('admin');
 
         await userEvent.type(screen.getByTestId('ProfileCard.firstname'), 'user');
         await userEvent.type(screen.getByTestId('ProfileCard.lastname'), 'user');

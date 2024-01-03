@@ -121,7 +121,7 @@ export const ProfileCard: React.FC<ProfileCardPropsI > = ({
                 value={data?.lastname}
                 onChange={onChangeLastnameHandler}
                 placeholder={
-                    t('Ваше фамилия')
+                    t('Ваша фамилия')
                 }
                 readonly={readonly}
                 className={cls.input}
