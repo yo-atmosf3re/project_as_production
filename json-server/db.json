@@ -1478,15 +1478,28 @@
       "id": "1",
       "username": "1",
       "password": "1",
-      "role": "ADMIN",
+      "roles": [
+        "ADMIN"
+      ],
       "avatar": "https://copp15.ru/Portals/0/ModuleFiles/i.jpg"
     },
     {
       "id": "2",
       "username": "2",
       "password": "2",
-      "role": "USER",
+      "roles": [
+        "USER"
+      ],
       "avatar": "https://img.24live.co/avatar/0e43e4c8944711e78cbcf23c913e91ea_1525708454.jpeg"
+    },
+    {
+      "id": "3",
+      "username": "3",
+      "password": "3",
+      "roles": [
+        "MANAGER"
+      ],
+      "avatar": "https://cdn-icons-png.flaticon.com/512/3789/3789828.png"
     }
   ],
   "profile": [
