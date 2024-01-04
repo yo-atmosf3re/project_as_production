@@ -6,10 +6,14 @@ import { ProfilePage } from 'pages/ProfilePage';
 import { ArticlesPage } from 'pages/ArticlesPage';
 import { ArticleDetailsPage } from 'pages/ArticleDetailsPage';
 import { ArticleEditPage } from 'pages/ArticleEditPage';
+import { AdminPanelPage } from 'pages/AdminPanelPage';
+import { USER_ROLE } from 'entities/User';
 
 // ? Объединяем в один тип RoureProps из RRD, добавляем поле authOnly, которое если true, то блокирует роуты;
 export type AppRoutesPropsType = RouteProps & {
     authOnly?: boolean;
+    // ? Указания требуемых ролей для тех страниц, на которых требуется конкретная роль (пример: админ панель - нужна роль админа), может быть несколько ролей для какой-либо страницы;
+    roles?: USER_ROLE[];
 }
 
 export enum APP_ROUTES {
@@ -20,6 +24,7 @@ export enum APP_ROUTES {
     ARTICLE_DETAILS = 'article_details',
     ARTICLE_CREATE = 'article_create',
     ARTICLE_EDIT = 'article_edit',
+    ADMIN_PANEL = 'admin_panel',
     // ? Последний маршрут;
     NOT_FOUND = 'not_found'
 }
@@ -33,6 +38,7 @@ export const ROUTES_PATH: Record<APP_ROUTES, string> = {
     [APP_ROUTES.ARTICLE_DETAILS]: '/articles/', // ! Сюда ещё + :id, но id будет в routeConfig'e;
     [APP_ROUTES.ARTICLE_CREATE]: '/articles/new',
     [APP_ROUTES.ARTICLE_EDIT]: '/articles/:id/edit',
+    [APP_ROUTES.ADMIN_PANEL]: '/admin',
     // ? Последний маршрут;
     [APP_ROUTES.NOT_FOUND]: '*',
 };
@@ -70,6 +76,14 @@ export const routeConfig: Record<APP_ROUTES, AppRoutesPropsType> = {
         path: `${ROUTES_PATH.article_edit}`,
         element: <ArticleEditPage />,
         authOnly: true,
+    },
+    [APP_ROUTES.ADMIN_PANEL]: {
+        path: `${ROUTES_PATH.admin_panel}`,
+        element: <AdminPanelPage />,
+        authOnly: true,
+        roles: [
+            USER_ROLE.MANAGER, USER_ROLE.ADMIN,
+        ],
     },
     // ? Последний маршрут;
     [APP_ROUTES.NOT_FOUND]: {
