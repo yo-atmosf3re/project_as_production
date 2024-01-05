@@ -2,4 +2,4 @@ export { getUserAuthData } from './models/selectors/getUserAuthData/getUserAuthD
 export { getUserInited } from './models/selectors/getUserInited/getUserInited';
 export { userReducer, userActions } from './models/slice/userSlice';
 export { UserSchema, UserI, USER_ROLE } from './models/types/user';
-export { isUserAdmin, isUserManager } from './models/selectors/roleSelectors/roleSelectors';
+export { isUserAdmin, isUserManager, getUserRoles } from './models/selectors/roleSelectors/roleSelectors';

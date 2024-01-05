@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { Page } from 'widgets/Page';
 import cls from './AdminPanelPage.module.scss';
 
 interface AdminPanelPagePropsI {
@@ -8,7 +9,7 @@ interface AdminPanelPagePropsI {
 }
 
 /**
- *
+ *  Страница, которая отрисовывает админ-панель;
  * @param className
  */
 const AdminPanelPage: React.FC<AdminPanelPagePropsI> = ({
@@ -17,7 +18,7 @@ const AdminPanelPage: React.FC<AdminPanelPagePropsI> = ({
     const { t } = useTranslation('adminPanel');
 
     return (
-        <div
+        <Page
             className={classNames(cls['admin-panel'], {}, [className])}
         >
             {
@@ -25,7 +26,7 @@ const AdminPanelPage: React.FC<AdminPanelPagePropsI> = ({
                     'Админ панель',
                 )
             }
-        </div>
+        </Page>
     );
 };
 

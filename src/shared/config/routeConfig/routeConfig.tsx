@@ -8,8 +8,9 @@ import { ArticleDetailsPage } from 'pages/ArticleDetailsPage';
 import { ArticleEditPage } from 'pages/ArticleEditPage';
 import { AdminPanelPage } from 'pages/AdminPanelPage';
 import { USER_ROLE } from 'entities/User';
+import { ForbiddenPage } from 'pages/ForbiddenPage';
 
-// ? Объединяем в один тип RoureProps из RRD, добавляем поле authOnly, которое если true, то блокирует роуты;
+// ? Объединяем в один тип RouteProps из RRD, добавляем поле authOnly, которое если true, то блокирует роуты;
 export type AppRoutesPropsType = RouteProps & {
     authOnly?: boolean;
     // ? Указания требуемых ролей для тех страниц, на которых требуется конкретная роль (пример: админ панель - нужна роль админа), может быть несколько ролей для какой-либо страницы;
@@ -25,6 +26,7 @@ export enum APP_ROUTES {
     ARTICLE_CREATE = 'article_create',
     ARTICLE_EDIT = 'article_edit',
     ADMIN_PANEL = 'admin_panel',
+    FORBIDDEN = 'forbidden',
     // ? Последний маршрут;
     NOT_FOUND = 'not_found'
 }
@@ -39,6 +41,7 @@ export const ROUTES_PATH: Record<APP_ROUTES, string> = {
     [APP_ROUTES.ARTICLE_CREATE]: '/articles/new',
     [APP_ROUTES.ARTICLE_EDIT]: '/articles/:id/edit',
     [APP_ROUTES.ADMIN_PANEL]: '/admin',
+    [APP_ROUTES.FORBIDDEN]: '/forbidden',
     // ? Последний маршрут;
     [APP_ROUTES.NOT_FOUND]: '*',
 };
@@ -84,6 +87,10 @@ export const routeConfig: Record<APP_ROUTES, AppRoutesPropsType> = {
         roles: [
             USER_ROLE.MANAGER, USER_ROLE.ADMIN,
         ],
+    },
+    [APP_ROUTES.FORBIDDEN]: {
+        path: `${ROUTES_PATH.forbidden}`,
+        element: <ForbiddenPage />,
     },
     // ? Последний маршрут;
     [APP_ROUTES.NOT_FOUND]: {

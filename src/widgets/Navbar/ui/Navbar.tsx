@@ -4,7 +4,9 @@ import { useTranslation } from 'react-i18next';
 import { Button, BUTTON_THEME } from 'shared/ui/Button';
 import { LoginModal } from 'features/AuthByUsername/ui';
 import { useSelector } from 'react-redux';
-import { getUserAuthData, userActions } from 'entities/User';
+import {
+    getUserAuthData, isUserAdmin, isUserManager, userActions,
+} from 'entities/User';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Text, TEXT_THEME } from 'shared/ui/Text';
 import { APP_LINK_THEME, AppLink } from 'shared/ui/AppLink';
@@ -24,6 +26,8 @@ export const Navbar: React.FC<NavbarPropsI> = memo(() => {
     const [isAuthModal, setIsAuthModal] = React.useState(false);
     // ? Авторизационные данные;
     const authData = useSelector(getUserAuthData);
+    const isAdmin = useSelector(isUserAdmin);
+    const isManager = useSelector(isUserManager);
     const dispatch = useAppDispatch();
 
     const onCloseModal = React.useCallback(() => {
@@ -38,6 +42,8 @@ export const Navbar: React.FC<NavbarPropsI> = memo(() => {
     const onLogoutModal = React.useCallback(() => {
         dispatch(userActions.logout());
     }, [dispatch]);
+
+    const isAdminPanelAvailable = isAdmin || isManager;
 
     // ? Такая альтернативная отрисовка вызывается только в том случае, если есть какие-то авторизационные данные у пользователя - пользователь вошёл в аккаунт, как это работает: приложение запускается, в App.tsx отрабатывает useEffect, внутри которого вызывается функция с инициализацией данных пользователя, в LS сохраняется токен пользователя (если его там нет);
     if (authData) {
@@ -67,6 +73,14 @@ export const Navbar: React.FC<NavbarPropsI> = memo(() => {
                     direction="bottom left"
                     className={cls.dropdown}
                     items={[
+                        // ? Разворачиваем массив по условию: если true то переход на панель отображаться будет, а иначе развернётся пустой массив;
+                        ...(isAdminPanelAvailable
+                            ? [{
+                                content: t('Админка'),
+                                href: ROUTES_PATH.admin_panel,
+                            }]
+                            : []
+                        ),
                         {
                             content: t('Профиль'),
                             href: ROUTES_PATH.profile + authData.id,
