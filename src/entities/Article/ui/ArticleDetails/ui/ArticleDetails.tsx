@@ -26,7 +26,7 @@ import { ArticleTextBlockComponent } from '../../ArticleTextBlockComponent';
 interface ArticleDetailsPropsI {
     className?: string;
     // ? Т.к id может быть динамическим, то приниматься в компоненту он будет из вне;
-    id: string;
+    id?: string;
 }
 
 const INITIAL_REDUCERS: ReducersList = {

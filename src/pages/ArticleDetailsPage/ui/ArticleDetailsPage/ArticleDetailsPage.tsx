@@ -1,22 +1,13 @@
-import React, { memo, useCallback } from 'react';
+import React, { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ArticleDetails } from 'entities/Article';
 import { useParams } from 'react-router-dom';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { useSelector } from 'react-redux';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Page } from 'widgets/Page';
 import { VStack } from 'shared/ui/Stack';
 import { ArticleRecommenadtionsList } from 'features/ArticleRecommenadtionsList';
-import {
-    getArticleCommentsIsLoading,
-} from '../../model/selectors/getArticleCommentsIsLoading/getArticleCommentsIsLoading';
 import cls from './ArticleDetailsPage.module.scss';
-import { getArticleComments } from '../../model/slice/articleDetailsCommentSlice';
-import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
-import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 import { articleDetailsPageReducer } from '../../model/slice';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader';
 import { ArticleDetailsComments } from '../ArticleDetailsComments';
@@ -39,17 +30,17 @@ const ArticleDetailsPage: React.FC<ArticleDetailsPagePropsI> = ({
     const { t } = useTranslation('article');
     const { id } = useParams<{id: string}>();
 
-    if (!id) {
-        return (
-            <Page
-                className={classNames(cls['article-detials'], {}, [className])}
-            >
-                {
-                    t('Статья не найдена!')
-                }
-            </Page>
-        );
-    }
+    // if (!id) {
+    //     return (
+    //         <Page
+    //             className={classNames(cls['article-detials'], {}, [className])}
+    //         >
+    //             {
+    //                 t('Статья не найдена!')
+    //             }
+    //         </Page>
+    //     );
+    // }
 
     return (
         <DynamicModuleLoader

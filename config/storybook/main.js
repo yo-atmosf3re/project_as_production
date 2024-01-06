@@ -9,6 +9,7 @@ module.exports = {
         '@storybook/addon-links',
         '@storybook/addon-essentials',
         '@storybook/addon-interactions',
+        'storybook-addon-mock/register',
     ],
     // ? Указывает, что используется React-фреймворк в Storybook;
     framework: '@storybook/react',

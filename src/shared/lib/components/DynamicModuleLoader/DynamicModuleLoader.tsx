@@ -5,7 +5,7 @@ import { ReduxStoreWithManagerI } from 'app/providers/StoreProvider';
 import { StateSchema, StateSchemaKeyType } from 'app/providers/StoreProvider/config/StateSchema';
 import React, { ReactNode, useEffect } from 'react';
 import { useStore } from 'react-redux';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppDispatch } from '../../hooks/useAppDispatch/useAppDispatch';
 
 // ? Типизация для массива редьюсеров, где ключами будут ключи из StateSchemaKey, а значениями будут Reducer;
 // ? UPD: улучшена типизация, теперь нельзя присвоить какой-либо угодно редьюсер в список с редьюсерами - название должно соответствовать значению, потому что теперь TS диманически подставляет нужную часть state в зависимости от названия редьюсера;

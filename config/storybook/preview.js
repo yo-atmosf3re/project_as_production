@@ -4,6 +4,7 @@ import { ThemeDecorator } from '../../src/shared/config/storybook/ThemeDecorator
 import { TranslationDecorator } from '../../src/shared/config/storybook/TranslationDecorator/TranslationDecorator';
 import { THEME } from '../../src/app/providers/ThemeProvider';
 import { RouterDecorator } from '../../src/shared/config/storybook/RouterDecorator/RouterDecorator';
+import { SuspenseDecorator } from '../../src/shared/config/storybook/SuspenseDecorator/SuspenseDecorator';
 import '../../src/app/styles/index.scss';
 
 // ? Конфигурация для Storybook. Объект parameters содержит настройки для различных функциональностей, например для actions и controls;
@@ -32,3 +33,5 @@ addDecorator(TranslationDecorator);
 addDecorator(ThemeDecorator(THEME.LIGHT));
 // ? Добавляет декоратор для добавления маршрутизации к сторисам в Storybook. Используется, если в сторис нужны маршруты, URL-адреса для правильного функционирования;
 addDecorator(RouterDecorator);
+// ? Добавляет декоратор, который оборачивает сторис в Suspense реакта;
+addDecorator(SuspenseDecorator);

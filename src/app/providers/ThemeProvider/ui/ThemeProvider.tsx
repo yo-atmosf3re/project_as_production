@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { ReactNode, useMemo } from 'react';
 import { THEME_LS_KEY } from 'shared/const/localstorage';
 import { THEME, ThemeContext } from '../lib/ThemeContext';
 
@@ -8,6 +8,7 @@ const DEFAULT_THEME = localStorage.getItem(THEME_LS_KEY) as THEME || THEME.LIGHT
 // ? Свойство initialTheme в данном интерфейсе позволяет установить изначальную тему самостоятельно, если тема не проинициализирована, то она устанавливается по-умолчанию;
 interface ThemeProviderPropsI {
     initialTheme?: THEME;
+    children: ReactNode;
 }
 
 // ? Обёртка в провайдер контекста, который ответственный за цветовые темы приложения;

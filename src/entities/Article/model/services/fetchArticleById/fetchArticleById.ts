@@ -6,11 +6,16 @@ import { ArticleI } from '../../types/article';
  * Получение конкретной статьи по id;
  * @param id - айди, по которому будет осуществляться поиск нужной статьи;
  */
-export const fetchArticleById = createAsyncThunk<ArticleI, string, ThunkConfigI<string>>(
+export const fetchArticleById = createAsyncThunk<ArticleI, string | undefined, ThunkConfigI<string>>(
     'article/fetchArticleById',
     async (articleId, thunkApi) => {
         const { extra, rejectWithValue } = thunkApi;
+
         try {
+            if (!articleId) {
+                throw new Error('');
+            }
+
             const response = await extra.api.get<ArticleI>(`/articles/${articleId}`, {
                 // ? ;
                 params: {

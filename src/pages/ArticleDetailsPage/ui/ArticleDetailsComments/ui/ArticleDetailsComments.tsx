@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { Suspense, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { TEXT_SIZE, Text } from 'shared/ui/Text';
@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { VStack } from 'shared/ui/Stack';
+import { Loader } from 'shared/ui/Loader';
 import { fetchCommentsByArticleId } from '../../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { addCommentForArticle } from '../../../model/services/addCommentForArticle/addCommentForArticle';
 import { getArticleComments } from '../../../model/slice/articleDetailsCommentSlice';
@@ -17,7 +18,7 @@ import cls from './ArticleDetailsComments.module.scss';
 
 interface ArticleDetailsCommentsPropsI {
     className?: string;
-    id: string;
+    id?: string;
 }
 
 /**
@@ -55,9 +56,15 @@ export const ArticleDetailsComments: React.FC<ArticleDetailsCommentsPropsI> = ({
                     t('Комментарии')
                 }
             />
-            <AddCommentForm
-                onSendComment={onSendComment}
-            />
+            <Suspense
+                fallback={(
+                    <Loader />
+                )}
+            >
+                <AddCommentForm
+                    onSendComment={onSendComment}
+                />
+            </Suspense>
             <CommentList
                 isLoading={commetsIsLoading}
                 comments={comments}

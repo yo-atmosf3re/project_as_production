@@ -4,8 +4,6 @@ import { EditableProfileCard } from 'features/EditableProfileCard';
 import { Page } from 'widgets/Page';
 import { VStack } from 'shared/ui/Stack';
 import { useParams } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import { Text } from 'shared/ui/Text';
 import cls from './ProfilePage.module.scss';
 
 interface ProfilePagePropsI {
@@ -19,18 +17,7 @@ interface ProfilePagePropsI {
 const ProfilePage: React.FC<ProfilePagePropsI> = ({
     className,
 }) => {
-    const { t } = useTranslation('profile');
     const { id } = useParams<{id: string}>();
-
-    if (!id) {
-        return (
-            <Text
-                title={
-                    t('Профиль не найден')
-                }
-            />
-        );
-    }
 
     return (
         <Page className={classNames(cls.profile, {}, [className])}>
