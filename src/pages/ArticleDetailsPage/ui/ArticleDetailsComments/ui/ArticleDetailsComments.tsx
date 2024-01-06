@@ -45,6 +45,7 @@ export const ArticleDetailsComments: React.FC<ArticleDetailsCommentsPropsI> = ({
     return (
         <VStack
             gap="16"
+            max
             className={classNames('', {}, [className])}
         >
             <Text

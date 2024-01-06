@@ -194,6 +194,7 @@ export const ArticleDetails: React.FC<ArticleDetailsPropsI> = memo(({
             <VStack
                 gap="16"
                 align="center"
+                max
                 className={classNames(cls['article-details'], {}, [className])}
             >
                 {
