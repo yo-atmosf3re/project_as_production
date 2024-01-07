@@ -33,7 +33,8 @@
          "*": [
             "./src/*"
          ]
-      }
+      },
+      "isolatedModules": true
    },
    // ? Это нужно для настройки import простыми словами, работает в связке с "module": "ESNext";
    "ts-node": {
