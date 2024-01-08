@@ -1,1 +1,1 @@
-export { LoginSchema, LoginModal } from './ui';
+export { type LoginSchema, LoginModal } from './ui';

@@ -1,1 +1,1 @@
-export { Tabs, TabItemI } from './ui/Tabs';
+export { Tabs, type TabItemI } from './ui/Tabs';

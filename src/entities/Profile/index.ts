@@ -1,5 +1,5 @@
 import { ProfileI } from './model/types/profile';
 
-export { ProfileI };
+export type { ProfileI };
 
 export { ProfileCard } from './ui/ProfileCard/ProfileCard';

@@ -32,5 +32,5 @@ export { getProfileValidateErrors };
 export { profileReducer } from './models/slice/profileSlice';
 
 export { EditableProfileCard } from './ui/EditableProfileCard/EditableProfileCard';
-export { ProfileSchema } from './models/types/EditableProfileCardSchema';
+export { type ProfileSchema } from './models/types/EditableProfileCardSchema';
 export { VALIDATE_PROFILE_ERROR };
