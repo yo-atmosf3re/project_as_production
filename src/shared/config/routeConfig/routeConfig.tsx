@@ -7,8 +7,8 @@ import { ArticlesPage } from 'pages/ArticlesPage';
 import { ArticleDetailsPage } from 'pages/ArticleDetailsPage';
 import { ArticleEditPage } from 'pages/ArticleEditPage';
 import { AdminPanelPage } from 'pages/AdminPanelPage';
-import { USER_ROLE } from 'entities/User';
 import { ForbiddenPage } from 'pages/ForbiddenPage';
+import { USER_ROLE } from 'shared/const/consts';
 
 // ? Объединяем в один тип RouteProps из RRD, добавляем поле authOnly, которое если true, то блокирует роуты;
 export type AppRoutesPropsType = RouteProps & {

@@ -8,10 +8,11 @@ import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getUserAuthData } from 'entities/User';
 import { HStack } from 'shared/ui/Stack';
+import { VALIDATE_PROFILE_ERROR } from 'shared/const/consts';
 import { profileActions } from '../../../models/slice/profileSlice';
 import { updateProfileData } from '../../../models/services/updateProfileData/updateProfileData';
 import {
-    getProfileData, getProfileIsLoading, getProfileReadonly, getProfileValidateErrors, VALIDATE_PROFILE_ERROR,
+    getProfileData, getProfileIsLoading, getProfileReadonly, getProfileValidateErrors,
 } from '../../../index';
 import cls from './EditableProfilePageHeader.module.scss';
 

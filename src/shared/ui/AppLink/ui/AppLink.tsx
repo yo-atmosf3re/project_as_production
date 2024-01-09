@@ -4,9 +4,9 @@ import { classNames } from '../../../lib/classNames/classNames';
 import cls from './AppLink.module.scss';
 
 export enum APP_LINK_THEME {
-   PRIMARY = 'primary',
-   SECONDARY = 'secondary',
-   RED = 'red'
+    PRIMARY = 'primary',
+    SECONDARY = 'secondary',
+    RED = 'red'
 }
 
 interface AppLinkPropsI extends LinkProps {

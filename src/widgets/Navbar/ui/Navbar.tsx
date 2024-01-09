@@ -9,11 +9,12 @@ import {
 } from 'entities/User';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Text, TEXT_THEME } from 'shared/ui/Text';
-import { APP_LINK_THEME, AppLink } from 'shared/ui/AppLink';
+import { AppLink } from 'shared/ui/AppLink';
 import { ROUTES_PATH } from 'shared/config/routeConfig/routeConfig';
 import { HStack } from 'shared/ui/Stack';
 import { Dropdown } from 'shared/ui/Dropdown';
 import { Avatar } from 'shared/ui/Avatar';
+import { APP_LINK_THEME } from 'shared/ui/AppLink/ui/AppLink';
 import cls from './Navbar.module.scss';
 
 interface NavbarPropsI {

@@ -11,7 +11,7 @@ import { StateSchema } from 'app/providers/StoreProvider';
 import { useSelector } from 'react-redux';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useThrottle } from 'shared/lib/hooks/useThrottle/useThrottle';
-import { ARTICLE_VIEW } from 'entities/Article';
+import { ARTICLE_VIEW } from 'shared/const/consts';
 import cls from './Page.module.scss';
 
 interface PagePropsI {

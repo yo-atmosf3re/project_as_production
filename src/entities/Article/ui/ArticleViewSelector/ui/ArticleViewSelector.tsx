@@ -4,7 +4,7 @@ import TiledIcon from 'shared/assets/icons/square_cell_button.svg';
 import ListIcon from 'shared/assets/icons/burger_button.svg';
 import { BUTTON_THEME, Button } from 'shared/ui/Button';
 import { Icon } from 'shared/ui/Icon';
-import { ARTICLE_VIEW } from '../../../model/types/article';
+import { ARTICLE_VIEW } from 'shared/const/consts';
 import cls from './ArticleViewSelector.module.scss';
 
 interface ArticleViewSelectorPropsI {

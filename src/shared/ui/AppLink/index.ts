@@ -1,1 +1,1 @@
-export { AppLink, APP_LINK_THEME } from './ui/AppLink';
+export { AppLink } from './ui/AppLink';

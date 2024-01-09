@@ -1,28 +1,5 @@
+import { ARTICLE_BLOCK_TYPE, ARTICLE_TYPE } from 'shared/const/consts';
 import { UserI } from '../../../User/models/types/user';
-
-/**
- * Перечисление видов блоков в статье;
- * @param CODE - блок с кодом;
- * @param IMAGE - блок с изображением;
- * @param TEXT - блок с текстом;
- */
-export enum ARTICLE_BLOCK_TYPE {
-    CODE = 'CODE',
-    IMAGE = 'IMAGE',
-    TEXT = 'TEXT'
-}
-
-/**
- * Перечисление полей, по которым будет воспроизводиться сортировка статей;
- * @param VIEWS - сортировка по просмотрам;
- * @param TITLE - сортировка по названию статьи;
- * @param CREATED - сортировка по дате создания;
- */
-export enum ARTICLE_SORT_FIELD {
-    VIEWS = 'views',
-    TITLE = 'title',
-    CREATED = 'createdAt'
-}
 
 /**
  * Интерфейс базового блока статьи;
@@ -80,20 +57,6 @@ export interface ArticleTextBlockI extends ArticleBlockBaseI {
 export type ArticleBlockI = ArticleCodeBlockI | ArticleImageBlockI | ArticleTextBlockI;
 
 /**
- * Типы статей;
- * @param ALL - статьи по всем темам;
- * @param IT - информационные технологии;
- * @param SCIENCE - наука;
- * @param ECONOMICS - экономика;
- */
-export enum ARTICLE_TYPE {
-    ALL = 'all',
-    IT = 'IT',
-    SCIENCE = 'SCIENCE',
-    ECONOMICS = 'ECONOMICS'
-}
-
-/**
  * Интерфейс статьи;
  *  @param id - уникальный идентификатор статьи;
     @param title - заголовок;
@@ -115,14 +78,4 @@ export interface ArticleI {
     createdAt: string;
     type: ARTICLE_TYPE[];
     blocks: ArticleBlockI[];
-}
-
-/**
- * Перечисление, которое отвечает за выбор отображения статей;
- * @param BIG - отображение в виде списка;
- * @param SMALL - отображение в виде плиток;
- */
-export enum ARTICLE_VIEW {
-    BIG = 'BIG',
-    SMALL = 'SMALL',
 }

@@ -1,4 +1,4 @@
-import { COUNTRY } from './model/types/country';
+import { COUNTRY } from 'shared/const/consts';
 import { CountrySelect } from './ui/CountrySelect';
 
 export { COUNTRY };

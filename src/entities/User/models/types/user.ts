@@ -1,8 +1,4 @@
-export enum USER_ROLE {
-    ADMIN = 'ADMIN',
-    USER = 'USER',
-    MANAGER = 'MANAGER',
-}
+import { USER_ROLE } from 'shared/const/consts';
 
 export interface UserI {
     id: string;

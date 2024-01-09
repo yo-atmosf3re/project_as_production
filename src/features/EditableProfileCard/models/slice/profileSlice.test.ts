@@ -1,8 +1,9 @@
 import { COUNTRY } from 'entities/Country';
 import { CURRENCY } from 'entities/Currency';
+import { VALIDATE_PROFILE_ERROR } from 'shared/const/consts';
 import { updateProfileData } from '../services/updateProfileData/updateProfileData';
 import { profileActions, profileReducer } from './profileSlice';
-import { ProfileSchema, VALIDATE_PROFILE_ERROR } from '../types/EditableProfileCardSchema';
+import { ProfileSchema } from '../types/EditableProfileCardSchema';
 
 const data = {
     username: 'Alex',

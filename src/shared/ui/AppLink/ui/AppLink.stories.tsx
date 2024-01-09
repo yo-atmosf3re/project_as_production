@@ -1,9 +1,8 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-
 import { THEME } from 'app/providers/ThemeProvider';
 import { ThemeDecorator } from '../../../config/storybook/ThemeDecorator/ThemeDecorator';
-import { AppLink, APP_LINK_THEME } from './AppLink';
+import { APP_LINK_THEME, AppLink } from './AppLink';
 
 export default {
     title: 'shared/AppLink',

@@ -1,13 +1,5 @@
 import { ProfileI } from 'entities/Profile';
-
-// ? Типы валидационных ошибок;
-export enum VALIDATE_PROFILE_ERROR {
-    INCORRECT_USER_DATA = 'INCORRECT_USER_DATA',
-    INCORRECT_AGE = 'INCORRECT_AGE',
-    INCORRECT_COUNTRY = 'INCORRECT_COUNTRY',
-    NO_DATA = 'NO_DATA',
-    SERVER_ERROR = 'SERVER_ERROR',
-}
+import { VALIDATE_PROFILE_ERROR } from 'shared/const/consts';
 
 export interface ProfileSchema {
     // ? data - тут хранятся данные, которые получе непосредственно с сервера;

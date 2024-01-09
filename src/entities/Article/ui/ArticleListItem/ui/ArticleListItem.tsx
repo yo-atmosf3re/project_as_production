@@ -10,8 +10,9 @@ import { BUTTON_THEME, Button } from 'shared/ui/Button';
 import { ROUTES_PATH } from 'shared/config/routeConfig/routeConfig';
 import { AppLink } from 'shared/ui/AppLink';
 import { HStack } from 'shared/ui/Stack';
+import { ARTICLE_BLOCK_TYPE, ARTICLE_VIEW } from 'shared/const/consts';
 import {
-    ARTICLE_BLOCK_TYPE, ARTICLE_VIEW, ArticleI, ArticleTextBlockI,
+    ArticleI, ArticleTextBlockI,
 } from '../../../model/types/article';
 import cls from './ArticleListItem.module.scss';
 import { ArticleTextBlockComponent } from '../../ArticleTextBlockComponent';

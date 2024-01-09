@@ -12,7 +12,6 @@ import { getProfileLastname } from './models/selectors/getProfileLastname/getPro
 import { getProfileReadonly } from './models/selectors/getProfileReadonly/getProfileReadonly';
 import { getProfileUsername } from './models/selectors/getProfileUsername/getProfileUsername';
 import { getProfileValidateErrors } from './models/selectors/getProfileValidateErrors/getProfileValidateErrors';
-import { VALIDATE_PROFILE_ERROR } from './models/types/EditableProfileCardSchema';
 
 export { getProfileAge };
 export { getProfileAvatar };
@@ -33,4 +32,3 @@ export { profileReducer } from './models/slice/profileSlice';
 
 export { EditableProfileCard } from './ui/EditableProfileCard/EditableProfileCard';
 export { type ProfileSchema } from './models/types/EditableProfileCardSchema';
-export { VALIDATE_PROFILE_ERROR };

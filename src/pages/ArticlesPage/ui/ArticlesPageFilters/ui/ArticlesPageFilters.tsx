@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import {
-    ARTICLE_SORT_FIELD, ARTICLE_VIEW, ArticleViewSelector, ARTICLE_TYPE,
+    ArticleViewSelector,
     ArticleSortSelector,
 } from 'entities/Article';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -14,6 +14,7 @@ import { SortOrderType } from 'shared/types';
 import { useDebouce } from 'shared/lib/hooks/useDebounce/useDebounce';
 import { ArticleTypeTabs } from 'entities/Article/ui/ArticleTypeTabs';
 import { HStack } from 'shared/ui/Stack';
+import { ARTICLE_SORT_FIELD, ARTICLE_TYPE, ARTICLE_VIEW } from 'shared/const/consts';
 import {
     getArticlesPageType, getArticlesPageSearch,
     getArticlesPageOrder, getArticlesPageSort,

@@ -1,5 +1,5 @@
 import { StateSchema } from 'app/providers/StoreProvider';
-import { ARTICLE_VIEW } from 'entities/Article';
+import { ARTICLE_VIEW } from 'shared/const/consts';
 import { getArticlesPageView } from './getArticlesPageView';
 
 describe('getArticlesPageView', () => {

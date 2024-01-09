@@ -11,7 +11,8 @@ import EyeIcon from 'shared/assets/icons/eye.svg';
 import CalendarIcon from 'shared/assets/icons/clarity_date.svg';
 import { Icon } from 'shared/ui/Icon';
 import { HStack, VStack } from 'shared/ui/Stack';
-import { ARTICLE_BLOCK_TYPE, ArticleBlockI } from '../../../model/types/article';
+import { ARTICLE_BLOCK_TYPE } from 'shared/const/consts';
+import { ArticleBlockI } from '../../../model/types/article';
 import { getArticleDetailsError } from '../../../model/selectors/getArticleDetailsError/getArticleDetailsError';
 import { getArticleDetailsIsLoading }
     from '../../../model/selectors/getArticleDetailsIsLoading/getArticleDetailsIsLoading';

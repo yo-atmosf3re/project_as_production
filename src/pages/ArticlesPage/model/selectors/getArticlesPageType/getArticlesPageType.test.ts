@@ -1,5 +1,5 @@
 import { StateSchema } from 'app/providers/StoreProvider';
-import { ARTICLE_TYPE } from 'entities/Article';
+import { ARTICLE_TYPE } from 'shared/const/consts';
 import { getArticlesPageType } from './getArticlesPageType';
 
 describe('getArticlesPageType', () => {
