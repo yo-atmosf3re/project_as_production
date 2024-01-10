@@ -9,11 +9,12 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getUserAuthData } from 'entities/User';
 import { HStack } from 'shared/ui/Stack';
 import { VALIDATE_PROFILE_ERROR } from 'shared/const/consts';
-import { profileActions } from '../../../models/slice/profileSlice';
-import { updateProfileData } from '../../../models/services/updateProfileData/updateProfileData';
-import {
-    getProfileData, getProfileIsLoading, getProfileReadonly, getProfileValidateErrors,
-} from '../../../index';
+import { updateProfileData } from '../../models/services/updateProfileData/updateProfileData';
+import { profileActions } from '../../models/slice/profileSlice';
+import { getProfileData } from '../../models/selectors/getProfileData/getProfileData';
+import { getProfileIsLoading } from '../../models/selectors/getProfileIsLoading/getProfileIsLoading';
+import { getProfileReadonly } from '../../models/selectors/getProfileReadonly/getProfileReadonly';
+import { getProfileValidateErrors } from '../../models/selectors/getProfileValidateErrors/getProfileValidateErrors';
 import cls from './EditableProfilePageHeader.module.scss';
 
 interface ProfilePageHeaderPropsI {

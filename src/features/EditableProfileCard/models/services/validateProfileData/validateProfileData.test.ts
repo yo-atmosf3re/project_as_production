@@ -1,6 +1,6 @@
 import { COUNTRY } from 'entities/Country';
-import { CURRENCY } from 'entities/Currency';
-import { VALIDATE_PROFILE_ERROR } from 'shared/const/consts';
+import { CURRENCY, VALIDATE_PROFILE_ERROR } from 'shared/const/consts';
+
 import { validateProfileData } from './validateProfileData';
 
 const DATA = {

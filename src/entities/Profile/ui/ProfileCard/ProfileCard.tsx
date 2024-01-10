@@ -6,9 +6,10 @@ import { Input } from 'shared/ui/Input';
 import { Loader } from 'shared/ui/Loader';
 import { TEXT_ALIGN, TEXT_THEME } from 'shared/ui/Text/ui/Text';
 import { Avatar } from 'shared/ui/Avatar';
-import { CURRENCY, CurrencySelect } from 'entities/Currency';
+import { CurrencySelect } from 'entities/Currency';
 import { COUNTRY, CountrySelect } from 'entities/Country';
 import { HStack, VStack } from 'shared/ui/Stack';
+import { CURRENCY } from 'shared/const/consts';
 import {
     ProfileI,
 } from '../../index';

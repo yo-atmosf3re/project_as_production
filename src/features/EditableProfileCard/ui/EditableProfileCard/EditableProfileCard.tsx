@@ -1,6 +1,6 @@
 import { memo, useCallback } from 'react';
 import { COUNTRY } from 'entities/Country';
-import { CURRENCY } from 'entities/Currency';
+import { CURRENCY } from 'shared/const/consts';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
@@ -12,7 +12,7 @@ import { getProfileIsLoading } from '../../models/selectors/getProfileIsLoading/
 import { getProfileReadonly } from '../../models/selectors/getProfileReadonly/getProfileReadonly';
 import { fetchProfileData } from '../../models/services/fetchProfileData/fetchProfileData';
 import { profileActions, profileReducer } from '../../models/slice/profileSlice';
-import { EditableProfilePageHeader } from '../EditableProfilePageHeader';
+import { EditableProfilePageHeader } from '../EditableProfilePageHeader/EditableProfilePageHeader';
 
 interface EditableProfileCardPropsI {
     className?: string;

@@ -4,7 +4,7 @@ import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDeco
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { THEME } from 'app/providers/ThemeProvider';
 import { COUNTRY } from 'entities/Country';
-import { CURRENCY } from 'entities/Currency';
+import { CURRENCY } from 'shared/const/consts';
 import ProfilePage from './ProfilePage';
 
 export default {

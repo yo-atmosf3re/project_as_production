@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { COUNTRY } from 'entities/Country';
-import { CURRENCY } from 'entities/Currency';
+import { CURRENCY } from 'shared/const/consts';
 import Avatar from 'shared/assets/tests/avatar_image_for_test.jpg';
 import { EditableProfileCard } from './EditableProfileCard';
 

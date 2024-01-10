@@ -2,7 +2,7 @@ import React, { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ListBox } from 'shared/ui/ListBox';
-import { CURRENCY } from '../../../index';
+import { CURRENCY } from 'shared/const/consts';
 
 const OPTIONS = [
     { value: CURRENCY.RUB, content: CURRENCY.RUB },

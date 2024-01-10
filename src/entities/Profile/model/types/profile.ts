@@ -1,5 +1,5 @@
 import { COUNTRY } from 'entities/Country';
-import { CURRENCY } from 'entities/Currency';
+import { CURRENCY } from 'shared/const/consts';
 
 export interface ProfileI {
     id?: string;
