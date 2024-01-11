@@ -4,14 +4,6 @@ import { buildCssLoader } from './loaders/buildCssLoaders';
 import { buildBabelLoader } from './loaders/buildBabelLoader';
 
 export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
-    // eslint-disable-next-line max-len
-    // ? Если не нужен тайпскрипт, то нужен babel-loader - это специальный транспилятор, который берет новый стандарт JS и перегоняет его в старый для поддержки всех браузеров (это простыми словами). Точно так же babel умеет работать с JSX;
-    const typescriptLoader = {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
-    };
-
     const fileLoader = {
         test: /\.(png|jpe?g|gif|woff2|woff)$/i,
         use: [
@@ -28,13 +20,15 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
 
     const cssLoader = buildCssLoader(options.isDev);
 
-    const babelLoader = buildBabelLoader(options);
+    // ? Декомпозиция babelLoader'a: теперь один отвечает за обработку ts/js файлов, а другой за tsx/jsx файлов;
+    const codeBabelLoader = buildBabelLoader({ ...options, isTsx: false });
+    const tsxCodeBabelLoader = buildBabelLoader({ ...options, isTsx: true });
 
     return [
         fileLoader,
         svgLoader,
-        babelLoader,
-        typescriptLoader,
+        codeBabelLoader,
+        tsxCodeBabelLoader,
         cssLoader,
     ];
 }
