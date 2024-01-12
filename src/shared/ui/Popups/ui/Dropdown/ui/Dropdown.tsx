@@ -1,9 +1,11 @@
 import React, { Fragment, ReactNode } from 'react';
 import { ModsType, classNames } from 'shared/lib/classNames/classNames';
 import { Menu } from '@headlessui/react';
-import { AppLink } from '../../AppLink';
+import { MAP_DIRECTION_CLASS } from '../../../styles/consts';
+import { AppLink } from '../../../../AppLink';
 import cls from './Dropdown.module.scss';
-import { DropdownDirectionUnionType } from '../../../types/ui';
+import popupCls from '../../../styles/popup.module.scss';
+import { DropdownDirectionUnionType } from '../../../../../types/ui';
 
 export interface DropdownItemI {
     disabled?: boolean;
@@ -18,12 +20,6 @@ interface DropdownPropsI {
     trigger: ReactNode;
     direction?: DropdownDirectionUnionType;
 }
-const MAP_DIRECTION_CLASS: Record<DropdownDirectionUnionType, string> = {
-    'bottom left': cls['options-bottom_left'],
-    'bottom right': cls['options-bottom_right'],
-    'top left': cls['options-top_left'],
-    'top right': cls['options-top_right'],
-};
 
 /**
  *  Компонента, входящая в комплект UI-kit проекта. Похожая на `ListBox`: так же предоставляет доступ к представленным пунктам меню по нажатию кнопки, разница лишь в том, что при нажатии на эти пункты меню выполняется какое-либо действие (не имеет привязки к какой-либо форме как `select`, `checkbox`, `input` и так далее);
@@ -40,6 +36,7 @@ export const Dropdown: React.FC<DropdownPropsI> = ({
 
     const additionalClasses: Array<string | undefined> = [
         className,
+        popupCls.popup,
     ];
 
     const menuClasses: Array<string | undefined> = [
@@ -52,7 +49,7 @@ export const Dropdown: React.FC<DropdownPropsI> = ({
             className={classNames(cls.dropdown, menuMods, additionalClasses)}
         >
             <Menu.Button
-                className={cls.button}
+                className={popupCls.trigger}
             >
                 {
                     trigger
@@ -71,7 +68,7 @@ export const Dropdown: React.FC<DropdownPropsI> = ({
                                 key={String(item.onClick)}
                                 className={classNames(
                                     cls.item,
-                                    { [cls.active]: active },
+                                    { [popupCls.active]: active },
                                 )}
                             >
                                 {

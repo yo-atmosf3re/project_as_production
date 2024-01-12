@@ -1,10 +1,12 @@
 import { Fragment, ReactNode } from 'react';
 import { Listbox as HListBox } from '@headlessui/react';
-import { DropdownDirectionUnionType } from '../../../types/ui';
-import { HStack } from '../../Stack';
-import { Button } from '../../Button';
-import { ModsType, classNames } from '../../../lib/classNames/classNames';
+import { MAP_DIRECTION_CLASS } from '../../../styles/consts';
+import { DropdownDirectionUnionType } from '../../../../../types/ui';
+import { HStack } from '../../../../Stack';
+import { Button } from '../../../../Button';
+import { ModsType, classNames } from '../../../../../lib/classNames/classNames';
 import cls from './ListBox.module.scss';
+import popupCls from '../../../styles/popup.module.scss';
 
 export interface ListBoxItemI {
     value: string;
@@ -23,13 +25,6 @@ interface ListBoxPropsI {
     direction?: DropdownDirectionUnionType;
     label?: string;
 }
-
-const MAP_DIRECTION_CLASS: Record<DropdownDirectionUnionType, string> = {
-    'bottom left': cls['options-bottom_left'],
-    'bottom right': cls['options-bottom_right'],
-    'top left': cls['options-top_left'],
-    'top right': cls['options-top_right'],
-};
 
 /**
  * Компонента, являющаяся кастомным тегом `select`, входящая в комплект UI-kit проекта. Предназначена для выбора пунктов из представленного меню опций, является частью контроля форм. Отличается от компоненты `Select` расширенным кастомизированным функционалом;
@@ -73,7 +68,7 @@ export const ListBox: React.FC<ListBoxPropsI> = ({
             <HListBox
                 disabled={readonly}
                 as="div"
-                className={classNames(cls['list-box'], mainBoxMods, [className])}
+                className={classNames(cls['list-box'], mainBoxMods, [className, popupCls.popup])}
                 value={value}
                 onChange={onChange}
             >
@@ -104,8 +99,8 @@ export const ListBox: React.FC<ListBoxPropsI> = ({
                                 {({ active }) => (
                                     <li
                                         className={classNames(cls.item, {
-                                            [cls.active]: active,
-                                            [cls.disabled]: item.disabled,
+                                            [popupCls.active]: active,
+                                            [popupCls.disabled]: item.disabled,
                                         })}
                                     >
                                         {

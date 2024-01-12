@@ -12,9 +12,11 @@ import { Text, TEXT_THEME } from 'shared/ui/Text';
 import { AppLink } from 'shared/ui/AppLink';
 import { ROUTES_PATH } from 'shared/config/routeConfig/routeConfig';
 import { HStack } from 'shared/ui/Stack';
-import { Dropdown } from 'shared/ui/Dropdown';
+import { Dropdown } from 'shared/ui/Popups';
 import { Avatar } from 'shared/ui/Avatar';
 import { APP_LINK_THEME } from 'shared/ui/AppLink/ui/AppLink';
+import { Icon } from 'shared/ui/Icon';
+import NotificationIcon from 'shared/assets/icons/notification.svg';
 import cls from './Navbar.module.scss';
 
 interface NavbarPropsI {
@@ -70,34 +72,46 @@ export const Navbar: React.FC<NavbarPropsI> = memo(() => {
                         t('Создать статью')
                     }
                 </AppLink>
-                <Dropdown
-                    direction="bottom left"
-                    className={cls.dropdown}
-                    items={[
-                        // ? Разворачиваем массив по условию: если true то переход на панель отображаться будет, а иначе развернётся пустой массив;
-                        ...(isAdminPanelAvailable
-                            ? [{
-                                content: t('Админка'),
-                                href: ROUTES_PATH.admin_panel,
-                            }]
-                            : []
-                        ),
-                        {
-                            content: t('Профиль'),
-                            href: ROUTES_PATH.profile + authData.id,
-                        },
-                        {
-                            content: t('Выйти'),
-                            onClick: onLogoutModal,
-                        },
-                    ]}
-                    trigger={(
-                        <Avatar
-                            size={30}
-                            src={authData.avatar}
+                <HStack
+                    gap="16"
+                    className={cls.actions}
+                >
+                    <Button
+                        theme={BUTTON_THEME.CLEAR}
+                    >
+                        <Icon
+                            Svg={NotificationIcon}
+                            inverted
                         />
-                    )}
-                />
+                    </Button>
+                    <Dropdown
+                        direction="bottom left"
+                        items={[
+                        // ? Разворачиваем массив по условию: если true то переход на панель отображаться будет, а иначе развернётся пустой массив;
+                            ...(isAdminPanelAvailable
+                                ? [{
+                                    content: t('Админка'),
+                                    href: ROUTES_PATH.admin_panel,
+                                }]
+                                : []
+                            ),
+                            {
+                                content: t('Профиль'),
+                                href: ROUTES_PATH.profile + authData.id,
+                            },
+                            {
+                                content: t('Выйти'),
+                                onClick: onLogoutModal,
+                            },
+                        ]}
+                        trigger={(
+                            <Avatar
+                                size={30}
+                                src={authData.avatar}
+                            />
+                        )}
+                    />
+                </HStack>
             </HStack>
         );
     }

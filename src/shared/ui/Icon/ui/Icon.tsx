@@ -5,6 +5,7 @@ import cls from './Icon.module.scss';
 interface IconPropsI {
     className?: string;
     Svg: React.VFC<React.SVGProps<SVGSVGElement>>;
+    inverted?: boolean;
 }
 
 /**
@@ -13,9 +14,13 @@ interface IconPropsI {
  * @param SVG - svg, которое нужно обернуть;
  */
 export const Icon: React.FC<IconPropsI> = ({
-    className, Svg,
-}) => (
-    <Svg
-        className={classNames(cls.icon, {}, [className])}
-    />
-);
+    className, Svg, inverted,
+}) => {
+    const mainClass = inverted ? cls.inverted : cls.icon;
+
+    return (
+        <Svg
+            className={classNames(mainClass, {}, [className])}
+        />
+    );
+};
