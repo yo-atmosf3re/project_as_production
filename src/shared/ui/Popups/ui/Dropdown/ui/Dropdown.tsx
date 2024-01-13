@@ -4,7 +4,7 @@ import { Menu } from '@headlessui/react';
 import { MAP_DIRECTION_CLASS } from '../../../styles/consts';
 import { AppLink } from '../../../../AppLink';
 import cls from './Dropdown.module.scss';
-import popupCls from '../../../styles/popup.module.scss';
+import popupCls from '../../../styles/Popup.module.scss';
 import { DropdownDirectionUnionType } from '../../../../../types/ui';
 
 export interface DropdownItemI {
