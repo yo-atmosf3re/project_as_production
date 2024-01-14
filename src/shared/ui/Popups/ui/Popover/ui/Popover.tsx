@@ -4,7 +4,7 @@ import { Popover } from '@headlessui/react';
 import { DropdownDirectionUnionType } from 'shared/types/ui';
 import { MAP_DIRECTION_CLASS } from '../../../styles/consts';
 import cls from './Popover.module.scss';
-import popupCls from '../../../styles/Popup.module.scss';
+import popupCls from '../../../styles/popup.module.scss';
 
 interface PopoverPropsI {
     className?: string;

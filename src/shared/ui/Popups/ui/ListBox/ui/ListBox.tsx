@@ -6,7 +6,7 @@ import { HStack } from '../../../../Stack';
 import { Button } from '../../../../Button';
 import { ModsType, classNames } from '../../../../../lib/classNames/classNames';
 import cls from './ListBox.module.scss';
-import popupCls from '../../../styles/Popup.module.scss';
+import popupCls from '../../../styles/popup.module.scss';
 
 export interface ListBoxItemI {
     value: string;
