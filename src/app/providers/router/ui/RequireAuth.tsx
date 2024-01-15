@@ -22,8 +22,6 @@ export function RequireAuth({ children, roles }: RequireAuthProps) {
     const location = useLocation();
     const userRoles = useSelector(getUserRoles);
 
-    console.log(roles, 'roles');
-
     // ? Сразу кэшируем результаты сравнения;
     const hasRequiredRoles = useMemo(() => {
         if (!roles) {
@@ -34,12 +32,9 @@ export function RequireAuth({ children, roles }: RequireAuthProps) {
         // ? Если роли всё-таки имеются, то их необходимо сравнить: сравниваем роли из одного массива с ролями из другого, если есть хотя бы одно совпадение, то возвращаем true;
         return roles.some((requiredRole) => {
             const hasRole = userRoles?.includes(requiredRole);
-            console.log(hasRole, 'hasRole');
             return hasRole;
         });
     }, [roles, userRoles]);
-
-    console.log(hasRequiredRoles, 'hasRequiredRoles');
 
     // ? При ложном auth перенаправляет пользователя на главную страницу;
     if (!auth) {

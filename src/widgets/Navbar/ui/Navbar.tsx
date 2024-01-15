@@ -12,11 +12,12 @@ import { Text, TEXT_THEME } from 'shared/ui/Text';
 import { AppLink } from 'shared/ui/AppLink';
 import { ROUTES_PATH } from 'shared/config/routeConfig/routeConfig';
 import { HStack } from 'shared/ui/Stack';
-import { Dropdown } from 'shared/ui/Popups';
+import { Dropdown, Popover } from 'shared/ui/Popups';
 import { Avatar } from 'shared/ui/Avatar';
 import { APP_LINK_THEME } from 'shared/ui/AppLink/ui/AppLink';
 import { Icon } from 'shared/ui/Icon';
 import NotificationIcon from 'shared/assets/icons/notification.svg';
+import { NotificationList } from 'entities/Notification';
 import cls from './Navbar.module.scss';
 
 interface NavbarPropsI {
@@ -76,14 +77,25 @@ export const Navbar: React.FC<NavbarPropsI> = memo(() => {
                     gap="16"
                     className={cls.actions}
                 >
-                    <Button
-                        theme={BUTTON_THEME.CLEAR}
+                    <Popover
+                        direction="bottom left"
+                        trigger={
+                            (
+                                <Button
+                                    theme={BUTTON_THEME.CLEAR}
+                                >
+                                    <Icon
+                                        Svg={NotificationIcon}
+                                        inverted
+                                    />
+                                </Button>
+                            )
+                        }
                     >
-                        <Icon
-                            Svg={NotificationIcon}
-                            inverted
+                        <NotificationList
+                            className={cls.notifications}
                         />
-                    </Button>
+                    </Popover>
                     <Dropdown
                         direction="bottom left"
                         items={[

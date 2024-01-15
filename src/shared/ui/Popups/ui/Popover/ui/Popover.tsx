@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
 import { Popover } from '@headlessui/react';
-import { DropdownDirectionUnionType } from 'shared/types/ui';
+import { ModsType, classNames } from '../../../../../lib/classNames/classNames';
+import { DropdownDirectionUnionType } from '../../../../../types/ui';
 import { MAP_DIRECTION_CLASS } from '../../../styles/consts';
 import cls from './Popover.module.scss';
 import popupCls from '../../../styles/popup.module.scss';
@@ -10,6 +10,7 @@ interface PopoverPropsI {
     className?: string;
     direction?: DropdownDirectionUnionType;
     trigger: ReactNode;
+    children: ReactNode;
 }
 
 /**
@@ -17,17 +18,27 @@ interface PopoverPropsI {
  * @param className
  * @param trigger - содержимое кнопки, которая активирует показ содержимого `Popover`;
  * @param direction - направление отрисовки `Popover`;
+ * @param children
  */
 export const MyPopover: React.FC<PopoverPropsI> = ({
-    className, trigger, direction,
+    className, trigger,
+    direction = 'bottom right',
+    children,
 }) => {
-    // const menuClasses: Array<string | undefined> = [
-    //     MAP_DIRECTION_CLASS[direction],
-    // ];
+    const menuMods: ModsType = {};
+
+    const additionalClasses: Array<string | undefined> = [
+        className,
+        popupCls.popup,
+    ];
+
+    const menuClasses: Array<string | undefined> = [
+        MAP_DIRECTION_CLASS[direction],
+    ];
 
     return (
         <Popover
-            className="relative"
+            className={classNames(cls.popover, menuMods, additionalClasses)}
         >
             <Popover.Button
                 className={popupCls.trigger}
@@ -37,8 +48,12 @@ export const MyPopover: React.FC<PopoverPropsI> = ({
                 }
             </Popover.Button>
 
-            <Popover.Panel className="absolute z-10">
-                Pop
+            <Popover.Panel
+                className={classNames(cls.panel, {}, menuClasses)}
+            >
+                {
+                    children
+                }
             </Popover.Panel>
         </Popover>
     );
