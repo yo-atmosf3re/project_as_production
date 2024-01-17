@@ -1,6 +1,5 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { MutableRefObject, ReactNode } from 'react';
+import { Overlay } from '../../Overlay';
 import { Portal } from '../../Portal';
 import { ModsType, classNames } from '../../../lib/classNames/classNames';
 import cls from './Modal.module.scss';
@@ -53,10 +52,6 @@ export const Modal: React.FC<ModalPropsI> = ({
         }
     }, [onClose]);
 
-    const onContentClick = (e: React.MouseEvent) => {
-        e.stopPropagation();
-    };
-
     const onKeyDown = React.useCallback((e: KeyboardEvent) => {
         if (e.key === 'Escape') closeHandler();
     }, [closeHandler]);
@@ -87,16 +82,13 @@ export const Modal: React.FC<ModalPropsI> = ({
     return (
         <Portal>
             <div className={classNames(cls.modal, mods, additionalClasses)}>
-                <div
+                <Overlay
                     onClick={closeHandler}
-                    className={cls.overlay}
+                />
+                <div
+                    className={classNames(cls.content, { [cls['content-opened']]: isOpen })}
                 >
-                    <div
-                        className={classNames(cls.content, { [cls['content-opened']]: isOpen })}
-                        onClick={onContentClick}
-                    >
-                        {children}
-                    </div>
+                    {children}
                 </div>
             </div>
         </Portal>

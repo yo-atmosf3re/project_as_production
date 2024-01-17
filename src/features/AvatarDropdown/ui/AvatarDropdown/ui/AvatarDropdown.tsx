@@ -22,7 +22,7 @@ interface AvatarDropdownPropsI {
 export const AvatarDropdown: React.FC<AvatarDropdownPropsI> = ({
     className,
 }) => {
-    const { t } = useTranslation('dropdownAvatar');
+    const { t } = useTranslation('avatarDropdown');
 
     const dispatch = useAppDispatch();
 
