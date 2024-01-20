@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from 'react';
+import React, { memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { Button, BUTTON_THEME } from 'shared/ui/Button';
@@ -14,8 +14,6 @@ import { HStack } from 'shared/ui/Stack';
 import { APP_LINK_THEME } from 'shared/ui/AppLink/ui/AppLink';
 import { NotificationButton } from 'features/NotificationButton';
 import { AvatarDropdown } from 'features/AvatarDropdown';
-import { Drawer } from 'shared/ui/Drawer';
-import { NotificationList } from 'entities/Notification';
 import cls from './Navbar.module.scss';
 
 interface NavbarPropsI {

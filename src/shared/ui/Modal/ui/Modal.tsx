@@ -1,4 +1,5 @@
-import React, { MutableRefObject, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
+import { useModal } from '../../../lib/hooks/useModal/useModal';
 import { Overlay } from '../../Overlay';
 import { Portal } from '../../Portal';
 import { ModsType, classNames } from '../../../lib/classNames/classNames';
@@ -16,7 +17,7 @@ const ANIMATION_DELAY = 300;
 
 // ? Modal пример той компоненты, которую не нужно мемоизировать, потому что у неё вложенная древовидная структура, которая подвержена каким-то постоянным изменениям;
 /**
- * Компонента-модальное окно, которая входит в UI-kit проекта, обёрнутое в реактовский Portal. Внутри логика по плавному открытию-закрытию этого модального окна;
+ * Компонента-модальное окно, которая входит в UI-kit проекта, обёрнутое в реактовский Portal. Внутри логика по плавному открытию-закрытию этого модального окна (основная часть логики декомпозирована в кастомный хук `useModal`);
  * @param className
  * @param children
  * @param isOpen - флаг отображения модального окна;
@@ -26,9 +27,18 @@ const ANIMATION_DELAY = 300;
 export const Modal: React.FC<ModalPropsI> = ({
     className, children, isOpen, onClose, lazy,
 }) => {
-    const [isClosing, setIsClosing] = React.useState(false);
-    // ? Помещаем в состояние вмонтирован компонент или нет;
-    const [isMounted, setIsMounted] = React.useState(false);
+    const { close, isClosing, isMounted } = useModal(
+        {
+            animationDelay: ANIMATION_DELAY,
+            isOpen,
+            onClose,
+        },
+    );
+
+    // ? При lazy = true и isMounted = false возвращает null. То есть, это ленивая загрузка компоненты, и модальное окно не будет вмонтировано в DOM-дерево сразу, а только тогда, когда модальное окно будет открыто. Это нужно для кейса с автофокусом в input при открытии модального окна;
+    if (lazy && !isMounted) {
+        return null;
+    }
 
     const additionalClasses: Array<string | undefined> = [
         className,
@@ -40,50 +50,11 @@ export const Modal: React.FC<ModalPropsI> = ({
         [cls['is-closing']]: isClosing,
     };
 
-    const timerRef = React.useRef() as MutableRefObject<ReturnType<typeof setTimeout>>;
-
-    const closeHandler = React.useCallback(() => {
-        if (onClose) {
-            setIsClosing(true);
-            timerRef.current = setTimeout(() => {
-                onClose();
-                setIsClosing(false);
-            }, ANIMATION_DELAY);
-        }
-    }, [onClose]);
-
-    const onKeyDown = React.useCallback((e: KeyboardEvent) => {
-        if (e.key === 'Escape') closeHandler();
-    }, [closeHandler]);
-
-    React.useEffect(() => {
-        if (isOpen) {
-            window.addEventListener('keydown', onKeyDown);
-        }
-
-        return () => {
-            clearInterval(timerRef.current);
-            window.removeEventListener('keydown', onKeyDown);
-        };
-    }, [isOpen, onKeyDown]);
-
-    // ? Управляет состоянием вмонтирования компоненты, и если модальное окно открыто, то состояние вмонтирования - true;
-    React.useEffect(() => {
-        if (isOpen) {
-            setIsMounted(true);
-        }
-    }, [isOpen]);
-
-    // ? При lazy = true и isMounted = false возвращает null. То есть, это ленивая загрузка компоненты, и модальное окно не будет вмонтировано в DOM-дерево сразу, а только тогда, когда модальное окно будет открыто. Это нужно для кейса с автофокусом в input при открытии модального окна;
-    if (lazy && !isMounted) {
-        return null;
-    }
-
     return (
         <Portal>
             <div className={classNames(cls.modal, mods, additionalClasses)}>
                 <Overlay
-                    onClick={closeHandler}
+                    onClick={close}
                 />
                 <div
                     className={classNames(cls.content, { [cls['content-opened']]: isOpen })}

@@ -49,3 +49,9 @@
         transform: translateY(0%);
     }
 }
+
+.is-closing {
+    .content {
+        transform: translateY(100%);
+    }
+}

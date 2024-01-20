@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import { useTheme } from 'app/providers/ThemeProvider';
+import { useModal } from '../../../lib/hooks/useModal/useModal';
 import { Overlay } from '../../Overlay';
 import { Portal } from '../../Portal';
 import { classNames, ModsType } from '../../../lib/classNames/classNames';
@@ -10,6 +11,7 @@ interface DrawerPropsI {
     children: ReactNode;
     isOpen?: boolean;
     onClose?: () => void;
+    lazy?: boolean;
 }
 
 /**
@@ -21,11 +23,25 @@ interface DrawerPropsI {
 export const Drawer: React.FC<DrawerPropsI> = ({
     className, children,
     isOpen, onClose,
+    lazy,
 }) => {
+    const { close, isClosing, isMounted } = useModal(
+        {
+            animationDelay: 300,
+            isOpen,
+            onClose,
+        },
+    );
+
     const { theme } = useTheme();
 
+    // ? При lazy = true и isMounted = false возвращает null. То есть, это ленивая загрузка компоненты, и модальное окно не будет вмонтировано в DOM-дерево сразу, а только тогда, когда модальное окно будет открыто. Это нужно для кейса с автофокусом в input при открытии модального окна;
+    if (lazy && !isMounted) {
+        return null;
+    }
     const mods: ModsType = {
         [cls.opened]: isOpen,
+        [cls['is-closing']]: isClosing,
     };
 
     const additionalClasses: Array<string | undefined> = [
@@ -40,7 +56,7 @@ export const Drawer: React.FC<DrawerPropsI> = ({
                 className={classNames(cls.drawer, mods, additionalClasses)}
             >
                 <Overlay
-                    onClick={onClose}
+                    onClick={close}
                 />
                 <div
                     className={cls.content}
