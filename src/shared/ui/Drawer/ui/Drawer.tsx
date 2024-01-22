@@ -3,7 +3,7 @@ import React, {
     useCallback, useEffect,
 } from 'react';
 import { useTheme } from '@/app/providers/ThemeProvider';
-import { useAnimationLibs } from '@/shared/lib/components/AnimationProvider';
+import { AnimationProvider, useAnimationLibs } from '../../../lib/components/AnimationProvider';
 import { Overlay } from '../../Overlay';
 import { Portal } from '../../Portal';
 import { classNames, ModsType } from '../../../lib/classNames/classNames';
@@ -164,7 +164,7 @@ export const DrawerContent: React.FC<DrawerPropsI> = memo(({
 /**
  * Обёртка, которая подгружает библиотеки, которые предоставляет кастомный хук `useAnimationLibs`;
  */
-export const Drawer: React.FC<DrawerPropsI> = memo((props) => {
+const DrawerAsync: React.FC<DrawerPropsI> = (props) => {
     const { isLoaded } = useAnimationLibs();
 
     if (!isLoaded) {
@@ -176,4 +176,17 @@ export const Drawer: React.FC<DrawerPropsI> = memo((props) => {
             {...props}
         />
     );
-});
+};
+
+/**
+ * Обёртка, которая оборачивает `DrawerAsync` в `AnimationProvider` (это упрощает работу с провайдером, теперь не придётся оборачивать каждый используемый `Drawer` в приложении);
+ */
+export const Drawer: React.FC<DrawerPropsI> = (props) => {
+    return (
+        <AnimationProvider>
+            <DrawerAsync
+                {...props}
+            />
+        </AnimationProvider>
+    );
+};
