@@ -1,5 +1,5 @@
 import React, { HTMLAttributes, ReactNode } from 'react';
-import { ModsType, classNames } from 'shared/lib/classNames/classNames';
+import { ModsType, classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Card.module.scss';
 
 /**

@@ -1,11 +1,11 @@
 import React from 'react';
-import { Text } from 'shared/ui/Text';
-import { ModsType, classNames } from 'shared/lib/classNames/classNames';
-import { Avatar } from 'shared/ui/Avatar';
-import { Skeleton } from 'shared/ui/Skeleton';
-import { AppLink } from 'shared/ui/AppLink';
-import { ROUTES_PATH } from 'shared/config/routeConfig/routeConfig';
-import { HStack, VStack } from 'shared/ui/Stack';
+import { Text } from '@/shared/ui/Text';
+import { ModsType, classNames } from '@/shared/lib/classNames/classNames';
+import { Avatar } from '@/shared/ui/Avatar';
+import { Skeleton } from '@/shared/ui/Skeleton';
+import { AppLink } from '@/shared/ui/AppLink';
+import { ROUTES_PATH } from '@/shared/config/routeConfig/routeConfig';
+import { HStack, VStack } from '@/shared/ui/Stack';
 import { CommentI } from '../../../model/types/comment';
 import cls from './CommentCard.module.scss';
 

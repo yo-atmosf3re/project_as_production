@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ThunkConfigI } from 'app/providers/StoreProvider';
-import { CommentI } from 'entities/Comment';
+import { ThunkConfigI } from '@/app/providers/StoreProvider';
+import { CommentI } from '@/entities/Comment';
 
 /**
  * Получение комментариев для конкретной статьи по id;

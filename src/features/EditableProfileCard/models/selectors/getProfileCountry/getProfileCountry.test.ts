@@ -1,5 +1,5 @@
-import { StateSchema } from 'app/providers/StoreProvider';
-import { COUNTRY } from 'entities/Country';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { COUNTRY } from '@/entities/Country';
 import { getProfileCountry } from './getProfileCountry';
 
 describe('getProfileCountry', () => {

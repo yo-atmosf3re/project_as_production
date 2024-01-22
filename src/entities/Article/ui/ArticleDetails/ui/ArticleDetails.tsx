@@ -1,17 +1,17 @@
 import React, { memo, useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { TEXT_ALIGN, Text, TEXT_SIZE } from 'shared/ui/Text';
-import { Skeleton } from 'shared/ui/Skeleton';
-import { Avatar } from 'shared/ui/Avatar';
-import EyeIcon from 'shared/assets/icons/eye.svg';
-import CalendarIcon from 'shared/assets/icons/clarity_date.svg';
-import { Icon } from 'shared/ui/Icon';
-import { HStack, VStack } from 'shared/ui/Stack';
-import { ARTICLE_BLOCK_TYPE } from 'shared/const/consts';
+import { TEXT_ALIGN, Text, TEXT_SIZE } from '@/shared/ui/Text';
+import { Skeleton } from '@/shared/ui/Skeleton';
+import { Avatar } from '@/shared/ui/Avatar';
+import EyeIcon from '@/shared/assets/icons/eye.svg';
+import CalendarIcon from '@/shared/assets/icons/clarity_date.svg';
+import { Icon } from '@/shared/ui/Icon';
+import { HStack, VStack } from '@/shared/ui/Stack';
+import { ARTICLE_BLOCK_TYPE } from '@/shared/const/consts';
 import { ArticleBlockI } from '../../../model/types/article';
 import { getArticleDetailsError } from '../../../model/selectors/getArticleDetailsError/getArticleDetailsError';
 import { getArticleDetailsIsLoading }

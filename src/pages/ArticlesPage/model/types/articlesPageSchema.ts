@@ -1,10 +1,10 @@
 import { EntityState } from '@reduxjs/toolkit';
 import {
     ArticleI,
-} from 'entities/Article';
-import { ARTICLE_SORT_FIELD, ARTICLE_TYPE, ARTICLE_VIEW } from 'shared/const/consts';
+} from '@/entities/Article';
+import { ARTICLE_SORT_FIELD, ARTICLE_TYPE, ARTICLE_VIEW } from '@/shared/const/consts';
 
-import { SortOrderType } from 'shared/types';
+import { SortOrderType } from '@/shared/types';
 
 /**
  * Схема для инициализационного стейта ArticlesPage

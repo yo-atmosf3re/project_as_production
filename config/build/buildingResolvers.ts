@@ -7,6 +7,9 @@ export function buildingResolvers(options: BuildOptions): ResolveOptions {
         preferAbsolute: true,
         modules: [options.paths.src, 'node_modules'],
         mainFiles: ['index'],
-        alias: {},
+        alias: {
+            // ? Для избежания коллизий в названиях при импорте библиотек и файлов проекта;
+            '@': options.paths.src,
+        },
     };
 }

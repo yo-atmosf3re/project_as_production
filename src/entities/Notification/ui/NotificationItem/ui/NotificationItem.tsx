@@ -1,7 +1,7 @@
 import React from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { CARD_THEME, Card } from 'shared/ui/Card';
-import { Text } from 'shared/ui/Text';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { CARD_THEME, Card } from '@/shared/ui/Card';
+import { Text } from '@/shared/ui/Text';
 import { NotificationI } from '../../../model/types/notification';
 import cls from './NotificationItem.module.scss';
 

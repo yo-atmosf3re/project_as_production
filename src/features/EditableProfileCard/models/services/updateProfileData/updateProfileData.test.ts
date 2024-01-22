@@ -1,6 +1,6 @@
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
-import { COUNTRY } from 'entities/Country';
-import { CURRENCY, VALIDATE_PROFILE_ERROR } from 'shared/const/consts';
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
+import { COUNTRY } from '@/entities/Country';
+import { CURRENCY, VALIDATE_PROFILE_ERROR } from '@/shared/const/consts';
 import { updateProfileData } from './updateProfileData';
 
 const data = {

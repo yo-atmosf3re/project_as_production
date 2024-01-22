@@ -1,8 +1,8 @@
 import React from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Page } from 'widgets/Page';
-import { HStack } from 'shared/ui/Stack';
+import { Page } from '@/widgets/Page';
+import { HStack } from '@/shared/ui/Stack';
 import cls from './NotFoundPage.module.scss';
 
 interface NotFoundPagePropsI {

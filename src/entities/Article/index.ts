@@ -1,4 +1,4 @@
-export { ArticleTypeTabs } from 'entities/Article/ui/ArticleTypeTabs';
+export { ArticleTypeTabs } from './ui/ArticleTypeTabs';
 export { ArticleSortSelector } from './ui/ArticleSortSelector';
 export { ArticleList } from './ui/ArticleList';
 export { ArticleDetails } from './ui/ArticleDetails';

@@ -1,5 +1,5 @@
-import { StateSchema } from 'app/providers/StoreProvider';
-import { CURRENCY } from 'shared/const/consts';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { CURRENCY } from '@/shared/const/consts';
 import { getProfileCurrency } from './getProfileCurrency';
 
 describe('getProfileCurrency', () => {

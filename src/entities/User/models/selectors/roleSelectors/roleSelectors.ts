@@ -1,6 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { StateSchema } from 'app/providers/StoreProvider';
-import { USER_ROLE } from 'shared/const/consts';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { USER_ROLE } from '@/shared/const/consts';
 
 export const getUserRoles = (state: StateSchema) => state.user.authData?.roles;
 

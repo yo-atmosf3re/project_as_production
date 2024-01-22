@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { THEME } from 'app/providers/ThemeProvider';
+import { THEME } from '@/app/providers/ThemeProvider';
 import { ThemeDecorator } from '../../../config/storybook/ThemeDecorator/ThemeDecorator';
 import { Code } from './Code';
 

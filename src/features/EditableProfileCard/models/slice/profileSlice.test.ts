@@ -1,5 +1,5 @@
-import { COUNTRY } from 'entities/Country';
-import { CURRENCY, VALIDATE_PROFILE_ERROR } from 'shared/const/consts';
+import { COUNTRY } from '@/entities/Country';
+import { CURRENCY, VALIDATE_PROFILE_ERROR } from '@/shared/const/consts';
 
 import { updateProfileData } from '../services/updateProfileData/updateProfileData';
 import { profileActions, profileReducer } from './profileSlice';

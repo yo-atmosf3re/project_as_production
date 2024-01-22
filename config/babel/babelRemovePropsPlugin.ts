@@ -1,3 +1,4 @@
+/* eslint-disable func-names */
 import { PluginItem } from '@babel/core';
 
 // * AST - абстрактное синтаксическое дерево;

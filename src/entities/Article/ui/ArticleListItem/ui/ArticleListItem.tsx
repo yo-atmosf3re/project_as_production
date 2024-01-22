@@ -1,16 +1,16 @@
 import React, { HTMLAttributeAnchorTarget } from 'react';
 import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Text } from 'shared/ui/Text';
-import EyeIcon from 'shared/assets/icons/eye.svg';
-import { Icon } from 'shared/ui/Icon';
-import { Card } from 'shared/ui/Card';
-import { Avatar } from 'shared/ui/Avatar';
-import { BUTTON_THEME, Button } from 'shared/ui/Button';
-import { ROUTES_PATH } from 'shared/config/routeConfig/routeConfig';
-import { AppLink } from 'shared/ui/AppLink';
-import { HStack } from 'shared/ui/Stack';
-import { ARTICLE_BLOCK_TYPE, ARTICLE_VIEW } from 'shared/const/consts';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Text } from '@/shared/ui/Text';
+import EyeIcon from '@/shared/assets/icons/eye.svg';
+import { Icon } from '@/shared/ui/Icon';
+import { Card } from '@/shared/ui/Card';
+import { Avatar } from '@/shared/ui/Avatar';
+import { BUTTON_THEME, Button } from '@/shared/ui/Button';
+import { ROUTES_PATH } from '@/shared/config/routeConfig/routeConfig';
+import { AppLink } from '@/shared/ui/AppLink';
+import { HStack } from '@/shared/ui/Stack';
+import { ARTICLE_BLOCK_TYPE, ARTICLE_VIEW } from '@/shared/const/consts';
 import {
     ArticleI, ArticleTextBlockI,
 } from '../../../model/types/article';

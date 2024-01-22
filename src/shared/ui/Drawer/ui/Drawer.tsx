@@ -2,8 +2,8 @@ import React, {
     ReactNode, memo,
     useCallback, useEffect,
 } from 'react';
-import { useTheme } from 'app/providers/ThemeProvider';
-import { useAnimationLibs } from 'shared/lib/components/AnimationProvider';
+import { useTheme } from '@/app/providers/ThemeProvider';
+import { useAnimationLibs } from '@/shared/lib/components/AnimationProvider';
 import { Overlay } from '../../Overlay';
 import { Portal } from '../../Portal';
 import { classNames, ModsType } from '../../../lib/classNames/classNames';

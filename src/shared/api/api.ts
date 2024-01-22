@@ -1,7 +1,7 @@
 // ? Инкапсулируем сюда логику для аксиоса, создаём инстанс аксиоса;
 
 import axios from 'axios';
-import { USER_LS_KEY } from 'shared/const/localstorage';
+import { USER_LS_KEY } from '@/shared/const/localstorage';
 
 export const $API = axios.create({
     baseURL: __API__,

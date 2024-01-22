@@ -1,5 +1,5 @@
 import { EntityState } from '@reduxjs/toolkit';
-import { ArticleI } from 'entities/Article';
+import { ArticleI } from '@/entities/Article';
 
 export interface ArticleDetailsPageRecommendationsSchema
 extends EntityState<ArticleI> {

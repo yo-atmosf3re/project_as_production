@@ -1,15 +1,15 @@
 import React, { useCallback } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Popover } from 'shared/ui/Popups';
-import { NotificationList } from 'entities/Notification';
-import { Button, BUTTON_THEME } from 'shared/ui/Button';
-import { Icon } from 'shared/ui/Icon';
-import NotificationIcon from 'shared/assets/icons/notification.svg';
-import { Drawer } from 'shared/ui/Drawer';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Popover } from '@/shared/ui/Popups';
+import { NotificationList } from '@/entities/Notification';
+import { Button, BUTTON_THEME } from '@/shared/ui/Button';
+import { Icon } from '@/shared/ui/Icon';
+import NotificationIcon from '@/shared/assets/icons/notification.svg';
+import { Drawer } from '@/shared/ui/Drawer';
 // ? С помощью библиотеки получаем простейший доступ к user agent, а благодаря импортированным обёрткам (для мобильной и десктопной версии) отрисовка для разных устройств упрощается;
 import { BrowserView, MobileView } from 'react-device-detect';
 // ? Можно использовать ленивую загрузку для мобильного и десктопного кода, потому что код для мобильной версии не нужен для десктопной и не подгружаться не будет и наоборот, что позволит сократить конечный размер бандла;
-import { AnimationProvider } from 'shared/lib/components/AnimationProvider';
+import { AnimationProvider } from '@/shared/lib/components/AnimationProvider';
 import cls from './NotificationButton.module.scss';
 
 interface NotificationButtonPropsI {

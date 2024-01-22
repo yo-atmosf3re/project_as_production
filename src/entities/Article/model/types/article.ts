@@ -1,4 +1,4 @@
-import { ARTICLE_BLOCK_TYPE, ARTICLE_TYPE } from 'shared/const/consts';
+import { ARTICLE_BLOCK_TYPE, ARTICLE_TYPE } from '@/shared/const/consts';
 import { UserI } from '../../../User/models/types/user';
 
 /**

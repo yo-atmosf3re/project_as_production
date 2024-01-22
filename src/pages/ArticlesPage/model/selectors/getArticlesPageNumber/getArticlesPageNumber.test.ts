@@ -1,4 +1,4 @@
-import { StateSchema } from 'app/providers/StoreProvider';
+import { StateSchema } from '@/app/providers/StoreProvider';
 import { getArticlesPageNumber } from './getArticlesPageNumber';
 
 describe('getArticlesPageNumber', () => {

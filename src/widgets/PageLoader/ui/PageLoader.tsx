@@ -1,7 +1,7 @@
 import React from 'react';
-import { Loader } from 'shared/ui/Loader';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { HStack } from 'shared/ui/Stack';
+import { Loader } from '@/shared/ui/Loader';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { HStack } from '@/shared/ui/Stack';
 import cls from './PageLoader.module.scss';
 
 interface PageLoaderPropsI {

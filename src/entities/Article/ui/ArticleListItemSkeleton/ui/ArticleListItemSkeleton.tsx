@@ -1,8 +1,8 @@
 import React from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Card } from 'shared/ui/Card';
-import { Skeleton } from 'shared/ui/Skeleton';
-import { ARTICLE_VIEW } from 'shared/const/consts';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Card } from '@/shared/ui/Card';
+import { Skeleton } from '@/shared/ui/Skeleton';
+import { ARTICLE_VIEW } from '@/shared/const/consts';
 import cls from '../../ArticleListItem/ui/ArticleListItem.module.scss';
 
 interface ArticleListItemSkeletonPropsI {

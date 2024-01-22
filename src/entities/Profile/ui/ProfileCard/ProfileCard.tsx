@@ -1,15 +1,15 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Text } from 'shared/ui/Text';
-import { Input } from 'shared/ui/Input';
-import { Loader } from 'shared/ui/Loader';
-import { TEXT_ALIGN, TEXT_THEME } from 'shared/ui/Text/ui/Text';
-import { Avatar } from 'shared/ui/Avatar';
-import { CurrencySelect } from 'entities/Currency';
-import { COUNTRY, CountrySelect } from 'entities/Country';
-import { HStack, VStack } from 'shared/ui/Stack';
-import { CURRENCY } from 'shared/const/consts';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Text } from '@/shared/ui/Text';
+import { Input } from '@/shared/ui/Input';
+import { Loader } from '@/shared/ui/Loader';
+import { TEXT_ALIGN, TEXT_THEME } from '@/shared/ui/Text/ui/Text';
+import { Avatar } from '@/shared/ui/Avatar';
+import { CurrencySelect } from '@/entities/Currency';
+import { COUNTRY, CountrySelect } from '@/entities/Country';
+import { HStack, VStack } from '@/shared/ui/Stack';
+import { CURRENCY } from '@/shared/const/consts';
 import {
     ProfileI,
 } from '../../index';

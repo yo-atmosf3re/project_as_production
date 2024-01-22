@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { ARTICLE_TYPE, ARTICLE_BLOCK_TYPE } from 'shared/const/consts';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { ARTICLE_TYPE, ARTICLE_BLOCK_TYPE } from '@/shared/const/consts';
 import { ArticleInfiteList } from './ArticleInfiteList';
 
 export default {

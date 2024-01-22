@@ -1,5 +1,5 @@
-import { StateSchema } from 'app/providers/StoreProvider';
-import { Avatar } from 'shared/assets/tests/avatar_image_for_test.jpg';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { Avatar } from '@/shared/assets/tests/avatar_image_for_test.jpg';
 import { getProfileAvatar } from './getProfileAvatar';
 
 describe('getProfileAvatar', () => {

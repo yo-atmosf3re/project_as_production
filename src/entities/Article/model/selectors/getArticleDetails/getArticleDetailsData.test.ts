@@ -1,5 +1,5 @@
-import { StateSchema } from 'app/providers/StoreProvider';
-import { ARTICLE_BLOCK_TYPE, ARTICLE_TYPE } from 'shared/const/consts';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { ARTICLE_BLOCK_TYPE, ARTICLE_TYPE } from '@/shared/const/consts';
 import { getArticleDetailsData } from './getArticleDetailsData';
 import { ArticleI } from '../../types/article';
 

@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { USER_LS_KEY } from 'shared/const/localstorage';
+import { USER_LS_KEY } from '@/shared/const/localstorage';
 
 // ? Создание RTK Query API;
 export const rtkApi = createApi({

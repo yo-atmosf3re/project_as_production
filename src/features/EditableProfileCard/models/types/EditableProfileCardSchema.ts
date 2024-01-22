@@ -1,5 +1,5 @@
-import { ProfileI } from 'entities/Profile';
-import { VALIDATE_PROFILE_ERROR } from 'shared/const/consts';
+import { ProfileI } from '@/entities/Profile';
+import { VALIDATE_PROFILE_ERROR } from '@/shared/const/consts';
 
 export interface ProfileSchema {
     // ? data - тут хранятся данные, которые получе непосредственно с сервера;

@@ -1,8 +1,8 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { THEME } from 'app/providers/ThemeProvider';
-import { ARTICLE_BLOCK_TYPE, ARTICLE_TYPE, ARTICLE_VIEW } from 'shared/const/consts';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { THEME } from '@/app/providers/ThemeProvider';
+import { ARTICLE_BLOCK_TYPE, ARTICLE_TYPE, ARTICLE_VIEW } from '@/shared/const/consts';
 import {
     ArticleI,
 } from '../../../model/types/article';

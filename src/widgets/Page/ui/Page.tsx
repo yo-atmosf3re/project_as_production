@@ -2,16 +2,16 @@ import React, {
     MutableRefObject, ReactNode, memo, useRef,
     UIEvent,
 } from 'react';
-import { ModsType, classNames } from 'shared/lib/classNames/classNames';
-import { useInfiniteScroll } from 'shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { getScrollRestorationByPath, scrollRestorationActions } from 'features/ScrollRestoration';
+import { ModsType, classNames } from '@/shared/lib/classNames/classNames';
+import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { getScrollRestorationByPath, scrollRestorationActions } from '@/features/ScrollRestoration';
 import { useLocation } from 'react-router-dom';
-import { StateSchema } from 'app/providers/StoreProvider';
+import { StateSchema } from '@/app/providers/StoreProvider';
 import { useSelector } from 'react-redux';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { useThrottle } from 'shared/lib/hooks/useThrottle/useThrottle';
-import { ARTICLE_VIEW } from 'shared/const/consts';
+import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
+import { ARTICLE_VIEW } from '@/shared/const/consts';
 import cls from './Page.module.scss';
 
 interface PagePropsI {

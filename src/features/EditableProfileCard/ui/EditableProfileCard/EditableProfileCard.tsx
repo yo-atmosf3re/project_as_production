@@ -1,11 +1,11 @@
 import { memo, useCallback } from 'react';
-import { COUNTRY } from 'entities/Country';
-import { CURRENCY } from 'shared/const/consts';
+import { COUNTRY } from '@/entities/Country';
+import { CURRENCY } from '@/shared/const/consts';
 import { useSelector } from 'react-redux';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { ProfileCard } from 'entities/Profile';
-import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { ProfileCard } from '@/entities/Profile';
+import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { getProfileError } from '../../models/selectors/getProfileError/getProfileError';
 import { getProfileForm } from '../../models/selectors/getProfileForm/getProfileForm';
 import { getProfileIsLoading } from '../../models/selectors/getProfileIsLoading/getProfileIsLoading';

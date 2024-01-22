@@ -1,4 +1,4 @@
-import { StateSchema } from 'app/providers/StoreProvider';
+import { StateSchema } from '@/app/providers/StoreProvider';
 import { getArticleCommentsIsLoading } from './getArticleCommentsIsLoading';
 
 describe('getArticleCommentsIsLoading', () => {
