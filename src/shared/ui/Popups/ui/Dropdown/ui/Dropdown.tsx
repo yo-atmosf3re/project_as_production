@@ -59,13 +59,12 @@ export const Dropdown: React.FC<DropdownPropsI> = ({
                 className={classNames(cls.menu, {}, menuClasses)}
             >
                 {
-                    items.map((item) => {
+                    items.map((item, index) => {
                         const content = ({ active }: {active: boolean}) => (
                             <button
                                 type="button"
                                 disabled={item.disabled}
                                 onClick={item.onClick}
-                                key={String(item.onClick)}
                                 className={classNames(
                                     cls.item,
                                     { [popupCls.active]: active },
@@ -82,8 +81,8 @@ export const Dropdown: React.FC<DropdownPropsI> = ({
                                 <Menu.Item
                                     as={AppLink}
                                     to={item.href}
-                                    key={item.href + item.content}
                                     disabled={item.disabled}
+                                    key={`dropdown-key-${index}`}
                                 >
                                     {
                                         content
@@ -95,8 +94,8 @@ export const Dropdown: React.FC<DropdownPropsI> = ({
                         return (
                             <Menu.Item
                                 as={Fragment}
-                                key={item.href && item.content ? item.href + item.content : ''}
                                 disabled={item.disabled}
+                                key={`dropdown-key-${index}`}
                             >
                                 {
                                     content

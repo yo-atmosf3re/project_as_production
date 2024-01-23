@@ -41,6 +41,7 @@ interface ButtonPropsI extends ButtonHTMLAttributes<HTMLButtonElement> {
     size?: BUTTON_SIZE;
     disabled?: boolean;
     children: ReactNode;
+    fullWidth?: boolean;
 }
 
 // ? Почему можно оборачивать Button-компоненту в memo? Ведь у неё же есть children, а если у компоненты есть children, то делать этого не нужно, потому что children может являться древовидной структурой из нескольких вложенных друг в друга тегов и так далее. Но в случае с кнопкой - children это примитив, то есть текст, и примитивы мемоизировать не сложно и не затруднительно, потому что они сравниваются по значению, а не по ссылке как объекты в случае древововидной структуры вложенных тегов/компонентов и так далее. Поэтому можно и нужно мемоизировать в memo такие компоненты;
@@ -53,6 +54,7 @@ interface ButtonPropsI extends ButtonHTMLAttributes<HTMLButtonElement> {
  * @param square - флаг, указывающий, что кнопка должна быть квадратной;
  * @param size - размер кнопки, для доступа используется BUTTON_SIZE enum (по-умолчанию - M);
  * @param disabled - возможность отключить кнопку;
+ * @param fullWidth - флаг, указывающий на то, нужно ли растягивать кнопку по всей ширине или нет;
  */
 export const Button: React.FC<ButtonPropsI> = memo(({
     className, children,
@@ -60,12 +62,14 @@ export const Button: React.FC<ButtonPropsI> = memo(({
     size = BUTTON_SIZE.M,
     square,
     disabled,
+    fullWidth,
     ...otherProps
 }) => {
     const mods: ModsType = {
         [cls.square]: square,
         [cls[size]]: true,
         [cls.disabled]: disabled,
+        [cls['full-width']]: fullWidth,
     };
     const additionalClasses: Array<string | undefined> = [
         className, cls[theme],

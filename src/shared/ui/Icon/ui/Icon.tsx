@@ -1,8 +1,8 @@
 import React from 'react';
-import { classNames } from '../../../lib/classNames/classNames';
+import { ModsType, classNames } from '../../../lib/classNames/classNames';
 import cls from './Icon.module.scss';
 
-interface IconPropsI {
+interface IconPropsI extends React.SVGProps<SVGSVGElement> {
     className?: string;
     Svg: React.VFC<React.SVGProps<SVGSVGElement>>;
     inverted?: boolean;
@@ -15,12 +15,15 @@ interface IconPropsI {
  */
 export const Icon: React.FC<IconPropsI> = ({
     className, Svg, inverted,
+    ...otherProps
 }) => {
     const mainClass = inverted ? cls.inverted : cls.icon;
+    const mods: ModsType = {};
 
     return (
         <Svg
-            className={classNames(mainClass, {}, [className])}
+            className={classNames(mainClass, mods, [className])}
+            {...otherProps}
         />
     );
 };

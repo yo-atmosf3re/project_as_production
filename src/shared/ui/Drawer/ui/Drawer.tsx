@@ -14,29 +14,15 @@ interface DrawerPropsI {
     children: ReactNode;
     isOpen?: boolean;
     onClose?: () => void;
-    lazy?: boolean;
 }
 
 const HEIGHT = window.innerHeight - 100;
 
-/**
- * Модальное окно, которое выезжает из нижней части экрана (для мобильных разрешений экрана);
- * @param className
- * @param isOpen - флаг отображения модального окна;
- * @param onClose - передаваемый коллбэк, на основании которого происходит плавное закрытие модального окна;
- */
+// ? Основное описание компоненты представлено ниже;
 export const DrawerContent: React.FC<DrawerPropsI> = memo(({
     className, children,
     isOpen, onClose,
 }) => {
-    // const { close, isClosing, isMounted } = useModal(
-    //     {
-    //         animationDelay: 300,
-    //         isOpen,
-    //         onClose,
-    //     },
-    // );
-
     const { Spring, Gesture } = useAnimationLibs();
 
     const { theme } = useTheme();
@@ -115,10 +101,6 @@ export const DrawerContent: React.FC<DrawerPropsI> = memo(({
 
     const display = y.to((py) => (py < HEIGHT ? 'block' : 'none'));
 
-    // ? При lazy = true и isMounted = false возвращает null. То есть, это ленивая загрузка компоненты, и модальное окно не будет вмонтировано в DOM-дерево сразу, а только тогда, когда модальное окно будет открыто. Это нужно для кейса с автофокусом в input при открытии модального окна;
-    // if (lazy && !isMounted) {
-    //     return null;
-    // }
     const mods: ModsType = {};
 
     const additionalClasses: Array<string | undefined> = [
@@ -179,7 +161,10 @@ const DrawerAsync: React.FC<DrawerPropsI> = (props) => {
 };
 
 /**
- * Обёртка, которая оборачивает `DrawerAsync` в `AnimationProvider` (это упрощает работу с провайдером, теперь не придётся оборачивать каждый используемый `Drawer` в приложении);
+ * Модальное окно, которое выезжает из нижней части экрана (для мобильных разрешений экрана). Для более детальное информации рекомендуется перейти в файл с этой компонентой;
+ * @param className
+ * @param isOpen - флаг отображения модального окна;
+ * @param onClose - передаваемый коллбэк, на основании которого происходит плавное закрытие модального окна;
  */
 export const Drawer: React.FC<DrawerPropsI> = (props) => {
     return (

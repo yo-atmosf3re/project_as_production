@@ -41,6 +41,7 @@ export const MyPopover: React.FC<PopoverPropsI> = ({
             className={classNames(cls.popover, menuMods, additionalClasses)}
         >
             <Popover.Button
+                as="div"
                 className={popupCls.trigger}
             >
                 {
