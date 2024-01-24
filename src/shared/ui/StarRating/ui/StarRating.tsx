@@ -25,7 +25,7 @@ export const StarRating: React.FC<StarRatingPropsI> = memo(({
     size = 30,
     selectedStars = 0,
 }) => {
-    const [currentStarsCount, setCurrentStarsCount] = useState<number>(0);
+    const [currentStarsCount, setCurrentStarsCount] = useState<number>(selectedStars);
     const [isSelected, setIsSelected] = useState<boolean>(Boolean(selectedStars));
 
     // ? Обработчик, срабатывающий при наведении на звезду, и если выбранной звезды нет, то устанавливает счётчик с текущей звездой в нужное значение;

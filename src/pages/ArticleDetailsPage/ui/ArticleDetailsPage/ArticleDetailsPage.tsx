@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
+import { useParams } from 'react-router-dom';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ArticleDetails } from '@/entities/Article';
-import { useParams } from 'react-router-dom';
 import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { Page } from '@/widgets/Page';
 import { VStack } from '@/shared/ui/Stack';
@@ -10,6 +10,7 @@ import cls from './ArticleDetailsPage.module.scss';
 import { articleDetailsPageReducer } from '../../model/slice';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader';
 import { ArticleDetailsComments } from '../ArticleDetailsComments';
+import { ArticleRating } from '@/features/ArticleRating';
 
 interface ArticleDetailsPagePropsI {
     className?: string;
@@ -28,6 +29,10 @@ const ArticleDetailsPage: React.FC<ArticleDetailsPagePropsI> = ({
 }) => {
     const { id } = useParams<{id: string}>();
 
+    if (!id) {
+        return null;
+    }
+
     return (
         <DynamicModuleLoader
             reducers={INITIAL_REDUCERS}
@@ -42,6 +47,9 @@ const ArticleDetailsPage: React.FC<ArticleDetailsPagePropsI> = ({
                     <ArticleDetailsPageHeader />
                     <ArticleDetails
                         id={id}
+                    />
+                    <ArticleRating
+                        articleId={id}
                     />
                     <ArticleRecommenadtionsList />
                     <ArticleDetailsComments

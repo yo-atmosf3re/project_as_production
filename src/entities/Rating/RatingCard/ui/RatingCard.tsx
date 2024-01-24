@@ -19,6 +19,7 @@ interface RatingCardPropsI {
     hasFeedback?: boolean;
     onCancel?: (starsCount: number) => void;
     onAccept?: (starsCount: number, feedback?: string) => void;
+    rate?: number;
 }
 
 /**
@@ -29,15 +30,17 @@ interface RatingCardPropsI {
  * @param hasFeedback - флаг, на котором основывается дальнейшее поведение компоненты: нужно ли пользователю оставлять отзыв и рейтинг или поставить рейтинг;
  * @param onCancel - кнопка отмены отзыва;
  * @param onAccept - кнопка отправки отзыва (отправка текста отзыва и рейтинга);
+ * @param rate - количество звёзд, которое выбрал пользователь (отображается либо в состоянии выбора, либо отображает уже сделанный выбор);
  */
 export const RatingCard: React.FC<RatingCardPropsI> = ({
     className, feedbackTitle,
     hasFeedback,
     onAccept, onCancel,
     title,
+    rate = 0,
 }) => {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-    const [starsCount, setStarsCount] = useState<number>(0);
+    const [starsCount, setStarsCount] = useState<number>(rate);
     const [feedback, setFeedback] = useState<string>('');
 
     const { t } = useTranslation('ratingCard');
@@ -82,17 +85,32 @@ export const RatingCard: React.FC<RatingCardPropsI> = ({
 
     return (
         <Card
-            className={classNames(cls['rating-card'], {}, [className])}
+            className={
+                classNames(
+                    cls['rating-card'],
+                    {},
+                    [className],
+                )
+            }
+            max
         >
             <VStack
                 align="center"
                 gap="8"
+                max
             >
                 <Text
-                    title={title}
+                    title={
+                        starsCount
+                            ? t(
+                                'Спасибо за оценку!',
+                            )
+                            : title
+                    }
                 />
                 <StarRating
                     size={40}
+                    selectedStars={starsCount}
                     onSelect={onSelectStars}
                 />
             </VStack>

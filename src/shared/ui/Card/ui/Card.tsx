@@ -15,6 +15,7 @@ interface CardPropsI extends HTMLAttributes<HTMLDivElement> {
     className?: string;
     children: ReactNode;
     theme?: CARD_THEME;
+    max?: boolean;
 }
 
 /**
@@ -22,12 +23,17 @@ interface CardPropsI extends HTMLAttributes<HTMLDivElement> {
  * @param className
  * @param children
  * @param theme - тема карточки, для доступа используется CARD_THEME enum;
+ * @param max - флаг, по которому указывается максимальная ширина для карточки;
  * @returns
  */
 export const Card: React.FC<CardPropsI> = ({
-    className, children, theme = CARD_THEME.NORMAL, ...otherProps
+    className, children, theme = CARD_THEME.NORMAL,
+    max,
+    ...otherProps
 }) => {
-    const mods: ModsType = {};
+    const mods: ModsType = {
+        [cls.max]: max,
+    };
     const additionalClasses: Array<string | undefined> = [
         className,
         cls[theme],

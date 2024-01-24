@@ -24,7 +24,7 @@ export const CommentList: React.FC<CommentListPropsI> = ({
     className, comments,
     isLoading,
 }) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation('article');
     const mods: ModsType = {};
 
     if (isLoading) {
