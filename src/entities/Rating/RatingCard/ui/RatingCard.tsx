@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BrowserView, MobileView } from 'react-device-detect';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -32,7 +32,7 @@ interface RatingCardPropsI {
  * @param onAccept - кнопка отправки отзыва (отправка текста отзыва и рейтинга);
  * @param rate - количество звёзд, которое выбрал пользователь (отображается либо в состоянии выбора, либо отображает уже сделанный выбор);
  */
-export const RatingCard: React.FC<RatingCardPropsI> = ({
+export const RatingCard: React.FC<RatingCardPropsI> = memo(({
     className, feedbackTitle,
     hasFeedback,
     onAccept, onCancel,
@@ -44,6 +44,8 @@ export const RatingCard: React.FC<RatingCardPropsI> = ({
     const [feedback, setFeedback] = useState<string>('');
 
     const { t } = useTranslation('ratingCard');
+
+    console.log(rate, 'rate');
 
     // ? Если есть/нужен фидбек, то открываем модальное окно, иначе сразу отправляем количество звёзд без фидбека, которое выбрал пользователь без открытия модального окна;
     const onSelectStars = useCallback((selectedStarsCount: number) => {
@@ -174,4 +176,4 @@ export const RatingCard: React.FC<RatingCardPropsI> = ({
             </MobileView>
         </Card>
     );
-};
+});

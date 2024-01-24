@@ -17,5 +17,6 @@
     "Некорректные данные пользователя. Имя и фамилия обязательны!": "Incorrect user data. First and last name are required!",
     "Данные не указаны.": "Data not specified.",
     "Серверная ошибка при сохранении.": "Server error when saving data.",
-    "Профиль не найден": "Profile not found"
+    "Профиль не найден": "Profile not found",
+    "Оцените профиль пользователя!": "Rate this user's profile!"
 }

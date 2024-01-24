@@ -1,43 +1,43 @@
 import { rtkApi } from '@/shared/api/rtkApi';
-import { RatingArticleI } from '../model/types/types';
+import { RatingProfileI } from '../model/types/types';
 
 /**
  * Интерфейс, описывающий получение данных с сервера;
  */
-interface GetArticleRatingArgI {
+interface GetProfileRatingArgI {
     userId: string;
-    articleId: string;
+    profileId: string;
 }
 
 /**
  * Интерфейс, описывающий мутацию данных, которые будут отправлены на сервер;
  */
-interface RateArticleArgI {
+interface RateProfileArgI {
     userId: string;
-    articleId: string;
+    profileId: string;
     rate: number;
     feedback?: string;
 }
 
 /**
- * Редьюсер для работы с рейтингом у статей;
+ * Редьюсер для работы с рейтингом в профиле пользователей;
  */
-const articleRatingApi = rtkApi.injectEndpoints({
+const profileRatingApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({
         // ? Свойство query у объекта build запрашивает данные с сервера (GET);
-        getArticleRating: build.query<RatingArticleI[], GetArticleRatingArgI>({
-            query: ({ articleId, userId }) => ({
-                url: '/article-ratings',
+        getProfileRating: build.query<RatingProfileI[], GetProfileRatingArgI>({
+            query: ({ profileId, userId }) => ({
+                url: '/profile-ratings',
                 params: {
-                    articleId,
+                    profileId,
                     userId,
                 },
             }),
         }),
         // ? Свойство mutation у объекта build изменяет данные, а затем отправляет их на сервер или отправляет измененные данные на сервер (если простым языком, то это PUT, POST, DELETE методы);
-        rateArticle: build.mutation<void, RateArticleArgI>({
+        rateProfile: build.mutation<void, RateProfileArgI>({
             query: (rateArguments) => ({
-                url: '/article-ratings',
+                url: '/profile-ratings',
                 // ? Т.к данные будут сохраняться, указываем метод POST;
                 method: 'POST',
                 body: rateArguments,
@@ -46,5 +46,5 @@ const articleRatingApi = rtkApi.injectEndpoints({
     }),
 });
 
-export const useGetArticleRating = articleRatingApi.useGetArticleRatingQuery;
-export const useRateArticle = articleRatingApi.useRateArticleMutation;
+export const useGetProfileRating = profileRatingApi.useGetProfileRatingQuery;
+export const useRateProfile = profileRatingApi.useRateProfileMutation;

@@ -1,10 +1,11 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { EditableProfileCard } from '@/features/EditableProfileCard';
 import { Page } from '@/widgets/Page';
 import { VStack } from '@/shared/ui/Stack';
-import { useParams } from 'react-router-dom';
 import cls from './ProfilePage.module.scss';
+import { ProfileRating } from '@/features/ProfileRating';
 
 interface ProfilePagePropsI {
     className?: string;
@@ -19,6 +20,9 @@ const ProfilePage: React.FC<ProfilePagePropsI> = ({
 }) => {
     const { id } = useParams<{id: string}>();
 
+    if (!id) {
+        return null;
+    }
     return (
         <Page className={classNames(cls.profile, {}, [className])}>
             <VStack
@@ -27,6 +31,9 @@ const ProfilePage: React.FC<ProfilePagePropsI> = ({
             >
                 <EditableProfileCard
                     id={id}
+                />
+                <ProfileRating
+                    profileId={id}
                 />
             </VStack>
         </Page>

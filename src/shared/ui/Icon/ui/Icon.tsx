@@ -17,8 +17,10 @@ export const Icon: React.FC<IconPropsI> = ({
     className, Svg, inverted,
     ...otherProps
 }) => {
-    const mainClass = inverted ? cls.inverted : cls.icon;
-    const mods: ModsType = {};
+    const mainClass = '';
+    const mods: ModsType = {
+        [cls.inverted]: inverted,
+    };
 
     return (
         <Svg

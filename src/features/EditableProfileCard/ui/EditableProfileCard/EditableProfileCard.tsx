@@ -1,7 +1,7 @@
 import { memo, useCallback } from 'react';
+import { useSelector } from 'react-redux';
 import { COUNTRY } from '@/entities/Country';
 import { CURRENCY } from '@/shared/const/consts';
-import { useSelector } from 'react-redux';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { ProfileCard } from '@/entities/Profile';
