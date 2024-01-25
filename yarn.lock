@@ -7727,10 +7727,10 @@ eslint-plugin-react@^7.28.0, eslint-plugin-react@^7.29.2:
     semver "^6.3.0"
     string.prototype.matchall "^4.0.6"
 
-eslint-plugin-yo-plugin@0.0.3:
-  version "0.0.3"
-  resolved "https://registry.npmjs.org/eslint-plugin-yo-plugin/-/eslint-plugin-yo-plugin-0.0.3.tgz"
-  integrity sha512-djV0L+vPm3RlNl3Y5z9+dl4Ley5v52aVw0vZNPH+kuCS1qyXu9wYJShn0+FsJ4kboWL0R2UNASsofN7ffI8N3Q==
+eslint-plugin-yo-plugin@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.npmjs.org/eslint-plugin-yo-plugin/-/eslint-plugin-yo-plugin-0.0.5.tgz"
+  integrity sha512-tWWB3+y63dJQlEHR/Df6HozGHBjtj35w8aSLYVg5kS838adIT4DW//Pp5WTXgCnb7SROfeKJUrs5YjVZ+KLvdQ==
   dependencies:
     requireindex "^1.2.0"
 
