@@ -45,8 +45,6 @@ export const RatingCard: React.FC<RatingCardPropsI> = memo(({
 
     const { t } = useTranslation('ratingCard');
 
-    console.log(rate, 'rate');
-
     // ? Если есть/нужен фидбек, то открываем модальное окно, иначе сразу отправляем количество звёзд без фидбека, которое выбрал пользователь без открытия модального окна;
     const onSelectStars = useCallback((selectedStarsCount: number) => {
         setStarsCount(selectedStarsCount);

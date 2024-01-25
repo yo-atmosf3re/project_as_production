@@ -3,16 +3,30 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { NotificationItem } from './NotificationItem';
 
 export default {
-    title: 'shared/NotificationItem',
+    title: 'entities/Notification/NotificationItem',
     component: NotificationItem,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
+    decorators: [
+        (Story) => (
+            <div
+                style={{ padding: 100 }}
+            >
+                <Story />
+            </div>
+        ),
+    ],
 } as ComponentMeta<typeof NotificationItem>;
 
 const Template: ComponentStory<typeof NotificationItem> = (args) => <NotificationItem {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-
+    item: {
+        id: '1',
+        title: 'Какое-то название для элемента со списком уведомлений',
+        description: 'Какое-то описание',
+        href: 'https://www.google.com/',
+    },
 };

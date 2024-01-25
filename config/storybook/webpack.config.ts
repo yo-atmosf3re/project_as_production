@@ -24,6 +24,11 @@ export default ({ config }: { config: webpack.Configuration }) => {
     config!.resolve!.modules!.push(paths.src);
     // ? Добавляем расширения файлов, которые webpack будет искать при разрешении модулей;
     config!.resolve!.extensions!.push('.ts', '.tsx');
+    // ? Поддержка проектного алиаса. Разворачиваем старые алиасы, а затем добавляем новые;
+    config!.resolve!.alias = {
+        ...config.resolve!.alias,
+        '@': paths.src,
+    };
 
     // ? Используем метод map() для изменения массива правил конфигурации модуля;
     // ? В каждом правиле ищем совпадение с регулярным выражением для SVG-файлов;
@@ -53,7 +58,6 @@ export default ({ config }: { config: webpack.Configuration }) => {
     // ? Добавляем новый плагин DefinePlugin, который будет задавать глобальную переменную __IS_DEV__ со значением true;
     config!.plugins!.push(new DefinePlugin({
         __IS_DEV__: true,
-        // __API__: JSON.stringify('https://testapi.ru'),
         __API__: JSON.stringify(''),
         __PROJECT__: JSON.stringify('storybook'),
     }));

@@ -6,7 +6,7 @@ import AvatarForTest from '@/shared/assets/tests/avatar_image_for_test.jpg';
 import { ProfileCard } from './ProfileCard';
 
 export default {
-    title: 'entities/ProfileCard',
+    title: 'entities/Profile/ProfileCard',
     component: ProfileCard,
     argTypes: {
         backgroundColor: { control: 'color' },
@@ -22,7 +22,7 @@ Primary.args = {
         username: 'Stories',
         age: 28,
         country: COUNTRY.ARMENIA,
-        lastname: 'Ulbi TV',
+        lastname: 'yo atmo',
         first: '1',
         city: '2',
         currency: CURRENCY.RUB,

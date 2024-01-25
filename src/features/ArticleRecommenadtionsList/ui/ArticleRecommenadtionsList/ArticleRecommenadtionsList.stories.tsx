@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import withMock from 'storybook-addon-mock';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ArticleI } from '@/entities/Article';
 import { ArticleRecommenadtionsList } from './ArticleRecommenadtionsList';
 
@@ -55,6 +55,7 @@ Primary.parameters = {
                 { ...article, id: '1' },
                 { ...article, id: '2' },
                 { ...article, id: '3' },
+                { ...article, id: '4' },
             ],
         },
     ],

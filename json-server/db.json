@@ -1560,7 +1560,15 @@
       "avatar": "https://copp15.ru/Portals/0/ModuleFiles/i.jpg"
     }
   ],
-  "article-ratings": [],
+  "article-ratings": [
+    {
+      "userId": "1",
+      "articleId": "1",
+      "rate": 4,
+      "feedback": "",
+      "id": 1
+    }
+  ],
   "profile-ratings": [
     {
       "userId": "1",

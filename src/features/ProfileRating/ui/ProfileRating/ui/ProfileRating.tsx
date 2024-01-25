@@ -29,13 +29,7 @@ const ProfileRating: React.FC<ProfileRatingPropsI> = memo(({
     });
     const [rateProfileMutation] = useRateProfile();
 
-    console.log(profileId, 'profileId');
-    console.log(userData?.id, 'userData?.id');
-
     const rating = data?.[0];
-
-    console.log(rating, 'rating');
-    console.log(rating?.rate, 'rating?.rate');
 
     const handleRateProfile = useCallback((starsCount: number, feedback?: string): void => {
         try {
