@@ -63,6 +63,8 @@ export default {
         '\\.svg': path.resolve(__dirname, 'jestEmptyComponent'),
         // ? Добавляет поддержку нижеперечисленных файлов в среде Jest;
         '.+\\.(png|jpg|ttf|woff|woff2)$': 'identity-obj-proxy',
+        // ? Добавляет поддержку проектного алиса в среде Jest;
+        '^@/(.*)$': '<rootDir>/src/$1',
     },
 
     reporters: [

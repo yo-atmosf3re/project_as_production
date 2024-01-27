@@ -7727,11 +7727,12 @@ eslint-plugin-react@^7.28.0, eslint-plugin-react@^7.29.2:
     semver "^6.3.0"
     string.prototype.matchall "^4.0.6"
 
-eslint-plugin-yo-plugin@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.npmjs.org/eslint-plugin-yo-plugin/-/eslint-plugin-yo-plugin-0.0.5.tgz"
-  integrity sha512-tWWB3+y63dJQlEHR/Df6HozGHBjtj35w8aSLYVg5kS838adIT4DW//Pp5WTXgCnb7SROfeKJUrs5YjVZ+KLvdQ==
+eslint-plugin-yo-plugin@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.npmjs.org/eslint-plugin-yo-plugin/-/eslint-plugin-yo-plugin-0.0.7.tgz"
+  integrity sha512-v0aKrVc+aEMEKYGAyUNy8D+Jq4Muc231WNGk0rO2KEVTHfWcWcI5MTVVe7N0k32Uoxd2oc8zHVHIZ8NUj3DlGQ==
   dependencies:
+    micromatch "^4.0.5"
     requireindex "^1.2.0"
 
 eslint-scope@^4.0.3:
@@ -11437,7 +11438,7 @@ micromatch@^3.1.10, micromatch@^3.1.4:
     snapdragon "^0.8.1"
     to-regex "^3.0.2"
 
-micromatch@^4.0.0, micromatch@^4.0.2, micromatch@^4.0.4:
+micromatch@^4.0.0, micromatch@^4.0.2, micromatch@^4.0.4, micromatch@^4.0.5:
   version "4.0.5"
   resolved "https://registry.npmjs.org/micromatch/-/micromatch-4.0.5.tgz"
   integrity sha512-DMy+ERcEW2q8Z2Po+WNXuw3c5YaUSFjAO5GsJqfEl7UjvtIuFKO6ZrKvcItdy98dwFI2N1tg3zNIdKaQT+aNdA==
