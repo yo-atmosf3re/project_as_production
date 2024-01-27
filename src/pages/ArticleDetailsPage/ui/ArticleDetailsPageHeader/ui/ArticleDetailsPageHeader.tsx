@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useNavigate } from 'react-router-dom';
-import { ROUTES_PATH } from '@/shared/config/routeConfig/routeConfig';
+import { ROUTES_PATH } from '@/shared/const/consts';
 import { Button, BUTTON_THEME } from '@/shared/ui/Button';
 import { useSelector } from 'react-redux';
 import { getArticleDetailsData } from '@/entities/Article';

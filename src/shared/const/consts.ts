@@ -1,3 +1,5 @@
+// ? Общие константы и енамы приложения;
+
 /**
  * Типы валидационных ошибок;
  */
@@ -85,3 +87,37 @@ export enum CURRENCY {
     'EUR' = 'EUR',
     'USD' = 'USD'
 }
+
+/**
+ * Список с роутами приложения;
+ */
+export enum APP_ROUTES {
+    MAIN = 'main',
+    ABOUT = 'about',
+    PROFILE = 'profile',
+    ARTICLES = 'articles',
+    ARTICLE_DETAILS = 'article_details',
+    ARTICLE_CREATE = 'article_create',
+    ARTICLE_EDIT = 'article_edit',
+    ADMIN_PANEL = 'admin_panel',
+    FORBIDDEN = 'forbidden',
+    // ? Последний маршрут;
+    NOT_FOUND = 'not_found'
+}
+
+/**
+ * Вся настройка и объявление роутов происходит с помощью данного функционала ;
+ */
+export const ROUTES_PATH: Record<APP_ROUTES, string> = {
+    [APP_ROUTES.MAIN]: '/',
+    [APP_ROUTES.ABOUT]: '/about',
+    [APP_ROUTES.PROFILE]: '/profile/', // ! Сюда ещё + :id, но id будет в routeConfig'e;
+    [APP_ROUTES.ARTICLES]: '/articles',
+    [APP_ROUTES.ARTICLE_DETAILS]: '/articles/', // ! Сюда ещё + :id, но id будет в routeConfig'e;
+    [APP_ROUTES.ARTICLE_CREATE]: '/articles/new',
+    [APP_ROUTES.ARTICLE_EDIT]: '/articles/:id/edit',
+    [APP_ROUTES.ADMIN_PANEL]: '/admin',
+    [APP_ROUTES.FORBIDDEN]: '/forbidden',
+    // ? Последний маршрут;
+    [APP_ROUTES.NOT_FOUND]: '*',
+};

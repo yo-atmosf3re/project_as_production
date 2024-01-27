@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { Avatar } from '@/shared/ui/Avatar';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Dropdown } from '@/shared/ui/Popups';
-import { ROUTES_PATH } from '@/shared/config/routeConfig/routeConfig';
+import { ROUTES_PATH } from '@/shared/const/consts';
 import {
     isUserAdmin, isUserManager, userActions, getUserAuthData,
 } from '@/entities/User';
