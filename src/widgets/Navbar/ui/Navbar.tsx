@@ -7,10 +7,10 @@ import {
     getUserAuthData,
 } from '@/entities/User';
 import { Text, TEXT_THEME } from '@/shared/ui/Text';
-import { AppLink } from '@/shared/ui/AppLink';
+import { APP_LINK_THEME, AppLink } from '@/shared/ui/AppLink';
 import { ROUTES_PATH } from '@/shared/const/consts';
 import { HStack } from '@/shared/ui/Stack';
-import { APP_LINK_THEME } from '@/shared/ui/AppLink/ui/AppLink';
+
 import { NotificationButton } from '@/features/NotificationButton';
 import { AvatarDropdown } from '@/features/AvatarDropdown';
 import cls from './Navbar.module.scss';
