@@ -121,3 +121,12 @@ export const ROUTES_PATH: Record<APP_ROUTES, string> = {
     // ? Последний маршрут;
     [APP_ROUTES.NOT_FOUND]: '*',
 };
+
+/**
+ * Список с стилистическими темами в приложении;
+ */
+export enum THEME {
+   LIGHT = 'app_light_theme',
+   DARK = 'app_dark_theme',
+   JUNGLE = 'app_jungle_theme'
+}

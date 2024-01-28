@@ -1,11 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { createContext } from 'react';
-
-export enum THEME {
-   LIGHT = 'app_light_theme',
-   DARK = 'app_dark_theme',
-   JUNGLE = 'app_jungle_theme'
-}
+import { THEME } from '../../const/consts';
 
 export interface ThemeContextPropsI {
    theme?: THEME;

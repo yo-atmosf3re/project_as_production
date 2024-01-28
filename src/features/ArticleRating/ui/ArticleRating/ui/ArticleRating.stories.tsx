@@ -4,7 +4,7 @@ import withMock from 'storybook-addon-mock';
 import ArticleRating from './ArticleRating';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { THEME } from '@/app/providers/ThemeProvider';
+import { THEME } from '@/shared/const/consts';
 
 export default {
     title: 'features/ArticleRating',

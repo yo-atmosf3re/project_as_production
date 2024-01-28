@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/jsx-no-useless-fragment */
 import { Reducer } from '@reduxjs/toolkit';
-import { ReduxStoreWithManagerI } from '@/app/providers/StoreProvider';
-import { StateSchema, StateSchemaKeyType } from '@/app/providers/StoreProvider/config/StateSchema';
 import React, { ReactNode, useEffect } from 'react';
 import { useStore } from 'react-redux';
+import { ReduxStoreWithManagerI, StateSchema, StateSchemaKeyType } from '@/app/providers/StoreProvider';
+
 import { useAppDispatch } from '../../hooks/useAppDispatch/useAppDispatch';
 
 // ? Типизация для массива редьюсеров, где ключами будут ключи из StateSchemaKey, а значениями будут Reducer;

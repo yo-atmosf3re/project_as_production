@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { THEME } from '@/app/providers/ThemeProvider';
+import { THEME } from '@/shared/const/consts';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Tabs } from './Tabs';
 
