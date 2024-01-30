@@ -8,4 +8,7 @@
       "comments": "",
       "textMateRules": []
    },
+   "[markdown]": {
+      "editor.defaultFormatter": null
+   },
 }
