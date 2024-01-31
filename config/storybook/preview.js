@@ -23,6 +23,27 @@ export const parameters = {
     },
     // ? Удаление лишних отступов с помощью растяжения сторис на всю возможную ширину и высоту в блоке, где показывается сама сторис;
     layout: 'full',
+    // ? Описание цветовых тем для Storybook, цвета для которых взяты из списка цветов приложения;
+    themes: {
+        default: 'light',
+        list: [
+            {
+                name: 'light',
+                class: THEME.LIGHT,
+                color: '#e8e8ea',
+            },
+            {
+                name: 'dark',
+                class: THEME.DARK,
+                color: '#090949',
+            },
+            {
+                name: 'jungle',
+                class: THEME.JUNGLE,
+                color: '#0c4b4c',
+            },
+        ],
+    },
 };
 
 // ? addDecorator - функция добавления декораторов к Storybook;

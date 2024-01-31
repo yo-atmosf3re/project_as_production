@@ -7,9 +7,17 @@ module.exports = {
     // ? Дополнительные аддоны, которые будут установлены и активированы в Storybook;
     addons: [
         '@storybook/addon-links',
-        '@storybook/addon-essentials',
+        // ? Отключение возможности управления цветовыми темами в основном аддоне, который содержит в себе встроенный функционал по управлению этими темами;
+        {
+            name: '@storybook/addon-essentials',
+            options: {
+                backgrounds: false,
+            },
+        },
         '@storybook/addon-interactions',
         'storybook-addon-mock/register',
+        // ? Дополнительный аддон для установки цветовых тем, которые можно будет переключать с помощью интерфейса Storybook;
+        'storybook-addon-themes',
     ],
     // ? Указывает, что используется React-фреймворк в Storybook;
     framework: '@storybook/react',
