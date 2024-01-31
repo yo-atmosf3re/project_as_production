@@ -2,10 +2,10 @@ import { addDecorator } from '@storybook/react';
 import { StyleDecorator } from '../../src/shared/config/storybook/StyleDecorator/StyleDecorator';
 import { ThemeDecorator } from '../../src/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { TranslationDecorator } from '../../src/shared/config/storybook/TranslationDecorator/TranslationDecorator';
-import { THEME } from '../../src/app/providers/ThemeProvider';
 import { RouterDecorator } from '../../src/shared/config/storybook/RouterDecorator/RouterDecorator';
 import { SuspenseDecorator } from '../../src/shared/config/storybook/SuspenseDecorator/SuspenseDecorator';
 import '../../src/app/styles/index.scss';
+import { THEME } from '../../src/shared/const/consts';
 
 // ? Конфигурация для Storybook. Объект parameters содержит настройки для различных функциональностей, например для actions и controls;
 export const parameters = {
@@ -21,6 +21,8 @@ export const parameters = {
             date: /Date$/,
         },
     },
+    // ? Удаление лишних отступов с помощью растяжения сторис на всю возможную ширину и высоту в блоке, где показывается сама сторис;
+    layout: 'full',
 };
 
 // ? addDecorator - функция добавления декораторов к Storybook;
