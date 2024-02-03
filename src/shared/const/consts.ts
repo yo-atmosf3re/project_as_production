@@ -89,6 +89,51 @@ export enum CURRENCY {
 }
 
 /**
+ * Функция, возвращающая путь для `MainPage`;
+ */
+export const getRouteMain = () => '/';
+
+/**
+ * Функция, возвращающая путь для `AboutPage`;
+ */
+export const getRouteAbout = () => '/about';
+
+/**
+ * Функция, возвращающая путь для `ProfilePage` с конкретным id;
+*/
+export const getRouteProfile = (id: string) => `/profile/${id}`;
+
+/**
+ * Функция, возвращающая путь для `ArticlesPage`;
+ */
+export const getRouteArticles = () => '/articles';
+
+/**
+ * Функция, возвращающая путь для `ArticleDetailsPage`;
+ */
+export const getRouteArticleDetails = (id: string) => `/articles/${id}`;
+
+/**
+ * Функция, возвращающая путь для `ArticleEditPage`;
+ */
+export const getRouteArticleCreate = () => '/articles/new';
+
+/**
+ * Функция, возвращающая путь для `ArticleEditPage`;
+ */
+export const getRouteArticleEdit = (id: string) => `/articles/${id}/edit`;
+
+/**
+ * Функция, возвращающая путь для `AdminPanelPage`;
+ */
+export const getRouteAdminPanel = () => '/admin';
+
+/**
+ * Функция, возвращающая путь для `ForbbiedPage`;
+ */
+export const getRouteForbbied = () => '/forbidden';
+
+/**
  * Список с роутами приложения;
  */
 export enum APP_ROUTES {
@@ -104,23 +149,6 @@ export enum APP_ROUTES {
     // ? Последний маршрут;
     NOT_FOUND = 'not_found'
 }
-
-/**
- * Вся настройка и объявление роутов происходит с помощью данного функционала ;
- */
-export const ROUTES_PATH: Record<APP_ROUTES, string> = {
-    [APP_ROUTES.MAIN]: '/',
-    [APP_ROUTES.ABOUT]: '/about',
-    [APP_ROUTES.PROFILE]: '/profile/', // ! Сюда ещё + :id, но id будет в routeConfig'e;
-    [APP_ROUTES.ARTICLES]: '/articles',
-    [APP_ROUTES.ARTICLE_DETAILS]: '/articles/', // ! Сюда ещё + :id, но id будет в routeConfig'e;
-    [APP_ROUTES.ARTICLE_CREATE]: '/articles/new',
-    [APP_ROUTES.ARTICLE_EDIT]: '/articles/:id/edit',
-    [APP_ROUTES.ADMIN_PANEL]: '/admin',
-    [APP_ROUTES.FORBIDDEN]: '/forbidden',
-    // ? Последний маршрут;
-    [APP_ROUTES.NOT_FOUND]: '*',
-};
 
 /**
  * Список с стилистическими темами в приложении;

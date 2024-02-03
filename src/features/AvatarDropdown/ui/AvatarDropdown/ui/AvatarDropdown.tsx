@@ -4,12 +4,12 @@ import { useSelector } from 'react-redux';
 import { Avatar } from '@/shared/ui/Avatar';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Dropdown } from '@/shared/ui/Popups';
-import { ROUTES_PATH } from '@/shared/const/consts';
 import {
     isUserAdmin, isUserManager, userActions, getUserAuthData,
 } from '@/entities/User';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import cls from './AvatarDropdown.module.scss';
+import { getRouteAdminPanel, getRouteProfile } from '@/shared/const/consts';
 
 interface AvatarDropdownPropsI {
     className?: string;
@@ -51,13 +51,13 @@ export const AvatarDropdown: React.FC<AvatarDropdownPropsI> = ({
                 ...(isAdminPanelAvailable
                     ? [{
                         content: t('Админка'),
-                        href: ROUTES_PATH.admin_panel,
+                        href: getRouteAdminPanel(),
                     }]
                     : []
                 ),
                 {
                     content: t('Профиль'),
-                    href: ROUTES_PATH.profile + authData.id,
+                    href: getRouteProfile(authData.id),
                 },
                 {
                     content: t('Выйти'),

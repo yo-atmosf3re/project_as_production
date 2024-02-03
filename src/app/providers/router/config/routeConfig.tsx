@@ -7,45 +7,50 @@ import { ArticleDetailsPage } from '@/pages/ArticleDetailsPage';
 import { ArticleEditPage } from '@/pages/ArticleEditPage';
 import { AdminPanelPage } from '@/pages/AdminPanelPage';
 import { ForbiddenPage } from '@/pages/ForbiddenPage';
-import { APP_ROUTES, ROUTES_PATH, USER_ROLE } from '@/shared/const/consts';
+import {
+    APP_ROUTES, USER_ROLE,
+    getRouteAbout, getRouteAdminPanel, getRouteArticleCreate,
+    getRouteArticleDetails, getRouteArticleEdit, getRouteArticles,
+    getRouteForbbied, getRouteMain, getRouteProfile,
+} from '@/shared/const/consts';
 import { AppRoutesPropsType } from '@/shared/types/router';
 
 export const routeConfig: Record<APP_ROUTES, AppRoutesPropsType> = {
     [APP_ROUTES.MAIN]: {
-        path: ROUTES_PATH.main,
+        path: getRouteMain(),
         element: <MainPage />,
     },
     [APP_ROUTES.ABOUT]: {
-        path: ROUTES_PATH.about,
+        path: getRouteAbout(),
         element: <AboutPage />,
     },
     [APP_ROUTES.PROFILE]: {
-        path: `${ROUTES_PATH.profile}:id`,
+        path: getRouteProfile(':id'),
         element: <ProfilePage />,
         authOnly: true,
     },
     [APP_ROUTES.ARTICLES]: {
-        path: ROUTES_PATH.articles,
+        path: getRouteArticles(),
         element: <ArticlesPage />,
         authOnly: true,
     },
     [APP_ROUTES.ARTICLE_DETAILS]: {
-        path: `${ROUTES_PATH.article_details}:id`,
+        path: getRouteArticleDetails(':id'),
         element: <ArticleDetailsPage />,
         authOnly: true,
     },
     [APP_ROUTES.ARTICLE_CREATE]: {
-        path: `${ROUTES_PATH.article_create}`,
+        path: getRouteArticleCreate(),
         element: <ArticleEditPage />,
         authOnly: true,
     },
     [APP_ROUTES.ARTICLE_EDIT]: {
-        path: `${ROUTES_PATH.article_edit}`,
+        path: getRouteArticleEdit(':id'),
         element: <ArticleEditPage />,
         authOnly: true,
     },
     [APP_ROUTES.ADMIN_PANEL]: {
-        path: `${ROUTES_PATH.admin_panel}`,
+        path: getRouteAdminPanel(),
         element: <AdminPanelPage />,
         authOnly: true,
         roles: [
@@ -53,12 +58,12 @@ export const routeConfig: Record<APP_ROUTES, AppRoutesPropsType> = {
         ],
     },
     [APP_ROUTES.FORBIDDEN]: {
-        path: `${ROUTES_PATH.forbidden}`,
+        path: getRouteForbbied(),
         element: <ForbiddenPage />,
     },
     // ? Последний маршрут;
     [APP_ROUTES.NOT_FOUND]: {
-        path: ROUTES_PATH.not_found,
+        path: '*',
         element: <NotFoundPage />,
     },
 };

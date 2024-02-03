@@ -7,7 +7,7 @@ import { AppLink } from '@/shared/ui/AppLink';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { CommentI } from '../../../model/types/comment';
 import cls from './CommentCard.module.scss';
-import { ROUTES_PATH } from '@/shared/const/consts';
+import { getRouteProfile } from '@/shared/const/consts';
 
 interface CommentCardPropsI {
     className?: string;
@@ -70,7 +70,7 @@ export const CommentCard: React.FC<CommentCardPropsI> = ({
         >
 
             <AppLink
-                to={`${ROUTES_PATH.profile}${comment?.user.id}`}
+                to={getRouteProfile(comment.user.id)}
             >
                 <HStack
                     gap="8"

@@ -1,14 +1,14 @@
 import React, { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { classNames } from '@/shared/lib/classNames/classNames';
 import { useNavigate } from 'react-router-dom';
-import { ROUTES_PATH } from '@/shared/const/consts';
-import { Button, BUTTON_THEME } from '@/shared/ui/Button';
 import { useSelector } from 'react-redux';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Button, BUTTON_THEME } from '@/shared/ui/Button';
 import { getArticleDetailsData } from '@/entities/Article';
 import { HStack } from '@/shared/ui/Stack';
 import { getCanEditArticle } from '../../../model/selectors/getCanEditArticle/getCanEditArticle';
 import cls from './ArticleDetailsPageHeader.module.scss';
+import { getRouteArticleEdit, getRouteArticles } from '@/shared/const/consts';
 
 interface ArticleDetailsPageHeaderPropsI {
     className?: string;
@@ -27,12 +27,14 @@ export const ArticleDetailsPageHeader: React.FC<ArticleDetailsPageHeaderPropsI> 
     const article = useSelector(getArticleDetailsData);
 
     const onBackToList = useCallback(() => {
-        navigate(ROUTES_PATH.articles);
+        navigate(getRouteArticles());
     }, [navigate]);
 
     const onEditArticle = useCallback(() => {
-        navigate(`${ROUTES_PATH.article_details}${article?.id}/edit`);
-    }, [article?.id, navigate]);
+        if (article) {
+            navigate(getRouteArticleEdit(article.id));
+        }
+    }, [article, navigate]);
 
     return (
         <HStack

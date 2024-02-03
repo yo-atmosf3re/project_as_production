@@ -8,13 +8,13 @@ import {
 } from '@/entities/User';
 import { Text, TEXT_THEME } from '@/shared/ui/Text';
 import { APP_LINK_THEME, AppLink } from '@/shared/ui/AppLink';
-import { ROUTES_PATH } from '@/shared/const/consts';
 import { HStack } from '@/shared/ui/Stack';
 
 import { NotificationButton } from '@/features/NotificationButton';
 import { AvatarDropdown } from '@/features/AvatarDropdown';
 import cls from './Navbar.module.scss';
 import { LoginModal } from '@/features/AuthByUsername';
+import { getRouteArticleCreate } from '@/shared/const/consts';
 
 interface NavbarPropsI {
    className?: string;
@@ -52,7 +52,7 @@ export const Navbar: React.FC<NavbarPropsI> = memo(() => {
                 />
                 <AppLink
                     className={cls['create-article_button']}
-                    to={ROUTES_PATH.article_create}
+                    to={getRouteArticleCreate()}
                     theme={APP_LINK_THEME.SECONDARY}
                 >
                     {

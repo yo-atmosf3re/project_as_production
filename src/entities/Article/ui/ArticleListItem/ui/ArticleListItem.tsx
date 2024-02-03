@@ -9,7 +9,7 @@ import { Avatar } from '@/shared/ui/Avatar';
 import { BUTTON_THEME, Button } from '@/shared/ui/Button';
 import { AppLink } from '@/shared/ui/AppLink';
 import { HStack } from '@/shared/ui/Stack';
-import { ARTICLE_BLOCK_TYPE, ARTICLE_VIEW, ROUTES_PATH } from '@/shared/const/consts';
+import { ARTICLE_BLOCK_TYPE, ARTICLE_VIEW, getRouteArticleDetails } from '@/shared/const/consts';
 import {
     ArticleI, ArticleTextBlockI,
 } from '../../../model/types/article';
@@ -110,7 +110,7 @@ export const ArticleListItem: React.FC<ArticleListItemPropsI> = ({
                     >
                         <AppLink
                             target={target}
-                            to={ROUTES_PATH.article_details + article.id}
+                            to={getRouteArticleDetails(article.id)}
                         >
                             <Button
                                 theme={BUTTON_THEME.OUTLINE}
@@ -132,7 +132,7 @@ export const ArticleListItem: React.FC<ArticleListItemPropsI> = ({
     return (
         <AppLink
             target={target}
-            to={ROUTES_PATH.article_details + article.id}
+            to={getRouteArticleDetails(article.id)}
             className={classNames(cls['article-item'], {}, [className, cls[view]])}
         >
             <Card
