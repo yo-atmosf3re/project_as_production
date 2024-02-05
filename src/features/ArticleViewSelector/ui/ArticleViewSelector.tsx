@@ -46,7 +46,13 @@ export const ArticleViewSelector: React.FC<ArticleViewSelectorPropsI> = ({
                         key={String(viewType.icon)}
                         theme={BUTTON_THEME.CLEAR}
                         onClick={onClickHandler(viewType.view)}
-                        className={classNames('', { [cls['not-selected']]: viewType.view !== view })}
+                        className={classNames(
+                            '',
+                            {
+                                [cls.selected]: viewType.view === view,
+                                [cls['not-selected']]: viewType.view !== view,
+                            },
+                        )}
                     >
                         <Icon Svg={viewType.icon} />
                     </Button>
