@@ -23,7 +23,8 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
             rules: buildLoaders(options),
         },
         resolve: buildingResolvers(options),
-        devtool: isDev ? 'inline-source-map' : undefined,
+        // ? Для дев добавлена поддержка упрощённой source-map для быстрого ребилда;
+        devtool: isDev ? 'eval-cheap-module-source-map' : undefined,
         devServer: isDev ? buildDevServer(options) : undefined,
     };
 }
