@@ -2,19 +2,27 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/shared/ui/Button';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { counterActions } from '../model/slice/counterSlice';
+// import { counterActions } from '../model/slice/counterSlice';
 import { useCounterValue } from '../model/selectors/getCounterValue/getCounterValue';
+import { useCounterActions } from '../model/slice/counterSlice';
 
 export const Counter: React.FC = () => {
     const dispatch = useAppDispatch();
     const counterValue = useCounterValue();
     const { t } = useTranslation();
 
-    const increment = () => {
-        dispatch(counterActions.increment());
+    const { decrement, add, increment } = useCounterActions();
+
+    const incrementHandler = () => {
+        increment();
     };
-    const decrement = () => {
-        dispatch(counterActions.decrement());
+
+    const decrementHandler = () => {
+        decrement();
+    };
+
+    const addFiveHandler = () => {
+        add(5);
     };
 
     return (
@@ -22,22 +30,32 @@ export const Counter: React.FC = () => {
             <h1
                 data-testid="value-title"
             >
-                {counterValue}
+                {
+                    counterValue
+                }
             </h1>
             <Button
                 data-testid="increment-button"
-                onClick={increment}
+                onClick={incrementHandler}
             >
                 {
-                    t('Incremens')
+                    t('Increments')
                 }
             </Button>
             <Button
                 data-testid="decrement-button"
-                onClick={decrement}
+                onClick={decrementHandler}
             >
                 {
                     t('Decrement')
+                }
+            </Button>
+            <Button
+                data-testid="add-button"
+                onClick={addFiveHandler}
+            >
+                {
+                    t('Add five')
                 }
             </Button>
         </div>
