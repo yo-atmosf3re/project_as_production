@@ -15,6 +15,8 @@ import {
 } from '../../../model/types/article';
 import cls from './ArticleListItem.module.scss';
 import { ArticleTextBlockComponent } from '../../ArticleTextBlockComponent';
+import { AppImage } from '@/shared/ui/AppImage';
+import { Skeleton } from '@/shared/ui/Skeleton';
 
 interface ArticleListItemPropsI {
     className?: string;
@@ -88,7 +90,13 @@ export const ArticleListItem: React.FC<ArticleListItemPropsI> = ({
                     {
                         types
                     }
-                    <img
+                    <AppImage
+                        fallback={(
+                            <Skeleton
+                                width={200}
+                                height={200}
+                            />
+                        )}
                         src={article.img}
                         className={cls.image}
                         alt={article.title}
@@ -139,7 +147,13 @@ export const ArticleListItem: React.FC<ArticleListItemPropsI> = ({
                 className={cls.card}
             >
                 <div className={cls['image-wrapper']}>
-                    <img
+                    <AppImage
+                        fallback={(
+                            <Skeleton
+                                width="100%"
+                                height={200}
+                            />
+                        )}
                         src={article.img}
                         className={cls.image}
                         alt={article.title}

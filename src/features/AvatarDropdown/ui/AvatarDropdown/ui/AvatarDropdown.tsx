@@ -68,6 +68,7 @@ export const AvatarDropdown: React.FC<AvatarDropdownPropsI> = ({
                 <Avatar
                     size={30}
                     src={authData.avatar}
+                    fallbackInverted
                 />
             )}
         />
