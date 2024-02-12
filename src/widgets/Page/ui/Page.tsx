@@ -1,20 +1,22 @@
 import React, {
-    MutableRefObject, ReactNode, memo, useRef,
+    MutableRefObject, ReactNode,
+    memo, useRef,
     UIEvent,
 } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { ModsType, classNames } from '@/shared/lib/classNames/classNames';
 import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getScrollRestorationByPath, scrollRestorationActions } from '@/features/ScrollRestoration';
-import { useLocation } from 'react-router-dom';
 import { StateSchema } from '@/app/providers/StoreProvider';
-import { useSelector } from 'react-redux';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
 import { ARTICLE_VIEW } from '@/shared/const/consts';
 import cls from './Page.module.scss';
+import { TestPropsI } from '@/shared/types/tests';
 
-interface PagePropsI {
+interface PagePropsI extends TestPropsI {
     className?: string;
     children: ReactNode;
     onScrollEnd?: () => void;
@@ -32,6 +34,7 @@ export const PAGE_ID = 'PAGE_ID';
  */
 export const Page: React.FC<PagePropsI> = memo(({
     className, children, onScrollEnd,
+    ...otherProps
 }) => {
     const mods: ModsType = {};
     const additionalClasses = [className];
@@ -71,6 +74,9 @@ export const Page: React.FC<PagePropsI> = memo(({
             ref={wrapperRef}
             onScroll={onScrollHandler}
             id={PAGE_ID}
+            data-testid={
+                otherProps['data-testid'] ?? 'Page'
+            }
         >
             {
                 children

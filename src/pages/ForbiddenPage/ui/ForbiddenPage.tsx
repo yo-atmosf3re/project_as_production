@@ -18,6 +18,7 @@ export const ForbiddenPage: React.FC<ForbiddenPagePropsI> = ({
     const { t } = useTranslation('notFoundPage');
     return (
         <Page
+            data-testid="ForbiddenPage"
             className={classNames(cls.ForbiddenPage, {}, [className])}
         >
             {

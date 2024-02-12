@@ -20,6 +20,7 @@ const AdminPanelPage: React.FC<AdminPanelPagePropsI> = ({
     return (
         <Page
             className={classNames(cls['admin-panel'], {}, [className])}
+            data-testid="AdminPanelPage"
         >
             {
                 t(

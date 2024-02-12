@@ -1,6 +1,6 @@
 import React from 'react';
-import { classNames } from '@/shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { Page } from '@/widgets/Page';
 import { HStack } from '@/shared/ui/Stack';
 import cls from './NotFoundPage.module.scss';
@@ -20,6 +20,7 @@ export const NotFoundPage: React.FC<NotFoundPagePropsI> = ({
     return (
         <Page
             className={classNames(cls['nf-page'], {}, [className])}
+            data-testid="NotFoundPage"
         >
             <HStack
                 justify="center"
