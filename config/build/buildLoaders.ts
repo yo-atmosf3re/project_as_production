@@ -9,8 +9,8 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
         use: [
             {
                 loader: 'file-loader',
-            },
-        ],
+            }
+        ]
     };
 
     const svgLoader = {
