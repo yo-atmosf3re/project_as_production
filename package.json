@@ -22,7 +22,7 @@
     "test:ui:ok": "npx loki approve",
     "test:ui:ci": "npx loki --requireReference --reactUri file:./storybook-static",
     "test:ui:report": "npm run test:ui:json && npm run test:ui:html",
-    "test:ui:json": "node scripts/generate-visual-json-report.js",
+    "test:ui:json": "node scripts/generateVisualJsonReport/generate-visual-json-report.js",
     "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
     "sb": "start-storybook -p 6006 -c ./config/storybook",
     "sb:build": "build-storybook -c ./config/storybook",
@@ -94,7 +94,7 @@
     "jest-html-reporters": "^3.0.10",
     "json-server": "^0.17.0",
     "lint-staged": "^13.0.3",
-    "loki": "^0.34.0",
+    "loki": "^0.28.1",
     "mini-css-extract-plugin": "2.5.3",
     "reg-cli": "^0.17.6",
     "regenerator-runtime": "^0.13.9",
@@ -136,16 +136,19 @@
   "loki": {
     "configurations": {
       "chrome.laptop": {
-        "target": "chrome.docker",
+        "target": "chrome.app",
         "width": 1366,
         "height": 768,
         "deviceScaleFactor": 1,
         "mobile": false
       },
       "chrome.iphone7": {
-        "target": "chrome.docker",
+        "target": "chrome.app",
         "preset": "iPhone 7"
       }
     }
+  },
+  "overrides": {
+    "chrome-remote-interface": "0.31.3"
   }
 }
