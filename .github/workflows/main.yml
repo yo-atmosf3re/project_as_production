@@ -31,3 +31,5 @@ jobs:
       - name: unit testing
         run: npm run test:unit
         if: always()
+      # - name: build storybook and ui testing
+      #   run: npm run sb:build && npm run test:ui:ci
