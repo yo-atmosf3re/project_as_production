@@ -5,6 +5,8 @@ import path from 'path';
 import { BuildPaths } from '../build/types/config';
 import { buildCssLoader } from '../build/loaders/buildCssLoaders';
 
+// ? ;
+
 // ? Экспортируем функцию по умолчанию, которая принимает объект config со свойством типа webpack.Configuration;
 export default ({ config }: { config: webpack.Configuration }) => {
     // ? Создаем объект paths с заданными ключами и значениями;
