@@ -1,0 +1,40 @@
+.popup {
+    position: relative;
+}
+
+.trigger {
+    background: none;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+}
+
+.active {
+    background: var(--inverted-primary-color);
+}
+
+.options-bottom_left {
+    top: 100%;
+    right: 0;
+}
+
+.options-bottom_right {
+    top: 100%;
+    left: 0;
+}
+
+.options-top_left {
+    bottom: 100%;
+    right: 0;
+}
+
+.options-top_right {
+    bottom: 100%;
+    left: 0;
+}
+
+.disabled {
+    opacity: 0.7;
+}

@@ -1,0 +1,22 @@
+{
+    "Редактировать": "Edit",
+    "Отменить": "Cancel",
+    "Ваше имя": "Your firstname",
+    "Ваша фамилия": "Your lastname",
+    "Профиль": "Profile",
+    "Сохранить": "Save",
+    "Возраст": "Age",
+    "Город": "City",
+    "Никнейм пользователя": "Nickname",
+    "Аватар": "Avatar",
+    "Аватар пользователя": "User's avatar",
+    "Укажите страну": "Your country",
+    "Укажите валюту": "Your currency",
+    "Некорректный возраст.": "Incorrect age.",
+    "Некорректный регион.": "Incorrect region.",
+    "Некорректные данные пользователя. Имя и фамилия обязательны!": "Incorrect user data. First and last name are required!",
+    "Данные не указаны.": "Data not specified.",
+    "Серверная ошибка при сохранении.": "Server error when saving data.",
+    "Профиль не найден": "Profile not found",
+    "Оцените профиль пользователя!": "Rate this user's profile!"
+}

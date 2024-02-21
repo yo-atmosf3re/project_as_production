@@ -1,0 +1,13 @@
+.article-detials {
+    min-height: 100%;
+}
+
+.recommendations {
+    margin-top: 20px;
+    padding-bottom: 5px;
+
+    // ? Убираем вертикальный скролл, добавляем горизонтальный, убираем перенос непоместившихся элементов. В итоге, образуется горизонтальный скролл в случае, если появляются элементы, которые не поместились;
+    flex-wrap: nowrap;
+    overflow-y: hidden;
+    overflow-x: auto;
+}

@@ -1,0 +1,16 @@
+// ? Тёмная тема приложения;
+
+.app_dark_theme {
+    --bg-color: #090949;
+    --inverted-bg-color: #e8e8ea;
+    --shadow-color: 0 0 2px var(--inverted-secondary-color);
+    --primary-color: #04ff04;
+    --secondary-color: #049604;
+    --inverted-primary-color: #0232c2;
+    --inverted-secondary-color: #0449e0;
+    --skeleton-color: #1515ad;
+    --skeleton-shadow: #2b2be8;
+    --code-bg: #111182;
+    --card-bg: #282885;
+    --listbox-bg: #282885;
+}

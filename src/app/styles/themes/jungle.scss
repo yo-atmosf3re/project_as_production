@@ -1,0 +1,16 @@
+// ? Тема приложения с цветом "Глубокий зелёный цвет джунглей";
+
+.app_jungle_theme {
+    --bg-color: #0c4b4c;
+    --inverted-bg-color: #f4fbfb;
+    --shadow-color: 0 0 2px var(--inverted-secondary-color);
+    --primary-color: #f4fbfb;
+    --secondary-color: #c3f6f6;
+    --inverted-primary-color: #062815;
+    --inverted-secondary-color: #062815;
+    --skeleton-color: #007375;
+    --skeleton-shadow: rgba(0 0 0 / 20%);
+    --code-bg: #052c2d;
+    --card-bg: #146465;
+    --listbox-bg: #146465;
+}

@@ -1,0 +1,4 @@
+# Игнорирование для .vscode;
+.vscode/
+.config/storybook/webpack.config.ts
+.scripts/createSlice
