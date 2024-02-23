@@ -4,3 +4,5 @@ node_modules
 .loki/report.html
 .loki/report.json
 /reports
+/cypress/e2e/1-getting-started
+/cypress/e2e/2-advanced-examples

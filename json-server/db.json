@@ -1534,6 +1534,15 @@
         "MANAGER"
       ],
       "avatar": ""
+    },
+    {
+      "id": "4",
+      "username": "testuser",
+      "password": "4",
+      "roles": [
+        "ADMIN"
+      ],
+      "avatar": "https://img.24live.co/avatar/0e43e4c8944711e78cbcf23c913e91ea_1525708454.jpeg"
     }
   ],
   "profile": [

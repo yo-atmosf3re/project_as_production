@@ -46,6 +46,7 @@ const ArticlesPage: React.FC<ArticlesPagePropsI> = ({
             <Page
                 onScrollEnd={onLoadNextPart}
                 className={classNames(cls['article-page'], {}, [className])}
+                data-testid="ArticlesPage"
             >
                 <ArticlesPageFilters />
                 <ArticleInfiteList
