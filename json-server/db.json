@@ -1567,6 +1567,17 @@
       "city": "Erevan",
       "username": "USER",
       "avatar": "https://copp15.ru/Portals/0/ModuleFiles/i.jpg"
+    },
+    {
+      "id": "4",
+      "first": "Test",
+      "lastname": "Userovich",
+      "age": 92,
+      "currency": "EUR",
+      "country": "Armenia",
+      "city": "Erevan",
+      "username": "testuser",
+      "avatar": "https://copp15.ru/Portals/0/ModuleFiles/i.jpg"
     }
   ],
   "article-ratings": [

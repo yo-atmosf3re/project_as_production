@@ -1,14 +1,6 @@
 /* eslint-disable @typescript-eslint/no-namespace */
-
-import { login } from './commands/login';
+import * as commonCommands from './commands/common';
 
 // ? Функции и команды, описывающие, что можно сделать в приложении;
-Cypress.Commands.add('login', login);
-
-declare global {
-  namespace Cypress {
-    interface Chainable {
-      login(email?: string, password?: string): Chainable<void>;
-    }
-  }
-}
+// ? UPD: обновление на метод addAll, внутрь которого передано всё то, что импортируется из файла common.ts;
+Cypress.Commands.addAll(commonCommands);
