@@ -1,34 +1,70 @@
 /* eslint-disable @typescript-eslint/no-namespace */
-import { USER_LS_KEY } from '../../../src/shared/const/localstorage';
 
-export const updateProfile = () => {
-    cy.getByTestId(
-        'EditableProfilePageHeader.EditButton',
-    );
+/**
+ * Команда, отрабатывающая нажатие на кнопку редактирования профиля, затем ввод в поля `lastname` и `firstname` каких-то значений, сохранение новых данных по нажатию кнопки;
+ */
+export const updateProfile = (firstname: string, lastname: string) => {
+    cy
+        // ? Получение кнопки редактирования;
+        .getByTestId(
+            'EditableProfilePageHeader.EditButton',
+        )
+        // ? Воспроизведение режима редактирования путём нажатия на кнопку;
+        .click();
+    cy
+        // ? Получение инпута;
+        .getByTestId(
+            'ProfileCard.firstname',
+        )
+        // ? Его очистка;
+        .clear()
+        // ? Ввод каких-то значений;
+        .type(firstname);
+    cy
+        // ? Получение инпута;
+        .getByTestId(
+            'ProfileCard.lastname',
+        )
+        // ? Его очистка;
+        .clear()
+        // ? Ввод каких-то значений;
+        .type(lastname);
+    cy
+        // ? Получение кнопки сохранения;
+        .getByTestId('EditableProfilePageHeader.SaveButton')
+        // ? Сохранение данных кликом по этой кнопке;
+        .click();
 };
 
-export const resetProfile = () => {
-    // ? Описание запроса с опеределенным поведением: указываем метод, адрес бекенда с эндпоинтом, тело запроса (воспроизведение поведения бекенда в приложении), а затем сохраняем в LS пользователя с уникальным ключом и авторизационными данными;
+/**
+ * Отработка сброса данных профиля;
+ */
+export const resetProfile = (profileId: string) => {
     return cy.request({
-        method: 'POST',
-        url: 'http://localhost:7777/login',
-        body: {
-            username,
-            password,
+        method: 'PUT',
+        url: `http://localhost:7777/profile/${profileId}`,
+        headers: {
+            Authorization: 'asasf',
         },
-    })
-        .then(({ body }) => {
-            window.localStorage.setItem(USER_LS_KEY, JSON.stringify(body));
-            // ? Указание возвращаемого значения в виде body позволяет получить данные о том, что вернул запрос;
-            return body;
-        });
+        body: {
+            id: '4',
+            first: 'Test',
+            lastname: 'Userovich',
+            age: 92,
+            currency: 'EUR',
+            country: 'Armenia',
+            city: 'Erevan',
+            username: 'testuser',
+            avatar: 'https://copp15.ru/Portals/0/ModuleFiles/i.jpg',
+        },
+    });
 };
 
 declare global {
   namespace Cypress {
     interface Chainable {
-      updatePfoile(): Chainable<void>;
-      resetPfoile(): Chainable<void>;
+      updateProfile(firstname: string, lastname: string): Chainable<void>;
+      resetProfile(profileId: string): Chainable<void>;
     }
   }
 }

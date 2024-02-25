@@ -29,7 +29,7 @@ export const profileSlice = createSlice({
         // ? Общий action для обновления всей data. Создаёт новый объект, переносит туда старую data, а затем новую data из action.payload, перезатерая старые поля объекта;
         updateProfile: (state, action: PayloadAction<ProfileI>) => {
             state.form = {
-                ...state.data,
+                ...state.form,
                 ...action.payload,
             };
         },

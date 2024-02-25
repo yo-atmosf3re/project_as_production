@@ -42,7 +42,7 @@ declare global {
     interface Chainable {
         // ? Указание возвращаемого значения метода - это UserI (информация о пользователе, которую возвращает сервер);
       login(email?: string, password?: string): Chainable<UserI>;
-      getByTestId(testId: string): ReturnType<typeof cy.get>;
+      getByTestId(testId: string): Chainable<JQuery<HTMLElement>>;
     }
   }
 }

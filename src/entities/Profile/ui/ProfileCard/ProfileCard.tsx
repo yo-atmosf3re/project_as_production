@@ -32,7 +32,22 @@ interface ProfileCardPropsI {
     onChangeCountryHandler?: (country: COUNTRY) => void;
 }
 
-// ? Компонента с карточкой пользователя. Удобно тем, что можно создать большое количество экземпляров этой компоненты, передавая в неё массив профилей, например;
+/**
+ *  Компонента с карточкой пользователя, может быть использована множество раз в любом месте приложения;
+ * @param className
+ * @param data - данные профиля;
+ * @param error
+ * @param isLoading
+ * @param readonly - флаг, указывающий на то, является ли профиль для чтения;
+ * @param onChangeFirstnameHandler
+ * @param onChangeLastnameHandler
+ * @param onChangeAgeHandler
+ * @param onChangeCityHandler
+ * @param onChangeAvatarHandler
+ * @param onChangeUsernameHandler
+ * @param onChangeCurrencyHandler
+ * @param onChangeCountryHandler
+ */
 export const ProfileCard: React.FC<ProfileCardPropsI > = ({
     className, data, error, isLoading, readonly,
     onChangeFirstnameHandler, onChangeLastnameHandler,
