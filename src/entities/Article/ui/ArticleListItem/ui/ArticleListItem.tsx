@@ -62,8 +62,10 @@ export const ArticleListItem: React.FC<ArticleListItemPropsI> = ({
     if (view === 'BIG') {
         // ? Первый текстовый блок, который будет отображаться в карточке как начальный;
         const textBlock = article.blocks.find((block) => block.type === ARTICLE_BLOCK_TYPE.TEXT) as ArticleTextBlockI;
+
         return (
             <div
+                data-testid="ArticleListItem"
                 className={classNames(cls['article-item'], {}, [className, cls[view]])}
             >
                 <Card className={cls.card}>
@@ -139,6 +141,7 @@ export const ArticleListItem: React.FC<ArticleListItemPropsI> = ({
 
     return (
         <AppLink
+            data-testid="ArticleListItem"
             target={target}
             to={getRouteArticleDetails(article.id)}
             className={classNames(cls['article-item'], {}, [className, cls[view]])}

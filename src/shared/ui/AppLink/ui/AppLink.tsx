@@ -23,11 +23,14 @@ interface AppLinkPropsI extends LinkProps {
  * @param children
  */
 export const AppLink: React.FC<AppLinkPropsI> = memo(({
-    className, children, theme = APP_LINK_THEME.PRIMARY, ...otherProps
+    className, children,
+    theme = APP_LINK_THEME.PRIMARY, to,
+    ...otherProps
 }) => (
     <Link
-        to={otherProps.to}
+        to={to}
         className={classNames(cls.appLink, {}, [className, cls[theme]])}
+        {...otherProps}
     >
         {children}
     </Link>

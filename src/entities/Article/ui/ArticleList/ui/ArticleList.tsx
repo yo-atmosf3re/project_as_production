@@ -75,6 +75,7 @@ export const ArticleList: React.FC<ArticleListPropsI> = ({
     return (
         <div
             className={classNames(cls['article-list'], {}, [className, cls[view]])}
+            data-testid="ArticleList"
         >
             {
                 articles.length > 0
