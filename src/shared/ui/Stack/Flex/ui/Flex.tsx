@@ -79,6 +79,7 @@ export const Flex: React.FC<FlexPropsI> = ({
     align = 'center',
     direction = 'row',
     gap, max,
+    ...otherProps
 }) => {
     const additionalClasses: Array<string | undefined> = [
         className,
@@ -96,6 +97,7 @@ export const Flex: React.FC<FlexPropsI> = ({
     return (
         <div
             className={classNames(cls.flex, mods, additionalClasses)}
+            {...otherProps}
         >
             {
                 children
