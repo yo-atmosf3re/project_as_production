@@ -3,7 +3,6 @@ import react from '@vitejs/plugin-react';
 import svgr from 'vite-plugin-svgr';
 
 // ? Подключение Vite, который в разы ускоряет сборку проекта между изменениями во время разработки;
-// https://vitejs.dev/config/
 export default defineConfig({
     plugins: [
         // ? Поддержка svg;
