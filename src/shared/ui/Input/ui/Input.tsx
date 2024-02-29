@@ -32,8 +32,8 @@ interface SelectHandlerI extends React.ChangeEventHandler<HTMLInputElement> {
  * @param readonly - передаёт этот флаг в свойство readOnly самого инпута (для чтения инпут или нет);
  */
 export const Input: React.FC<InputPropsI> = memo(({
-    className, value, onChange,
     type = 'text',
+    className, value, onChange,
     placeholder,
     autofocus,
     readonly,

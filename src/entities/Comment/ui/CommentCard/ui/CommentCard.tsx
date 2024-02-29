@@ -33,6 +33,7 @@ export const CommentCard: React.FC<CommentCardPropsI> = ({
                 max
                 gap="8"
                 className={classNames(cls['comment-card'], mods, [className, cls['comment-loading']])}
+                data-testid="CommentCard.Loading"
             >
                 <VStack
                     gap="8"
@@ -67,6 +68,7 @@ export const CommentCard: React.FC<CommentCardPropsI> = ({
             max
             gap="8"
             className={classNames(cls['comment-card'], mods, [className])}
+            data-testid="CommentCard.Content"
         >
 
             <AppLink
@@ -92,7 +94,6 @@ export const CommentCard: React.FC<CommentCardPropsI> = ({
                     />
                 </HStack>
             </AppLink>
-
             <Text
                 className={cls['comment-text']}
                 text={comment?.text}

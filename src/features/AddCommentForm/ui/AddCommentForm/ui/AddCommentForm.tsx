@@ -51,6 +51,7 @@ const AddCommentForm: React.FC<AddCommentFormPropsI> = ({
                 justify="between"
                 align="center"
                 className={classNames(cls['addСomment-form'], {}, [className])}
+                data-testid="AddCommentForm"
             >
                 <Input
                     className={cls.input}
@@ -59,9 +60,11 @@ const AddCommentForm: React.FC<AddCommentFormPropsI> = ({
                     }
                     value={text}
                     onChange={onCommentTextHandler}
+                    data-testid="AddCommentForm.Input"
                 />
                 <Button
                     onClick={onSendHandler}
+                    data-testid="AddCommentForm.Button"
                 >
                     {
                         t('Отправить')

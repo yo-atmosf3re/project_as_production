@@ -77,6 +77,9 @@ export const StarRating: React.FC<StarRatingPropsI> = memo(({
                         onMouseLeave={onLeaveHandler}
                         onMouseEnter={onHoverHandler(starNumber)}
                         onClick={onClickHandler(starNumber)}
+                        data-testid={`StarRating.${starNumber}`}
+                        // ? Проверка на количественно выбранных звёзд (для e2e-тестирования);
+                        data-selected={currentStarsCount >= starNumber}
                     />
                 ))
             }

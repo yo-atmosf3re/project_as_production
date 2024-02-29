@@ -31,34 +31,49 @@ describe('The user go to article page', () => {
             .should('exist');
     });
 
-    // it('И видит список рекоммендаций', () => {
-    //     cy
-    //         .getByTestId('ArticleRecommendationsList')
-    //         .should('exist');
-    // });
+    it('The user sees article recommendation\'s list', () => {
+        cy
+            // ? Получение списка с рекомендациями;
+            .getByTestId('ArticleRecommendationsList')
+            // ? Проверка на существование;
+            .should('exist');
+    });
 
-    // it('И оставляет комментарий', () => {
-    //     cy
-    //         .getByTestId('ArticleDetails.Info');
-    //     cy
-    //         .getByTestId('AddCommentForm')
-    //         .scrollIntoView();
-    //     cy
-    //         .addComment('text');
-    //     cy
-    //         .getByTestId('CommentCard.Content')
-    //         .should('have.length', 1);
-    // });
+    it('The user add to comment at article', () => {
+        cy
+            // ? Получение конкретной статьи, на которую был совершён переход;
+            .getByTestId('ArticleDetails.Info');
+        cy
+            // ? Получение формы для заполнения и отправки комментария;
+            .getByTestId('AddCommentForm')
+            // ? Скролл к этой форме;
+            .scrollIntoView();
+        cy
+            // ? Отправка комментариями;
+            .addComment('text');
+        cy
+            // ? Получение комментария;
+            .getByTestId('CommentCard.Content')
+            // ? Проверка на количество комментариев (исключение дублирования и каких-либо ошибок);
+            .should('have.length', 1);
+    });
 
-    // it.only('И ставит оценку', () => {
-    //     cy
-    //         .getByTestId('ArticleDetails.Info');
-    //     cy
-    //         .getByTestId('RatingCard').scrollIntoView();
-    //     cy
-    //         .setRate(4, 'feedback');
-    //     cy
-    //         .get('[data-selected=true]')
-    //         .should('have.length', 4);
-    // });
+    it.only('The user add to rate for article', () => {
+        cy
+            // ? Получение конкретной статьи, на которую был совершён переход;
+            .getByTestId('ArticleDetails.Info');
+        cy
+            // ? Получение карточки с рейтингом;
+            .getByTestId('RatingCard')
+            // ? Скролл к этой карточке;
+            .scrollIntoView();
+        cy
+            // ? Установка рейтинга и фидбека;
+            .setRate(4, 'feedback');
+        cy
+            // ? Проверка на количественно выбранных звёзд;
+            .get('[data-selected=true]')
+            // ? После установки рейтинга их должно быть определенное количество;
+            .should('have.length', 4);
+    });
 });

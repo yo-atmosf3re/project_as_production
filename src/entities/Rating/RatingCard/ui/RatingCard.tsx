@@ -79,6 +79,7 @@ export const RatingCard: React.FC<RatingCardPropsI> = memo(({
                 }
                 value={feedback}
                 onChange={setFeedback}
+                data-testid="RatingCard.Input"
             />
         </>
     );
@@ -93,6 +94,7 @@ export const RatingCard: React.FC<RatingCardPropsI> = memo(({
                 )
             }
             max
+            data-testid="RatingCard"
         >
             <VStack
                 align="center"
@@ -132,6 +134,7 @@ export const RatingCard: React.FC<RatingCardPropsI> = memo(({
                         >
                             <Button
                                 onClick={onClickAcceptHandler}
+                                data-testid="RatingCard.Send"
                             >
                                 {
                                     t('Отправить')
@@ -140,6 +143,7 @@ export const RatingCard: React.FC<RatingCardPropsI> = memo(({
                             <Button
                                 onClick={onClickCancelHandler}
                                 theme={BUTTON_THEME.OUTLINE_RED}
+                                data-testid="RatingCard.Closed"
                             >
                                 {
                                     t('Закрыть')
