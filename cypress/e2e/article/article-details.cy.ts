@@ -23,7 +23,7 @@ describe('The user go to article page', () => {
             .removeArticle(currentArticleId);
     });
 
-    it('The user sees content of the article page', () => {
+    it.skip('The user sees content of the article page', () => {
         cy
             // ? Получение конкретной статьи, на которую был совершён переход;
             .getByTestId('ArticleDetails.Info')
@@ -31,7 +31,7 @@ describe('The user go to article page', () => {
             .should('exist');
     });
 
-    it('The user sees article recommendation\'s list', () => {
+    it.skip('The user sees article recommendation\'s list', () => {
         cy
             // ? Получение списка с рекомендациями;
             .getByTestId('ArticleRecommendationsList')
@@ -39,7 +39,7 @@ describe('The user go to article page', () => {
             .should('exist');
     });
 
-    it('The user add to comment at article', () => {
+    it.skip('The user add to comment at article', () => {
         cy
             // ? Получение конкретной статьи, на которую был совершён переход;
             .getByTestId('ArticleDetails.Info');
@@ -58,7 +58,21 @@ describe('The user go to article page', () => {
             .should('have.length', 1);
     });
 
-    it.only('The user add to rate for article', () => {
+    it.only('The user add to rate for article (stub\'s example)', () => {
+        cy
+            // ? Инициализация интерцептора на гет-запрос, который отлавливает по куску URL, содержащий "/articles/", а в качестве фикстуры указывается article-details.json;
+            .intercept(
+                // ? Указание запроса;
+                'GET',
+                // ? Кусок URL (указание регулярного выражения или строки);
+                '**/articles/*',
+                // ? Указание фикстуры (ответом бекенда, проще говоря, будет этот json-файл);
+                {
+                    // " Фикстура - подготовка окружения с заранее фиксированным/известным состоянием для гарантированной повторяемости тестирования;
+                    fixture: 'article-details.json',
+                },
+            );
+
         cy
             // ? Получение конкретной статьи, на которую был совершён переход;
             .getByTestId('ArticleDetails.Info');
