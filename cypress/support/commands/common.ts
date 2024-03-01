@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-namespace */
-import { selectByTestId } from 'cypress/helpers/selectByTestId';
+import { selectByTestId } from '../../helpers/selectByTestId';
 import { UserI } from '../../../src/entities/User/models/types/user';
 import { USER_LS_KEY } from '../../../src/shared/const/localstorage';
 
