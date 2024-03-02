@@ -11,10 +11,10 @@ import { ThemeProvider } from '@/app/providers/ThemeProvider';
 import '@/app/styles/index.scss';
 
 export interface ComponentRouteOptionsI {
-   route?: string;
-   initialState?: DeepPartial<StateSchema>;
-   asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>;
-   theme?: THEME;
+    route?: string;
+    initialState?: DeepPartial<StateSchema>;
+    asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>;
+    theme?: THEME;
 }
 
 interface TestProviderPropsI {
@@ -27,9 +27,7 @@ interface TestProviderPropsI {
  * @param children
  * @param options - объект с тестовыми данными, которые указываются для вложенной компоненты `children`;
  */
-export function TestProvider({
-    children, options = {},
-}: TestProviderPropsI) {
+export function TestProvider({ children, options = {} }: TestProviderPropsI) {
     const {
         asyncReducers,
         initialState,
@@ -43,20 +41,10 @@ export function TestProvider({
                 asyncReducers={asyncReducers}
                 initialState={initialState}
             >
-                <I18nextProvider
-                    i18n={i18nForTests}
-                >
+                <I18nextProvider i18n={i18nForTests}>
                     {/* // ? Для e2e-тестирования изолированных компонент; */}
-                    <ThemeProvider
-                        initialTheme={theme}
-                    >
-                        <div
-                            className={`app ${theme}`}
-                        >
-                            {
-                                children
-                            }
-                        </div>
+                    <ThemeProvider initialTheme={theme}>
+                        <div className={`app ${theme}`}>{children}</div>
                     </ThemeProvider>
                 </I18nextProvider>
             </StoreProvider>
@@ -68,15 +56,7 @@ export function TestProvider({
 export const componentRender = (
     component: ReactNode,
     options: ComponentRouteOptionsI = {},
-) => render(
-    <TestProvider
-        options={options}
-    >
-        {
-            component
-        }
-    </TestProvider>,
-);
+) => render(<TestProvider options={options}>{component}</TestProvider>);
 // " MemoryRouter - позволять приложению работать с маршрутами без необходимости менять адресную строку браузера или перезагружать страницу. Он полезен, например, когда требуется создать приложение в среде, где нет реального браузера, или для создания тестов, где работа с адресной строкой не требуется;
 // " MemoryRouter сохраняет текущий маршрут и его состояние в памяти, а также позволяет управлять переходами по маршрутам через использование некоторых методов;
 // " MemoryRouter является важным инструментом для маршрутизации в React приложениях, особенно в случаях, когда нет возможности использовать реальный браузер или требуется создание тестов;

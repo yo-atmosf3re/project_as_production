@@ -11,12 +11,12 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-    decorators: [
-        withMock,
-    ],
+    decorators: [withMock],
 } as ComponentMeta<typeof ArticleRecommendationsList>;
 
-const Template: ComponentStory<typeof ArticleRecommendationsList> = (args) => <ArticleRecommendationsList {...args} />;
+const Template: ComponentStory<typeof ArticleRecommendationsList> = (args) => (
+    <ArticleRecommendationsList {...args} />
+);
 
 const article: ArticleI = {
     id: '1',
@@ -34,14 +34,8 @@ const article: ArticleI = {
 };
 
 export const Primary = Template.bind({});
-Primary.args = {
-
-};
-Primary.decorators = [
-    StoreDecorator({
-
-    }),
-];
+Primary.args = {};
+Primary.decorators = [StoreDecorator({})];
 
 // ? С помощью стороннего аддона мокаем запрос на сервер за данными, это нужно для того, чтобы можно было создавать сторисы, которые внутри себя будут использоваться RTK Query;
 Primary.parameters = {

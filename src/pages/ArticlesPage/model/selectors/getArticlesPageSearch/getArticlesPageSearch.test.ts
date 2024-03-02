@@ -9,16 +9,12 @@ describe('getArticlesPageSearch', () => {
             },
         };
 
-        expect(getArticlesPageSearch(state as StateSchema)).toEqual(
-            'Search',
-        );
+        expect(getArticlesPageSearch(state as StateSchema)).toEqual('Search');
     });
 
-    test('Should return empty string if state or selector\'s value is equal undefined', () => {
+    test("Should return empty string if state or selector's value is equal undefined", () => {
         const state: DeepPartial<StateSchema> = {};
 
-        expect(getArticlesPageSearch(state as StateSchema)).toEqual(
-            '',
-        );
+        expect(getArticlesPageSearch(state as StateSchema)).toEqual('');
     });
 });

@@ -11,8 +11,9 @@ const mockedAxios = jest.mocked(axios, true);
 
 // ? Тип для функции, которая принимает некий аргумент, а возвращает AsyncThunkAction-функцию;
 // " Для более наглядного примера можно заглянуть в loginByUsername.ts где прокомментировано то как это работает и за что отвечает каждый тип. Описание в конце файла в закомментированных частях кода;
-type ActionCreatorType<Return, Argument, RejectedValue> =
-    (arg: Argument) => AsyncThunkAction<Return, Argument, { rejectValue: RejectedValue }>;
+type ActionCreatorType<Return, Argument, RejectedValue> = (
+    arg: Argument,
+) => AsyncThunkAction<Return, Argument, { rejectValue: RejectedValue }>;
 
 /**
  * Класс, который инкапсулирует логику по тестированию createAsyncThunk-функций.

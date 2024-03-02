@@ -11,14 +11,10 @@ export default {
     },
 } as ComponentMeta<typeof ForbiddenPage>;
 
-const Template: ComponentStory<typeof ForbiddenPage> = (args) => <ForbiddenPage {...args} />;
+const Template: ComponentStory<typeof ForbiddenPage> = (args) => (
+    <ForbiddenPage {...args} />
+);
 
 export const Primary = Template.bind({});
-Primary.args = {
-
-};
-Primary.decorators = [
-    StoreDecorator({
-
-    }),
-];
+Primary.args = {};
+Primary.decorators = [StoreDecorator({})];

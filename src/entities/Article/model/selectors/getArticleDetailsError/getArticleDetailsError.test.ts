@@ -9,9 +9,7 @@ describe('getArticleDetailsError', () => {
             },
         };
 
-        expect(getArticleDetailsError(state as StateSchema)).toEqual(
-            'Error',
-        );
+        expect(getArticleDetailsError(state as StateSchema)).toEqual('Error');
     });
 
     test('Should return undefined with empty state', () => {

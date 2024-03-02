@@ -86,9 +86,7 @@ describe('getArticleDetailsData', () => {
             },
         };
 
-        expect(getArticleDetailsData(state as StateSchema)).toEqual(
-            article,
-        );
+        expect(getArticleDetailsData(state as StateSchema)).toEqual(article);
     });
 
     test('Should return undefined with empty state', () => {

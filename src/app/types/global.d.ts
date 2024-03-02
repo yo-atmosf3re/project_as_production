@@ -4,22 +4,21 @@
 
 // ? Для файлов .scss;
 declare module '*.scss' {
-
-   // ? Типизация для classNames при импортах, нужно, чтобы не было проблем при использовании classNames, и чтобы можно было использовать scss.module;
-   interface IClassNames {
-      [className: string]: string
-   }
-   const classNames: IClassNames;
-   export = classNames;
+    // ? Типизация для classNames при импортах, нужно, чтобы не было проблем при использовании classNames, и чтобы можно было использовать scss.module;
+    interface IClassNames {
+        [className: string]: string;
+    }
+    const classNames: IClassNames;
+    export = classNames;
 }
 
 // ? Для файлов .svg;
 declare module '*.svg' {
-   import React from 'react';
+    import React from 'react';
 
-   // ? Это для использования svg в виде компоненты;
-   const SVG: React.VFC<React.SVGProps<SVGSVGElement>>;
-   export default SVG;
+    // ? Это для использования svg в виде компоненты;
+    const SVG: React.VFC<React.SVGProps<SVGSVGElement>>;
+    export default SVG;
 }
 
 // ? Для файлов png, jpg, .jpeg;
@@ -38,9 +37,11 @@ declare const __PROJECT__: 'storybook' | 'fronted' | 'jest';
  * Собственноручно написанный DeepPartial.
  * DeepPartial даёт возможность частично или полностью скопировать state. Некоторые свойства, при их наличии, могут быть полностью скопированы (глубоко) или нет - при их отсутствии;
  */
-type DeepPartial<T> = T extends object ? {
-   [P in keyof T]?: DeepPartial<T[P]>;
-} : T;
+type DeepPartial<T> = T extends object
+    ? {
+          [P in keyof T]?: DeepPartial<T[P]>;
+      }
+    : T;
 
 /**
  * Классический Record, но с опциональными свойствами. Даёт возможность создавать объекты с опциональными свойствами;

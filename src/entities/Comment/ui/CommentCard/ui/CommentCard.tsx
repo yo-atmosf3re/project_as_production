@@ -23,7 +23,9 @@ interface CommentCardPropsI {
  * @returns
  */
 export const CommentCard: React.FC<CommentCardPropsI> = ({
-    className, comment, isLoading,
+    className,
+    comment,
+    isLoading,
 }) => {
     const mods: ModsType = {};
 
@@ -32,7 +34,10 @@ export const CommentCard: React.FC<CommentCardPropsI> = ({
             <VStack
                 max
                 gap="8"
-                className={classNames(cls['comment-card'], mods, [className, cls['comment-loading']])}
+                className={classNames(cls['comment-card'], mods, [
+                    className,
+                    cls['comment-loading'],
+                ])}
                 data-testid="CommentCard.Loading"
             >
                 <VStack
@@ -70,24 +75,17 @@ export const CommentCard: React.FC<CommentCardPropsI> = ({
             className={classNames(cls['comment-card'], mods, [className])}
             data-testid="CommentCard.Content"
         >
-
-            <AppLink
-                to={getRouteProfile(comment.user.id)}
-            >
+            <AppLink to={getRouteProfile(comment.user.id)}>
                 <HStack
                     gap="8"
                     align="center"
                 >
-                    {
-                        comment?.user.avatar
-                            ? (
-                                <Avatar
-                                    src={comment?.user.avatar}
-                                    size={30}
-                                />
-                            )
-                            : null
-                    }
+                    {comment?.user.avatar ? (
+                        <Avatar
+                            src={comment?.user.avatar}
+                            size={30}
+                        />
+                    ) : null}
                     <Text
                         className={cls['comment-username']}
                         title={comment?.user.username}

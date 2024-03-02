@@ -10,9 +10,7 @@ import { CurrencySelect } from '@/entities/Currency';
 import { COUNTRY, CountrySelect } from '@/entities/Country';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { CURRENCY } from '@/shared/const/consts';
-import {
-    ProfileI,
-} from '../../index';
+import { ProfileI } from '../../index';
 import cls from './ProfileCard.module.scss';
 
 interface ProfileCardPropsI {
@@ -48,12 +46,20 @@ interface ProfileCardPropsI {
  * @param onChangeCurrencyHandler
  * @param onChangeCountryHandler
  */
-export const ProfileCard: React.FC<ProfileCardPropsI > = ({
-    className, data, error, isLoading, readonly,
-    onChangeFirstnameHandler, onChangeLastnameHandler,
-    onChangeAgeHandler, onChangeCityHandler,
-    onChangeAvatarHandler, onChangeUsernameHandler,
-    onChangeCurrencyHandler, onChangeCountryHandler,
+export const ProfileCard: React.FC<ProfileCardPropsI> = ({
+    className,
+    data,
+    error,
+    isLoading,
+    readonly,
+    onChangeFirstnameHandler,
+    onChangeLastnameHandler,
+    onChangeAgeHandler,
+    onChangeCityHandler,
+    onChangeAvatarHandler,
+    onChangeUsernameHandler,
+    onChangeCurrencyHandler,
+    onChangeCountryHandler,
 }) => {
     const { t } = useTranslation('profile');
 
@@ -80,20 +86,15 @@ export const ProfileCard: React.FC<ProfileCardPropsI > = ({
                 max
                 align="center"
                 justify="center"
-                className={classNames(
-                    cls['profile-card'],
-                    { },
-                    [className, cls.error],
-                )}
+                className={classNames(cls['profile-card'], {}, [
+                    className,
+                    cls.error,
+                ])}
             >
                 <Text
                     theme={TEXT_THEME.ERROR}
-                    title={
-                        t('Произошла ошибка при загрузке профиля')
-                    }
-                    text={
-                        t('Попробуйте обновить страницу')
-                    }
+                    title={t('Произошла ошибка при загрузке профиля')}
+                    text={t('Попробуйте обновить страницу')}
                     align={TEXT_ALIGN.CENTER}
                 />
             </HStack>
@@ -104,31 +105,23 @@ export const ProfileCard: React.FC<ProfileCardPropsI > = ({
         <VStack
             gap="16"
             max
-            className={classNames(cls['profile-card'], { }, [className])}
+            className={classNames(cls['profile-card'], {}, [className])}
         >
-            {
-                data?.avatar
-                    ? (
-                        <HStack
-                            max
-                            className={cls['avatar-wrapper']}
-                        >
-                            <Avatar
-                                src={data?.avatar}
-                                alt={
-                                    t('Аватар пользователя')
-                                }
-                            />
-                        </HStack>
-                    )
-                    : null
-            }
+            {data?.avatar ? (
+                <HStack
+                    max
+                    className={cls['avatar-wrapper']}
+                >
+                    <Avatar
+                        src={data?.avatar}
+                        alt={t('Аватар пользователя')}
+                    />
+                </HStack>
+            ) : null}
             <Input
                 value={data?.first}
                 onChange={onChangeFirstnameHandler}
-                placeholder={
-                    t('Ваше имя')
-                }
+                placeholder={t('Ваше имя')}
                 readonly={readonly}
                 className={cls.input}
                 data-testid="ProfileCard.firstname"
@@ -136,9 +129,7 @@ export const ProfileCard: React.FC<ProfileCardPropsI > = ({
             <Input
                 value={data?.lastname}
                 onChange={onChangeLastnameHandler}
-                placeholder={
-                    t('Ваша фамилия')
-                }
+                placeholder={t('Ваша фамилия')}
                 readonly={readonly}
                 className={cls.input}
                 data-testid="ProfileCard.lastname"
@@ -146,36 +137,28 @@ export const ProfileCard: React.FC<ProfileCardPropsI > = ({
             <Input
                 value={data?.age}
                 onChange={onChangeAgeHandler}
-                placeholder={
-                    t('Возраст')
-                }
+                placeholder={t('Возраст')}
                 readonly={readonly}
                 className={cls.input}
             />
             <Input
                 value={data?.city}
                 onChange={onChangeCityHandler}
-                placeholder={
-                    t('Город')
-                }
+                placeholder={t('Город')}
                 readonly={readonly}
                 className={cls.input}
             />
             <Input
                 value={data?.username}
                 onChange={onChangeUsernameHandler}
-                placeholder={
-                    t('Никнейм пользователя')
-                }
+                placeholder={t('Никнейм пользователя')}
                 readonly={readonly}
                 className={cls.input}
             />
             <Input
                 value={data?.avatar}
                 onChange={onChangeAvatarHandler}
-                placeholder={
-                    t('Аватар')
-                }
+                placeholder={t('Аватар')}
                 readonly={readonly}
                 className={cls.input}
             />

@@ -11,7 +11,7 @@ import cls from './Text.module.scss';
 export enum TEXT_THEME {
     PRIMARY = 'primary',
     INVERTED = 'inverted',
-    ERROR = 'error'
+    ERROR = 'error',
 }
 
 /**
@@ -64,55 +64,53 @@ const MAP_SIZE_TO_HEADER_TAG: Record<TEXT_SIZE, HeaderTagType> = {
  * @param align - выравнивание текста - справа, слева или по-центру, для доступа используется TEXT_ALIGN enum;
  * @param size - размера текста - S, M, L, для доступа используется TEXT_SIZE enum;
  */
-export const Text: React.FC<TextPropsI> = memo(({
-    className, text, title,
-    theme = TEXT_THEME.PRIMARY,
-    align = TEXT_ALIGN.LEFT,
-    size = TEXT_SIZE.M,
-    'data-testid': dataTestId = 'Text',
-}) => {
-    // ? Название с большой буквы, потому что используется как JSX-компонента;
-    // ? Используется для отрисовки title для сохранения семантики;
-    const HeaderTag: HeaderTagType = MAP_SIZE_TO_HEADER_TAG[size];
-
-    const mods: ModsType = {
-        [cls[theme]]: true,
-        [cls[align]]: true,
-        [cls[size]]: true,
-    };
-
-    const additionalClasses: Array<string | undefined> = [
+export const Text: React.FC<TextPropsI> = memo(
+    ({
         className,
-    ];
-    return (
-        <div
-            data-testid="text-wrapper"
-            className={classNames(cls['text-wrapper'], mods, additionalClasses)}
-        >
-            {
-                title
-                    ? (
-                        <HeaderTag
-                            data-testid={`${dataTestId}.Header`}
-                            className={cls.title}
-                        >
-                            {title}
-                        </HeaderTag>
-                    )
-                    : null
-            }
-            {
-                text
-                    ? (
-                        <p
-                            data-testid={`${dataTestId}.Paragraph`}
-                            className={cls.text}
-                        >
-                            {text}
-                        </p>
-                    )
-                    : null
-            }
-        </div>
-    );
-});
+        text,
+        title,
+        theme = TEXT_THEME.PRIMARY,
+        align = TEXT_ALIGN.LEFT,
+        size = TEXT_SIZE.M,
+        'data-testid': dataTestId = 'Text',
+    }) => {
+        // ? Название с большой буквы, потому что используется как JSX-компонента;
+        // ? Используется для отрисовки title для сохранения семантики;
+        const HeaderTag: HeaderTagType = MAP_SIZE_TO_HEADER_TAG[size];
+
+        const mods: ModsType = {
+            [cls[theme]]: true,
+            [cls[align]]: true,
+            [cls[size]]: true,
+        };
+
+        const additionalClasses: Array<string | undefined> = [className];
+        return (
+            <div
+                data-testid="text-wrapper"
+                className={classNames(
+                    cls['text-wrapper'],
+                    mods,
+                    additionalClasses,
+                )}
+            >
+                {title ? (
+                    <HeaderTag
+                        data-testid={`${dataTestId}.Header`}
+                        className={cls.title}
+                    >
+                        {title}
+                    </HeaderTag>
+                ) : null}
+                {text ? (
+                    <p
+                        data-testid={`${dataTestId}.Paragraph`}
+                        className={cls.text}
+                    >
+                        {text}
+                    </p>
+                ) : null}
+            </div>
+        );
+    },
+);

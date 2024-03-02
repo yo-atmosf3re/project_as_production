@@ -49,7 +49,10 @@ const GAP_CLASSES: Record<FlexGapType, string> = {
 };
 
 // ? Описание типов для HTML-тега div, от которого будет расширяться основной тип FlexPropsI;
-type DivPropsType = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+type DivPropsType = DetailedHTMLProps<
+    HTMLAttributes<HTMLDivElement>,
+    HTMLDivElement
+>;
 
 export interface FlexPropsI extends DivPropsType {
     className?: string;
@@ -78,7 +81,8 @@ export const Flex: React.FC<FlexPropsI> = ({
     justify = 'start',
     align = 'center',
     direction = 'row',
-    gap, max,
+    gap,
+    max,
     ...otherProps
 }) => {
     const additionalClasses: Array<string | undefined> = [
@@ -99,9 +103,7 @@ export const Flex: React.FC<FlexPropsI> = ({
             className={classNames(cls.flex, mods, additionalClasses)}
             {...otherProps}
         >
-            {
-                children
-            }
+            {children}
         </div>
     );
 };

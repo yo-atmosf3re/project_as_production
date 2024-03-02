@@ -33,9 +33,7 @@ describe('profileSlice', () => {
     test('Slice should be created, updateProfileData should be pending', () => {
         const state: DeepPartial<ProfileSchema> = {
             isLoading: false,
-            validateErrors: [
-                VALIDATE_PROFILE_ERROR.SERVER_ERROR,
-            ],
+            validateErrors: [VALIDATE_PROFILE_ERROR.SERVER_ERROR],
         };
         expect(
             profileReducer(state as ProfileSchema, updateProfileData.pending),
@@ -51,7 +49,10 @@ describe('profileSlice', () => {
         };
         expect(
             // ? Здесь можно в fulfiiled передавать аргументы, собственно, как и в любой другой action, если он принимает какие-либо аргументы;
-            profileReducer(state as ProfileSchema, updateProfileData.fulfilled(data, '')),
+            profileReducer(
+                state as ProfileSchema,
+                updateProfileData.fulfilled(data, ''),
+            ),
         ).toEqual({
             isLoading: false,
             readonly: true,
@@ -69,7 +70,10 @@ describe('profileSlice', () => {
             form: formData,
         };
         expect(
-            profileReducer(state as ProfileSchema, profileActions.updateProfile(formData)),
+            profileReducer(
+                state as ProfileSchema,
+                profileActions.updateProfile(formData),
+            ),
         ).toEqual({
             isLoading: false,
             readonly: false,
@@ -84,7 +88,10 @@ describe('profileSlice', () => {
             readonly: false,
         };
         expect(
-            profileReducer(state as ProfileSchema, profileActions.setReadonly(true)),
+            profileReducer(
+                state as ProfileSchema,
+                profileActions.setReadonly(true),
+            ),
         ).toEqual({
             isLoading: false,
             readonly: true,

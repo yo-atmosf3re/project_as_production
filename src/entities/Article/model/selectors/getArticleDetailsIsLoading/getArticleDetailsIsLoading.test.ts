@@ -9,14 +9,14 @@ describe('getArticleDetailsIsLoading', () => {
             },
         };
 
-        expect(getArticleDetailsIsLoading(state as StateSchema)).toEqual(
-            true,
-        );
+        expect(getArticleDetailsIsLoading(state as StateSchema)).toEqual(true);
     });
 
     test('Should return undefined with empty state', () => {
         const state: DeepPartial<StateSchema> = {};
 
-        expect(getArticleDetailsIsLoading(state as StateSchema)).toEqual(undefined);
+        expect(getArticleDetailsIsLoading(state as StateSchema)).toEqual(
+            undefined,
+        );
     });
 });

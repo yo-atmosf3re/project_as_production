@@ -58,11 +58,13 @@ export default ({ config }: { config: webpack.Configuration }) => {
     config!.module!.rules.push(buildCssLoader(true));
 
     // ? Добавляем новый плагин DefinePlugin, который будет задавать глобальную переменную __IS_DEV__ со значением true;
-    config!.plugins!.push(new DefinePlugin({
-        __IS_DEV__: true,
-        __API__: JSON.stringify(''),
-        __PROJECT__: JSON.stringify('storybook'),
-    }));
+    config!.plugins!.push(
+        new DefinePlugin({
+            __IS_DEV__: true,
+            __API__: JSON.stringify(''),
+            __PROJECT__: JSON.stringify('storybook'),
+        }),
+    );
 
     // ? Возвращаем измененный объект конфигурации;
     return config;

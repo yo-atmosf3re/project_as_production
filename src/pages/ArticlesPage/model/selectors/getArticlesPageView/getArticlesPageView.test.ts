@@ -10,16 +10,12 @@ describe('getArticlesPageView', () => {
             },
         };
 
-        expect(getArticlesPageView(state as StateSchema)).toEqual(
-            'SMALL',
-        );
+        expect(getArticlesPageView(state as StateSchema)).toEqual('SMALL');
     });
 
     test('Should return default value with empty state', () => {
         const state: DeepPartial<StateSchema> = {};
 
-        expect(getArticlesPageView(state as StateSchema)).toEqual(
-            'SMALL',
-        );
+        expect(getArticlesPageView(state as StateSchema)).toEqual('SMALL');
     });
 });

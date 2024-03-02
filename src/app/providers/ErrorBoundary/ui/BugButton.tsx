@@ -15,13 +15,5 @@ export const BugButton: React.FC = () => {
         }
     }, [error]);
 
-    return (
-        <Button
-            onClick={throwErrorHandle}
-        >
-            {
-                t('throw error')
-            }
-        </Button>
-    );
+    return <Button onClick={throwErrorHandle}>{t('throw error')}</Button>;
 };

@@ -3,4 +3,8 @@
 /**
  * Направление отрисовки выпадающих списков `ListBox`, `Dropdown`;
  */
-export type DropdownDirectionUnionType = 'top left' | 'top right' | 'bottom left' | 'bottom right';
+export type DropdownDirectionUnionType =
+    | 'top left'
+    | 'top right'
+    | 'bottom left'
+    | 'bottom right';

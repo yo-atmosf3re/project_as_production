@@ -12,9 +12,7 @@ describe('getProfileCountry', () => {
             },
         };
 
-        expect(getProfileCountry(state as StateSchema)).toEqual(
-            COUNTRY.RUSSIA,
-        );
+        expect(getProfileCountry(state as StateSchema)).toEqual(COUNTRY.RUSSIA);
     });
 
     test('Should return empty string with empty data object', () => {

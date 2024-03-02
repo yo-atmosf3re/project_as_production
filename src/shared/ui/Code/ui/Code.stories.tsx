@@ -43,9 +43,7 @@ const Template: ComponentStory<typeof Code> = (args) => <Code {...args} />;
 
 export const Dark = Template.bind({});`,
 };
-Dark.decorators = [
-    ThemeDecorator(THEME.DARK),
-];
+Dark.decorators = [ThemeDecorator(THEME.DARK)];
 
 export const Jungle = Template.bind({});
 Jungle.args = {

@@ -8,12 +8,10 @@ import { useMemo } from 'react';
  * Функция, которая создаёт слайс, привязывает экшены к диспатчам. Упрощает работу со слайсами: вызов функции `useDispatch` и оборачивание всех экшенов в `useDispatch`, создание слайса и его привязка происходят в данной функции, а на выходе получается объект, который возвращает хук `useActions`, внутри которого слайсы;
  */
 export function buildSlice<
-  State,
-  CaseReducers extends SliceCaseReducers<State>,
-  Name extends string = string
->(
-    options: CreateSliceOptions<State, CaseReducers, Name>,
-) {
+    State,
+    CaseReducers extends SliceCaseReducers<State>,
+    Name extends string = string,
+>(options: CreateSliceOptions<State, CaseReducers, Name>) {
     // ? Создание самого слайса. В аргументы функции передаются опции, т.е это проксирование для сохранения правильной типизации;
     const slice = createSlice(options);
 
@@ -24,12 +22,13 @@ export function buildSlice<
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         return useMemo(
-            () => bindActionCreators(
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
-                slice.actions,
-                dispatch,
-            ),
+            () =>
+                bindActionCreators(
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-ignore
+                    slice.actions,
+                    dispatch,
+                ),
             [dispatch],
         );
     };

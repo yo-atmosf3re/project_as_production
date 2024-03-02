@@ -17,30 +17,29 @@ interface CurrencySelectPropsI {
     readonly?: boolean;
 }
 
-export const CurrencySelect: React.FC<CurrencySelectPropsI> = memo(({
-    className, value, onChange, readonly,
-}) => {
-    const { t } = useTranslation('profile');
+export const CurrencySelect: React.FC<CurrencySelectPropsI> = memo(
+    ({ className, value, onChange, readonly }) => {
+        const { t } = useTranslation('profile');
 
-    const onChangeHandler = useCallback((value: string) => {
-        // ? Приводим тип, потому что уверены в том, что в onChange попадёт только тип CURRENCY enum;
-        onChange?.(value as CURRENCY);
-    }, [onChange]);
+        const onChangeHandler = useCallback(
+            (value: string) => {
+                // ? Приводим тип, потому что уверены в том, что в onChange попадёт только тип CURRENCY enum;
+                onChange?.(value as CURRENCY);
+            },
+            [onChange],
+        );
 
-    return (
-        <ListBox
-            className={classNames('', {}, [className])}
-            onChange={onChangeHandler}
-            value={value}
-            defaultValue={
-                t('Укажите валюту')
-            }
-            label={
-                t('Укажите валюту')
-            }
-            items={OPTIONS}
-            readonly={readonly}
-            direction="top right"
-        />
-    );
-});
+        return (
+            <ListBox
+                className={classNames('', {}, [className])}
+                onChange={onChangeHandler}
+                value={value}
+                defaultValue={t('Укажите валюту')}
+                label={t('Укажите валюту')}
+                items={OPTIONS}
+                readonly={readonly}
+                direction="top right"
+            />
+        );
+    },
+);

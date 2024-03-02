@@ -9,9 +9,7 @@ const defaultArticle = {
     views: 512,
     createdAt: '11.12.2021',
     userId: '1',
-    type: [
-        'IT',
-    ],
+    type: ['IT'],
     blocks: [],
 };
 
@@ -20,14 +18,15 @@ const defaultArticle = {
  * @param article - статья, которая может быть передана в команду, но если стаьтья не была передана, то используется статья по-умолчанию - `defaultArticle`;
  */
 export const createArticle = (article?: ArticleI) => {
-    return cy.request({
-        method: 'POST',
-        url: 'http://localhost:7777/articles',
-        headers: {
-            Authorization: 'asasf',
-        },
-        body: article ?? defaultArticle,
-    })
+    return cy
+        .request({
+            method: 'POST',
+            url: 'http://localhost:7777/articles',
+            headers: {
+                Authorization: 'asasf',
+            },
+            body: article ?? defaultArticle,
+        })
         .then(
             // ? Возвращение конкретной статьи;
             (res) => res.body,
@@ -36,7 +35,7 @@ export const createArticle = (article?: ArticleI) => {
 
 /**
  * Удаление статьи для тест кейсов (исключение засорения базы данных);
-*/
+ */
 export const removeArticle = (articleId: string) => {
     return cy.request({
         method: 'DELETE',
@@ -48,10 +47,10 @@ export const removeArticle = (articleId: string) => {
 };
 
 declare global {
-  namespace Cypress {
-    interface Chainable {
-      createArticle(article?: ArticleI): Chainable<ArticleI>;
-      removeArticle(articleId: string): Chainable<void>;
+    namespace Cypress {
+        interface Chainable {
+            createArticle(article?: ArticleI): Chainable<ArticleI>;
+            removeArticle(articleId: string): Chainable<void>;
+        }
     }
-  }
 }

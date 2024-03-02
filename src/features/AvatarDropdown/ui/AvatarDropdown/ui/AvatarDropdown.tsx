@@ -5,7 +5,10 @@ import { Avatar } from '@/shared/ui/Avatar';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Dropdown } from '@/shared/ui/Popups';
 import {
-    isUserAdmin, isUserManager, userActions, getUserAuthData,
+    isUserAdmin,
+    isUserManager,
+    userActions,
+    getUserAuthData,
 } from '@/entities/User';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import cls from './AvatarDropdown.module.scss';
@@ -49,12 +52,13 @@ export const AvatarDropdown: React.FC<AvatarDropdownPropsI> = ({
             items={[
                 // ? Разворачиваем массив по условию: если true то переход на панель отображаться будет, а иначе развернётся пустой массив;
                 ...(isAdminPanelAvailable
-                    ? [{
-                        content: t('Админка'),
-                        href: getRouteAdminPanel(),
-                    }]
-                    : []
-                ),
+                    ? [
+                          {
+                              content: t('Админка'),
+                              href: getRouteAdminPanel(),
+                          },
+                      ]
+                    : []),
                 {
                     content: t('Профиль'),
                     href: getRouteProfile(authData.id),
@@ -64,13 +68,13 @@ export const AvatarDropdown: React.FC<AvatarDropdownPropsI> = ({
                     onClick: onLogoutModal,
                 },
             ]}
-            trigger={(
+            trigger={
                 <Avatar
                     size={30}
                     src={authData.avatar}
                     fallbackInverted
                 />
-            )}
+            }
         />
     );
 };

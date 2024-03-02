@@ -11,7 +11,9 @@ export default {
     },
 } as ComponentMeta<typeof ArticleDetailsPage>;
 
-const Template: ComponentStory<typeof ArticleDetailsPage> = (args) => <ArticleDetailsPage {...args} />;
+const Template: ComponentStory<typeof ArticleDetailsPage> = (args) => (
+    <ArticleDetailsPage {...args} />
+);
 
 const article = {
     id: '0',
@@ -21,9 +23,7 @@ const article = {
     views: 512,
     createdAt: '11.12.2021',
     userId: '1',
-    type: [
-        'IT',
-    ],
+    type: ['IT'],
     blocks: [
         {
             id: '1',
@@ -87,11 +87,5 @@ const article = {
 };
 
 export const Primary = Template.bind({});
-Primary.args = {
-
-};
-Primary.decorators = [
-    StoreDecorator({
-
-    }),
-];
+Primary.args = {};
+Primary.decorators = [StoreDecorator({})];

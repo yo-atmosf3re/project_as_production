@@ -13,16 +13,16 @@ export default {
     // ? Изменяем отступы с помощью декоратора;
     decorators: [
         (Story) => (
-            <div
-                style={{ padding: 100 }}
-            >
+            <div style={{ padding: 100 }}>
                 <Story />
             </div>
         ),
     ],
 } as ComponentMeta<typeof ListBox>;
 
-const Template: ComponentStory<typeof ListBox> = (args) => <ListBox {...args} />;
+const Template: ComponentStory<typeof ListBox> = (args) => (
+    <ListBox {...args} />
+);
 
 export const Light = Template.bind({});
 Light.args = {

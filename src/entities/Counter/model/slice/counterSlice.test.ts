@@ -8,9 +8,7 @@ describe('counterSlice', () => {
             value: 10,
         };
         // ? По классике: берём стейт, нужный редьюсер, в ответе ожидаем объект с измененным свойством;
-        expect(
-            counterReducer(state, counterActions.decrement()),
-        ).toEqual({
+        expect(counterReducer(state, counterActions.decrement())).toEqual({
             value: 9,
         });
     });
@@ -22,9 +20,7 @@ describe('counterSlice', () => {
             value: 10,
         };
 
-        expect(
-            counterReducer(state, counterActions.increment()),
-        ).toEqual({
+        expect(counterReducer(state, counterActions.increment())).toEqual({
             value: 11,
         });
     });
@@ -33,9 +29,7 @@ describe('counterSlice', () => {
 describe('counterSlice', () => {
     test('Slice should be created, should work with empty state', () => {
         // ? Здесь устанавливается стейт по дефолту из стора (initialState), то есть в нашем случае это будет {value: 0}, вот с ним данный тест и будет работать;
-        expect(
-            counterReducer(undefined, counterActions.increment()),
-        ).toEqual({
+        expect(counterReducer(undefined, counterActions.increment())).toEqual({
             value: 1,
         });
     });

@@ -8,8 +8,8 @@ import { Skeleton } from '../../Skeleton';
 
 interface AvatarPropsI {
     className?: string;
-    src? : string;
-    alt?:string;
+    src?: string;
+    alt?: string;
     size?: number;
     fallbackInverted?: boolean;
 }
@@ -22,24 +22,26 @@ interface AvatarPropsI {
  * @param alt - альтернативный текст для изображения;
  * @param size - размер img;
  * @param fallbackInverted - флаг для указания инвертированного цвета иконки аватара;
-*/
+ */
 export const Avatar: React.FC<AvatarPropsI> = ({
-    className, src, alt, size = 100,
+    className,
+    src,
+    alt,
+    size = 100,
     fallbackInverted,
 }) => {
-    const mods: ModsType = {
-
-    };
-    const additionalClasses: Array<string | undefined> = [
-        className,
-    ];
+    const mods: ModsType = {};
+    const additionalClasses: Array<string | undefined> = [className];
 
     // ? Задаём некоторые стили для img инлайново, а чтобы не было лишних перерисовок и объект сохранялся оборачиваем его в useMemo();
     // ? Ширина и высота одинаковые, потому что аватар будет круглым;
-    const style: React.CSSProperties | undefined = useMemo<CSSProperties>(() => ({
-        width: size,
-        height: size,
-    }), [size]);
+    const style: React.CSSProperties | undefined = useMemo<CSSProperties>(
+        () => ({
+            width: size,
+            height: size,
+        }),
+        [size],
+    );
 
     const fallback = (
         <Skeleton

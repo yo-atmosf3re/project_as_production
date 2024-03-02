@@ -27,7 +27,9 @@ export const NotificationList: React.FC<NotificationListPropsI> = ({
             <VStack
                 gap="16"
                 max
-                className={classNames(cls['notification-list'], {}, [className])}
+                className={classNames(cls['notification-list'], {}, [
+                    className,
+                ])}
             >
                 <Skeleton
                     width="100%"
@@ -57,14 +59,12 @@ export const NotificationList: React.FC<NotificationListPropsI> = ({
             max
             className={classNames(cls['notification-list'], {}, [className])}
         >
-            {
-                data?.map((item) => (
-                    <NotificationItem
-                        key={item.id}
-                        item={item}
-                    />
-                ))
-            }
+            {data?.map((item) => (
+                <NotificationItem
+                    key={item.id}
+                    item={item}
+                />
+            ))}
         </VStack>
     );
 };

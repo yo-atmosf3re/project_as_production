@@ -5,10 +5,7 @@
  * @param starsCount
  * @param feedback
  */
-export const setRate = (
-    starsCount = 5,
-    feedback = 'feedback',
-) => {
+export const setRate = (starsCount = 5, feedback = 'feedback') => {
     cy
         // ? Получение определенной звезды;
         .getByTestId(`StarRating.${starsCount}`)
@@ -29,10 +26,7 @@ export const setRate = (
 declare global {
     namespace Cypress {
         interface Chainable {
-            setRate(
-                starsCount: number,
-                feedback: string
-                ): Chainable<void>;
+            setRate(starsCount: number, feedback: string): Chainable<void>;
         }
     }
 }

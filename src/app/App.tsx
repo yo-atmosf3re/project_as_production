@@ -25,11 +25,7 @@ const App = () => {
                 <Navbar />
                 <div className="content-page">
                     <Sidebar />
-                    {
-                        inited
-                            ? <AppRouter />
-                            : null
-                    }
+                    {inited ? <AppRouter /> : null}
                 </div>
             </Suspense>
         </div>

@@ -26,7 +26,7 @@ describe('fetchNextArticlesPage', () => {
         expect(fetchArticlesList).toHaveBeenCalledWith({});
     });
 
-    test('Function fetchArticlesList has been not called, because hasMore it\'s false', async () => {
+    test("Function fetchArticlesList has been not called, because hasMore it's false", async () => {
         const thunk = new TestAsyncThunk(fetchNextArticlesPage, {
             articlesPage: {
                 page: 2,
@@ -45,7 +45,7 @@ describe('fetchNextArticlesPage', () => {
         expect(fetchArticlesList).not.toHaveBeenCalled();
     });
 
-    test('Function fetchArticlesList has been not called, because isLoading it\'s true', async () => {
+    test("Function fetchArticlesList has been not called, because isLoading it's true", async () => {
         const thunk = new TestAsyncThunk(fetchNextArticlesPage, {
             articlesPage: {
                 page: 2,

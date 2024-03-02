@@ -14,9 +14,7 @@ export default {
     },
     decorators: [
         (Story) => (
-            <div
-                style={{ padding: 100 }}
-            >
+            <div style={{ padding: 100 }}>
                 <Story />
             </div>
         ),
@@ -24,17 +22,13 @@ export default {
     ],
 } as ComponentMeta<typeof NotificationList>;
 
-const Template: ComponentStory<typeof NotificationList> = (args) => <NotificationList {...args} />;
+const Template: ComponentStory<typeof NotificationList> = (args) => (
+    <NotificationList {...args} />
+);
 
 export const WithNotification = Template.bind({});
-WithNotification.args = {
-
-};
-WithNotification.decorators = [
-    StoreDecorator({
-
-    }),
-];
+WithNotification.args = {};
+WithNotification.decorators = [StoreDecorator({})];
 WithNotification.parameters = {
     mockData: [
         {
@@ -64,14 +58,11 @@ WithNotification.parameters = {
 };
 
 export const WithNotificationDark = Template.bind({});
-WithNotificationDark.args = {
-
-};
+WithNotificationDark.args = {};
 WithNotificationDark.decorators = [
-    StoreDecorator({
-
-    }),
-    ThemeDecorator(THEME.DARK)];
+    StoreDecorator({}),
+    ThemeDecorator(THEME.DARK),
+];
 WithNotificationDark.parameters = {
     mockData: [
         {
@@ -96,14 +87,11 @@ WithNotificationDark.parameters = {
 };
 
 export const WithNotificationJungle = Template.bind({});
-WithNotificationJungle.args = {
-
-};
+WithNotificationJungle.args = {};
 WithNotificationJungle.decorators = [
-    StoreDecorator({
-
-    }),
-    ThemeDecorator(THEME.JUNGLE)];
+    StoreDecorator({}),
+    ThemeDecorator(THEME.JUNGLE),
+];
 WithNotificationJungle.parameters = {
     mockData: [
         {
@@ -123,12 +111,8 @@ WithNotificationJungle.parameters = {
 };
 
 export const WithoutNotification = Template.bind({});
-WithoutNotification.args = {
-
-};
-WithoutNotification.decorators = [StoreDecorator({
-
-})];
+WithoutNotification.args = {};
+WithoutNotification.decorators = [StoreDecorator({})];
 WithoutNotification.parameters = {
     mockData: [
         {
@@ -136,8 +120,7 @@ WithoutNotification.parameters = {
             url: 'http://localhost:7777/notifications',
             method: 'GET',
             status: 200,
-            response: [
-            ],
+            response: [],
         },
     ],
 };

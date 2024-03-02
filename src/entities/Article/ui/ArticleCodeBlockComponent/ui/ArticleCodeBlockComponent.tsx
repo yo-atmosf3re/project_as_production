@@ -6,18 +6,19 @@ import cls from './ArticleCodeBlockComponent.module.scss';
 
 interface ArticleCodeBlockComponentPropsI {
     className?: string;
-    block: ArticleCodeBlockI
+    block: ArticleCodeBlockI;
 }
 
-export const ArticleCodeBlockComponent: React.FC<ArticleCodeBlockComponentPropsI> = memo(({
-    className, block,
-}) => {
-    const mods: ModsType = {};
-    return (
-        <div
-            className={classNames(cls['articleBlock-code'], mods, [className])}
-        >
-            <Code text={block.code} />
-        </div>
-    );
-});
+export const ArticleCodeBlockComponent: React.FC<ArticleCodeBlockComponentPropsI> =
+    memo(({ className, block }) => {
+        const mods: ModsType = {};
+        return (
+            <div
+                className={classNames(cls['articleBlock-code'], mods, [
+                    className,
+                ])}
+            >
+                <Code text={block.code} />
+            </div>
+        );
+    });

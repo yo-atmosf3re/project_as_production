@@ -5,8 +5,10 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button, BUTTON_THEME } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input';
 import { Text, TEXT_THEME } from '@/shared/ui/Text';
-
-import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import {
+    DynamicModuleLoader,
+    ReducersList,
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { VStack } from '@/shared/ui/Stack';
 import { getLoginUsername } from '../../../model/selectors/getLoginUsername/getLoginUsername';
@@ -31,88 +33,87 @@ const INITIAL_REDUCERS: ReducersList = {
  * @param className
  * @param onSuccess - содержит логику по открытию/закрытию модального окна с формой логина;
  */
-const LoginForm: React.FC<LoginFormPropsI> = memo(({
-    className, onSuccess,
-}) => {
-    const { t } = useTranslation('loginForm');
-    const dispatch = useAppDispatch();
-    const username = useSelector(getLoginUsername);
-    const password = useSelector(getLoginPassword);
-    const error = useSelector(getLoginError);
-    const isLoading = useSelector(getLoginIsLoading);
+const LoginForm: React.FC<LoginFormPropsI> = memo(
+    ({ className, onSuccess }) => {
+        const { t } = useTranslation('loginForm');
+        const dispatch = useAppDispatch();
+        const username = useSelector(getLoginUsername);
+        const password = useSelector(getLoginPassword);
+        const error = useSelector(getLoginError);
+        const isLoading = useSelector(getLoginIsLoading);
 
-    const onChangeUsername = useCallback((value: string) => {
-        dispatch(loginActions.setUsername(value));
-    }, [dispatch]);
+        const onChangeUsername = useCallback(
+            (value: string) => {
+                dispatch(loginActions.setUsername(value));
+            },
+            [dispatch],
+        );
 
-    const onChangePassword = useCallback((value: string) => {
-        dispatch(loginActions.setPassword(value));
-    }, [dispatch]);
+        const onChangePassword = useCallback(
+            (value: string) => {
+                dispatch(loginActions.setPassword(value));
+            },
+            [dispatch],
+        );
 
-    const onClickLogin = useCallback(async () => {
-        const result = await dispatch(loginByUsername({ username, password }));
-        if (result.meta.requestStatus === 'fulfilled') {
-            onSuccess();
-        }
-    }, [onSuccess, dispatch, password, username]);
+        const onClickLogin = useCallback(async () => {
+            const result = await dispatch(
+                loginByUsername({
+                    username,
+                    password,
+                }),
+            );
+            if (result.meta.requestStatus === 'fulfilled') {
+                onSuccess();
+            }
+        }, [onSuccess, dispatch, password, username]);
 
-    return (
-        <DynamicModuleLoader
-            reducers={INITIAL_REDUCERS}
-        >
-            <VStack
-                className={classNames(cls['login-form'], {}, [className])}
-            >
-                <Text
-                    theme={TEXT_THEME.PRIMARY}
-                    title={
-                        t('Форма авторизации')
-                    }
-                />
-                {
-                    error
-                        ? (
-                            <Text
-                                theme={TEXT_THEME.ERROR}
-                                text={
-                                    t('Вы ввели неверный логин или пароль!')
-                                }
-                            />
-                        )
-                        : null
-                }
-                <Input
-                    autofocus
-                    type="text"
-                    className={cls.input}
-                    placeholder={
-                        t('Введите логин')
-                    }
-                    value={username}
-                    onChange={onChangeUsername}
-                />
-                <Input
-                    type="text"
-                    className={cls.input}
-                    placeholder={
-                        t('Введите пароль')
-                    }
-                    value={password}
-                    onChange={onChangePassword}
-                />
-                <Button
-                    onClick={onClickLogin}
-                    theme={BUTTON_THEME.OUTLINE}
-                    className={cls['login-button']}
-                    disabled={isLoading}
+        return (
+            <DynamicModuleLoader reducers={INITIAL_REDUCERS}>
+                <VStack
+                    className={classNames(
+                        cls['login-form'], //
+                        {},
+                        [className],
+                    )}
                 >
-                    {
-                        t('Войти')
-                    }
-                </Button>
-            </VStack>
-        </DynamicModuleLoader>
-    );
-});
+                    <Text
+                        theme={TEXT_THEME.PRIMARY}
+                        title={t('Форма авторизации')}
+                    />
+                    {error ? (
+                        <Text
+                            theme={TEXT_THEME.ERROR}
+                            text={t('Вы ввели неверный логин или пароль!')}
+                        />
+                    ) : null}
+                    <Input
+                        autofocus
+                        type="text"
+                        className={cls.input}
+                        placeholder={t('Введите логин')}
+                        value={username}
+                        onChange={onChangeUsername}
+                    />
+                    <Input
+                        type="text"
+                        className={cls.input}
+                        placeholder={t('Введите пароль')}
+                        value={password}
+                        onChange={onChangePassword}
+                    />
+                    <Button
+                        onClick={onClickLogin}
+                        theme={BUTTON_THEME.OUTLINE}
+                        className={cls['login-button']}
+                        disabled={isLoading}
+                    >
+                        {t('Войти')}
+                    </Button>
+                </VStack>
+            </DynamicModuleLoader>
+        );
+    },
+);
 
 export default LoginForm;

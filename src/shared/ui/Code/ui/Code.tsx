@@ -14,9 +14,7 @@ interface CodePropsI {
  * @param className
  * @param text - сам код, который нужно отрисовать;
  */
-export const Code: React.FC<CodePropsI> = ({
-    className, text,
-}) => {
+export const Code: React.FC<CodePropsI> = ({ className, text }) => {
     const mods: ModsType = {};
 
     const onCopyHandler = useCallback(() => {
@@ -24,9 +22,7 @@ export const Code: React.FC<CodePropsI> = ({
     }, [text]);
 
     return (
-        <pre
-            className={classNames(cls.code, mods, [className])}
-        >
+        <pre className={classNames(cls.code, mods, [className])}>
             <Button
                 onClick={onCopyHandler}
                 theme={BUTTON_THEME.CLEAR}
@@ -37,11 +33,7 @@ export const Code: React.FC<CodePropsI> = ({
                     style={{ stroke: 'red' }}
                 />
             </Button>
-            <code>
-                {
-                    text
-                }
-            </code>
+            <code>{text}</code>
         </pre>
     );
 };

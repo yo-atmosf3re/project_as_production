@@ -4,8 +4,7 @@ import Backend from 'i18next-http-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
 // ? Настройка библиотеки i18n, здесь импортированы нужные зависимости для работы в данном приложении. Backend (i18next-http-backend) загружает переводы из файлов JSON по указаному пути (loadPath). Для определения языка браузера используется i18next-browser-languagedetector;
-i18n
-    .use(Backend)
+i18n.use(Backend)
     .use(LanguageDetector)
     .use(initReactI18next)
     .init({
@@ -23,7 +22,7 @@ i18n
             loadPath: '/locales/{{lng}}/{{ns}}.json',
         },
         react: {
-        // ? Отключает задержку перед загрузкой переводов;
+            // ? Отключает задержку перед загрузкой переводов;
             // useSuspense: false,
         },
         // ! Тестовое поле;

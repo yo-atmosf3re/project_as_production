@@ -1,5 +1,8 @@
 import {
-    CombinedState, Reducer, ReducersMapObject, configureStore,
+    CombinedState,
+    Reducer,
+    ReducersMapObject,
+    configureStore,
 } from '@reduxjs/toolkit';
 import { counterReducer } from '@/entities/Counter';
 import { userReducer } from '@/entities/User';
@@ -32,19 +35,19 @@ export function createReduxStore(
     };
 
     const store = configureStore({
-
         reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
         // ? Отключаем девтулзы для прода;
         devTools: __IS_DEV__,
         preloadedState: initialState,
         // ? Для того, чтобы не импортировать инстанс аксиоса в каждый asyncThunk, мы просто его подключаем здесь через extra как middleware. В extraArgument можно передать, что угодно;
         // " Middleware - программный слой, который отрабатывает какие-то действия перед их отправкой в reducer и после их выхода из reducer;
-        middleware: (getDefaultMiddleware) => getDefaultMiddleware({
-            thunk: {
-                extraArgument: extraArguments,
-            },
-            // ? Добавляем RTK Query API в middleware;
-        }).concat(rtkApi.middleware),
+        middleware: (getDefaultMiddleware) =>
+            getDefaultMiddleware({
+                thunk: {
+                    extraArgument: extraArguments,
+                },
+                // ? Добавляем RTK Query API в middleware;
+            }).concat(rtkApi.middleware),
     });
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment

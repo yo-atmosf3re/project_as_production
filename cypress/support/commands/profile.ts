@@ -6,25 +6,19 @@
 export const updateProfile = (firstname: string, lastname: string) => {
     cy
         // ? Получение кнопки редактирования;
-        .getByTestId(
-            'EditableProfilePageHeader.EditButton',
-        )
+        .getByTestId('EditableProfilePageHeader.EditButton')
         // ? Воспроизведение режима редактирования путём нажатия на кнопку;
         .click();
     cy
         // ? Получение инпута;
-        .getByTestId(
-            'ProfileCard.firstname',
-        )
+        .getByTestId('ProfileCard.firstname')
         // ? Его очистка;
         .clear()
         // ? Ввод каких-то значений;
         .type(firstname);
     cy
         // ? Получение инпута;
-        .getByTestId(
-            'ProfileCard.lastname',
-        )
+        .getByTestId('ProfileCard.lastname')
         // ? Его очистка;
         .clear()
         // ? Ввод каких-то значений;
@@ -61,10 +55,10 @@ export const resetProfile = (profileId: string) => {
 };
 
 declare global {
-  namespace Cypress {
-    interface Chainable {
-      updateProfile(firstname: string, lastname: string): Chainable<void>;
-      resetProfile(profileId: string): Chainable<void>;
+    namespace Cypress {
+        interface Chainable {
+            updateProfile(firstname: string, lastname: string): Chainable<void>;
+            resetProfile(profileId: string): Chainable<void>;
+        }
     }
-  }
 }

@@ -11,14 +11,16 @@ export default {
     },
 } as ComponentMeta<typeof EditableProfilePageHeader>;
 
-const Template: ComponentStory<typeof EditableProfilePageHeader> = (args) => <EditableProfilePageHeader {...args} />;
+const Template: ComponentStory<typeof EditableProfilePageHeader> = (args) => (
+    <EditableProfilePageHeader {...args} />
+);
 
 export const Primary = Template.bind({});
-Primary.args = {
-
-};
-Primary.decorators = [StoreDecorator({
-    profile: {
-        // isLoading: false,
-    },
-})];
+Primary.args = {};
+Primary.decorators = [
+    StoreDecorator({
+        profile: {
+            // isLoading: false,
+        },
+    }),
+];

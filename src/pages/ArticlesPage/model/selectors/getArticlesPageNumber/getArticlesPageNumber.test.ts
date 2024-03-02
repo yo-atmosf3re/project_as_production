@@ -9,12 +9,10 @@ describe('getArticlesPageNumber', () => {
             },
         };
 
-        expect(getArticlesPageNumber(state as StateSchema)).toEqual(
-            4,
-        );
+        expect(getArticlesPageNumber(state as StateSchema)).toEqual(4);
     });
 
-    test('Should return 1 with empty state, because 1 it\'s default value', () => {
+    test("Should return 1 with empty state, because 1 it's default value", () => {
         const state: DeepPartial<StateSchema> = {};
 
         expect(getArticlesPageNumber(state as StateSchema)).toEqual(1);

@@ -40,12 +40,14 @@ const options = {
 
 describe('features/EditableProfileCard', () => {
     test('Readonly value should be changed', async () => {
-        componentRender(<EditableProfileCard
-            id="1"
-        />, options);
+        componentRender(<EditableProfileCard id="1" />, options);
 
-        await userEvent.click(screen.getByTestId('EditableProfilePageHeader.EditButton'));
-        expect(screen.getByTestId('EditableProfilePageHeader.CancelButton')).toBeInTheDocument();
+        await userEvent.click(
+            screen.getByTestId('EditableProfilePageHeader.EditButton'),
+        );
+        expect(
+            screen.getByTestId('EditableProfilePageHeader.CancelButton'),
+        ).toBeInTheDocument();
     });
 
     // ! Не рабочий тест-кейс;
@@ -75,32 +77,41 @@ describe('features/EditableProfileCard', () => {
     // });
 
     test('Error should be appear', async () => {
-        componentRender(<EditableProfileCard
-            id="1"
-        />, options);
+        componentRender(<EditableProfileCard id="1" />, options);
 
-        await userEvent.click(screen.getByTestId('EditableProfilePageHeader.EditButton'));
+        await userEvent.click(
+            screen.getByTestId('EditableProfilePageHeader.EditButton'),
+        );
 
         await userEvent.clear(screen.getByTestId('ProfileCard.firstname'));
 
-        await userEvent.click(screen.getByTestId('EditableProfilePageHeader.SaveButton'));
+        await userEvent.click(
+            screen.getByTestId('EditableProfilePageHeader.SaveButton'),
+        );
 
-        expect(screen.getByTestId('EditableProfilePageHeader.Error.Paragraph')).toBeInTheDocument();
+        expect(
+            screen.getByTestId('EditableProfilePageHeader.Error.Paragraph'),
+        ).toBeInTheDocument();
     });
 
-    test('If hasn\'t validations error, that on the server should send PUT-request', async () => {
+    test("If hasn't validations error, that on the server should send PUT-request", async () => {
         // ? Мокаем PUT-запрос с помощью встроенного метода jest.spyOn(), где первым аргументом передаётся объект, который нужно замокать, а вторым аргументом - метод;
         const mockPutReq = jest.spyOn($API, 'put');
 
-        componentRender(<EditableProfileCard
-            id="1"
-        />, options);
+        componentRender(<EditableProfileCard id="1" />, options);
 
-        await userEvent.click(screen.getByTestId('EditableProfilePageHeader.EditButton'));
+        await userEvent.click(
+            screen.getByTestId('EditableProfilePageHeader.EditButton'),
+        );
 
-        await userEvent.type(screen.getByTestId('ProfileCard.firstname'), 'user');
+        await userEvent.type(
+            screen.getByTestId('ProfileCard.firstname'),
+            'user',
+        );
 
-        await userEvent.click(screen.getByTestId('EditableProfilePageHeader.SaveButton'));
+        await userEvent.click(
+            screen.getByTestId('EditableProfilePageHeader.SaveButton'),
+        );
 
         expect(mockPutReq).toHaveBeenCalled();
     });

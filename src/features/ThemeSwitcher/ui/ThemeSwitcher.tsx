@@ -8,28 +8,24 @@ import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 import { THEME } from '@/shared/const/consts';
 
 interface ThemeSwitcherPropsI {
-   className?: string;
+    className?: string;
 }
 /**
  * Компонента, которая переключает цветовые темы во всём приложении;
  * @param className
  */
-export const ThemeSwitcher: React.FC<ThemeSwitcherPropsI> = memo(({
-    className,
-}) => {
-    const { theme, toggleTheme } = useTheme();
+export const ThemeSwitcher: React.FC<ThemeSwitcherPropsI> = memo(
+    ({ className }) => {
+        const { theme, toggleTheme } = useTheme();
 
-    return (
-        <Button
-            theme={BUTTON_THEME.CLEAR}
-            className={classNames(cls.themeSwitcher, {}, [className])}
-            onClick={toggleTheme}
-        >
-            {
-                theme === THEME.DARK
-                    ? <DarkIcon />
-                    : <LightIcon />
-            }
-        </Button>
-    );
-});
+        return (
+            <Button
+                theme={BUTTON_THEME.CLEAR}
+                className={classNames(cls.themeSwitcher, {}, [className])}
+                onClick={toggleTheme}
+            >
+                {theme === THEME.DARK ? <DarkIcon /> : <LightIcon />}
+            </Button>
+        );
+    },
+);

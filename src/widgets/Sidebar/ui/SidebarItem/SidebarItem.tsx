@@ -21,9 +21,7 @@ interface SidebarItemProps {
  */
 export const SidebarItem = memo(({ item, collapsed }: SidebarItemProps) => {
     const { t } = useTranslation();
-    const {
-        Icon, path, text, authOnly,
-    } = item;
+    const { Icon, path, text, authOnly } = item;
 
     const isAuth = useSelector(getUserAuthData);
 
@@ -37,19 +35,9 @@ export const SidebarItem = memo(({ item, collapsed }: SidebarItemProps) => {
             to={path}
             className={classNames(cls.item, { [cls.collapsed]: !collapsed })}
         >
-            <HStack
-                align="center"
-            >
-                <Icon
-                    className={cls.icon}
-                />
-                <span
-                    className={cls.link}
-                >
-                    {
-                        t(text)
-                    }
-                </span>
+            <HStack align="center">
+                <Icon className={cls.icon} />
+                <span className={cls.link}>{t(text)}</span>
             </HStack>
         </AppLink>
     );

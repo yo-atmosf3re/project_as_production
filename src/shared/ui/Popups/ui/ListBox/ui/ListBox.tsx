@@ -38,9 +38,12 @@ interface ListBoxPropsI {
  * @param label
  */
 export const ListBox: React.FC<ListBoxPropsI> = ({
-    className, items,
-    onChange, defaultValue,
-    value, readonly,
+    className,
+    items,
+    onChange,
+    defaultValue,
+    value,
+    readonly,
     direction = 'bottom left',
     label,
 }) => {
@@ -51,24 +54,15 @@ export const ListBox: React.FC<ListBoxPropsI> = ({
     ];
 
     return (
-        <HStack
-            gap="8"
-        >
-            {
-                label
-                    ? (
-                        <span>
-                            {
-                                `${label}>`
-                            }
-                        </span>
-                    )
-                    : null
-            }
+        <HStack gap="8">
+            {label ? <span>{`${label}>`}</span> : null}
             <HListBox
                 disabled={readonly}
                 as="div"
-                className={classNames(cls['list-box'], mainBoxMods, [className, popupCls.popup])}
+                className={classNames(cls['list-box'], mainBoxMods, [
+                    className,
+                    popupCls.popup,
+                ])}
                 value={value}
                 onChange={onChange}
             >
@@ -76,9 +70,7 @@ export const ListBox: React.FC<ListBoxPropsI> = ({
                     disabled={readonly}
                     className={cls.trigger}
                 >
-                    <Button
-                        disabled={readonly}
-                    >
+                    <Button disabled={readonly}>
                         {
                             // ? При отсутствии value отрисовывается defaultValue;
                             value ?? defaultValue
@@ -88,29 +80,25 @@ export const ListBox: React.FC<ListBoxPropsI> = ({
                 <HListBox.Options
                     className={classNames(cls.options, {}, optionsClasses)}
                 >
-                    {
-                        items?.map((item) => (
-                            <HListBox.Option
-                                key={item.value}
-                                value={item.value}
-                                disabled={item.disabled}
-                                as={Fragment}
-                            >
-                                {({ active }) => (
-                                    <li
-                                        className={classNames(cls.item, {
-                                            [popupCls.active]: active,
-                                            [popupCls.disabled]: item.disabled,
-                                        })}
-                                    >
-                                        {
-                                            item.content
-                                        }
-                                    </li>
-                                )}
-                            </HListBox.Option>
-                        ))
-                    }
+                    {items?.map((item) => (
+                        <HListBox.Option
+                            key={item.value}
+                            value={item.value}
+                            disabled={item.disabled}
+                            as={Fragment}
+                        >
+                            {({ active }) => (
+                                <li
+                                    className={classNames(cls.item, {
+                                        [popupCls.active]: active,
+                                        [popupCls.disabled]: item.disabled,
+                                    })}
+                                >
+                                    {item.content}
+                                </li>
+                            )}
+                        </HListBox.Option>
+                    ))}
                 </HListBox.Options>
             </HListBox>
         </HStack>

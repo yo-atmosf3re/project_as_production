@@ -17,39 +17,39 @@ interface ArticleTypeTabsPropsI {
  * @param onChangeType - функция, изменяющая тип статьи;
  */
 export const ArticleTypeTabs: React.FC<ArticleTypeTabsPropsI> = ({
-    className, value, onChangeType,
+    className,
+    value,
+    onChangeType,
 }) => {
     const { t } = useTranslation();
-    const typeTabs = useMemo<TabItemI[]>(() => [
-        {
-            value: ARTICLE_TYPE.ALL,
-            content: t(
-                'Все статьи',
-            ),
-        },
-        {
-            value: ARTICLE_TYPE.IT,
-            content: t(
-                'Айти',
-            ),
-        },
-        {
-            value: ARTICLE_TYPE.ECONOMICS,
-            content: t(
-                'Экономика',
-            ),
-        },
-        {
-            value: ARTICLE_TYPE.SCIENCE,
-            content: t(
-                'Наука',
-            ),
-        },
-    ], [t]);
+    const typeTabs = useMemo<TabItemI[]>(
+        () => [
+            {
+                value: ARTICLE_TYPE.ALL,
+                content: t('Все статьи'),
+            },
+            {
+                value: ARTICLE_TYPE.IT,
+                content: t('Айти'),
+            },
+            {
+                value: ARTICLE_TYPE.ECONOMICS,
+                content: t('Экономика'),
+            },
+            {
+                value: ARTICLE_TYPE.SCIENCE,
+                content: t('Наука'),
+            },
+        ],
+        [t],
+    );
 
-    const onTabClickHandler = useCallback((tab: TabItemI) => {
-        onChangeType(tab.value as ARTICLE_TYPE);
-    }, [onChangeType]);
+    const onTabClickHandler = useCallback(
+        (tab: TabItemI) => {
+            onChangeType(tab.value as ARTICLE_TYPE);
+        },
+        [onChangeType],
+    );
 
     return (
         <Tabs

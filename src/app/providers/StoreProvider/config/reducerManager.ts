@@ -1,12 +1,15 @@
+import { ReducersMapObject, combineReducers } from '@reduxjs/toolkit';
 import {
-    ReducersMapObject, combineReducers,
-} from '@reduxjs/toolkit';
-import {
-    MountedReducersType, ReducerManagerI, StateSchema, StateSchemaKeyType,
+    MountedReducersType,
+    ReducerManagerI,
+    StateSchema,
+    StateSchemaKeyType,
 } from './StateSchema';
 
 // ? Функция-менеджер для редьюсеров, нужна для code splitting;
-export function createReducerManager(initialReducers: ReducersMapObject<StateSchema>): ReducerManagerI {
+export function createReducerManager(
+    initialReducers: ReducersMapObject<StateSchema>,
+): ReducerManagerI {
     // ? Создаём копию объекта, значения которого соответствуют различным функциям-редьюсерам;
     const reducers = { ...initialReducers };
 

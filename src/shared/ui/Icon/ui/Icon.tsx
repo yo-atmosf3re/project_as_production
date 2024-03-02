@@ -14,7 +14,9 @@ interface IconPropsI extends React.SVGProps<SVGSVGElement> {
  * @param SVG - svg, которое нужно обернуть;
  */
 export const Icon: React.FC<IconPropsI> = ({
-    className, Svg, inverted,
+    className,
+    Svg,
+    inverted,
     ...otherProps
 }) => {
     const mainClass = '';

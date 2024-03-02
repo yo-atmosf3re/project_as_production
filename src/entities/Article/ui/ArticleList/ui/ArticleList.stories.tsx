@@ -2,12 +2,13 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import {
-    THEME, ARTICLE_BLOCK_TYPE, ARTICLE_TYPE, ARTICLE_VIEW,
+    THEME,
+    ARTICLE_BLOCK_TYPE,
+    ARTICLE_TYPE,
+    ARTICLE_VIEW,
 } from '@/shared/const/consts';
 
-import {
-    ArticleI,
-} from '../../../model/types/article';
+import { ArticleI } from '../../../model/types/article';
 import { ArticleList } from './ArticleList';
 
 export default {
@@ -98,7 +99,9 @@ const article = {
     ],
 } as ArticleI;
 
-const Template: ComponentStory<typeof ArticleList> = (args) => <ArticleList {...args} />;
+const Template: ComponentStory<typeof ArticleList> = (args) => (
+    <ArticleList {...args} />
+);
 
 export const IsLoadingBig = Template.bind({});
 IsLoadingBig.args = {
@@ -140,9 +143,7 @@ IsLoadingBigDark.args = {
     articles: [],
     view: ARTICLE_VIEW.BIG,
 };
-IsLoadingBigDark.decorators = [
-    ThemeDecorator(THEME.DARK),
-];
+IsLoadingBigDark.decorators = [ThemeDecorator(THEME.DARK)];
 
 export const IsLoadingSmallDark = Template.bind({});
 IsLoadingSmallDark.args = {
@@ -150,9 +151,7 @@ IsLoadingSmallDark.args = {
     articles: [],
     view: ARTICLE_VIEW.SMALL,
 };
-IsLoadingSmallDark.decorators = [
-    ThemeDecorator(THEME.DARK),
-];
+IsLoadingSmallDark.decorators = [ThemeDecorator(THEME.DARK)];
 
 export const IsLoadingBigJungle = Template.bind({});
 IsLoadingBigJungle.args = {
@@ -160,9 +159,7 @@ IsLoadingBigJungle.args = {
     articles: [],
     view: ARTICLE_VIEW.BIG,
 };
-IsLoadingBigJungle.decorators = [
-    ThemeDecorator(THEME.JUNGLE),
-];
+IsLoadingBigJungle.decorators = [ThemeDecorator(THEME.JUNGLE)];
 
 export const IsLoadingSmallJungle = Template.bind({});
 IsLoadingSmallJungle.args = {
@@ -170,6 +167,4 @@ IsLoadingSmallJungle.args = {
     articles: [],
     view: ARTICLE_VIEW.SMALL,
 };
-IsLoadingSmallJungle.decorators = [
-    ThemeDecorator(THEME.JUNGLE),
-];
+IsLoadingSmallJungle.decorators = [ThemeDecorator(THEME.JUNGLE)];

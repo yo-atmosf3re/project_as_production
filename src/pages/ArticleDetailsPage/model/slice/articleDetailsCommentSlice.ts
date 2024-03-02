@@ -15,19 +15,22 @@ const commentsAdapter = createEntityAdapter<CommentI>({
 
 // ? Получаем комментарии с помощью селектора. Возвращает либо стейт с комментариями, либо изначальный стейт, указанный ниже. Используем это в компонентах. При использовании, getSelectors() предоставляет доступ к некоторым функциям - получение всех идентификаторов, получение всех сущностей, получение всего, получение общего числа сущностей, получение сущности по идентификатору;
 export const getArticleComments = commentsAdapter.getSelectors<StateSchema>(
-    (state) => state.articleDetailsPage?.comments || commentsAdapter.getInitialState(),
+    (state) =>
+        state.articleDetailsPage?.comments || commentsAdapter.getInitialState(),
 );
 
 const articleDetailsCommentSlice = createSlice({
     name: 'articleDetailsComment',
-    initialState: commentsAdapter.getInitialState<ArticleDetailsCommentsSchema>({
-        isLoading: false,
-        error: undefined,
-        // ? Массив с идентификаторами комментариев;
-        ids: [],
-        // ? Объект со всеми комментариями, где ключ - идентификатор комментария;
-        entities: {},
-    }),
+    initialState: commentsAdapter.getInitialState<ArticleDetailsCommentsSchema>(
+        {
+            isLoading: false,
+            error: undefined,
+            // ? Массив с идентификаторами комментариев;
+            ids: [],
+            // ? Объект со всеми комментариями, где ключ - идентификатор комментария;
+            entities: {},
+        },
+    ),
     reducers: {},
     extraReducers: (builder) => {
         builder
@@ -35,11 +38,14 @@ const articleDetailsCommentSlice = createSlice({
                 state.isLoading = true;
                 state.error = undefined;
             })
-            .addCase(fetchCommentsByArticleId.fulfilled, (state, action: PayloadAction<CommentI[]>) => {
-                state.isLoading = false;
-                // ? Принимает массив сущностей из action.payload, передаёт их в state (заменяет их, если они уже существуют);
-                commentsAdapter.setAll(state, action.payload);
-            })
+            .addCase(
+                fetchCommentsByArticleId.fulfilled,
+                (state, action: PayloadAction<CommentI[]>) => {
+                    state.isLoading = false;
+                    // ? Принимает массив сущностей из action.payload, передаёт их в state (заменяет их, если они уже существуют);
+                    commentsAdapter.setAll(state, action.payload);
+                },
+            )
             .addCase(fetchCommentsByArticleId.rejected, (state, action) => {
                 state.isLoading = false;
                 state.error = action.payload;
@@ -47,4 +53,5 @@ const articleDetailsCommentSlice = createSlice({
     },
 });
 
-export const { reducer: articleDetailsCommetsReducer } = articleDetailsCommentSlice;
+export const { reducer: articleDetailsCommetsReducer } =
+    articleDetailsCommentSlice;

@@ -6,13 +6,13 @@ import cls from './AppLink.module.scss';
 export enum APP_LINK_THEME {
     PRIMARY = 'primary',
     SECONDARY = 'secondary',
-    RED = 'red'
+    RED = 'red',
 }
 
 interface AppLinkPropsI extends LinkProps {
-   className?: string;
-   theme?: APP_LINK_THEME;
-   children?: ReactNode;
+    className?: string;
+    theme?: APP_LINK_THEME;
+    children?: ReactNode;
 }
 
 // ? Мемоизация для AppLink работает и действует по такому же принципу, что и для Button-компоненты;
@@ -22,16 +22,20 @@ interface AppLinkPropsI extends LinkProps {
  * @param theme - тема ссылки, для доступа используется APP_LINK_THEME enum;
  * @param children
  */
-export const AppLink: React.FC<AppLinkPropsI> = memo(({
-    className, children,
-    theme = APP_LINK_THEME.PRIMARY, to,
-    ...otherProps
-}) => (
-    <Link
-        to={to}
-        className={classNames(cls.appLink, {}, [className, cls[theme]])}
-        {...otherProps}
-    >
-        {children}
-    </Link>
-));
+export const AppLink: React.FC<AppLinkPropsI> = memo(
+    ({
+        className,
+        children,
+        theme = APP_LINK_THEME.PRIMARY,
+        to,
+        ...otherProps
+    }) => (
+        <Link
+            to={to}
+            className={classNames(cls.appLink, {}, [className, cls[theme]])}
+            {...otherProps}
+        >
+            {children}
+        </Link>
+    ),
+);

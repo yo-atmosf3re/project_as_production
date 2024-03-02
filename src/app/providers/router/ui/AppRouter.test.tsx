@@ -2,7 +2,10 @@ import { screen } from '@testing-library/react';
 import { componentRender } from '@/shared/lib/tests/componentRender/componentRender';
 import AppRouter from './AppRouter';
 import {
-    USER_ROLE, getRouteAbout, getRouteAdminPanel, getRouteProfile,
+    USER_ROLE,
+    getRouteAbout,
+    getRouteAdminPanel,
+    getRouteProfile,
 } from '@/shared/const/consts';
 
 describe('app/router/AppRouter', () => {
@@ -49,7 +52,7 @@ describe('app/router/AppRouter', () => {
         expect(page).toBeInTheDocument();
     });
 
-    test('The access forbidden, current user\'s role is undefined', async () => {
+    test("The access forbidden, current user's role is undefined", async () => {
         componentRender(<AppRouter />, {
             route: getRouteAdminPanel(),
             initialState: {
@@ -64,16 +67,14 @@ describe('app/router/AppRouter', () => {
         expect(page).toBeInTheDocument();
     });
 
-    test('The access successful, current user\'s role is correct', async () => {
+    test("The access successful, current user's role is correct", async () => {
         componentRender(<AppRouter />, {
             route: getRouteAdminPanel(),
             initialState: {
                 user: {
                     _inited: true,
                     authData: {
-                        roles: [
-                            USER_ROLE.ADMIN,
-                        ],
+                        roles: [USER_ROLE.ADMIN],
                     },
                 },
             },

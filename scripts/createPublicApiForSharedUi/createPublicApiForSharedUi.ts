@@ -80,10 +80,7 @@ files.forEach((sourceFile) => {
         // ? Проверка пути на относительность, на правильность слоя и слайса: при соблюдении всех условий выполняется следующий алгоритм;
         if (isAbsolute(valueWithoutAlias) && isSharedLayer && isUiSlice) {
             // ? Разделение пути без алиаса на '/', затем удаление у пути конца (конец, который содержит адресацию к файлу не из Public API, а напрямую к файлу), а после соединение всего этого через '/';
-            const result = valueWithoutAlias
-                .split('/')
-                .slice(0, 3)
-                .join('/');
+            const result = valueWithoutAlias.split('/').slice(0, 3).join('/');
 
             // ? Передача результата;
             importDeclaration.setModuleSpecifier(`@/${result}`);

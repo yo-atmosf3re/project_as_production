@@ -9,9 +9,7 @@ describe('getArticlesPageInited', () => {
             },
         };
 
-        expect(getArticlesPageInited(state as StateSchema)).toEqual(
-            false,
-        );
+        expect(getArticlesPageInited(state as StateSchema)).toEqual(false);
     });
 
     test('Should return undefined with empty state', () => {

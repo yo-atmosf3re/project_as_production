@@ -4,20 +4,18 @@ import { initReactI18next } from 'react-i18next';
 // ? Настройка библиотеки i18n для тестов jest, многие поля схожи с основной настройкой данной библиотеки;
 
 // ! Старый конфиг i18next для тестов без создания нового инстанса;
-i18n
-    .use(initReactI18next)
-    .init({
-        lng: 'ru',
-        fallbackLng: 'ru',
+i18n.use(initReactI18next).init({
+    lng: 'ru',
+    fallbackLng: 'ru',
 
-        debug: false,
+    debug: false,
 
-        interpolation: {
-            escapeValue: false,
-        },
+    interpolation: {
+        escapeValue: false,
+    },
 
-        resources: { ru: { translations: {} } },
-    });
+    resources: { ru: { translations: {} } },
+});
 
 export default i18n;
 

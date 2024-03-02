@@ -23,36 +23,45 @@ interface ArticleSortSelectorPropsI {
  * @param onChangeSort - обработчик вида сортировки;
  */
 export const ArticleSortSelector: React.FC<ArticleSortSelectorPropsI> = ({
-    className, order, sort,
-    onChangeOrder, onChangeSort,
+    className,
+    order,
+    sort,
+    onChangeOrder,
+    onChangeSort,
 }) => {
     const { t } = useTranslation('article');
 
-    const orderOptions = useMemo<SelectOptionI<SortOrderType>[]>(() => [
-        {
-            value: 'asc',
-            content: t('возрастанию'),
-        },
-        {
-            value: 'desc',
-            content: t('убыванию'),
-        },
-    ], [t]);
+    const orderOptions = useMemo<SelectOptionI<SortOrderType>[]>(
+        () => [
+            {
+                value: 'asc',
+                content: t('возрастанию'),
+            },
+            {
+                value: 'desc',
+                content: t('убыванию'),
+            },
+        ],
+        [t],
+    );
 
-    const sortFieldOptions = useMemo<SelectOptionI<ARTICLE_SORT_FIELD>[]>(() => [
-        {
-            value: ARTICLE_SORT_FIELD.CREATED,
-            content: t('дате создания'),
-        },
-        {
-            value: ARTICLE_SORT_FIELD.TITLE,
-            content: t('названию'),
-        },
-        {
-            value: ARTICLE_SORT_FIELD.VIEWS,
-            content: t('просмотрам'),
-        },
-    ], [t]);
+    const sortFieldOptions = useMemo<SelectOptionI<ARTICLE_SORT_FIELD>[]>(
+        () => [
+            {
+                value: ARTICLE_SORT_FIELD.CREATED,
+                content: t('дате создания'),
+            },
+            {
+                value: ARTICLE_SORT_FIELD.TITLE,
+                content: t('названию'),
+            },
+            {
+                value: ARTICLE_SORT_FIELD.VIEWS,
+                content: t('просмотрам'),
+            },
+        ],
+        [t],
+    );
 
     return (
         <HStack
@@ -64,17 +73,13 @@ export const ArticleSortSelector: React.FC<ArticleSortSelectorPropsI> = ({
                 options={sortFieldOptions}
                 value={sort}
                 onChange={onChangeSort}
-                label={
-                    t('Сортировать ПО')
-                }
+                label={t('Сортировать ПО')}
             />
             <Select<SortOrderType>
                 options={orderOptions}
                 value={order}
                 onChange={onChangeOrder}
-                label={
-                    t('по')
-                }
+                label={t('по')}
             />
         </HStack>
     );

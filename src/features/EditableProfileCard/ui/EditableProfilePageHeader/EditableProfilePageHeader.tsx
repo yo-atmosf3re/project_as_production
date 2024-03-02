@@ -35,16 +35,22 @@ export const EditableProfilePageHeader: React.FC<ProfilePageHeaderPropsI> = ({
     const validateErrors = useSelector(getProfileValidateErrors);
 
     const buttonClassCondition = theme === 'app_light_theme';
-    const buttonThemeCondition = buttonClassCondition ? BUTTON_THEME.CLEAR : BUTTON_THEME.OUTLINE;
+    const buttonThemeCondition = buttonClassCondition
+        ? BUTTON_THEME.CLEAR
+        : BUTTON_THEME.OUTLINE;
     // ? Если id пользователя не равен id просматриваемого пользователя, то редактирование профиля будет недоступно;
     const canEdit = authData?.id === profileData?.id;
 
     const validateErrorTranslates = {
         [VALIDATE_PROFILE_ERROR.INCORRECT_AGE]: t('Некорректный возраст'),
         [VALIDATE_PROFILE_ERROR.INCORRECT_COUNTRY]: t('Некорректный регион'),
-        [VALIDATE_PROFILE_ERROR.INCORRECT_USER_DATA]: t('Некорректные данные пользователя. Имя и фамилия обязательны!'),
+        [VALIDATE_PROFILE_ERROR.INCORRECT_USER_DATA]: t(
+            'Некорректные данные пользователя. Имя и фамилия обязательны!',
+        ),
         [VALIDATE_PROFILE_ERROR.NO_DATA]: t('Данные не указаны'),
-        [VALIDATE_PROFILE_ERROR.SERVER_ERROR]: t('Серверная ошибка при сохранении'),
+        [VALIDATE_PROFILE_ERROR.SERVER_ERROR]: t(
+            'Серверная ошибка при сохранении',
+        ),
     };
 
     const onEditHandler = useCallback(() => {
@@ -66,102 +72,77 @@ export const EditableProfilePageHeader: React.FC<ProfilePageHeaderPropsI> = ({
             className={classNames(cls['profile-header'], {}, [className])}
         >
             <>
-                <Text title={
-                    t('Профиль')
-                }
-                />
-                {
-                    validateErrorTranslates && validateErrors?.length
-                        ? (
-                            <div
-                                className={cls['errors-card']}
-                            >
-                                {
-                                    validateErrors.map(
-                                        (error) => (
-                                            <Text
-                                                key={`${error}-${(Math.random()).toString().replace('.', '')}`}
-                                                theme={TEXT_THEME.ERROR}
-                                                // ? Обращаемся к объекту validateErrorTranslates по ключу, ключом будет являться error. Ключи validateErrorTranslates и ключи error идентичны, поэтому вернётся сопоставимое по ключу значение, а значением будет являться перевод;
-                                                text={validateErrorTranslates[error]}
-                                                data-testid="EditableProfilePageHeader.Error"
-                                            />
-                                        ),
-                                    )
-                                }
-                            </div>
-                        )
-                        : null
-                }
-            </>
-            {
-                canEdit && (
-                    <div className={cls.buttons}>
-                        {
-                            readonly
-                                ? (
-                                    <Button
-                                        className={
-                                            classNames(
-                                                cls['edit-button'],
-                                                { [cls['light-button']]: buttonClassCondition },
-                                                [],
-                                            )
-                                        }
-                                        theme={buttonThemeCondition}
-                                        onClick={onEditHandler}
-                                        disabled={isLoading}
-                                        data-testid="EditableProfilePageHeader.EditButton"
-                                    >
-                                        {
-                                            t('Редактировать')
-                                        }
-                                    </Button>
-                                )
-                                : (
-                                    <HStack
-                                        gap="8"
-                                    >
-                                        <Button
-                                            className={
-                                                classNames(
-                                                    cls['some-button'],
-                                                    { [cls['cancel-light']]: buttonClassCondition },
-                                                    [],
-                                                )
-                                            }
-                                            theme={BUTTON_THEME.OUTLINE_RED}
-                                            onClick={onCancelEditHandler}
-                                            disabled={isLoading}
-                                            data-testid="EditableProfilePageHeader.CancelButton"
-                                        >
-                                            {
-                                                t('Отменить')
-                                            }
-                                        </Button>
-                                        <Button
-                                            className={
-                                                classNames(
-                                                    cls['edit-button'],
-                                                    { [cls['light-button']]: buttonClassCondition },
-                                                    [],
-                                                )
-                                            }
-                                            theme={buttonThemeCondition}
-                                            onClick={onSaveEditHandler}
-                                            disabled={isLoading}
-                                            data-testid="EditableProfilePageHeader.SaveButton"
-                                        >
-                                            {
-                                                t('Сохранить')
-                                            }
-                                        </Button>
-                                    </HStack>
-                                )
-                        }
+                <Text title={t('Профиль')} />
+                {validateErrorTranslates && validateErrors?.length ? (
+                    <div className={cls['errors-card']}>
+                        {validateErrors.map((error) => (
+                            <Text
+                                key={`${error}-${Math.random()
+                                    .toString()
+                                    .replace('.', '')}`}
+                                theme={TEXT_THEME.ERROR}
+                                // ? Обращаемся к объекту validateErrorTranslates по ключу, ключом будет являться error. Ключи validateErrorTranslates и ключи error идентичны, поэтому вернётся сопоставимое по ключу значение, а значением будет являться перевод;
+                                text={validateErrorTranslates[error]}
+                                data-testid="EditableProfilePageHeader.Error"
+                            />
+                        ))}
                     </div>
-                )
-            }
+                ) : null}
+            </>
+            {canEdit && (
+                <div className={cls.buttons}>
+                    {readonly ? (
+                        <Button
+                            className={classNames(
+                                cls['edit-button'],
+                                { [cls['light-button']]: buttonClassCondition },
+                                [],
+                            )}
+                            theme={buttonThemeCondition}
+                            onClick={onEditHandler}
+                            disabled={isLoading}
+                            data-testid="EditableProfilePageHeader.EditButton"
+                        >
+                            {t('Редактировать')}
+                        </Button>
+                    ) : (
+                        <HStack gap="8">
+                            <Button
+                                className={classNames(
+                                    cls['some-button'],
+                                    {
+                                        [cls['cancel-light']]:
+                                            buttonClassCondition,
+                                    },
+                                    [],
+                                )}
+                                theme={BUTTON_THEME.OUTLINE_RED}
+                                onClick={onCancelEditHandler}
+                                disabled={isLoading}
+                                data-testid="EditableProfilePageHeader.CancelButton"
+                            >
+                                {t('Отменить')}
+                            </Button>
+                            <Button
+                                className={classNames(
+                                    cls['edit-button'],
+                                    {
+                                        [cls['light-button']]:
+                                            buttonClassCondition,
+                                    },
+                                    [],
+                                )}
+                                theme={buttonThemeCondition}
+                                onClick={onSaveEditHandler}
+                                disabled={isLoading}
+                                data-testid="EditableProfilePageHeader.SaveButton"
+                            >
+                                {t('Сохранить')}
+                            </Button>
+                        </HStack>
+                    )}
+                </div>
+            )}
         </HStack>
     );
 };

@@ -18,17 +18,17 @@ const DEFAULT_ASYNC_REDUCERS: ReducersList = {
 
 // ? StoreDecorator нужен для того, чтобы для каждой сторис задавать какое-то дефолтное значение стейта, благодаря переданному в эту функцию стейту. Пример где может пригодиться: отображать загрузку, ошибку, другие индикации, для переопредления полей;
 // ? Здесь так же используется DeepPartical, потому что в обычном StateSchema может быть слишком много ненужных полей;
-export const StoreDecorator = (
-    state: DeepPartial<StateSchema>,
-    asyncReducers?: ReducersList,
-) => (StoryComponent: Story) => (
-    <StoreProvider
-        initialState={state}
-        asyncReducers={{
-            ...DEFAULT_ASYNC_REDUCERS,
-            ...asyncReducers,
-        }}
-    >
-        <StoryComponent />
-    </StoreProvider>
-);
+export const StoreDecorator =
+    (state: DeepPartial<StateSchema>, asyncReducers?: ReducersList) =>
+    (StoryComponent: Story) =>
+        (
+            <StoreProvider
+                initialState={state}
+                asyncReducers={{
+                    ...DEFAULT_ASYNC_REDUCERS,
+                    ...asyncReducers,
+                }}
+            >
+                <StoryComponent />
+            </StoreProvider>
+        );

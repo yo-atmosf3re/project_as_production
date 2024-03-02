@@ -2,8 +2,8 @@ import React, { ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 
 interface PortalPropsI {
-   children: ReactNode;
-   element?: HTMLElement;
+    children: ReactNode;
+    element?: HTMLElement;
 }
 
 // ? С помощью портала можно сделать вот так:
@@ -17,7 +17,6 @@ interface PortalPropsI {
  * @param element
  */
 export const Portal: React.FC<PortalPropsI> = ({
-    children, element = document.body,
-}) => (
-    createPortal(children, element)
-);
+    children,
+    element = document.body,
+}) => createPortal(children, element);

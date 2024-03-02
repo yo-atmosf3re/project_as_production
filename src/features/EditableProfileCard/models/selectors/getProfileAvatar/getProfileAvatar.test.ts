@@ -12,9 +12,7 @@ describe('getProfileAvatar', () => {
             },
         };
 
-        expect(getProfileAvatar(state as StateSchema)).toEqual(
-            Avatar,
-        );
+        expect(getProfileAvatar(state as StateSchema)).toEqual(Avatar);
     });
 
     test('Should return empty string with empty data object', () => {

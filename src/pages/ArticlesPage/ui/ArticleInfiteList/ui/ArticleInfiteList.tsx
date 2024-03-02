@@ -3,9 +3,12 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { Text } from '@/shared/ui/Text';
-import { getArticles } from
-    '../../../model/slice/articlesPageSlice';
-import { getArticlesPageError, getArticlesPageIsLoading, getArticlesPageView } from '../../../model/selectors';
+import { getArticles } from '../../../model/slice/articlesPageSlice';
+import {
+    getArticlesPageError,
+    getArticlesPageIsLoading,
+    getArticlesPageView,
+} from '../../../model/selectors';
 
 interface ArticleInfiteListPropsI {
     className?: string;
@@ -26,13 +29,7 @@ export const ArticleInfiteList: React.FC<ArticleInfiteListPropsI> = ({
     const error = useSelector(getArticlesPageError);
 
     if (error) {
-        return (
-            <Text
-                title={
-                    t('Ошибка при загрузке статей')
-                }
-            />
-        );
+        return <Text title={t('Ошибка при загрузке статей')} />;
     }
 
     return (

@@ -10,15 +10,19 @@ export default {
     },
 } as ComponentMeta<typeof LoginForm>;
 
-const Template: ComponentStory<typeof LoginForm> = (args) => <LoginForm {...args} />;
+const Template: ComponentStory<typeof LoginForm> = (args) => (
+    <LoginForm {...args} />
+);
 
 export const Error = Template.bind({});
 Error.args = {};
-Error.decorators = [StoreDecorator({
-    loginForm: {
-        error: 'Some error',
-    },
-})];
+Error.decorators = [
+    StoreDecorator({
+        loginForm: {
+            error: 'Some error',
+        },
+    }),
+];
 
 // export const Okay = Template.bind({});
 // Okay.args = {};

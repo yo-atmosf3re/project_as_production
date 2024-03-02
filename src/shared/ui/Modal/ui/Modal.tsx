@@ -6,11 +6,11 @@ import { ModsType, classNames } from '../../../lib/classNames/classNames';
 import cls from './Modal.module.scss';
 
 interface ModalPropsI {
-   className?: string;
-   children?: ReactNode;
-   isOpen?: boolean;
-   onClose?: () => void;
-   lazy?: boolean;
+    className?: string;
+    children?: ReactNode;
+    isOpen?: boolean;
+    onClose?: () => void;
+    lazy?: boolean;
 }
 
 const ANIMATION_DELAY = 300;
@@ -25,15 +25,17 @@ const ANIMATION_DELAY = 300;
  * @param lazy - флаг, который устанавливает ленивую загрузку для модального окна;
  */
 export const Modal: React.FC<ModalPropsI> = ({
-    className, children, isOpen, onClose, lazy,
+    className,
+    children,
+    isOpen,
+    onClose,
+    lazy,
 }) => {
-    const { close, isClosing, isMounted } = useModal(
-        {
-            animationDelay: ANIMATION_DELAY,
-            isOpen,
-            onClose,
-        },
-    );
+    const { close, isClosing, isMounted } = useModal({
+        animationDelay: ANIMATION_DELAY,
+        isOpen,
+        onClose,
+    });
 
     // ? При lazy = true и isMounted = false возвращает null. То есть, это ленивая загрузка компоненты, и модальное окно не будет вмонтировано в DOM-дерево сразу, а только тогда, когда модальное окно будет открыто. Это нужно для кейса с автофокусом в input при открытии модального окна;
     if (lazy && !isMounted) {
@@ -53,11 +55,11 @@ export const Modal: React.FC<ModalPropsI> = ({
     return (
         <Portal>
             <div className={classNames(cls.modal, mods, additionalClasses)}>
-                <Overlay
-                    onClick={close}
-                />
+                <Overlay onClick={close} />
                 <div
-                    className={classNames(cls.content, { [cls['content-opened']]: isOpen })}
+                    className={classNames(cls.content, {
+                        [cls['content-opened']]: isOpen,
+                    })}
                 >
                     {children}
                 </div>

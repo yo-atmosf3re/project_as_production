@@ -24,30 +24,36 @@ interface TabsPropsI {
  * @param onTabClick - переключатель табов;
  */
 export const Tabs: React.FC<TabsPropsI> = ({
-    className, onTabClick, tabs, value,
+    className,
+    onTabClick,
+    tabs,
+    value,
 }) => {
-    const onClickTabHandler = useCallback((tab: TabItemI) => () => {
-        onTabClick(tab);
-    }, [onTabClick]);
+    const onClickTabHandler = useCallback(
+        (tab: TabItemI) => () => {
+            onTabClick(tab);
+        },
+        [onTabClick],
+    );
     return (
         <HStack
             gap="8"
             className={classNames(cls.tabs, {}, [className])}
         >
-            {
-                tabs.map((tab) => (
-                    <Card
-                        theme={tab.value === value ? CARD_THEME.NORMAL : CARD_THEME.OUTLINED}
-                        onClick={onClickTabHandler(tab)}
-                        key={tab.value}
-                        className={cls.tab}
-                    >
-                        {
-                            tab.content
-                        }
-                    </Card>
-                ))
-            }
+            {tabs.map((tab) => (
+                <Card
+                    theme={
+                        tab.value === value
+                            ? CARD_THEME.NORMAL
+                            : CARD_THEME.OUTLINED
+                    }
+                    onClick={onClickTabHandler(tab)}
+                    key={tab.value}
+                    className={cls.tab}
+                >
+                    {tab.content}
+                </Card>
+            ))}
         </HStack>
     );
 };

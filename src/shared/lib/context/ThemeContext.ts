@@ -3,8 +3,8 @@ import { createContext } from 'react';
 import { THEME } from '../../const/consts';
 
 export interface ThemeContextPropsI {
-   theme?: THEME;
-   setTheme?: (theme: THEME) => void;
+    theme?: THEME;
+    setTheme?: (theme: THEME) => void;
 }
 
 // ? Создаёт контекст, связанный с цветовыми темами приложения;

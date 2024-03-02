@@ -9,12 +9,10 @@ describe('getArticlesPageLimit', () => {
             },
         };
 
-        expect(getArticlesPageLimit(state as StateSchema)).toEqual(
-            12,
-        );
+        expect(getArticlesPageLimit(state as StateSchema)).toEqual(12);
     });
 
-    test('Should return 9 with empty state, because 9 it\'s default value', () => {
+    test("Should return 9 with empty state, because 9 it's default value", () => {
         const state: DeepPartial<StateSchema> = {};
 
         expect(getArticlesPageLimit(state as StateSchema)).toEqual(9);

@@ -32,150 +32,129 @@ interface RatingCardPropsI {
  * @param onAccept - кнопка отправки отзыва (отправка текста отзыва и рейтинга);
  * @param rate - количество звёзд, которое выбрал пользователь (отображается либо в состоянии выбора, либо отображает уже сделанный выбор);
  */
-export const RatingCard: React.FC<RatingCardPropsI> = memo(({
-    className, feedbackTitle,
-    hasFeedback,
-    onAccept, onCancel,
-    title,
-    rate = 0,
-}) => {
-    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-    const [starsCount, setStarsCount] = useState<number>(rate);
-    const [feedback, setFeedback] = useState<string>('');
+export const RatingCard: React.FC<RatingCardPropsI> = memo(
+    ({
+        className,
+        feedbackTitle,
+        hasFeedback,
+        onAccept,
+        onCancel,
+        title,
+        rate = 0,
+    }) => {
+        const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+        const [starsCount, setStarsCount] = useState<number>(rate);
+        const [feedback, setFeedback] = useState<string>('');
 
-    const { t } = useTranslation('ratingCard');
+        const { t } = useTranslation('ratingCard');
 
-    // ? Если есть/нужен фидбек, то открываем модальное окно, иначе сразу отправляем количество звёзд без фидбека, которое выбрал пользователь без открытия модального окна;
-    const onSelectStars = useCallback((selectedStarsCount: number) => {
-        setStarsCount(selectedStarsCount);
-        if (hasFeedback) {
-            setIsModalOpen(true);
-        } else {
-            onAccept?.(selectedStarsCount);
-        }
-    }, [hasFeedback, onAccept]);
-
-    // ? При нажатии "Отправить" отрабатывает коллбэк с отправкой фидбека и рейтинга;
-    const onClickAcceptHandler = useCallback(() => {
-        setIsModalOpen(false);
-        onAccept?.(starsCount, feedback);
-    }, [feedback, onAccept, starsCount]);
-
-    // ? При нажатии "Отправить" отрабатывает коллбэк с отправкой только фидбека;
-    const onClickCancelHandler = useCallback(() => {
-        setIsModalOpen(false);
-        onCancel?.(starsCount);
-    }, [onCancel, starsCount]);
-
-    // ? Для будущих концептуальных доработок, часть похожей вёрстки вынесено в отдельную переменную;
-    const modalContent = (
-        <>
-            <Text
-                title={feedbackTitle}
-            />
-            <Input
-                placeholder={
-                    t('Ваш отзыв')
+        // ? Если есть/нужен фидбек, то открываем модальное окно, иначе сразу отправляем количество звёзд без фидбека, которое выбрал пользователь без открытия модального окна;
+        const onSelectStars = useCallback(
+            (selectedStarsCount: number) => {
+                setStarsCount(selectedStarsCount);
+                if (hasFeedback) {
+                    setIsModalOpen(true);
+                } else {
+                    onAccept?.(selectedStarsCount);
                 }
-                value={feedback}
-                onChange={setFeedback}
-                data-testid="RatingCard.Input"
-            />
-        </>
-    );
+            },
+            [hasFeedback, onAccept],
+        );
 
-    return (
-        <Card
-            className={
-                classNames(
-                    cls['rating-card'],
-                    {},
-                    [className],
-                )
-            }
-            max
-            data-testid="RatingCard"
-        >
-            <VStack
-                align="center"
-                gap="8"
+        // ? При нажатии "Отправить" отрабатывает коллбэк с отправкой фидбека и рейтинга;
+        const onClickAcceptHandler = useCallback(() => {
+            setIsModalOpen(false);
+            onAccept?.(starsCount, feedback);
+        }, [feedback, onAccept, starsCount]);
+
+        // ? При нажатии "Отправить" отрабатывает коллбэк с отправкой только фидбека;
+        const onClickCancelHandler = useCallback(() => {
+            setIsModalOpen(false);
+            onCancel?.(starsCount);
+        }, [onCancel, starsCount]);
+
+        // ? Для будущих концептуальных доработок, часть похожей вёрстки вынесено в отдельную переменную;
+        const modalContent = (
+            <>
+                <Text title={feedbackTitle} />
+                <Input
+                    placeholder={t('Ваш отзыв')}
+                    value={feedback}
+                    onChange={setFeedback}
+                    data-testid="RatingCard.Input"
+                />
+            </>
+        );
+
+        return (
+            <Card
+                className={classNames(cls['rating-card'], {}, [className])}
                 max
+                data-testid="RatingCard"
             >
-                <Text
-                    title={
-                        starsCount
-                            ? t(
-                                'Спасибо за оценку!',
-                            )
-                            : title
-                    }
-                />
-                <StarRating
-                    size={40}
-                    selectedStars={starsCount}
-                    onSelect={onSelectStars}
-                />
-            </VStack>
-            <BrowserView>
-                <Modal
-                    isOpen={isModalOpen}
-                    lazy
+                <VStack
+                    align="center"
+                    gap="8"
+                    max
                 >
-                    <VStack
-                        max
-                        gap="32"
+                    <Text
+                        title={starsCount ? t('Спасибо за оценку!') : title}
+                    />
+                    <StarRating
+                        size={40}
+                        selectedStars={starsCount}
+                        onSelect={onSelectStars}
+                    />
+                </VStack>
+                <BrowserView>
+                    <Modal
+                        isOpen={isModalOpen}
+                        lazy
                     >
-                        {
-                            modalContent
-                        }
-                        <HStack
-                            justify="between"
+                        <VStack
                             max
+                            gap="32"
                         >
+                            {modalContent}
+                            <HStack
+                                justify="between"
+                                max
+                            >
+                                <Button
+                                    onClick={onClickAcceptHandler}
+                                    data-testid="RatingCard.Send"
+                                >
+                                    {t('Отправить')}
+                                </Button>
+                                <Button
+                                    onClick={onClickCancelHandler}
+                                    theme={BUTTON_THEME.OUTLINE_RED}
+                                    data-testid="RatingCard.Closed"
+                                >
+                                    {t('Закрыть')}
+                                </Button>
+                            </HStack>
+                        </VStack>
+                    </Modal>
+                </BrowserView>
+                <MobileView>
+                    <Drawer
+                        isOpen={isModalOpen}
+                        onClose={onClickCancelHandler}
+                    >
+                        <VStack gap="32">
+                            {modalContent}
                             <Button
                                 onClick={onClickAcceptHandler}
-                                data-testid="RatingCard.Send"
+                                size={BUTTON_SIZE.L}
+                                fullWidth
                             >
-                                {
-                                    t('Отправить')
-                                }
+                                {t('Отправить')}
                             </Button>
-                            <Button
-                                onClick={onClickCancelHandler}
-                                theme={BUTTON_THEME.OUTLINE_RED}
-                                data-testid="RatingCard.Closed"
-                            >
-                                {
-                                    t('Закрыть')
-                                }
-                            </Button>
-                        </HStack>
-                    </VStack>
-                </Modal>
-            </BrowserView>
-            <MobileView>
-                <Drawer
-                    isOpen={isModalOpen}
-                    onClose={onClickCancelHandler}
-                >
-                    <VStack
-                        gap="32"
-                    >
-                        {
-                            modalContent
-                        }
-                        <Button
-                            onClick={onClickAcceptHandler}
-                            size={BUTTON_SIZE.L}
-                            fullWidth
-                        >
-                            {
-                                t('Отправить')
-                            }
-                        </Button>
-                    </VStack>
-                </Drawer>
-            </MobileView>
-        </Card>
-    );
-});
+                        </VStack>
+                    </Drawer>
+                </MobileView>
+            </Card>
+        );
+    },
+);

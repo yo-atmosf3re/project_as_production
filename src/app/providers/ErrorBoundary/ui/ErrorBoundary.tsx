@@ -2,16 +2,18 @@ import React, { ErrorInfo, ReactNode, Suspense } from 'react';
 import { ErrorPage } from '@/widgets/ErrorPage';
 
 interface ErrorBoundaryPropsI {
-   children: ReactNode;
+    children: ReactNode;
 }
 
 interface ErrorBoundaryStateI {
-   hasError: boolean;
+    hasError: boolean;
 }
 
 // ? Классовая компонента, которая обрабатывает ошибки в дочерних компонентах. Является обёрткой, перехватывает почти любые ошибки. Перехватывает ошибки во время рендеринга компонента, жизненного цикла или обработки события. В данном случае сообщает в консоль содержимое ошибки, отрисовывает ErrorPage;
-class ErrorBoundary
-    extends React.Component<ErrorBoundaryPropsI, ErrorBoundaryStateI> {
+class ErrorBoundary extends React.Component<
+    ErrorBoundaryPropsI,
+    ErrorBoundaryStateI
+> {
     constructor(props: ErrorBoundaryPropsI) {
         super(props);
         this.state = { hasError: false };

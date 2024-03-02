@@ -14,14 +14,16 @@ interface ArticleListItemSkeletonPropsI {
  * @param className
  * @param view - тип отображения скелетонов в списке ArticleList, для доступа используется enum ARTICLE_VIEW;
  */
-export const ArticleListItemSkeleton: React.FC<ArticleListItemSkeletonPropsI> = ({
-    className,
-    view,
-}) => {
+export const ArticleListItemSkeleton: React.FC<
+    ArticleListItemSkeletonPropsI
+> = ({ className, view }) => {
     if (view === 'BIG') {
         return (
             <div
-                className={classNames(cls['article-item'], {}, [className, cls[view]])}
+                className={classNames(cls['article-item'], {}, [
+                    className,
+                    cls[view],
+                ])}
             >
                 <Card className={cls.card}>
                     <div className={cls.header}>
@@ -63,11 +65,12 @@ export const ArticleListItemSkeleton: React.FC<ArticleListItemSkeletonPropsI> = 
 
     return (
         <div
-            className={classNames(cls['article-item'], {}, [className, cls[view]])}
+            className={classNames(cls['article-item'], {}, [
+                className,
+                cls[view],
+            ])}
         >
-            <Card
-                className={cls.card}
-            >
+            <Card className={cls.card}>
                 <div className={cls['image-wrapper']}>
                     <Skeleton
                         width={200}

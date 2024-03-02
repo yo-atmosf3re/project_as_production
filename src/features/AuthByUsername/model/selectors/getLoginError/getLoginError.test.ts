@@ -9,9 +9,7 @@ describe('getLoginError', () => {
             },
         };
 
-        expect(getLoginError(state as StateSchema)).toEqual(
-            'Error',
-        );
+        expect(getLoginError(state as StateSchema)).toEqual('Error');
     });
 
     test('Should return undefined with empty state', () => {

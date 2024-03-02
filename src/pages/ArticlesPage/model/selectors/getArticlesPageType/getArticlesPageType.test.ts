@@ -18,8 +18,6 @@ describe('getArticlesPageType', () => {
     test('Should return "all" if state or selector\'s value is equal undefined', () => {
         const state: DeepPartial<StateSchema> = {};
 
-        expect(getArticlesPageType(state as StateSchema)).toEqual(
-            'all',
-        );
+        expect(getArticlesPageType(state as StateSchema)).toEqual('all');
     });
 });

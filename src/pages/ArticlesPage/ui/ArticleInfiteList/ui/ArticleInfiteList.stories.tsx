@@ -12,7 +12,9 @@ export default {
     },
 } as ComponentMeta<typeof ArticleInfiteList>;
 
-const Template: ComponentStory<typeof ArticleInfiteList> = (args) => <ArticleInfiteList {...args} />;
+const Template: ComponentStory<typeof ArticleInfiteList> = (args) => (
+    <ArticleInfiteList {...args} />
+);
 
 const article = {
     id: '0',
@@ -22,9 +24,7 @@ const article = {
     views: 512,
     createdAt: '11.12.2021',
     userId: '1',
-    type: [
-        ARTICLE_TYPE.IT,
-    ],
+    type: [ARTICLE_TYPE.IT],
     blocks: [
         {
             id: '1',
@@ -88,9 +88,7 @@ const article = {
 };
 
 export const Primary = Template.bind({});
-Primary.args = {
-
-};
+Primary.args = {};
 Primary.decorators = [
     StoreDecorator({
         articleDetails: {

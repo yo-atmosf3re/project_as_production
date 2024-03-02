@@ -11,9 +11,7 @@ describe('getProfileAge', () => {
             },
         };
 
-        expect(getProfileAge(state as StateSchema)).toEqual(
-            11,
-        );
+        expect(getProfileAge(state as StateSchema)).toEqual(11);
     });
 
     test('Should return empty string with empty data object', () => {

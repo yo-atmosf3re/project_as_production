@@ -19,29 +19,28 @@ interface CountrySelectPropsI {
     readonly?: boolean;
 }
 
-export const CountrySelect: React.FC<CountrySelectPropsI> = memo(({
-    className, value, onChange, readonly,
-}) => {
-    const { t } = useTranslation('profile');
+export const CountrySelect: React.FC<CountrySelectPropsI> = memo(
+    ({ className, value, onChange, readonly }) => {
+        const { t } = useTranslation('profile');
 
-    const onChangeHandler = useCallback((value: string) => {
-        onChange?.(value as COUNTRY);
-    }, [onChange]);
+        const onChangeHandler = useCallback(
+            (value: string) => {
+                onChange?.(value as COUNTRY);
+            },
+            [onChange],
+        );
 
-    return (
-        <ListBox
-            className={classNames('', {}, [className])}
-            items={OPTIONS}
-            value={value}
-            defaultValue={
-                t('Укажите страну')
-            }
-            label={
-                t('Укажите страну')
-            }
-            onChange={onChangeHandler}
-            readonly={readonly}
-            direction="top right"
-        />
-    );
-});
+        return (
+            <ListBox
+                className={classNames('', {}, [className])}
+                items={OPTIONS}
+                value={value}
+                defaultValue={t('Укажите страну')}
+                label={t('Укажите страну')}
+                onChange={onChangeHandler}
+                readonly={readonly}
+                direction="top right"
+            />
+        );
+    },
+);

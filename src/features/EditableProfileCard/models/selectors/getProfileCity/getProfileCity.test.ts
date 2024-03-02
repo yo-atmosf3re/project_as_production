@@ -11,9 +11,7 @@ describe('getProfileCity', () => {
             },
         };
 
-        expect(getProfileCity(state as StateSchema)).toEqual(
-            'Moscow',
-        );
+        expect(getProfileCity(state as StateSchema)).toEqual('Moscow');
     });
 
     test('Should return empty string with empty data object', () => {

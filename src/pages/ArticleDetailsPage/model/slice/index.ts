@@ -6,7 +6,8 @@ import { articleDetailsCommetsReducer } from './articleDetailsCommentSlice';
 /**
  * Комбинация редьюсеров из `ArticleDetialsPage` (вариант для практики);
  */
-export const articleDetailsPageReducer = combineReducers<ArticleDetailsPageSchema>({
-    recommendations: articleDetailsPageRecommendationsReducer,
-    comments: articleDetailsCommetsReducer,
-});
+export const articleDetailsPageReducer =
+    combineReducers<ArticleDetailsPageSchema>({
+        recommendations: articleDetailsPageRecommendationsReducer,
+        comments: articleDetailsCommetsReducer,
+    });

@@ -9,10 +9,12 @@ import { Avatar } from '@/shared/ui/Avatar';
 import { BUTTON_THEME, Button } from '@/shared/ui/Button';
 import { AppLink } from '@/shared/ui/AppLink';
 import { HStack } from '@/shared/ui/Stack';
-import { ARTICLE_BLOCK_TYPE, ARTICLE_VIEW, getRouteArticleDetails } from '@/shared/const/consts';
 import {
-    ArticleI, ArticleTextBlockI,
-} from '../../../model/types/article';
+    ARTICLE_BLOCK_TYPE,
+    ARTICLE_VIEW,
+    getRouteArticleDetails,
+} from '@/shared/const/consts';
+import { ArticleI, ArticleTextBlockI } from '../../../model/types/article';
 import cls from './ArticleListItem.module.scss';
 import { ArticleTextBlockComponent } from '../../ArticleTextBlockComponent';
 import { AppImage } from '@/shared/ui/AppImage';
@@ -52,26 +54,27 @@ export const ArticleListItem: React.FC<ArticleListItemPropsI> = ({
                 text={String(article.views)}
                 className={cls.views}
             />
-            <Icon
-                Svg={EyeIcon}
-            />
+            <Icon Svg={EyeIcon} />
         </>
     );
 
     // ? Для доступности и для возможности открывать статьи в новой вкладке добавлена обёртка в виде AppLink;
     if (view === 'BIG') {
         // ? Первый текстовый блок, который будет отображаться в карточке как начальный;
-        const textBlock = article.blocks.find((block) => block.type === ARTICLE_BLOCK_TYPE.TEXT) as ArticleTextBlockI;
+        const textBlock = article.blocks.find(
+            (block) => block.type === ARTICLE_BLOCK_TYPE.TEXT,
+        ) as ArticleTextBlockI;
 
         return (
             <div
                 data-testid="ArticleListItem"
-                className={classNames(cls['article-item'], {}, [className, cls[view]])}
+                className={classNames(cls['article-item'], {}, [
+                    className,
+                    cls[view],
+                ])}
             >
                 <Card className={cls.card}>
-                    <HStack
-                        align="center"
-                    >
+                    <HStack align="center">
                         <Avatar
                             size={30}
                             src={article.user.avatar}
@@ -89,30 +92,24 @@ export const ArticleListItem: React.FC<ArticleListItemPropsI> = ({
                         text={article.title}
                         className={cls.title}
                     />
-                    {
-                        types
-                    }
+                    {types}
                     <AppImage
-                        fallback={(
+                        fallback={
                             <Skeleton
                                 width={200}
                                 height={200}
                             />
-                        )}
+                        }
                         src={article.img}
                         className={cls.image}
                         alt={article.title}
                     />
-                    {
-                        textBlock
-                            ? (
-                                <ArticleTextBlockComponent
-                                    block={textBlock}
-                                    className={cls['text-block']}
-                                />
-                            )
-                            : null
-                    }
+                    {textBlock ? (
+                        <ArticleTextBlockComponent
+                            block={textBlock}
+                            className={cls['text-block']}
+                        />
+                    ) : null}
                     <HStack
                         className={cls.footer}
                         align="center"
@@ -122,17 +119,11 @@ export const ArticleListItem: React.FC<ArticleListItemPropsI> = ({
                             target={target}
                             to={getRouteArticleDetails(article.id)}
                         >
-                            <Button
-                                theme={BUTTON_THEME.OUTLINE}
-                            >
-                                {
-                                    t('Читать далее...')
-                                }
+                            <Button theme={BUTTON_THEME.OUTLINE}>
+                                {t('Читать далее...')}
                             </Button>
                         </AppLink>
-                        {
-                            views
-                        }
+                        {views}
                     </HStack>
                 </Card>
             </div>
@@ -144,19 +135,20 @@ export const ArticleListItem: React.FC<ArticleListItemPropsI> = ({
             data-testid="ArticleListItem"
             target={target}
             to={getRouteArticleDetails(article.id)}
-            className={classNames(cls['article-item'], {}, [className, cls[view]])}
+            className={classNames(cls['article-item'], {}, [
+                className,
+                cls[view],
+            ])}
         >
-            <Card
-                className={cls.card}
-            >
+            <Card className={cls.card}>
                 <div className={cls['image-wrapper']}>
                     <AppImage
-                        fallback={(
+                        fallback={
                             <Skeleton
                                 width="100%"
                                 height={200}
                             />
-                        )}
+                        }
                         src={article.img}
                         className={cls.image}
                         alt={article.title}
@@ -170,12 +162,8 @@ export const ArticleListItem: React.FC<ArticleListItemPropsI> = ({
                     className={cls['info-wrapper']}
                     align="center"
                 >
-                    {
-                        types
-                    }
-                    {
-                        views
-                    }
+                    {types}
+                    {views}
                 </HStack>
                 <Text
                     text={article.title}

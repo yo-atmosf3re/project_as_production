@@ -54,7 +54,10 @@ export interface ArticleTextBlockI extends ArticleBlockBaseI {
  * Тип блока статьи - код, текст, изображение;
  * @type ArticleCodeBlockI | ArticleImageBlockI | ArticleTextBlockI;
  */
-export type ArticleBlockI = ArticleCodeBlockI | ArticleImageBlockI | ArticleTextBlockI;
+export type ArticleBlockI =
+    | ArticleCodeBlockI
+    | ArticleImageBlockI
+    | ArticleTextBlockI;
 
 /**
  * Интерфейс статьи;

@@ -6,9 +6,7 @@
     "views": 9888,
     "createdAt": "19.04.2012",
     "userId": "1",
-    "type": [
-        "IT"
-    ],
+    "type": ["IT"],
     "blocks": [
         {
             "id": "1",
@@ -73,9 +71,7 @@
         "id": "1",
         "username": "1",
         "password": "1",
-        "roles": [
-            "ADMIN"
-        ],
+        "roles": ["ADMIN"],
         "avatar": "https://copp15.ru/Portals/0/ModuleFiles/i.jpg"
     }
 }

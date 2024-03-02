@@ -2,12 +2,13 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import {
-    THEME, ARTICLE_BLOCK_TYPE, ARTICLE_TYPE, ARTICLE_VIEW,
+    THEME,
+    ARTICLE_BLOCK_TYPE,
+    ARTICLE_TYPE,
+    ARTICLE_VIEW,
 } from '@/shared/const/consts';
 
-import {
-    ArticleI,
-} from '../../../model/types/article';
+import { ArticleI } from '../../../model/types/article';
 import { ArticleListItem } from './ArticleListItem';
 
 export default {
@@ -18,7 +19,9 @@ export default {
     },
 } as ComponentMeta<typeof ArticleListItem>;
 
-const Template: ComponentStory<typeof ArticleListItem> = (args) => <ArticleListItem {...args} />;
+const Template: ComponentStory<typeof ArticleListItem> = (args) => (
+    <ArticleListItem {...args} />
+);
 
 const article = {
     id: '1',
@@ -117,33 +120,25 @@ BigDark.args = {
     view: ARTICLE_VIEW.BIG,
     article,
 };
-BigDark.decorators = [
-    ThemeDecorator(THEME.DARK),
-];
+BigDark.decorators = [ThemeDecorator(THEME.DARK)];
 
 export const SmallDark = Template.bind({});
 SmallDark.args = {
     view: ARTICLE_VIEW.BIG,
     article,
 };
-SmallDark.decorators = [
-    ThemeDecorator(THEME.DARK),
-];
+SmallDark.decorators = [ThemeDecorator(THEME.DARK)];
 
 export const BigJungle = Template.bind({});
 BigJungle.args = {
     view: ARTICLE_VIEW.BIG,
     article,
 };
-BigJungle.decorators = [
-    ThemeDecorator(THEME.JUNGLE),
-];
+BigJungle.decorators = [ThemeDecorator(THEME.JUNGLE)];
 
 export const SmallJungle = Template.bind({});
 SmallJungle.args = {
     view: ARTICLE_VIEW.BIG,
     article,
 };
-SmallJungle.decorators = [
-    ThemeDecorator(THEME.JUNGLE),
-];
+SmallJungle.decorators = [ThemeDecorator(THEME.JUNGLE)];

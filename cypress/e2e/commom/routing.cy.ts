@@ -5,24 +5,20 @@ describe('Routing', () => {
         it('Go to the main page', () => {
             cy.visit('/');
             cy
-            // ? Получение страницы по data-testid;
+                // ? Получение страницы по data-testid;
                 .get('[data-testid=MainPage]')
-            // ? Передача в функцию should строки, которая указывает на то, что конкретно нужно проверить. В данном случае, можно логично предположить, что exist - проверка на существование того, что проверяется;
+                // ? Передача в функцию should строки, которая указывает на то, что конкретно нужно проверить. В данном случае, можно логично предположить, что exist - проверка на существование того, что проверяется;
                 .should('exist');
         });
 
         it('Go to the profile page', () => {
             cy.visit('/profile/1');
-            cy
-                .get(selectByTestId('MainPage'))
-                .should('exist');
+            cy.get(selectByTestId('MainPage')).should('exist');
         });
 
-        it('Go to the route, which doesn\'t exist', () => {
+        it("Go to the route, which doesn't exist", () => {
             cy.visit('/something');
-            cy
-                .get(selectByTestId('NotFoundPage'))
-                .should('exist');
+            cy.get(selectByTestId('NotFoundPage')).should('exist');
         });
     });
 
@@ -34,16 +30,12 @@ describe('Routing', () => {
 
         it('Go to the profile page', () => {
             cy.visit('/profile/1');
-            cy
-                .get(selectByTestId('ProfilePage'))
-                .should('exist');
+            cy.get(selectByTestId('ProfilePage')).should('exist');
         });
 
         it('Go to the articles list page', () => {
             cy.visit('/articles');
-            cy
-                .get(selectByTestId('ArticlesPage'))
-                .should('exist');
+            cy.get(selectByTestId('ArticlesPage')).should('exist');
         });
     });
 });

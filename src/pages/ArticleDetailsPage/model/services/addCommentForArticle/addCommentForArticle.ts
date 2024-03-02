@@ -9,36 +9,32 @@ import { fetchCommentsByArticleId } from '../fetchCommentsByArticleId/fetchComme
 export const addCommentForArticle = createAsyncThunk<
     CommentI,
     string,
-    ThunkConfigI<string>>(
-        'articleDetails/addCommentForArticle',
-        async (text, thunkApi) => {
-            const {
-                dispatch, extra, rejectWithValue, getState,
-            } = thunkApi;
-            try {
-                const userData = getUserAuthData(getState());
-                const article = getArticleDetailsData(getState());
+    ThunkConfigI<string>
+>('articleDetails/addCommentForArticle', async (text, thunkApi) => {
+    const { dispatch, extra, rejectWithValue, getState } = thunkApi;
+    try {
+        const userData = getUserAuthData(getState());
+        const article = getArticleDetailsData(getState());
 
-                // ? Если отсутствуют авторизационные данные о пользователе, пустой инпут или отсутствует статья, то выбрасывается ошибка;
-                if (!userData || !text || !article) {
-                    return rejectWithValue('No data');
-                }
+        // ? Если отсутствуют авторизационные данные о пользователе, пустой инпут или отсутствует статья, то выбрасывается ошибка;
+        if (!userData || !text || !article) {
+            return rejectWithValue('No data');
+        }
 
-                const response = await extra.api.post<CommentI>('/comments', {
-                    articleId: article.id,
-                    userId: userData.id,
-                    text,
-                });
+        const response = await extra.api.post<CommentI>('/comments', {
+            articleId: article.id,
+            userId: userData.id,
+            text,
+        });
 
-                if (!response.data) {
-                    throw new Error();
-                }
+        if (!response.data) {
+            throw new Error();
+        }
 
-                dispatch(fetchCommentsByArticleId(article.id));
+        dispatch(fetchCommentsByArticleId(article.id));
 
-                return response.data;
-            } catch (error) {
-                return rejectWithValue('error');
-            }
-        },
-    );
+        return response.data;
+    } catch (error) {
+        return rejectWithValue('error');
+    }
+});

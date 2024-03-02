@@ -12,13 +12,13 @@ interface OverlayPropsI {
  * @param className
  * @param onClick - функция, отвечающая за обработку клика на затемнённый `background`;
  */
-export const Overlay: React.FC<OverlayPropsI> = memo(({
-    className, onClick,
-}) => {
-    return (
-        <div
-            className={classNames(cls.overlay, {}, [className])}
-            onClick={onClick}
-        />
-    );
-});
+export const Overlay: React.FC<OverlayPropsI> = memo(
+    ({ className, onClick }) => {
+        return (
+            <div
+                className={classNames(cls.overlay, {}, [className])}
+                onClick={onClick}
+            />
+        );
+    },
+);

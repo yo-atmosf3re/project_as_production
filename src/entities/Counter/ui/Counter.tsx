@@ -24,36 +24,24 @@ export const Counter: React.FC = () => {
 
     return (
         <div>
-            <h1
-                data-testid="value-title"
-            >
-                {
-                    counterValue
-                }
-            </h1>
+            <h1 data-testid="value-title">{counterValue}</h1>
             <Button
                 data-testid="increment-button"
                 onClick={incrementHandler}
             >
-                {
-                    t('Increments')
-                }
+                {t('Increments')}
             </Button>
             <Button
                 data-testid="decrement-button"
                 onClick={decrementHandler}
             >
-                {
-                    t('Decrement')
-                }
+                {t('Decrement')}
             </Button>
             <Button
                 data-testid="add-button"
                 onClick={addFiveHandler}
             >
-                {
-                    t('Add five')
-                }
+                {t('Add five')}
             </Button>
         </div>
     );

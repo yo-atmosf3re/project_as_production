@@ -12,9 +12,7 @@ interface AdminPanelPagePropsI {
  *  Страница, которая отрисовывает админ-панель;
  * @param className
  */
-const AdminPanelPage: React.FC<AdminPanelPagePropsI> = ({
-    className,
-}) => {
+const AdminPanelPage: React.FC<AdminPanelPagePropsI> = ({ className }) => {
     const { t } = useTranslation('adminPanel');
 
     return (
@@ -22,11 +20,7 @@ const AdminPanelPage: React.FC<AdminPanelPagePropsI> = ({
             className={classNames(cls['admin-panel'], {}, [className])}
             data-testid="AdminPanelPage"
         >
-            {
-                t(
-                    'Админ панель',
-                )
-            }
+            {t('Админ панель')}
         </Page>
     );
 };

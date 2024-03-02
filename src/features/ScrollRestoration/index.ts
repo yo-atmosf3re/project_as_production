@@ -3,4 +3,7 @@ export type { ScrollRestorationSchema } from './model/types/ScrollRestorationSch
 export { getScrollRestoration } from './model/selectors/getScrollRestoration/getScrollRestoration';
 export { getScrollRestorationByPath } from './model/selectors/getScrollRestorationByPath/getScrollRestorationByPath';
 
-export { scrollRestorationActions, scrollRestorationReducer } from './model/slice/scrollRestorationSlice';
+export {
+    scrollRestorationActions,
+    scrollRestorationReducer,
+} from './model/slice/scrollRestorationSlice';

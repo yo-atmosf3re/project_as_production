@@ -46,19 +46,17 @@ export const NotificationButton: React.FC<NotificationButtonPropsI> = ({
         <>
             <BrowserView>
                 <Popover
-                    className={classNames(cls['notification-button'], {}, [className])}
+                    className={classNames(cls['notification-button'], {}, [
+                        className,
+                    ])}
                     direction="bottom left"
                     trigger={trigger}
                 >
-                    <NotificationList
-                        className={cls.notifications}
-                    />
+                    <NotificationList className={cls.notifications} />
                 </Popover>
             </BrowserView>
             <MobileView>
-                {
-                    trigger
-                }
+                {trigger}
                 <Drawer
                     isOpen={isOpen}
                     onClose={onCloseDrawer}

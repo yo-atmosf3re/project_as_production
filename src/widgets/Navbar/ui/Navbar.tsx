@@ -3,9 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button, BUTTON_THEME } from '@/shared/ui/Button';
-import {
-    getUserAuthData,
-} from '@/entities/User';
+import { getUserAuthData } from '@/entities/User';
 import { Text, TEXT_THEME } from '@/shared/ui/Text';
 import { APP_LINK_THEME, AppLink } from '@/shared/ui/AppLink';
 import { HStack } from '@/shared/ui/Stack';
@@ -17,7 +15,7 @@ import { LoginModal } from '@/features/AuthByUsername';
 import { getRouteArticleCreate } from '@/shared/const/consts';
 
 interface NavbarPropsI {
-   className?: string;
+    className?: string;
 }
 
 // ? Компонента-навбар;
@@ -46,18 +44,14 @@ export const Navbar: React.FC<NavbarPropsI> = memo(() => {
                 <Text
                     theme={TEXT_THEME.INVERTED}
                     className={cls['app-name']}
-                    title={
-                        t('LOGO')
-                    }
+                    title={t('LOGO')}
                 />
                 <AppLink
                     className={cls['create-article_button']}
                     to={getRouteArticleCreate()}
                     theme={APP_LINK_THEME.SECONDARY}
                 >
-                    {
-                        t('Создать статью')
-                    }
+                    {t('Создать статью')}
                 </AppLink>
                 <HStack
                     gap="16"
@@ -83,16 +77,12 @@ export const Navbar: React.FC<NavbarPropsI> = memo(() => {
             >
                 {t('Войти')}
             </Button>
-            {
-                isAuthModal
-                    ? (
-                        <LoginModal
-                            isOpen={isAuthModal}
-                            onClose={onCloseModal}
-                        />
-                    )
-                    : null
-            }
+            {isAuthModal ? (
+                <LoginModal
+                    isOpen={isAuthModal}
+                    onClose={onCloseModal}
+                />
+            ) : null}
         </HStack>
     );
 });

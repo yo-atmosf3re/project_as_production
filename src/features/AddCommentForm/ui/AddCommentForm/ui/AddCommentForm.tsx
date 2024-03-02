@@ -4,11 +4,17 @@ import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Input } from '@/shared/ui/Input';
 import { Button } from '@/shared/ui/Button';
-import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import {
+    DynamicModuleLoader,
+    ReducersList,
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { HStack } from '@/shared/ui/Stack';
 import { getCommentFormText } from '../../../model/selectors/getCommentFormText/getCommentFormText';
-import { addCommentFormActions, addCommentFormReducer } from '../../../model/slice/addCommentFormSlice';
+import {
+    addCommentFormActions,
+    addCommentFormReducer,
+} from '../../../model/slice/addCommentFormSlice';
 import cls from './AddCommentForm.module.scss';
 
 export interface AddCommentFormPropsI {
@@ -27,15 +33,19 @@ const INITIAL_REDUCERS: ReducersList = {
  * @param onSendComment - функция для отправки комментария;
  */
 const AddCommentForm: React.FC<AddCommentFormPropsI> = ({
-    className, onSendComment,
+    className,
+    onSendComment,
 }) => {
     const { t } = useTranslation();
     const text = useSelector(getCommentFormText);
     const dispatch = useAppDispatch();
 
-    const onCommentTextHandler = useCallback((value: string) => {
-        dispatch(addCommentFormActions.setText(value));
-    }, [dispatch]);
+    const onCommentTextHandler = useCallback(
+        (value: string) => {
+            dispatch(addCommentFormActions.setText(value));
+        },
+        [dispatch],
+    );
 
     const onSendHandler = useCallback(() => {
         onSendComment(text || '');
@@ -43,9 +53,7 @@ const AddCommentForm: React.FC<AddCommentFormPropsI> = ({
     }, [onCommentTextHandler, onSendComment, text]);
 
     return (
-        <DynamicModuleLoader
-            reducers={INITIAL_REDUCERS}
-        >
+        <DynamicModuleLoader reducers={INITIAL_REDUCERS}>
             <HStack
                 max
                 justify="between"
@@ -55,9 +63,7 @@ const AddCommentForm: React.FC<AddCommentFormPropsI> = ({
             >
                 <Input
                     className={cls.input}
-                    placeholder={
-                        t('Введите текст комментария')
-                    }
+                    placeholder={t('Введите текст комментария')}
                     value={text}
                     onChange={onCommentTextHandler}
                     data-testid="AddCommentForm.Input"
@@ -66,9 +72,7 @@ const AddCommentForm: React.FC<AddCommentFormPropsI> = ({
                     onClick={onSendHandler}
                     data-testid="AddCommentForm.Button"
                 >
-                    {
-                        t('Отправить')
-                    }
+                    {t('Отправить')}
                 </Button>
             </HStack>
         </DynamicModuleLoader>

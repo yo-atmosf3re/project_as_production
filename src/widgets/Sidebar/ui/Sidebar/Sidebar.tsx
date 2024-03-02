@@ -14,9 +14,7 @@ interface NavbarPropsI {
 }
 
 // ? Компонента-сайдбар, содержит некоторый функционал по пользовательской кастомизации приложения (смена темы, языка);
-export const Sidebar: React.FC<NavbarPropsI> = memo(({
-    className,
-}) => {
+export const Sidebar: React.FC<NavbarPropsI> = memo(({ className }) => {
     const [collapsed, setCollapsed] = useState<boolean>(false);
     const sidebarItemsList = useSelector(getSidebarItems);
 
@@ -24,18 +22,26 @@ export const Sidebar: React.FC<NavbarPropsI> = memo(({
         setCollapsed((prev) => !prev);
     };
 
-    const itemsList = useMemo(() => sidebarItemsList.map((item) => (
-        <SidebarItem
-            item={item}
-            collapsed={collapsed}
-            key={item.path}
-        />
-    )), [collapsed, sidebarItemsList]);
+    const itemsList = useMemo(
+        () =>
+            sidebarItemsList.map((item) => (
+                <SidebarItem
+                    item={item}
+                    collapsed={collapsed}
+                    key={item.path}
+                />
+            )),
+        [collapsed, sidebarItemsList],
+    );
 
     return (
         <aside
             data-testid="sidebar"
-            className={classNames(cls.sidebar, { [cls.collapsed]: !collapsed }, [className])}
+            className={classNames(
+                cls.sidebar,
+                { [cls.collapsed]: !collapsed },
+                [className],
+            )}
         >
             <Button
                 data-testid="sidebar-toggle"
@@ -45,18 +51,14 @@ export const Sidebar: React.FC<NavbarPropsI> = memo(({
                 square
                 size={BUTTON_SIZE.L}
             >
-                {
-                    collapsed ? '>' : '<'
-                }
+                {collapsed ? '>' : '<'}
             </Button>
             <VStack
                 role="navigation"
                 className={cls.items}
                 gap="8"
             >
-                {
-                    itemsList
-                }
+                {itemsList}
             </VStack>
             <HStack
                 justify="center"

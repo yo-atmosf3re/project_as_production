@@ -1,53 +1,49 @@
 {
-   "compilerOptions": {
-      "outDir": "./dist/",
-      // ? noImplicitAny - подсвечивает все места где не указан тип, однако это не означает, что теперь вовсе нельзя использовать any. Это означает лишь, что в подобных ситуациях разработчик должен явно указывать any;
-      "noImplicitAny": true,
-      // "module": "es6",
-      // ? module - можно установить es5, es6, ESNext и CommonJS. На этом проекте для того, чтобы заработали модули (import) нужно было указать ESNext, и добавить "ts-node" после "compilerOptions". Это прямо указано в документации как один из способов решения проблемы с настройкой import вместо require();
-      "module": "ESNext",
-      // ? target - указывает в какую спецификацию компилируем, это нужно для поддержки большинства браузеров;
-      // "target": "es5",
-      // "target": "ES2015",
-      "target": "ESNext",
-      "jsx": "react-jsx",
-      // ? allowJs - компилятор будет обрабатывать не только TS файлы, но и JS файлы;
-      "allowJs": true,
-      // ? moduleResolution - определяет то какие импорты будут. Тут всего два свойства - node и classic. Чаще всего используется node;
-      "moduleResolution": "node",
-      // ? esModuleInterop - позволяет работать с пакетами, которые используют CommonJS как с обычными пакетами с помощью import (require() module.export = CommonJS);
-      "esModuleInterop": true,
-      // ? allowSyntheticDefaultImports - если какая-либо библиотека не имеет default import, то лоадеры вроде ts-loader или babel-loader автоматически создают их вместо такого импорта, например:
-      // ? import * as React from 'react';
-      // ? Можно будет писать вот такой:
-      // ? import React from 'react';
-      "allowSyntheticDefaultImports": true,
-      // ? baseUrl - для абсолютного импорта;
-      "baseUrl": ".",
-      // ? Включение строго режима Typescript;
-      "strict": true,
-      // ? Такая конструкция paths говорит о том, что все абсолютные экспорты/импорты будут идти из папки src
-      "paths": {
-         // ? Такая конструкция исключает ошибки, когда какой-либо компонент якобы не может являться JSX-компонентой, и такой вариант исключает такие ошибки;
-         "react": [
-            "./node_modules/@types/react"
-         ],
-         "@/*": [
-            "./src/*"
-         ]
-      },
-      "isolatedModules": true,
-   },
-   // ? Это нужно для настройки import простыми словами, работает в связке с "module": "ESNext";
-   "ts-node": {
-      "compilerOptions": {
-         "module": "CommonJS"
-      }
-   },
-   // ! Если это раскомментить, то абсолютные импорты крашат приложение;
-   "include": [
-      "./config/jest/setupTests.ts",
-      "./src/**/*.ts",
-      "./src/**/*.tsx",
-   ],
+    "compilerOptions": {
+        "outDir": "./dist/",
+        // ? noImplicitAny - подсвечивает все места где не указан тип, однако это не означает, что теперь вовсе нельзя использовать any. Это означает лишь, что в подобных ситуациях разработчик должен явно указывать any;
+        "noImplicitAny": true,
+        // "module": "es6",
+        // ? module - можно установить es5, es6, ESNext и CommonJS. На этом проекте для того, чтобы заработали модули (import) нужно было указать ESNext, и добавить "ts-node" после "compilerOptions". Это прямо указано в документации как один из способов решения проблемы с настройкой import вместо require();
+        "module": "ESNext",
+        // ? target - указывает в какую спецификацию компилируем, это нужно для поддержки большинства браузеров;
+        // "target": "es5",
+        // "target": "ES2015",
+        "target": "ESNext",
+        "jsx": "react-jsx",
+        // ? allowJs - компилятор будет обрабатывать не только TS файлы, но и JS файлы;
+        "allowJs": true,
+        // ? moduleResolution - определяет то какие импорты будут. Тут всего два свойства - node и classic. Чаще всего используется node;
+        "moduleResolution": "node",
+        // ? esModuleInterop - позволяет работать с пакетами, которые используют CommonJS как с обычными пакетами с помощью import (require() module.export = CommonJS);
+        "esModuleInterop": true,
+        // ? allowSyntheticDefaultImports - если какая-либо библиотека не имеет default import, то лоадеры вроде ts-loader или babel-loader автоматически создают их вместо такого импорта, например:
+        // ? import * as React from 'react';
+        // ? Можно будет писать вот такой:
+        // ? import React from 'react';
+        "allowSyntheticDefaultImports": true,
+        // ? baseUrl - для абсолютного импорта;
+        "baseUrl": ".",
+        // ? Включение строго режима Typescript;
+        "strict": true,
+        // ? Такая конструкция paths говорит о том, что все абсолютные экспорты/импорты будут идти из папки src
+        "paths": {
+            // ? Такая конструкция исключает ошибки, когда какой-либо компонент якобы не может являться JSX-компонентой, и такой вариант исключает такие ошибки;
+            "react": ["./node_modules/@types/react"],
+            "@/*": ["./src/*"]
+        },
+        "isolatedModules": true
+    },
+    // ? Это нужно для настройки import простыми словами, работает в связке с "module": "ESNext";
+    "ts-node": {
+        "compilerOptions": {
+            "module": "CommonJS"
+        }
+    },
+    // ! Если это раскомментить, то абсолютные импорты крашат приложение;
+    "include": [
+        "./config/jest/setupTests.ts",
+        "./src/**/*.ts",
+        "./src/**/*.tsx"
+    ]
 }

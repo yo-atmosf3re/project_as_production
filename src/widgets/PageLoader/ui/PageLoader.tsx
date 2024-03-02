@@ -5,16 +5,14 @@ import { HStack } from '@/shared/ui/Stack';
 import cls from './PageLoader.module.scss';
 
 interface PageLoaderPropsI {
-   className?: string;
+    className?: string;
 }
 
 /**
  * Компонента, являющаяся имплементацией компоненты Loader, которая является страницей-прелоудером;
  * @param className
  */
-export const PageLoader: React.FC<PageLoaderPropsI> = ({
-    className,
-}) => (
+export const PageLoader: React.FC<PageLoaderPropsI> = ({ className }) => (
     <HStack
         justify="center"
         align="center"

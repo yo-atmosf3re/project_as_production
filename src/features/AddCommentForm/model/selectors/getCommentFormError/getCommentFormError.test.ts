@@ -9,9 +9,7 @@ describe('getCommentFormError', () => {
             },
         };
 
-        expect(getCommentFormError(state as StateSchema)).toEqual(
-            'Error',
-        );
+        expect(getCommentFormError(state as StateSchema)).toEqual('Error');
     });
 
     test('Should return undefined because of state is empty', () => {

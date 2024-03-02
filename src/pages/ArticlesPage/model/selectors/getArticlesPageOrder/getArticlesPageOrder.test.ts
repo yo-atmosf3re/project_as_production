@@ -9,9 +9,7 @@ describe('getArticlesPageOrder', () => {
             },
         };
 
-        expect(getArticlesPageOrder(state as StateSchema)).toEqual(
-            'desc',
-        );
+        expect(getArticlesPageOrder(state as StateSchema)).toEqual('desc');
     });
 
     test('Should return "asc" if state or selector\'s value is equal undefined', () => {

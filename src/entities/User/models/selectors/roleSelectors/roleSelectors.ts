@@ -8,9 +8,13 @@ export const getUserRoles = (state: StateSchema) => state.user.authData?.roles;
 /**
  * Возвращает `true`, если пользователь является админом;
  */
-export const isUserAdmin = createSelector(getUserRoles, (roles) => Boolean(roles?.includes(USER_ROLE.ADMIN)));
+export const isUserAdmin = createSelector(getUserRoles, (roles) =>
+    Boolean(roles?.includes(USER_ROLE.ADMIN)),
+);
 
 /**
  * Возвращает `true`, если пользователь является менеджером;
  */
-export const isUserManager = createSelector(getUserRoles, (roles) => Boolean(roles?.includes(USER_ROLE.MANAGER)));
+export const isUserManager = createSelector(getUserRoles, (roles) =>
+    Boolean(roles?.includes(USER_ROLE.MANAGER)),
+);

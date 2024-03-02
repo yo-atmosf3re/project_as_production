@@ -9,9 +9,7 @@ describe('getLoginPassword', () => {
             },
         };
 
-        expect(getLoginPassword(state as StateSchema)).toEqual(
-            'password',
-        );
+        expect(getLoginPassword(state as StateSchema)).toEqual('password');
     });
 
     test('Should return part of state with password, but with empty object', () => {

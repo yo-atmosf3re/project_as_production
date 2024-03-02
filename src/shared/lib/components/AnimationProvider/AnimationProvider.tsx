@@ -1,8 +1,11 @@
 import {
-    ReactNode, createContext,
+    ReactNode,
+    createContext,
     useContext,
-    useEffect, useMemo,
-    useRef, useState,
+    useEffect,
+    useMemo,
+    useRef,
+    useState,
 } from 'react';
 
 type SpringType = typeof import('@react-spring/web');
@@ -24,12 +27,10 @@ const AnimationContext = createContext<AnimationContextPayloadI>({});
 // ? Используем асинхронный импорт - он работает с промисами, отличается от импорта вверху компоненты тем, что верхний используется только в начале файла, а такой импорт можно использовать в компонентах, функциях и так далее;
 const getAsyncAnimationModules = () => {
     // ? Т.к на проекте обе библиотеки завясят друг от друга и используются вместе, то с помощью стандартного метода all у Promise дожидаемся загрузки библиотек параллельно;
-    return Promise.all(
-        [
-            import('@react-spring/web'),
-            import('@use-gesture/react'),
-        ],
-    );
+    return Promise.all([
+        import('@react-spring/web'),
+        import('@use-gesture/react'),
+    ]);
 };
 
 /**
@@ -47,11 +48,7 @@ export const useAnimationLibs = () => {
  * @param children
  * @returns
  */
-export const AnimationProvider = ({
-    children,
-}: {
-    children: ReactNode
-}) => {
+export const AnimationProvider = ({ children }: { children: ReactNode }) => {
     // ? Рефы в данном случае нужны для того, чтобы можно было лёгкий доступ к значениям из библиотек без перерисовок. В момент завершения ленивой загрузки, в данных рефах, по-сути, будут хранится сами библиотеки;
     const SpringRef = useRef<SpringType>();
     const GestureRef = useRef<GestureType>();
@@ -61,31 +58,27 @@ export const AnimationProvider = ({
 
     // ? Внутри useEffect вызывается функция, при успешном выполнении которой, зарезолвленные данные сохраняются в рефы, т.е тем самым получаются данные по библиотекам получаются, передаются в рефы;
     useEffect(() => {
-        getAsyncAnimationModules()
-            .then(([Spring, Gesture]) => {
-                SpringRef.current = Spring;
-                GestureRef.current = Gesture;
-                // ? Сигнализируем о том, что библиотеки подгрузились успешно;
-                setIsLoaded(true);
-            });
+        getAsyncAnimationModules().then(([Spring, Gesture]) => {
+            SpringRef.current = Spring;
+            GestureRef.current = Gesture;
+            // ? Сигнализируем о том, что библиотеки подгрузились успешно;
+            setIsLoaded(true);
+        });
     }, []);
 
     // ? Для того, чтобы исключить пересоздание объекта value при перерисовках, мемоизируем сам объект;
-    const value = useMemo(() => (
-        {
+    const value = useMemo(
+        () => ({
             Gesture: GestureRef.current,
             Spring: SpringRef.current,
             isLoaded,
-        }
-    ), [isLoaded]);
+        }),
+        [isLoaded],
+    );
 
     return (
-        <AnimationContext.Provider
-            value={value}
-        >
-            {
-                children
-            }
+        <AnimationContext.Provider value={value}>
+            {children}
         </AnimationContext.Provider>
     );
 };

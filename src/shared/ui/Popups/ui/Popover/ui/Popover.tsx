@@ -21,7 +21,8 @@ interface PopoverPropsI {
  * @param children
  */
 export const MyPopover: React.FC<PopoverPropsI> = ({
-    className, trigger,
+    className,
+    trigger,
     direction = 'bottom right',
     children,
 }) => {
@@ -44,17 +45,11 @@ export const MyPopover: React.FC<PopoverPropsI> = ({
                 as="div"
                 className={popupCls.trigger}
             >
-                {
-                    trigger
-                }
+                {trigger}
             </Popover.Button>
 
-            <Popover.Panel
-                className={classNames(cls.panel, {}, menuClasses)}
-            >
-                {
-                    children
-                }
+            <Popover.Panel className={classNames(cls.panel, {}, menuClasses)}>
+                {children}
             </Popover.Panel>
         </Popover>
     );

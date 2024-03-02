@@ -9,12 +9,10 @@ describe('getArticlesPageIsLoading', () => {
             },
         };
 
-        expect(getArticlesPageIsLoading(state as StateSchema)).toEqual(
-            false,
-        );
+        expect(getArticlesPageIsLoading(state as StateSchema)).toEqual(false);
     });
 
-    test('Should return false with empty state, because false it\'s default value', () => {
+    test("Should return false with empty state, because false it's default value", () => {
         const state: DeepPartial<StateSchema> = {};
 
         expect(getArticlesPageIsLoading(state as StateSchema)).toEqual(false);

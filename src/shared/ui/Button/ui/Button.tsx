@@ -19,7 +19,7 @@ export enum BUTTON_THEME {
     OUTLINE_RED = 'outline-red',
     OUTLINE_INVERTED = 'outline-inverted',
     BACKGROUND = 'background',
-    BACKGROUND_INVERTED = 'backgroundInverted'
+    BACKGROUND_INVERTED = 'backgroundInverted',
 }
 
 /**
@@ -56,32 +56,36 @@ interface ButtonPropsI extends ButtonHTMLAttributes<HTMLButtonElement> {
  * @param disabled - возможность отключить кнопку;
  * @param fullWidth - флаг, указывающий на то, нужно ли растягивать кнопку по всей ширине или нет;
  */
-export const Button: React.FC<ButtonPropsI> = memo(({
-    className, children,
-    theme = BUTTON_THEME.OUTLINE,
-    size = BUTTON_SIZE.M,
-    square,
-    disabled,
-    fullWidth,
-    ...otherProps
-}) => {
-    const mods: ModsType = {
-        [cls.square]: square,
-        [cls[size]]: true,
-        [cls.disabled]: disabled,
-        [cls['full-width']]: fullWidth,
-    };
-    const additionalClasses: Array<string | undefined> = [
-        className, cls[theme],
-    ];
-    return (
-        <button
-            disabled={disabled}
-            type="button"
-            className={classNames(cls.button, mods, additionalClasses)}
-            {...otherProps}
-        >
-            {children}
-        </button>
-    );
-});
+export const Button: React.FC<ButtonPropsI> = memo(
+    ({
+        className,
+        children,
+        theme = BUTTON_THEME.OUTLINE,
+        size = BUTTON_SIZE.M,
+        square,
+        disabled,
+        fullWidth,
+        ...otherProps
+    }) => {
+        const mods: ModsType = {
+            [cls.square]: square,
+            [cls[size]]: true,
+            [cls.disabled]: disabled,
+            [cls['full-width']]: fullWidth,
+        };
+        const additionalClasses: Array<string | undefined> = [
+            className,
+            cls[theme],
+        ];
+        return (
+            <button
+                disabled={disabled}
+                type="button"
+                className={classNames(cls.button, mods, additionalClasses)}
+                {...otherProps}
+            >
+                {children}
+            </button>
+        );
+    },
+);

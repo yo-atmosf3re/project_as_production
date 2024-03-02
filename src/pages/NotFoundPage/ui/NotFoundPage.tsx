@@ -6,16 +6,14 @@ import { HStack } from '@/shared/ui/Stack';
 import cls from './NotFoundPage.module.scss';
 
 interface NotFoundPagePropsI {
-   className?: string;
+    className?: string;
 }
 
 /**
  * Компонента, которая отображается в случае, если какая-либо страница не найдена;? Компонента, которая отображается в случае, если какая-либо страница не найдена;
  * @param className
  */
-export const NotFoundPage: React.FC<NotFoundPagePropsI> = ({
-    className,
-}) => {
+export const NotFoundPage: React.FC<NotFoundPagePropsI> = ({ className }) => {
     const { t } = useTranslation('notFoundPage');
     return (
         <Page
@@ -26,9 +24,7 @@ export const NotFoundPage: React.FC<NotFoundPagePropsI> = ({
                 justify="center"
                 align="center"
             >
-                {
-                    t('Страница не найдена')
-                }
+                {t('Страница не найдена')}
             </HStack>
         </Page>
     );

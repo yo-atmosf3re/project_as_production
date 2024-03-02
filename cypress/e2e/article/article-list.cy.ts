@@ -4,11 +4,9 @@ describe('The user go to article list page', () => {
             // ? Логинимся;
             .login()
             // ? Переходим на страницу со списком статей;
-            .then(
-                (data) => {
-                    cy.visit('articles');
-                },
-            );
+            .then((data) => {
+                cy.visit('articles');
+            });
     });
 
     it('The article list page is successfuly loaded', () => {
@@ -25,21 +23,18 @@ describe('The user go to article list page', () => {
     });
 
     // ! Не работает;
-    it.skip('The article list page is successfuly loaded (stub\'s example)', () => {
+    it.skip("The article list page is successfuly loaded (stub's example)", () => {
         // " Стабы - заглушки, возвращающие заранее определенные значения на определенные входные данные. От части, является синонимом для моков;
-        cy
-            .intercept(
-                // ? Указание запроса;
-                'GET',
-                // ? Указание регулярного выражения;
-                '**/articles?*',
-                {
-                    // ? В качестве фикстуры указывается подготовленный файл со всеми статьями;
-                    fixture: 'articles.json',
-                },
-            )
-            .then((res) => cy
-                .log(JSON.stringify(res)));
+        cy.intercept(
+            // ? Указание запроса;
+            'GET',
+            // ? Указание регулярного выражения;
+            '**/articles?*',
+            {
+                // ? В качестве фикстуры указывается подготовленный файл со всеми статьями;
+                fixture: 'articles.json',
+            },
+        ).then((res) => cy.log(JSON.stringify(res)));
         cy
             // ? Поиск списка статей;
             .getByTestId('ArticleList')

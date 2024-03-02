@@ -9,9 +9,7 @@ describe('getLoginUsername', () => {
             },
         };
 
-        expect(getLoginUsername(state as StateSchema)).toEqual(
-            'username',
-        );
+        expect(getLoginUsername(state as StateSchema)).toEqual('username');
     });
 
     test('Should return part of state with username, but with empty object', () => {

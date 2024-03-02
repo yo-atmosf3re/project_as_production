@@ -1,14 +1,12 @@
 {
-   "i18n-ally.localesPaths": [
-      "public/locales",
-   ],
-   "i18n-ally.keystyle": "flat",
-   "window.title": "PAP",
-   "editor.tokenColorCustomizations": {
-      "comments": "",
-      "textMateRules": []
-   },
-   "[markdown]": {
-      "editor.defaultFormatter": null
-   },
+    "i18n-ally.localesPaths": ["public/locales"],
+    "i18n-ally.keystyle": "flat",
+    "window.title": "PAP",
+    "editor.tokenColorCustomizations": {
+        "comments": "",
+        "textMateRules": []
+    },
+    "[markdown]": {
+        "editor.defaultFormatter": null
+    }
 }

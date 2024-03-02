@@ -12,7 +12,11 @@ export interface UseInfiniteScrollOptionsI {
  * @param triggerRef - реф, на который нужно будет триггерится, чтобы вызвать `callback`;
  * @param wrapperRef - реф на оболчку, внутри которой находится сам скролл (будет использоваться на скролле компоненты `Page`, но может использоваться и на глобальном скролле, на любой компоненте со скроллом);
  */
-export function useInfiniteScroll({ callback, wrapperRef, triggerRef }: UseInfiniteScrollOptionsI) {
+export function useInfiniteScroll({
+    callback,
+    wrapperRef,
+    triggerRef,
+}: UseInfiniteScrollOptionsI) {
     const observer = useRef<IntersectionObserver | null>(null);
 
     // ? Использование *Intersection Observer API;
@@ -22,7 +26,7 @@ export function useInfiniteScroll({ callback, wrapperRef, triggerRef }: UseInfin
 
         if (callback) {
             const options = {
-            // ? В качества корневого элемента передаём оболочку (это может быть Page, либо глобальный скролл, на любой компоненте со скроллом);
+                // ? В качества корневого элемента передаём оболочку (это может быть Page, либо глобальный скролл, на любой компоненте со скроллом);
                 root: wrapperElement,
                 rootMargin: '0px',
                 threshold: 1.0,

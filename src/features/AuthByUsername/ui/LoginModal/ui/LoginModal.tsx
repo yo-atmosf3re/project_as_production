@@ -12,7 +12,9 @@ interface LoginModalPropsI {
 
 // ? Модальное окно, которое содержит в себе логику LoginForm, логику самого модального окна. Оболочка для компоненты LoginForm. Благодаря этому исключается использование LoginForm из вне;
 export const LoginModal: React.FC<LoginModalPropsI> = ({
-    className, isOpen, onClose,
+    className,
+    isOpen,
+    onClose,
 }) => (
     <Modal
         lazy

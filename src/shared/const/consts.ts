@@ -17,8 +17,8 @@ export enum VALIDATE_PROFILE_ERROR {
 export enum USER_ROLE {
     ADMIN = 'ADMIN',
     USER = 'USER',
-    MANAGER = 'MANAGER'
-}/**
+    MANAGER = 'MANAGER',
+} /**
 
 /**
  * Перечисление видов блоков в статье;
@@ -29,7 +29,7 @@ export enum USER_ROLE {
 export enum ARTICLE_BLOCK_TYPE {
     CODE = 'CODE',
     IMAGE = 'IMAGE',
-    TEXT = 'TEXT'
+    TEXT = 'TEXT',
 }
 
 /**
@@ -41,7 +41,7 @@ export enum ARTICLE_BLOCK_TYPE {
 export enum ARTICLE_SORT_FIELD {
     VIEWS = 'views',
     TITLE = 'title',
-    CREATED = 'createdAt'
+    CREATED = 'createdAt',
 }
 
 /**
@@ -55,7 +55,7 @@ export enum ARTICLE_TYPE {
     ALL = 'all',
     IT = 'IT',
     SCIENCE = 'SCIENCE',
-    ECONOMICS = 'ECONOMICS'
+    ECONOMICS = 'ECONOMICS',
 }
 
 /**
@@ -76,7 +76,7 @@ export enum COUNTRY {
     BELARUS = 'Belarus',
     UKRAIN = 'Ukrain',
     KAZAKHSTAN = 'Kazakhstan',
-    ARMENIA = 'Armenia'
+    ARMENIA = 'Armenia',
 }
 
 /**
@@ -85,7 +85,7 @@ export enum COUNTRY {
 export enum CURRENCY {
     'RUB' = 'RUB',
     'EUR' = 'EUR',
-    'USD' = 'USD'
+    'USD' = 'USD',
 }
 
 /**
@@ -100,7 +100,7 @@ export const getRouteAbout = () => '/about';
 
 /**
  * Функция, возвращающая путь для `ProfilePage` с конкретным id;
-*/
+ */
 export const getRouteProfile = (id: string) => `/profile/${id}`;
 
 /**
@@ -147,14 +147,14 @@ export enum APP_ROUTES {
     ADMIN_PANEL = 'admin_panel',
     FORBIDDEN = 'forbidden',
     // ? Последний маршрут;
-    NOT_FOUND = 'not_found'
+    NOT_FOUND = 'not_found',
 }
 
 /**
  * Список с стилистическими темами в приложении;
  */
 export enum THEME {
-   LIGHT = 'app_light_theme',
-   DARK = 'app_dark_theme',
-   JUNGLE = 'app_jungle_theme'
+    LIGHT = 'app_light_theme',
+    DARK = 'app_dark_theme',
+    JUNGLE = 'app_jungle_theme',
 }

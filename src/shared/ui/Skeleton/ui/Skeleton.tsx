@@ -18,12 +18,12 @@ interface SkeletonPropsI {
  * @returns
  */
 export const Skeleton: React.FC<SkeletonPropsI> = ({
-    className, height, width,
+    className,
+    height,
+    width,
     border = '6px',
 }) => {
-    const mods: ModsType = {
-
-    };
+    const mods: ModsType = {};
     const styles: CSSProperties = {
         width,
         height,

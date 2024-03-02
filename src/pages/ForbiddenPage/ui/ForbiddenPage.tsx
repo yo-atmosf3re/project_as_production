@@ -12,18 +12,14 @@ interface ForbiddenPagePropsI {
  * Страница, которая отрисовывается в случае, если у  пользователя нет прав доступа к какой-либо странице;
  * @param className
  */
-export const ForbiddenPage: React.FC<ForbiddenPagePropsI> = ({
-    className,
-}) => {
+export const ForbiddenPage: React.FC<ForbiddenPagePropsI> = ({ className }) => {
     const { t } = useTranslation('notFoundPage');
     return (
         <Page
             data-testid="ForbiddenPage"
             className={classNames(cls.ForbiddenPage, {}, [className])}
         >
-            {
-                t('У Вас нет доступа к этой странице!')
-            }
+            {t('У Вас нет доступа к этой странице!')}
         </Page>
     );
 };

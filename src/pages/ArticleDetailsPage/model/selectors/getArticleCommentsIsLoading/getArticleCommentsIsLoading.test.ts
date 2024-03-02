@@ -11,14 +11,14 @@ describe('getArticleCommentsIsLoading', () => {
             },
         };
 
-        expect(getArticleCommentsIsLoading(state as StateSchema)).toEqual(
-            true,
-        );
+        expect(getArticleCommentsIsLoading(state as StateSchema)).toEqual(true);
     });
 
     test('Should return undefined with empty state', () => {
         const state: DeepPartial<StateSchema> = {};
 
-        expect(getArticleCommentsIsLoading(state as StateSchema)).toEqual(undefined);
+        expect(getArticleCommentsIsLoading(state as StateSchema)).toEqual(
+            undefined,
+        );
     });
 });

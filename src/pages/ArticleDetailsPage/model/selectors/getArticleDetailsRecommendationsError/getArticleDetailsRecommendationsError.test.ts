@@ -11,14 +11,16 @@ describe('getArticleDetailsReccomendationsError', () => {
             },
         };
 
-        expect(getArticleDetailsRecommendationsError(state as StateSchema)).toEqual(
-            'Error',
-        );
+        expect(
+            getArticleDetailsRecommendationsError(state as StateSchema),
+        ).toEqual('Error');
     });
 
     test('Should return undefined with empty state', () => {
         const state: DeepPartial<StateSchema> = {};
 
-        expect(getArticleDetailsRecommendationsError(state as StateSchema)).toEqual(undefined);
+        expect(
+            getArticleDetailsRecommendationsError(state as StateSchema),
+        ).toEqual(undefined);
     });
 });

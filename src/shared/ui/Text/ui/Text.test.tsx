@@ -4,21 +4,17 @@ import { Text } from './Text';
 
 describe('Text test', () => {
     test('Render text', () => {
-        componentRender(
-            <Text
-                text="Some text"
-            />,
+        componentRender(<Text text="Some text" />);
+        expect(screen.getByTestId('Text.Paragraph')).toHaveTextContent(
+            'Some text',
         );
-        expect(screen.getByTestId('Text.Paragraph')).toHaveTextContent('Some text');
     });
 
     test('Render title', () => {
-        componentRender(
-            <Text
-                title="Some title"
-            />,
+        componentRender(<Text title="Some title" />);
+        expect(screen.getByTestId('Text.Header')).toHaveTextContent(
+            'Some title',
         );
-        expect(screen.getByTestId('Text.Header')).toHaveTextContent('Some title');
     });
 
     test('Render with both variants', () => {

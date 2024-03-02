@@ -16,7 +16,8 @@ interface NotificationItemPropsI {
  * @param item - элемент из массива с уведомлениями;
  */
 export const NotificationItem: React.FC<NotificationItemPropsI> = ({
-    className, item,
+    className,
+    item,
 }) => {
     const content = (
         <Card
@@ -38,9 +39,7 @@ export const NotificationItem: React.FC<NotificationItemPropsI> = ({
                 rel="noreferrer"
                 className={cls.link}
             >
-                {
-                    content
-                }
+                {content}
             </a>
         );
     }

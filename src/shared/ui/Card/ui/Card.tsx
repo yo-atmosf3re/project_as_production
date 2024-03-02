@@ -8,7 +8,7 @@ import cls from './Card.module.scss';
  */
 export enum CARD_THEME {
     NORMAL = 'normal',
-    OUTLINED = 'outlined'
+    OUTLINED = 'outlined',
 }
 
 interface CardPropsI extends HTMLAttributes<HTMLDivElement> {
@@ -27,7 +27,9 @@ interface CardPropsI extends HTMLAttributes<HTMLDivElement> {
  * @returns
  */
 export const Card: React.FC<CardPropsI> = ({
-    className, children, theme = CARD_THEME.NORMAL,
+    className,
+    children,
+    theme = CARD_THEME.NORMAL,
     max,
     ...otherProps
 }) => {
@@ -43,9 +45,7 @@ export const Card: React.FC<CardPropsI> = ({
             className={classNames(cls.card, mods, additionalClasses)}
             {...otherProps}
         >
-            {
-                children
-            }
+            {children}
         </div>
     );
 };

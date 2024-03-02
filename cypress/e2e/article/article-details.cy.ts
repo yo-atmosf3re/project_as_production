@@ -31,7 +31,7 @@ describe('The user go to article page', () => {
             .should('exist');
     });
 
-    it.skip('The user sees article recommendation\'s list', () => {
+    it.skip("The user sees article recommendation's list", () => {
         cy
             // ? Получение списка с рекомендациями;
             .getByTestId('ArticleRecommendationsList')
@@ -58,7 +58,7 @@ describe('The user go to article page', () => {
             .should('have.length', 1);
     });
 
-    it.only('The user add to rate for article (stub\'s example)', () => {
+    it.only("The user add to rate for article (stub's example)", () => {
         cy
             // ? Инициализация интерцептора на гет-запрос, который отлавливает по куску URL, содержащий "/articles/", а в качестве фикстуры указывается article-details.json;
             .intercept(

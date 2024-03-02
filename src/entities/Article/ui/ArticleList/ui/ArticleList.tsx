@@ -1,7 +1,5 @@
 /* eslint-disable react/no-array-index-key */
-import React, {
-    HTMLAttributeAnchorTarget,
-} from 'react';
+import React, { HTMLAttributeAnchorTarget } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Text, TEXT_SIZE } from '@/shared/ui/Text';
@@ -19,17 +17,14 @@ interface ArticleListPropsI {
     target?: HTMLAttributeAnchorTarget;
 }
 
-const GET_SKELETONS = (view: ARTICLE_VIEW): JSX.Element[] => (
-    new Array(view === ARTICLE_VIEW.SMALL ? 9 : 3)
-        .fill(0)
-        .map((_, index) => (
-            <ArticleListItemSkeleton
-                className={cls.card}
-                key={index}
-                view={view}
-            />
-        ))
-);
+const GET_SKELETONS = (view: ARTICLE_VIEW): JSX.Element[] =>
+    new Array(view === ARTICLE_VIEW.SMALL ? 9 : 3).fill(0).map((_, index) => (
+        <ArticleListItemSkeleton
+            className={cls.card}
+            key={index}
+            view={view}
+        />
+    ));
 
 /**
  * Компонента, которая отрисовывает список статей;
@@ -38,10 +33,11 @@ const GET_SKELETONS = (view: ARTICLE_VIEW): JSX.Element[] => (
  * @param isLoading - состояние загрузки;
  * @param view - тип отображения списка со статьями (по-умолчанию SMALL), для доступа используется enum ARTICLE_VIEW;
  * @param target - классический атрибут `target` тега `a`. В нужном месте, где отрисовывается `ArticleList`, можно настроить `target`, который прокидывается в дочерние `ArticleListItem`;
-*/
+ */
 export const ArticleList: React.FC<ArticleListPropsI> = ({
     className,
-    articles, isLoading,
+    articles,
+    isLoading,
     view = ARTICLE_VIEW.SMALL,
     target,
 }) => {
@@ -60,12 +56,13 @@ export const ArticleList: React.FC<ArticleListPropsI> = ({
     if (!isLoading && !articles.length) {
         return (
             <div
-                className={classNames(cls['article-list'], {}, [className, cls[view]])}
+                className={classNames(cls['article-list'], {}, [
+                    className,
+                    cls[view],
+                ])}
             >
                 <Text
-                    title={
-                        t('Статьи не найдены!')
-                    }
+                    title={t('Статьи не найдены!')}
                     size={TEXT_SIZE.L}
                 />
             </div>
@@ -74,19 +71,14 @@ export const ArticleList: React.FC<ArticleListPropsI> = ({
 
     return (
         <div
-            className={classNames(cls['article-list'], {}, [className, cls[view]])}
+            className={classNames(cls['article-list'], {}, [
+                className,
+                cls[view],
+            ])}
             data-testid="ArticleList"
         >
-            {
-                articles.length > 0
-                    ? articles.map(renderArticle)
-                    : null
-            }
-            {
-                isLoading
-                    ? GET_SKELETONS(view)
-                    : null
-            }
+            {articles.length > 0 ? articles.map(renderArticle) : null}
+            {isLoading ? GET_SKELETONS(view) : null}
         </div>
     );
 };

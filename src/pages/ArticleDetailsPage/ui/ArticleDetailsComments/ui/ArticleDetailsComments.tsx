@@ -12,8 +12,7 @@ import { Loader } from '@/shared/ui/Loader';
 import { fetchCommentsByArticleId } from '../../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { addCommentForArticle } from '../../../model/services/addCommentForArticle/addCommentForArticle';
 import { getArticleComments } from '../../../model/slice/articleDetailsCommentSlice';
-import { getArticleCommentsIsLoading } from
-    '../../../model/selectors/getArticleCommentsIsLoading/getArticleCommentsIsLoading';
+import { getArticleCommentsIsLoading } from '../../../model/selectors/getArticleCommentsIsLoading/getArticleCommentsIsLoading';
 import cls from './ArticleDetailsComments.module.scss';
 
 interface ArticleDetailsCommentsPropsI {
@@ -26,7 +25,8 @@ interface ArticleDetailsCommentsPropsI {
  * @param className
  */
 export const ArticleDetailsComments: React.FC<ArticleDetailsCommentsPropsI> = ({
-    className, id,
+    className,
+    id,
 }) => {
     const { t } = useTranslation('article');
 
@@ -39,9 +39,12 @@ export const ArticleDetailsComments: React.FC<ArticleDetailsCommentsPropsI> = ({
         dispatch(fetchCommentsByArticleId(id));
     });
 
-    const onSendComment = useCallback((text: string) => {
-        dispatch(addCommentForArticle(text));
-    }, [dispatch]);
+    const onSendComment = useCallback(
+        (text: string) => {
+            dispatch(addCommentForArticle(text));
+        },
+        [dispatch],
+    );
 
     return (
         <VStack
@@ -52,18 +55,10 @@ export const ArticleDetailsComments: React.FC<ArticleDetailsCommentsPropsI> = ({
             <Text
                 size={TEXT_SIZE.L}
                 className={cls['comment-title']}
-                title={
-                    t('Комментарии')
-                }
+                title={t('Комментарии')}
             />
-            <Suspense
-                fallback={(
-                    <Loader />
-                )}
-            >
-                <AddCommentForm
-                    onSendComment={onSendComment}
-                />
+            <Suspense fallback={<Loader />}>
+                <AddCommentForm onSendComment={onSendComment} />
             </Suspense>
             <CommentList
                 isLoading={commetsIsLoading}

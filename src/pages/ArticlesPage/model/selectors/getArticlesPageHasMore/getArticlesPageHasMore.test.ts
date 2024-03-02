@@ -9,9 +9,7 @@ describe('getArticlesPageHasMore', () => {
             },
         };
 
-        expect(getArticlesPageHasMore(state as StateSchema)).toEqual(
-            true,
-        );
+        expect(getArticlesPageHasMore(state as StateSchema)).toEqual(true);
     });
 
     test('Should return undefined with empty state', () => {

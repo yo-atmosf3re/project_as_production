@@ -5,7 +5,7 @@ interface UseHoverBindI {
     onMouseLeave: () => void;
 }
 
-type UseHoverReslutType = [boolean, UseHoverBindI]
+type UseHoverReslutType = [boolean, UseHoverBindI];
 
 /**
  * useHover - кастомный хук, который используется для отслеживания наведения указателя мыши на определенный элемент. Для использования этого хука нужно в блок (div, например) развернуть объект с функциями onMouseEnter, onMouseLeave;
@@ -25,7 +25,8 @@ export const useHover = (): UseHoverReslutType => {
         setIsHover(false);
     }, []);
 
-    return useMemo(() => [
-        isHover, { onMouseEnter, onMouseLeave },
-    ], [isHover, onMouseEnter, onMouseLeave]);
+    return useMemo(
+        () => [isHover, { onMouseEnter, onMouseLeave }],
+        [isHover, onMouseEnter, onMouseLeave],
+    );
 };

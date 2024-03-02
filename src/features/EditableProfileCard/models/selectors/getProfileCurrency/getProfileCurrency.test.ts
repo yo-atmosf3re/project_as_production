@@ -12,9 +12,7 @@ describe('getProfileCurrency', () => {
             },
         };
 
-        expect(getProfileCurrency(state as StateSchema)).toEqual(
-            CURRENCY.RUB,
-        );
+        expect(getProfileCurrency(state as StateSchema)).toEqual(CURRENCY.RUB);
     });
 
     test('Should return empty string with empty data object', () => {

@@ -11,14 +11,16 @@ describe('getArticleDetailsRecommendationsIsLoading', () => {
             },
         };
 
-        expect(getArticleDetailsRecommendationsIsLoading(state as StateSchema)).toEqual(
-            true,
-        );
+        expect(
+            getArticleDetailsRecommendationsIsLoading(state as StateSchema),
+        ).toEqual(true);
     });
 
     test('Should return undefined with empty state', () => {
         const state: DeepPartial<StateSchema> = {};
 
-        expect(getArticleDetailsRecommendationsIsLoading(state as StateSchema)).toEqual(undefined);
+        expect(
+            getArticleDetailsRecommendationsIsLoading(state as StateSchema),
+        ).toEqual(undefined);
     });
 });

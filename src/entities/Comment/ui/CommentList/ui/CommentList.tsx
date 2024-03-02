@@ -21,7 +21,8 @@ interface CommentListPropsI {
  * @param isLoading - состояние загрузки;
  */
 export const CommentList: React.FC<CommentListPropsI> = ({
-    className, comments,
+    className,
+    comments,
     isLoading,
 }) => {
     const { t } = useTranslation('article');
@@ -47,23 +48,17 @@ export const CommentList: React.FC<CommentListPropsI> = ({
             max
             className={classNames('', mods, [className])}
         >
-            {
-                comments?.length
-                    ? comments.map((comment) => (
-                        <CommentCard
-                            key={comment.id + comment.text}
-                            isLoading={isLoading}
-                            comment={comment}
-                        />
-                    ))
-                    : (
-                        <Text
-                            text={
-                                t('Комментарии отсутствуют')
-                            }
-                        />
-                    )
-            }
+            {comments?.length ? (
+                comments.map((comment) => (
+                    <CommentCard
+                        key={comment.id + comment.text}
+                        isLoading={isLoading}
+                        comment={comment}
+                    />
+                ))
+            ) : (
+                <Text text={t('Комментарии отсутствуют')} />
+            )}
         </VStack>
     );
 };

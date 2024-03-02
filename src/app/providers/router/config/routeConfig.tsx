@@ -8,10 +8,17 @@ import { ArticleEditPage } from '@/pages/ArticleEditPage';
 import { AdminPanelPage } from '@/pages/AdminPanelPage';
 import { ForbiddenPage } from '@/pages/ForbiddenPage';
 import {
-    APP_ROUTES, USER_ROLE,
-    getRouteAbout, getRouteAdminPanel, getRouteArticleCreate,
-    getRouteArticleDetails, getRouteArticleEdit, getRouteArticles,
-    getRouteForbbied, getRouteMain, getRouteProfile,
+    APP_ROUTES,
+    USER_ROLE,
+    getRouteAbout,
+    getRouteAdminPanel,
+    getRouteArticleCreate,
+    getRouteArticleDetails,
+    getRouteArticleEdit,
+    getRouteArticles,
+    getRouteForbbied,
+    getRouteMain,
+    getRouteProfile,
 } from '@/shared/const/consts';
 import { AppRoutesPropsType } from '@/shared/types/router';
 
@@ -53,9 +60,7 @@ export const routeConfig: Record<APP_ROUTES, AppRoutesPropsType> = {
         path: getRouteAdminPanel(),
         element: <AdminPanelPage />,
         authOnly: true,
-        roles: [
-            USER_ROLE.MANAGER, USER_ROLE.ADMIN,
-        ],
+        roles: [USER_ROLE.MANAGER, USER_ROLE.ADMIN],
     },
     [APP_ROUTES.FORBIDDEN]: {
         path: getRouteForbbied(),

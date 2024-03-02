@@ -12,12 +12,12 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-    decorators: [
-        withMock,
-    ],
+    decorators: [withMock],
 } as ComponentMeta<typeof ArticleRating>;
 
-const Template: ComponentStory<typeof ArticleRating> = (args) => <ArticleRating {...args} />;
+const Template: ComponentStory<typeof ArticleRating> = (args) => (
+    <ArticleRating {...args} />
+);
 
 export const WithRate = Template.bind({});
 WithRate.args = {
@@ -68,8 +68,7 @@ WithoutRate.parameters = {
             url: 'http://localhost:7777/article-ratings?articleId=1&userId=1',
             method: 'GET',
             status: 200,
-            response: [
-            ],
+            response: [],
         },
     ],
 };
@@ -125,8 +124,7 @@ WithoutRateDark.parameters = {
             url: 'http://localhost:7777/article-ratings?articleId=1&userId=1',
             method: 'GET',
             status: 200,
-            response: [
-            ],
+            response: [],
         },
     ],
 };
@@ -182,8 +180,7 @@ WithoutRateJungle.parameters = {
             url: 'http://localhost:7777/article-ratings?articleId=1&userId=1',
             method: 'GET',
             status: 200,
-            response: [
-            ],
+            response: [],
         },
     ],
 };

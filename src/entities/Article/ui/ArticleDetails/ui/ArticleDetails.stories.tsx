@@ -15,9 +15,7 @@ export default {
 } as ComponentMeta<typeof ArticleDetails>;
 
 const Template: ComponentStory<typeof ArticleDetails> = (args) => (
-    <div
-        style={{ padding: '20px' }}
-    >
+    <div style={{ padding: '20px' }}>
         <ArticleDetails {...args} />
     </div>
 );
@@ -99,84 +97,96 @@ const article: ArticleI = {
 
 export const Normal = Template.bind({});
 Normal.args = {};
-Normal.decorators = [StoreDecorator({
-    articleDetails: {
-        data: article,
-    },
-})];
+Normal.decorators = [
+    StoreDecorator({
+        articleDetails: {
+            data: article,
+        },
+    }),
+];
 
 export const Loading = Template.bind({});
 Loading.args = {};
-Loading.decorators = [StoreDecorator({
-    articleDetails: {
-        isLoading: true,
-    },
-})];
+Loading.decorators = [
+    StoreDecorator({
+        articleDetails: {
+            isLoading: true,
+        },
+    }),
+];
 
 export const Error = Template.bind({});
 Error.args = {};
-Error.decorators = [StoreDecorator({
-    articleDetails: {
-        error: 'Error',
-    },
-})];
+Error.decorators = [
+    StoreDecorator({
+        articleDetails: {
+            error: 'Error',
+        },
+    }),
+];
 
 export const NormalDark = Template.bind({});
 NormalDark.args = {};
-NormalDark.decorators = [StoreDecorator({
-    articleDetails: {
-        data: article,
-    },
-}),
-ThemeDecorator(THEME.DARK),
+NormalDark.decorators = [
+    StoreDecorator({
+        articleDetails: {
+            data: article,
+        },
+    }),
+    ThemeDecorator(THEME.DARK),
 ];
 
 export const LoadingDark = Template.bind({});
 LoadingDark.args = {};
-LoadingDark.decorators = [StoreDecorator({
-    articleDetails: {
-        isLoading: true,
-    },
-}),
-ThemeDecorator(THEME.DARK),
+LoadingDark.decorators = [
+    StoreDecorator({
+        articleDetails: {
+            isLoading: true,
+        },
+    }),
+    ThemeDecorator(THEME.DARK),
 ];
 
 export const ErrorDark = Template.bind({});
 ErrorDark.args = {};
-ErrorDark.decorators = [StoreDecorator({
-    articleDetails: {
-        error: 'Error',
-    },
-}),
-ThemeDecorator(THEME.DARK),
+ErrorDark.decorators = [
+    StoreDecorator({
+        articleDetails: {
+            error: 'Error',
+        },
+    }),
+    ThemeDecorator(THEME.DARK),
 ];
 
 export const NormalJungle = Template.bind({});
 NormalJungle.args = {};
-NormalJungle.decorators = [StoreDecorator({
-    articleDetails: {
-        data: article,
-    },
-}),
-ThemeDecorator(THEME.JUNGLE),
+NormalJungle.decorators = [
+    StoreDecorator({
+        articleDetails: {
+            data: article,
+        },
+    }),
+    ThemeDecorator(THEME.JUNGLE),
 ];
 
 export const LoadingJungle = Template.bind({});
 LoadingJungle.args = {};
-LoadingJungle.decorators = [StoreDecorator({
-    articleDetails: {
-        isLoading: true,
-    },
-}),
-ThemeDecorator(THEME.JUNGLE),
+LoadingJungle.decorators = [
+    StoreDecorator({
+        articleDetails: {
+            isLoading: true,
+        },
+    }),
+    ThemeDecorator(THEME.JUNGLE),
 ];
 
 export const ErrorJungle = Template.bind({});
 ErrorJungle.args = {};
-ErrorJungle.decorators = [StoreDecorator({
-    articleDetails: {
-        error: 'Error',
-    },
-}),
-ThemeDecorator(THEME.JUNGLE),
+ErrorJungle.decorators = [
+    StoreDecorator({
+        articleDetails: {
+            error: 'Error',
+        },
+    }),
+    ThemeDecorator(THEME.JUNGLE),
 ];

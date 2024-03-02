@@ -1,6 +1,4 @@
-import {
-    LoginSchema,
-} from '../types/LoginSchema';
+import { LoginSchema } from '../types/LoginSchema';
 import { loginActions, loginReducer } from './loginSlice';
 
 describe('loginSlice', () => {
@@ -10,9 +8,7 @@ describe('loginSlice', () => {
             password: '123',
             isLoading: false,
         };
-        expect(
-            loginReducer(state, loginActions.setUsername('Dave')),
-        ).toEqual({
+        expect(loginReducer(state, loginActions.setUsername('Dave'))).toEqual({
             username: 'Dave',
             password: '123',
             isLoading: false,
@@ -25,9 +21,7 @@ describe('loginSlice', () => {
             password: '123',
             isLoading: false,
         };
-        expect(
-            loginReducer(state, loginActions.setPassword('321')),
-        ).toEqual({
+        expect(loginReducer(state, loginActions.setPassword('321'))).toEqual({
             username: 'Alex',
             password: '321',
             isLoading: false,
@@ -47,10 +41,7 @@ describe('loginSlice', () => {
     test('Password should be set in state', () => {
         const state: DeepPartial<LoginSchema> = { password: '321' };
         expect(
-            loginReducer(
-                state as LoginSchema,
-                loginActions.setPassword('321'),
-            ),
+            loginReducer(state as LoginSchema, loginActions.setPassword('321')),
         ).toEqual({ password: '321' });
     });
 });

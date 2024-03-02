@@ -11,10 +11,8 @@ describe('getScrollRestoration', () => {
             },
         };
 
-        expect(getScrollRestoration(state as StateSchema)).toEqual(
-            {
-                article: 1000,
-            },
-        );
+        expect(getScrollRestoration(state as StateSchema)).toEqual({
+            article: 1000,
+        });
     });
 });

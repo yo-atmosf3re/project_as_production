@@ -2,7 +2,10 @@ import React, { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { RatingCard } from '@/entities/Rating';
-import { useGetProfileRating, useRateProfile } from '../../../api/profileRatingApi';
+import {
+    useGetProfileRating,
+    useRateProfile,
+} from '../../../api/profileRatingApi';
 import { getUserAuthData } from '@/entities/User';
 import { Skeleton } from '@/shared/ui/Skeleton';
 
@@ -17,63 +20,68 @@ export interface ProfileRatingPropsI {
  * @param className
  * @param profileId - айди профиля;
  */
-const ProfileRating: React.FC<ProfileRatingPropsI> = memo(({
-    className, profileId,
-}) => {
-    const { t } = useTranslation('profile');
+const ProfileRating: React.FC<ProfileRatingPropsI> = memo(
+    ({ className, profileId }) => {
+        const { t } = useTranslation('profile');
 
-    const userData = useSelector(getUserAuthData);
-    const { data, isLoading } = useGetProfileRating({
-        profileId,
-        userId: userData?.id ?? '',
-    });
-    const [rateProfileMutation] = useRateProfile();
+        const userData = useSelector(getUserAuthData);
+        const { data, isLoading } = useGetProfileRating({
+            profileId,
+            userId: userData?.id ?? '',
+        });
+        const [rateProfileMutation] = useRateProfile();
 
-    const rating = data?.[0];
+        const rating = data?.[0];
 
-    const handleRateProfile = useCallback((starsCount: number, feedback?: string): void => {
-        try {
-            rateProfileMutation(
-                {
-                    userId: userData?.id ?? '',
-                    profileId,
-                    rate: starsCount,
-                    feedback,
-                },
+        const handleRateProfile = useCallback(
+            (starsCount: number, feedback?: string): void => {
+                try {
+                    rateProfileMutation({
+                        userId: userData?.id ?? '',
+                        profileId,
+                        rate: starsCount,
+                        feedback,
+                    });
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+            [profileId, rateProfileMutation, userData?.id],
+        );
+
+        const onCancelHandler = useCallback(
+            (starsCount: number): void => {
+                handleRateProfile(starsCount);
+            },
+            [handleRateProfile],
+        );
+
+        const onAcceptHandler = useCallback(
+            (starsCount: number, feedback?: string): void => {
+                handleRateProfile(starsCount, feedback);
+            },
+            [handleRateProfile],
+        );
+
+        if (isLoading) {
+            return (
+                <Skeleton
+                    width="100%"
+                    height="120px"
+                />
             );
-        } catch (error) {
-            console.log(error);
         }
-    }, [profileId, rateProfileMutation, userData?.id]);
 
-    const onCancelHandler = useCallback((starsCount: number): void => {
-        handleRateProfile(starsCount);
-    }, [handleRateProfile]);
-
-    const onAcceptHandler = useCallback((starsCount: number, feedback?: string): void => {
-        handleRateProfile(starsCount, feedback);
-    }, [handleRateProfile]);
-
-    if (isLoading) {
         return (
-            <Skeleton
-                width="100%"
-                height="120px"
+            <RatingCard
+                onCancel={onCancelHandler}
+                onAccept={onAcceptHandler}
+                rate={rating?.rate}
+                className={className}
+                title={t('Оцените профиль пользователя!')}
             />
         );
-    }
-
-    return (
-        <RatingCard
-            onCancel={onCancelHandler}
-            onAccept={onAcceptHandler}
-            rate={rating?.rate}
-            className={className}
-            title={
-                t('Оцените профиль пользователя!')
-            }
-        />
-    );
-});
+    },
+);
 
 export default ProfileRating;

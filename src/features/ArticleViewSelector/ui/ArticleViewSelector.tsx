@@ -30,7 +30,9 @@ const VIEW_TYPES = [
  * @param onViewClickHandler - переключатель вида отображения;
  */
 export const ArticleViewSelector: React.FC<ArticleViewSelectorPropsI> = ({
-    className, view, onViewClickHandler,
+    className,
+    view,
+    onViewClickHandler,
 }) => {
     // ? Такое использование замыкания выглядело бы так же как, если бы в Button передавалось вот это onClick={() => onClickHandler(viewType.view)}, и это классический вариант передачи коллбэка с каким-то принимаемым аргументом в onClick тега button, а представленный ниже вариант короче и делает тоже самое;
     const onClickHandler = (newView: ARTICLE_VIEW) => () => {
@@ -38,26 +40,23 @@ export const ArticleViewSelector: React.FC<ArticleViewSelectorPropsI> = ({
     };
     return (
         <div
-            className={classNames(cls['article-view_selector'], {}, [className])}
+            className={classNames(cls['article-view_selector'], {}, [
+                className,
+            ])}
         >
-            {
-                VIEW_TYPES.map((viewType) => (
-                    <Button
-                        key={String(viewType.icon)}
-                        theme={BUTTON_THEME.CLEAR}
-                        onClick={onClickHandler(viewType.view)}
-                        className={classNames(
-                            '',
-                            {
-                                [cls.selected]: viewType.view === view,
-                                [cls['not-selected']]: viewType.view !== view,
-                            },
-                        )}
-                    >
-                        <Icon Svg={viewType.icon} />
-                    </Button>
-                ))
-            }
+            {VIEW_TYPES.map((viewType) => (
+                <Button
+                    key={String(viewType.icon)}
+                    theme={BUTTON_THEME.CLEAR}
+                    onClick={onClickHandler(viewType.view)}
+                    className={classNames('', {
+                        [cls.selected]: viewType.view === view,
+                        [cls['not-selected']]: viewType.view !== view,
+                    })}
+                >
+                    <Icon Svg={viewType.icon} />
+                </Button>
+            ))}
         </div>
     );
 };

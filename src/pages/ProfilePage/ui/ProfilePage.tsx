@@ -15,10 +15,8 @@ interface ProfilePagePropsI {
  * Содержит в себе отрисовку страницы профиля: карточки пользователя/пользователей, заголовок страницы, логику по взаимодействию пользователя со страницей профиля (всё это декомпозировано в EditableProfileCard);
  * @param className
  */
-const ProfilePage: React.FC<ProfilePagePropsI> = ({
-    className,
-}) => {
-    const { id } = useParams<{id: string}>();
+const ProfilePage: React.FC<ProfilePagePropsI> = ({ className }) => {
+    const { id } = useParams<{ id: string }>();
 
     if (!id) {
         return null;
@@ -32,12 +30,8 @@ const ProfilePage: React.FC<ProfilePagePropsI> = ({
                 max
                 gap="16"
             >
-                <EditableProfileCard
-                    id={id}
-                />
-                <ProfileRating
-                    profileId={id}
-                />
+                <EditableProfileCard id={id} />
+                <ProfileRating profileId={id} />
             </VStack>
         </Page>
     );

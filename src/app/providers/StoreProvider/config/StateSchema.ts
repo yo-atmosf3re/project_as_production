@@ -1,5 +1,9 @@
 import {
-    ReducersMapObject, AnyAction, CombinedState, Reducer, EnhancedStore,
+    ReducersMapObject,
+    AnyAction,
+    CombinedState,
+    Reducer,
+    EnhancedStore,
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
 import { ArticleDetailsSchema } from '@/entities/Article';
@@ -9,8 +13,7 @@ import { UserSchema } from '@/entities/User';
 import { AddCommentFormSchema } from '@/features/AddCommentForm';
 import { LoginSchema } from '@/features/AuthByUsername';
 import { ScrollRestorationSchema } from '@/features/ScrollRestoration';
-import { ArticleDetailsPageSchema }
-    from '@/pages/ArticleDetailsPage';
+import { ArticleDetailsPageSchema } from '@/pages/ArticleDetailsPage';
 import { ArticlesPageSchema } from '@/pages/ArticlesPage';
 import { rtkApi } from '@/shared/api/rtkApi';
 
@@ -39,7 +42,10 @@ export type MountedReducersType = OptionalRecord<StateSchemaKeyType, boolean>;
 // ? Типизация для редакс-менеджера;
 export interface ReducerManagerI {
     getReducerMap: () => ReducersMapObject<StateSchema>;
-    reduce: (state: StateSchema, action: AnyAction) => CombinedState<StateSchema>;
+    reduce: (
+        state: StateSchema,
+        action: AnyAction,
+    ) => CombinedState<StateSchema>;
     add: (key: StateSchemaKeyType, reducer: Reducer) => void;
     remove: (key: StateSchemaKeyType) => void;
     getMountedReducers: () => MountedReducersType;

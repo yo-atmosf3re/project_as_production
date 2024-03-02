@@ -18,9 +18,9 @@ interface ArticleDetailsPageHeaderPropsI {
  * Компонента, являющаяся частью `ArticleDetailsPage`, которая отображает навигационные кнопки внутри каждой конкретной статьи - "Вернуться назад", "Редактировать" (редактирование доступно только для автора статьи), "Отмена" и так далее;
  * @param className
  */
-export const ArticleDetailsPageHeader: React.FC<ArticleDetailsPageHeaderPropsI> = ({
-    className,
-}) => {
+export const ArticleDetailsPageHeader: React.FC<
+    ArticleDetailsPageHeaderPropsI
+> = ({ className }) => {
     const { t } = useTranslation('article');
     const navigate = useNavigate();
     const canEdit = useSelector(getCanEditArticle);
@@ -46,25 +46,17 @@ export const ArticleDetailsPageHeader: React.FC<ArticleDetailsPageHeaderPropsI> 
                 theme={BUTTON_THEME.OUTLINE}
                 onClick={onBackToList}
             >
-                {
-                    t('Назад к списку')
-                }
+                {t('Назад к списку')}
             </Button>
-            {
-                canEdit
-                    ? (
-                        <Button
-                            className={cls['edit-button']}
-                            theme={BUTTON_THEME.OUTLINE}
-                            onClick={onEditArticle}
-                        >
-                            {
-                                t('Редактировать')
-                            }
-                        </Button>
-                    )
-                    : null
-            }
+            {canEdit ? (
+                <Button
+                    className={cls['edit-button']}
+                    theme={BUTTON_THEME.OUTLINE}
+                    onClick={onEditArticle}
+                >
+                    {t('Редактировать')}
+                </Button>
+            ) : null}
         </HStack>
     );
 };
