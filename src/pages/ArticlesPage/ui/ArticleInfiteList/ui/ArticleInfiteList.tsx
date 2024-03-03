@@ -1,7 +1,7 @@
-import { ArticleList } from '@/entities/Article';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import { ArticleList } from '@/entities/Article';
 import { Text } from '@/shared/ui/Text';
 import { getArticles } from '../../../model/slice/articlesPageSlice';
 import {

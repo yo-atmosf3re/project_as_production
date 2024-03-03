@@ -12,6 +12,7 @@ import { Loader } from '@/shared/ui/Loader';
 import { fetchCommentsByArticleId } from '../../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { addCommentForArticle } from '../../../model/services/addCommentForArticle/addCommentForArticle';
 import { getArticleComments } from '../../../model/slice/articleDetailsCommentSlice';
+// eslint-disable-next-line max-len
 import { getArticleCommentsIsLoading } from '../../../model/selectors/getArticleCommentsIsLoading/getArticleCommentsIsLoading';
 import cls from './ArticleDetailsComments.module.scss';
 
