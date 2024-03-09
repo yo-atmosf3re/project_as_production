@@ -14,7 +14,7 @@ const https = require('https');
 const options = {
     // ? Для стабильной работы с путями на разных OS в данном случе используется path;
     key: fs.readFileSync(path.resolve(__dirname, 'key.pem')),
-    cerl: fs.readFileSync(path.resolve(__dirname, 'cert.pem'))
+    cert: fs.readFileSync(path.resolve(__dirname, 'cert.pem')),
 }
 
 // ? Создание сервера;
