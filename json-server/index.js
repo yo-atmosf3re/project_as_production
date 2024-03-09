@@ -7,6 +7,15 @@ const fs = require('fs');
 const jsonServer = require('json-server');
 // ? Подключение модуля path для работы с путями к файлам и папкам;
 const path = require('path');
+// ? Подключение модуля https для настройки и подключения;
+const https = require('https');
+
+// ? Опции, которые означают, что при запуске сервера будет передан ключ и сам сертификат;
+const options = {
+    // ? Для стабильной работы с путями на разных OS в данном случе используется path;
+    key: fs.readFileSync(path.resolve(__dirname, 'key.pem')),
+    cerl: fs.readFileSync(path.resolve(__dirname, 'cerl.pem'))
+}
 
 // ? Создание сервера;
 const server = jsonServer.create();
@@ -71,7 +80,19 @@ server.use((req, res, next) => {
 // ? Использование роутера для обработки остальных запросов;
 server.use(router);
 
+// ? Создание HTTPS-сервера;
+const httpsServer =
+    // ? Использование импортированного модуля https для доступа к методу, который создаёт сервер;
+    https
+        .createServer(
+            // ? Передача опций, внутри которых ключ и сертификат;
+            options,
+            // ? В качестве requestListner'a передаётся созданный здесь JSON-сервер;
+            server
+        );
+
 // ? Запуск сервера;
-server.listen(7777, () => {
-    console.log('server is running on 7777 port');
+// ? UPD: теперь сервер запускается на 443 порту (стандартный HTTPS-порт);
+httpsServer.listen(443, () => {
+    console.log('server is running on 443 port');
 });
