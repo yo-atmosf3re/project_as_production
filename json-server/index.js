@@ -14,7 +14,7 @@ const https = require('https');
 const options = {
     // ? Для стабильной работы с путями на разных OS в данном случе используется path;
     key: fs.readFileSync(path.resolve(__dirname, 'key.pem')),
-    cerl: fs.readFileSync(path.resolve(__dirname, 'cerl.pem'))
+    cerl: fs.readFileSync(path.resolve(__dirname, 'cert.pem'))
 }
 
 // ? Создание сервера;
@@ -96,6 +96,7 @@ const PORT = 8443;
 
 // ? Запуск сервера;
 // ? UPD: теперь сервер запускается на 443 порту (стандартный HTTPS-порт);
+// ? UPD 2.0: добавлен константный порт для исключения возможных проблем;
 httpsServer.listen(PORT, () => {
     console.log(`server is running on ${PORT} port`);
 });
