@@ -91,8 +91,11 @@ const httpsServer =
             server
         );
 
+// ? Порт;
+const PORT = 8443;
+
 // ? Запуск сервера;
 // ? UPD: теперь сервер запускается на 443 порту (стандартный HTTPS-порт);
-httpsServer.listen(443, () => {
-    console.log('server is running on 443 port');
+httpsServer.listen(PORT, () => {
+    console.log(`server is running on ${PORT} port`);
 });
