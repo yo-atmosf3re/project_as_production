@@ -9,6 +9,8 @@ const jsonServer = require('json-server');
 const path = require('path');
 // ? Подключение модуля https для настройки и подключения;
 const https = require('https');
+// ? Подключение модуля http для настройки и подключения при работе в dev;
+const http = require('http');
 
 // ? Опции, которые означают, что при запуске сервера будет передан ключ и сам сертификат;
 const options = {
@@ -80,6 +82,12 @@ server.use((req, res, next) => {
 // ? Использование роутера для обработки остальных запросов;
 server.use(router);
 
+// ? Порт;
+const PORT = 8443;
+
+// ? Порт для dev;
+const HTTP_PORT = 7777;
+
 // ? Создание HTTPS-сервера;
 const httpsServer =
     // ? Использование импортированного модуля https для доступа к методу, который создаёт сервер;
@@ -91,12 +99,20 @@ const httpsServer =
             server
         );
 
-// ? Порт;
-const PORT = 8443;
+// ? Создание HTTP-сервера;
+const httpServer =
+    http
+        .createServer(
+            server
+        );
 
 // ? Запуск сервера;
 // ? UPD: теперь сервер запускается на 443 порту (стандартный HTTPS-порт);
 // ? UPD 2.0: добавлен константный порт для исключения возможных проблем;
 httpsServer.listen(PORT, () => {
     console.log(`server is running on ${PORT} port`);
+});
+
+httpServer.listen(HTTP_PORT, () => {
+    console.log(`server is running on ${HTTP_PORT} port`);
 });
