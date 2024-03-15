@@ -1630,6 +1630,10 @@
             "username": "1",
             "password": "1",
             "roles": ["ADMIN"],
+            "features": {
+                "isArticleRatingEnabled": true,
+                "isCounterEnabled": true
+            },
             "avatar": "https://copp15.ru/Portals/0/ModuleFiles/i.jpg"
         },
         {
@@ -1637,6 +1641,10 @@
             "username": "2",
             "password": "2",
             "roles": ["USER"],
+            "features": {
+                "isArticleRatingEnabled": false,
+                "isCounterEnabled": false
+            },
             "avatar": "https://img.24live.co/avatar/0e43e4c8944711e78cbcf23c913e91ea_1525708454.jpeg"
         },
         {
@@ -1644,6 +1652,10 @@
             "username": "3",
             "password": "3",
             "roles": ["MANAGER"],
+            "features": {
+                "isArticleRatingEnabled": false,
+                "isCounterEnabled": true
+            },
             "avatar": ""
         },
         {
@@ -1651,6 +1663,10 @@
             "username": "testuser",
             "password": "4",
             "roles": ["ADMIN"],
+            "features": {
+                "isArticleRatingEnabled": true,
+                "isCounterEnabled": false
+            },
             "avatar": "https://img.24live.co/avatar/0e43e4c8944711e78cbcf23c913e91ea_1525708454.jpeg"
         }
     ],

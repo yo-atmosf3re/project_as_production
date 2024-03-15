@@ -1,10 +1,12 @@
 import { USER_ROLE } from '@/shared/const/consts';
+import { FeatureFlagsI } from '@/shared/types/featureFlags';
 
 export interface UserI {
     id: string;
     username: string;
     avatar?: string;
     roles?: USER_ROLE[];
+    features?: FeatureFlagsI;
 }
 
 export interface UserSchema {

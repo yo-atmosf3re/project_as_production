@@ -14,6 +14,8 @@ import { articleDetailsPageReducer } from '../../model/slice';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader';
 import { ArticleDetailsComments } from '../ArticleDetailsComments';
 import { ArticleRating } from '@/features/ArticleRating';
+import { getFeatureFlags } from '@/shared/lib/features';
+import { Counter } from '@/entities/Counter';
 
 interface ArticleDetailsPagePropsI {
     className?: string;
@@ -32,6 +34,9 @@ const ArticleDetailsPage: React.FC<ArticleDetailsPagePropsI> = ({
 }) => {
     const { id } = useParams<{ id: string }>();
 
+    const isArticleRatingEnabled = getFeatureFlags('isArticleRatingEnabled');
+    const isCounterEnabled = getFeatureFlags('isCounterEnabled');
+
     if (!id) {
         return null;
     }
@@ -47,7 +52,8 @@ const ArticleDetailsPage: React.FC<ArticleDetailsPagePropsI> = ({
                 >
                     <ArticleDetailsPageHeader />
                     <ArticleDetails id={id} />
-                    <ArticleRating articleId={id} />
+                    {isCounterEnabled && <Counter />}
+                    {isArticleRatingEnabled && <ArticleRating articleId={id} />}
                     <ArticleRecommendationsList />
                     <ArticleDetailsComments id={id} />
                 </VStack>
@@ -57,3 +63,6 @@ const ArticleDetailsPage: React.FC<ArticleDetailsPagePropsI> = ({
 };
 
 export default memo(ArticleDetailsPage);
+function getFeatureFlag() {
+    throw new Error('Function not implemented.');
+}

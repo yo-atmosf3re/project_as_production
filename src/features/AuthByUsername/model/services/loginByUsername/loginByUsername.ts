@@ -11,7 +11,6 @@ interface LoginByUsernamePropsI {
 // ? Функция createAsyncThunk используется для создания асинхронных событий в Redux Toolkit. Она позволяет создать событие, которое автоматически диспатчит начало, успешное завершение или ошибку асинхронной операции;
 // ? Функция loginByUsername принимает два аргумента: название события 'login/loginByUsername' и асинхронную функцию, которая выполняет нужную операцию;
 // ? Типизируем rejectValue так, как нужно нам. В данном случае ошибка будет представлена в виде строки, но в других случаях это может быть, что угодно;
-// eslint-disable-next-line max-len
 export const loginByUsername = createAsyncThunk<
     UserI,
     LoginByUsernamePropsI,
