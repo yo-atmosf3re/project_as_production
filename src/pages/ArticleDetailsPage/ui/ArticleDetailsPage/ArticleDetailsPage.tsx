@@ -63,6 +63,3 @@ const ArticleDetailsPage: React.FC<ArticleDetailsPagePropsI> = ({
 };
 
 export default memo(ArticleDetailsPage);
-function getFeatureFlag() {
-    throw new Error('Function not implemented.');
-}
