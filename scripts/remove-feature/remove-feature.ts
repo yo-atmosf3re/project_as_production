@@ -1,4 +1,4 @@
-import { Project, SyntaxKind } from 'ts-morph';
+import { Node, Project, SyntaxKind } from 'ts-morph';
 
 export {};
 
@@ -13,15 +13,39 @@ project.addSourceFilesAtPaths('src/**/ArticleDetailsPage.ts');
 // ? Получение всех ts-файлов;
 const files = project.getSourceFiles();
 
+function isToggleFunction(node: Node) {
+    
+    let isToggleFeatures = false;
+
+    node.forEachChild((child) => {
+        if(child.isKind(SyntaxKind.Identifier) && child.getText() === 'toggleFeatures') {
+            isToggleFeatures = true;
+        }
+    })
+
+    return isToggleFeatures;
+}
+
 // ? Итерируемся по каждому файлу с помощью цикла;
 files.forEach((sourceFile) => {
     sourceFile.forEachDescendant((node) => {
-        if(node.isKind(SyntaxKind.CallExpression)) {
-            node.forEachChild((child) => {
-                if(child.isKind(SyntaxKind.Identifier)) {
-                    
-                }
-            })
+        console.log(!!(node.isKind(SyntaxKind.CallExpression) && isToggleFunction(node)));
+        if(node.isKind(SyntaxKind.CallExpression) && isToggleFunction(node)) {
+            const objectOptions = node.getFirstDescendantByKind(SyntaxKind.ObjectLiteralExpression);
+
+            if(!objectOptions) return;
+
+            const offFunctionProperty = objectOptions.getProperty('off');
+            const onFunctionProperty = objectOptions.getProperty('on');
+            const featureNameProperty = objectOptions.getProperty('name');
+
+            const onFunction = onFunctionProperty?.getFirstDescendantByKind(SyntaxKind.ArrowFunction);
+            const offFunction = offFunctionProperty?.getFirstDescendantByKind(SyntaxKind.ArrowFunction);
+            const featureName = featureNameProperty?.getFirstDescendantByKindOrThrow(SyntaxKind.StringLiteral)
+                .getText().slice(1, -1);
+
+            console.log(onFunction?.getText());
+            console.log(featureName?.getText());
         }
     })
 });

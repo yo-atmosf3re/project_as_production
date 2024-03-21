@@ -152,6 +152,8 @@ module.exports = {
         'unused-imports/no-unused-imports': 'error',
         // ? Указывает, что каждый переданный пропс в компоненту должен начинаться с новой строки;
         "react/jsx-max-props-per-line": [1, {'maximum': 1}],
+        // ? Проверка на использование const вместо let, var - отключена;
+        "prefer-const": "off"
     },
     // ? Глобальные переменные, которые могут использоваться в любом месте, они задекларированы в global.d.ts;
     globals: {
