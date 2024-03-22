@@ -153,7 +153,8 @@ module.exports = {
         // ? Указывает, что каждый переданный пропс в компоненту должен начинаться с новой строки;
         "react/jsx-max-props-per-line": [1, {'maximum': 1}],
         // ? Проверка на использование const вместо let, var - отключена;
-        "prefer-const": "off"
+        "prefer-const": "off",
+        "react/no-unstable-nested-components": "warn"
     },
     // ? Глобальные переменные, которые могут использоваться в любом месте, они задекларированы в global.d.ts;
     globals: {
