@@ -1,10 +1,9 @@
 import { useContext } from 'react';
-import { THEME_LS_KEY } from '../../../const/localstorage';
 import { ThemeContext } from '../../context/ThemeContext';
 import { THEME } from '../../../const/consts';
 
 interface UseThemeResult {
-    toggleTheme: () => void;
+    toggleTheme: (saveAction?: (theme: THEME) => void) => void;
     theme: THEME;
 }
 
@@ -12,10 +11,9 @@ interface UseThemeResult {
 export const useTheme = (): UseThemeResult => {
     const { theme, setTheme } = useContext(ThemeContext);
 
-    const toggleTheme = (): void => {
-        // const newTheme: THEME = theme === THEME.DARK ? THEME.LIGHT : THEME.DARK;
-
-        // ? Добавление больше двух подразумевает под собой использование более удобной конструкции с switch-case;
+    // ? Добавлена возможность, с помощью переданного необязательного коллбэка saveAction, использовать текущую тему;
+    const toggleTheme = (saveAction?: (theme: THEME) => void) => {
+        
         let newTheme: THEME;
 
         switch (theme) {
@@ -35,7 +33,7 @@ export const useTheme = (): UseThemeResult => {
 
         // " Вешаем глобальный класс с цветовой темой для исключения лишних действий и переопределений;
         document.body.className = newTheme;
-        localStorage.setItem(THEME_LS_KEY, newTheme);
+        saveAction?.(newTheme);
     };
 
     return {
