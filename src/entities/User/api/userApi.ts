@@ -23,6 +23,12 @@ const userApi = rtkApi.injectEndpoints({
                 }
             }),
         }),
+        getUserDataById: build.query<UserI, string>({
+            query: (userId) => ({
+                url: `/users/${userId}`,
+                method: 'GET',
+            }),
+        }),
     }),
 });
 
@@ -30,3 +36,5 @@ const userApi = rtkApi.injectEndpoints({
  * Метод, позволяющий работать с `userApi` без хука в async thunk'e;
  */
 export const setJsonSettingsMutation = userApi.endpoints.setJsonSettings.initiate
+
+export const getUserDataByIdQuery = userApi.endpoints.getUserDataById.initiate;

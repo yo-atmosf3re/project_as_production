@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfigI } from '@/app/providers/StoreProvider';
 import { UserI, userActions } from '@/entities/User';
-import { USER_LS_KEY } from '@/shared/const/localstorage';
 
 interface LoginByUsernamePropsI {
     username: string;
@@ -29,9 +28,6 @@ export const loginByUsername = createAsyncThunk<
                 throw new Error();
             }
 
-            // ? Записываем и сохраняем ответ в LS, переведя эти данные в строку, потому что в LS можно сохранять только строки;
-            // " Имитация сохранения т.н токена;
-            localStorage.setItem(USER_LS_KEY, JSON.stringify(response.data));
             // ? Сохраянем регистрационные данные в userSlice;
             dispatch(userActions.setAuthData(response.data));
 

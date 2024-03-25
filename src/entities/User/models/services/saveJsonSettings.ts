@@ -6,7 +6,7 @@ import { getJsonSettings } from '../selectors/jsonSettings/jsonSettings';
 import { setJsonSettingsMutation } from '../../api/userApi';
 
 /**
- * Получение конкретной статьи по id;
+ * Сохранение `jsonSettings` для конкретного пользователя;
  * @param id - айди, по которому будет осуществляться поиск нужной статьи;
  */
 export const saveJsonSettings = createAsyncThunk<
