@@ -11,5 +11,5 @@ export {
 export { 
     getJsonSettings,
     useJsonSettings
-} from './models/selectors/jsonSettings/jsonSettings';
+} from './models/selectors/jsonSettingsSelectors/jsonSettingsSelectors';
 export {initAuthData} from './models/services/initAuthData';

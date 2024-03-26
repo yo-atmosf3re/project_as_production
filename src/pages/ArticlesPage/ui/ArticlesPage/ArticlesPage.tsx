@@ -14,6 +14,7 @@ import { articlesPageReducer } from '../../model/slice/articlesPageSlice';
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import { ArticlesPageFilters } from '../ArticlesPageFilters';
 import { ArticleInfiteList } from '../ArticleInfiteList';
+import { ArticlePageGreeting } from '@/features/ArticlePageGreeting';
 
 interface ArticlesPagePropsI {
     className?: string;
@@ -51,6 +52,7 @@ const ArticlesPage: React.FC<ArticlesPagePropsI> = ({ className }) => {
             >
                 <ArticlesPageFilters />
                 <ArticleInfiteList className={cls.list} />
+                <ArticlePageGreeting />
             </Page>
         </DynamicModuleLoader>
     );
