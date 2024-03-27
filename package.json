@@ -30,8 +30,9 @@
         "sb:build": "build-storybook -c ./config/storybook",
         "prepare": "husky install",
         "generate:fsd-slice": "node ./scripts/createSlice/index.js",
-        "postinstall": "node scripts/clearCache/clearCache.js"
-    },
+        "postinstall": "node scripts/clearCache/clearCache.js",
+        "remove-feature": "ts-node ./scripts/remove-feature/remove-feature.ts"
+    }, 
     "lint-staged": {
         "**/*.{ts,tsx}": [
             "prettier --list-different",

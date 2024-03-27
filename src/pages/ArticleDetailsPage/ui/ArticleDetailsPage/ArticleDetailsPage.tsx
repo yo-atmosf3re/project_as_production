@@ -15,7 +15,7 @@ import { articleDetailsPageReducer } from '../../model/slice';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader';
 import { ArticleDetailsComments } from '../ArticleDetailsComments';
 import { ArticleRating } from '@/features/ArticleRating';
-import { toggleFeatures } from '@/shared/lib/features';
+import { ToggleFeatures } from '@/shared/lib/features';
 import { Card } from '@/shared/ui/Card';
 
 interface ArticleDetailsPagePropsI {
@@ -34,15 +34,9 @@ const ArticleDetailsPage: React.FC<ArticleDetailsPagePropsI> = ({
     className,
 }) => {
     const { id } = useParams<{ id: string }>();
-    const { t } = useTranslation();
+    const { t } = useTranslation('article');
 
     if (!id) return null;
-
-    const articleRatingCard = toggleFeatures({
-        name: 'isArticleRatingEnabled',
-        on: () => <ArticleRating articleId={id} />,
-        off: () => <Card>{t('Оценка статей скоро появится!')}</Card>,
-    });
 
     return (
         <DynamicModuleLoader reducers={INITIAL_REDUCERS}>
@@ -55,7 +49,11 @@ const ArticleDetailsPage: React.FC<ArticleDetailsPagePropsI> = ({
                 >
                     <ArticleDetailsPageHeader />
                     <ArticleDetails id={id} />
-                    {articleRatingCard}
+                    <ToggleFeatures
+                        feature="isArticleRatingEnabled"
+                        on={<ArticleRating articleId={id} />}
+                        off={<Card>{t('Оценка статей скоро появится!')}</Card>}
+                    />
                     <ArticleRecommendationsList />
                     <ArticleDetailsComments id={id} />
                 </VStack>

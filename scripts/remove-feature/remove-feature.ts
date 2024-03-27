@@ -1,8 +1,11 @@
-import { Node, Project, SyntaxKind } from 'ts-morph';
+import { JsxAttribute, Node, Project, SyntaxKind } from 'ts-morph';
 
 // ? Получение значений аргументов командной строки;
 const removedFeatureName = process.argv[2]; // ? Название фичи;
 const featureState = process.argv[3]; // ? Включить/выключить фичу;
+
+const toggleFunctionName = 'toggleFeatures'; // ? Название функции;
+const toggleComponentName = 'ToggleFeatures'; // ? Название компоненты;
 
 // ? Проверка наличия названия фичи;
 if(!removedFeatureName) throw new Error('Укажите название фича-флага!')
@@ -29,7 +32,7 @@ function isToggleFunction(node: Node) {
 
     // ? Проверка, является ли функция функцией toggleFeatures;
     node.forEachChild((child) => {
-        if(child.isKind(SyntaxKind.Identifier) && child.getText() === 'toggleFeatures') {
+        if(child.isKind(SyntaxKind.Identifier) && child.getText() === toggleFunctionName) {
             isToggleFeatures = true;
         }
     })
@@ -37,12 +40,14 @@ function isToggleFunction(node: Node) {
     return isToggleFeatures;
 }
 
-// ? Итерируемся по каждому файлу с помощью цикла;
-files.forEach((sourceFile) => {
-    sourceFile.forEachDescendant((node) => {
-        // ? Проверка, является ли узел вызовом функции и функцией toggleFeatures;
-        if(node.isKind(SyntaxKind.CallExpression) && isToggleFunction(node)) {
-            const objectOptions = node.getFirstDescendantByKind(SyntaxKind.ObjectLiteralExpression);
+function isToggleComponent(node: Node) {
+    // ? Проверка ноды на то, что она является нужной компонентой ToggleFeatures;
+    return node.getFirstDescendantByKind(SyntaxKind.Identifier)?.getText() === toggleComponentName;
+}
+
+// ? Функция, заменяющая функцию toggleFeatures на соответствующие тела on/off в зависимости от состояния фичи;
+const replaceToggleFunction = (node: Node) => {
+    const objectOptions = node.getFirstDescendantByKind(SyntaxKind.ObjectLiteralExpression);
 
             if(!objectOptions) return;
 
@@ -69,7 +74,76 @@ files.forEach((sourceFile) => {
             if(featureState === 'off') {
                 node.replaceWithText(offFunction?.getBody().getText() ?? '')
             }
+}
 
+// ? Функция, получающая атрибут по его имени из массива атрибутов JSX;
+const getAttributeNodeByName = (
+    jsxAttributes: JsxAttribute[],
+    name: string,
+) => {
+    return jsxAttributes.find((node) => node.getName() === name);
+};
+
+// ? Функция, получающая заменяемую компоненту из атрибута JSX;
+const getReplacedComponent = (attribute?: JsxAttribute) => {
+    const value = attribute
+        ?.getFirstDescendantByKind(SyntaxKind.JsxExpression)
+        ?.getExpression()
+        ?.getText();
+
+    if (value?.startsWith('(')) {
+        return value.slice(1, -1);
+    }
+
+    return value;
+};
+
+// ? Функция, заменяющая компоненту на соответствующую заменяемую компоненту в зависимости от состояния фичи;
+const replaceComponent = (node: Node) => {
+    const attributes = node.getDescendantsOfKind(SyntaxKind.JsxAttribute);
+
+    // ? Получение атрибутов on и off из JSX;
+    const onAttribute = getAttributeNodeByName(attributes, 'on');
+    const offAttribute = getAttributeNodeByName(attributes, 'off');
+
+    // ? Получение атрибута feature из JSX;
+    const featureNameAttribute = getAttributeNodeByName(attributes, 'feature');
+    const featureName = featureNameAttribute
+        ?.getFirstDescendantByKind(SyntaxKind.StringLiteral)
+        ?.getText()
+        ?.slice(1, -1);
+
+    // ? Проверка, соответствует ли атрибут feature удаляемой фиче;
+    if (featureName !== removedFeatureName) return;
+
+    // ? Получение заменяемых компонент для on и off атрибутов;
+    const offValue = getReplacedComponent(offAttribute);
+    const onValue = getReplacedComponent(onAttribute);
+
+    // ? В случае, если фича включена и существует заменяемая компонента для on, заменить компоненту на onValue;
+    if (featureState === 'on' && onValue) {
+        node.replaceWithText(onValue);
+    }
+
+    // ? В случае, если фича выключена и существует заменяемая компонента для off, заменить компоненту на offValue;
+    if (featureState === 'off' && offValue) {
+        node.replaceWithText(offValue);
+    }
+};
+
+// ? Итерируемся по каждому файлу с помощью цикла;
+files.forEach((sourceFile) => {
+    sourceFile.forEachDescendant((node) => {
+        // ? Проверка, является ли узел вызовом функции и функцией toggleFeatures;
+        if(node.isKind(SyntaxKind.CallExpression) && isToggleFunction(node)) {
+            replaceToggleFunction(node)
+        }
+
+        if (
+            node.isKind(SyntaxKind.JsxSelfClosingElement) &&
+            isToggleComponent(node)
+        ) {
+            replaceComponent(node);
         }
     })
 });
