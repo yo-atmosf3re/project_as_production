@@ -8,6 +8,8 @@ import { HStack, VStack } from '@/shared/ui/Stack';
 import cls from './Sidebar.module.scss';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import { getSidebarItems } from '../../model/selectors/getSidebarItems';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { AppLogo } from '@/shared/ui/AppLogo';
 
 interface NavbarPropsI {
     className?: string;
@@ -34,7 +36,7 @@ export const Sidebar: React.FC<NavbarPropsI> = memo(({ className }) => {
         [collapsed, sidebarItemsList],
     );
 
-    return (
+    const deprecatedSidebar = (
         <aside
             data-testid="sidebar"
             className={classNames(
@@ -71,5 +73,24 @@ export const Sidebar: React.FC<NavbarPropsI> = memo(({ className }) => {
                 />
             </HStack>
         </aside>
+    );
+
+    return (
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            on={
+                <aside
+                    data-testid="sidebar"
+                    className={classNames(
+                        cls['sidebar-redesigned'],
+                        { [cls.collapsed]: !collapsed },
+                        [className],
+                    )}
+                >
+                    <AppLogo className={cls['app-logo']} />
+                </aside>
+            }
+            off={deprecatedSidebar}
+        />
     );
 });

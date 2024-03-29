@@ -20,6 +20,7 @@ import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
 import { ARTICLE_VIEW } from '@/shared/const/consts';
 import cls from './Page.module.scss';
 import { TestPropsI } from '@/shared/types/tests';
+import { toggleFeatures } from '@/shared/lib/features';
 
 interface PagePropsI extends TestPropsI {
     className?: string;
@@ -73,13 +74,15 @@ export const Page: React.FC<PagePropsI> = memo(
             );
         }, 500);
 
+        const toggleClasses = toggleFeatures({
+            name: 'isAppRedesigned',
+            on: () => cls['page-redesigned'],
+            off: () => cls['page-wrapper'],
+        });
+
         return (
             <main
-                className={classNames(
-                    cls['page-wrapper'],
-                    mods,
-                    additionalClasses,
-                )}
+                className={classNames(toggleClasses, mods, additionalClasses)}
                 ref={wrapperRef}
                 onScroll={onScrollHandler}
                 id={PAGE_ID}

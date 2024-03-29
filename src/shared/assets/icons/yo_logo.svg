@@ -1,0 +1,19 @@
+
+<svg width="210" height="70" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="vector-effect: non-scaling-stroke;">
+ <defs style="vector-effect: non-scaling-stroke;">
+  <symbol height="17.6" id="svg_4" style="vector-effect: non-scaling-stroke;" width="83.5" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+   <g class="layer" style="vector-effect: non-scaling-stroke;">
+    <title style="vector-effect: non-scaling-stroke;">Layer 1</title>
+    <text font-family="Fantasy" font-size="22" id="svg_3" stroke-width="0" style="vector-effect: non-scaling-stroke;" text-anchor="middle" x="32.344956" xml:space="preserve" y="17.45819">YO!ATM</text>
+    <path d="m74.52647,0.04215c-3.87805,0 -7.15744,2.53608 -8.28797,6.03793l2.08399,0c1.03908,-2.40311 3.41884,-4.0869 6.20398,-4.09209c3.7386,0.00648 6.76373,3.03161 6.76957,6.76957c-0.00584,3.7386 -3.03097,6.76373 -6.76957,6.77021c-2.78514,-0.00454 -5.16555,-1.68963 -6.20463,-4.09339l-2.08334,0c1.13118,3.50186 4.40992,6.03858 8.28862,6.03988c4.81206,-0.0013 8.7154,-3.90205 8.71605,-8.71606c-0.00129,-4.81465 -3.90464,-8.71475 -8.7167,-8.71605zm-2.69109,11.39158l4.63758,-2.67617l-4.63758,-2.67812l0,1.48986l-7.11852,0l0,2.37457l7.11852,0l0,1.48986z" id="svg_2" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="0" style="vector-effect: non-scaling-stroke;" transform="rotate(0.718633 73.98 8.7582)"/>
+    <path d="m91.31816,11.86571c1.17823,0 2.28603,0.46127 3.11821,1.29805c0.8341,0.83716 1.29269,1.95261 1.29269,3.13964l1.81634,0c0,-3.44817 -2.79399,-6.25288 -6.22762,-6.25288l0,1.81519l0.00038,0zm0.0023,-3.2185c4.20036,0 7.61677,3.43555 7.61677,7.65811l1.81557,0c0,-5.22356 -4.23137,-9.47369 -9.43272,-9.47369l0,1.81558l0.00038,0zm2.5111,6.38916c0,0.69476 -0.56308,1.25823 -1.25746,1.25823s-1.25747,-0.56347 -1.25747,-1.25823c0,-0.694 0.56308,-1.25747 1.25747,-1.25747s1.25746,0.56309 1.25746,1.25747z" id="svg_1" opacity="0.5" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="0" style="vector-effect: non-scaling-stroke;"/>
+   </g>
+  </symbol>
+ </defs>
+ <g class="layer">
+  <title>Layer 1</title>
+  <use id="svg_5" transform="matrix(2.52034 0 0 2.52033 -101.339 14.3882)" x="40.288233" xlink:href="#svg_4" y="-0.593673"/>
+  <g id="svg_6" style="vector-effect: non-scaling-stroke;"/>
+  <path d="m85.827676,152.893039c4.541569,-0.029488 9.083135,-0.058981 13.624704,-0.088466c0.029902,-4.664233 0.059799,-9.328465 0.089699,-13.992693c4.519872,0 9.039746,0 13.559621,0c0,-4.692849 0,-9.385697 0,-14.078544c4.635619,0 9.271234,0 13.906853,0c0,-4.578387 0,-9.156775 0,-13.735162c4.578385,0 9.15677,0 13.73516,0c0,-4.578385 0,-9.156775 0,-13.735162c6.810352,0 13.620703,0 20.431055,0c0,2.289194 0,4.578387 0,6.867581c-4.521166,0 -9.042313,0 -13.563479,0c0,4.635617 0,9.271234 0,13.906853c-4.578382,0 -9.156767,0 -13.73516,0c0,4.635619 0,9.271236 0,13.906853c-4.57839,0 -9.15677,0 -13.73516,0c0,4.635617 0,9.271236 0,13.906845c-4.635619,0 -9.271236,0 -13.90685,0c0,4.692851 0,9.385697 0,14.078541c-6.867584,0 -13.735162,0 -20.602743,0c0.306159,-2.274883 -0.52193,-4.840067 0.196301,-7.036644l0,-0.000003z" fill="#ffffff" id="svg_10" opacity="0.5" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="5"/>
+ </g>
+</svg>

@@ -43,3 +43,15 @@
     // ? Для того, чтобы UI-kit компонента Page не перекрывала доступ к этой кнопке, добавлен z-index;
     z-index: 10;
 }
+
+.sidebar-redesigned {
+    background: var(--light-bg-redesigned);
+    width: 220px;
+    height: 100%;
+    border-radius: var(--border-radius-very-large);
+}
+
+.app-logo {
+    padding-top: 20px;
+    transform: scale(0.85);
+}

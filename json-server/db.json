@@ -1706,13 +1706,13 @@
       ],
       "features": {
         "isArticleRatingEnabled": true,
-        "isCounterEnabled": true
+        "isCounterEnabled": true,
+        "isAppRedesigned": true
       },
       "jsonSettings": {
-        "theme": "app_dark_theme",
+        "theme": "app_light_theme",
         "isFirstVisit": true,
-        "isArticlesPageWasOpened": true,
-        "isAppRedesigned": true
+        "isArticlesPageWasOpened": true
       },
       "avatar": "https://copp15.ru/Portals/0/ModuleFiles/i.jpg"
     },

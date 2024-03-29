@@ -13,6 +13,7 @@ import { AvatarDropdown } from '@/features/AvatarDropdown';
 import cls from './Navbar.module.scss';
 import { LoginModal } from '@/features/AuthByUsername';
 import { getRouteArticleCreate } from '@/shared/const/consts';
+import { ToggleFeatures } from '@/shared/lib/features';
 
 interface NavbarPropsI {
     className?: string;
@@ -33,34 +34,56 @@ export const Navbar: React.FC<NavbarPropsI> = memo(() => {
         setIsAuthModal(true);
     }, []);
 
+    const deprecatedNavbarWithAuthData = (
+        <HStack
+            role="heading"
+            align="center"
+            className={classNames(cls.navbar)}
+        >
+            <Text
+                theme={TEXT_THEME.INVERTED}
+                className={cls['app-name']}
+                title={t('LOGO')}
+            />
+            <AppLink
+                className={cls['create-article_button']}
+                to={getRouteArticleCreate()}
+                theme={APP_LINK_THEME.SECONDARY}
+            >
+                {t('Создать статью')}
+            </AppLink>
+            <HStack
+                gap="16"
+                className={cls.actions}
+            >
+                <NotificationButton />
+                <AvatarDropdown />
+            </HStack>
+        </HStack>
+    );
+
     // ? Такая альтернативная отрисовка вызывается только в том случае, если есть какие-то авторизационные данные у пользователя - пользователь вошёл в аккаунт, как это работает: приложение запускается, в App.tsx отрабатывает useEffect, внутри которого вызывается функция с инициализацией данных пользователя, в LS сохраняется токен пользователя (если его там нет);
     if (authData) {
         return (
-            <HStack
-                role="heading"
-                align="center"
-                className={classNames(cls.navbar)}
-            >
-                <Text
-                    theme={TEXT_THEME.INVERTED}
-                    className={cls['app-name']}
-                    title={t('LOGO')}
-                />
-                <AppLink
-                    className={cls['create-article_button']}
-                    to={getRouteArticleCreate()}
-                    theme={APP_LINK_THEME.SECONDARY}
-                >
-                    {t('Создать статью')}
-                </AppLink>
-                <HStack
-                    gap="16"
-                    className={cls.actions}
-                >
-                    <NotificationButton />
-                    <AvatarDropdown />
-                </HStack>
-            </HStack>
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                on={
+                    <HStack
+                        role="heading"
+                        align="center"
+                        className={classNames(cls['navbar-redesigned'])}
+                    >
+                        <HStack
+                            gap="16"
+                            className={cls.actions}
+                        >
+                            <NotificationButton />
+                            <AvatarDropdown />
+                        </HStack>
+                    </HStack>
+                }
+                off={deprecatedNavbarWithAuthData}
+            />
         );
     }
 
