@@ -54,7 +54,11 @@ export const ArticleViewSelector: React.FC<ArticleViewSelectorPropsI> = ({
                         [cls['not-selected']]: viewType.view !== view,
                     })}
                 >
-                    <Icon Svg={viewType.icon} />
+                    <Icon
+                        Svg={viewType.icon}
+                        height={24}
+                        width={24}
+                    />
                 </Button>
             ))}
         </div>

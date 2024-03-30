@@ -25,6 +25,8 @@ export const AppLogo: React.FC<AppLogoPropsI> = memo(({ className }) => {
             <Icon
                 Svg={YoSvg}
                 className={cls.logo}
+                width={230}
+                height={70}
             />
         </HStack>
     );

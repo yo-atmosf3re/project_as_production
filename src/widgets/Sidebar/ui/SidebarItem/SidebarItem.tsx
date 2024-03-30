@@ -36,7 +36,11 @@ export const SidebarItem = memo(({ item, collapsed }: SidebarItemProps) => {
             className={classNames(cls.item, { [cls.collapsed]: !collapsed })}
         >
             <HStack align="center">
-                <Icon className={cls.icon} />
+                <Icon
+                    className={cls.icon}
+                    width={20}
+                    height={20}
+                />
                 <span className={cls.link}>{t(text)}</span>
             </HStack>
         </AppLink>

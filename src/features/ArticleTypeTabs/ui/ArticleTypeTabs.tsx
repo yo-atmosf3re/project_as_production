@@ -21,7 +21,7 @@ export const ArticleTypeTabs: React.FC<ArticleTypeTabsPropsI> = ({
     value,
     onChangeType,
 }) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation('article');
     const typeTabs = useMemo<TabItemI[]>(
         () => [
             {

@@ -38,6 +38,8 @@ export const NotificationButton: React.FC<NotificationButtonPropsI> = ({
             <Icon
                 Svg={NotificationIcon}
                 inverted
+                width={20}
+                height={20}
             />
         </Button>
     );
