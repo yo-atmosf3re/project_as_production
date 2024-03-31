@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { ModsType, classNames } from '@/shared/lib/classNames/classNames';
-import { TEXT_ALIGN, Text } from '@/shared/ui/Text';
+import { TEXT_ALIGN, Text } from '@/shared/ui/deprecated/Text';
 import { ArticleImageBlockI } from '../../../model/types/article';
 import cls from './ArticleImageBlockComponent.module.scss';
 

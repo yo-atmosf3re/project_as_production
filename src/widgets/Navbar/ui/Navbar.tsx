@@ -2,11 +2,11 @@ import React, { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button, BUTTON_THEME } from '@/shared/ui/Button';
+import { Button, BUTTON_THEME } from '@/shared/ui/deprecated/Button';
 import { getUserAuthData } from '@/entities/User';
-import { Text, TEXT_THEME } from '@/shared/ui/Text';
-import { APP_LINK_THEME, AppLink } from '@/shared/ui/AppLink';
-import { HStack } from '@/shared/ui/Stack';
+import { Text, TEXT_THEME } from '@/shared/ui/deprecated/Text';
+import { APP_LINK_THEME, AppLink } from '@/shared/ui/deprecated/AppLink';
+import { HStack } from '@/shared/ui/deprecated/Stack';
 
 import { NotificationButton } from '@/features/NotificationButton';
 import { AvatarDropdown } from '@/features/AvatarDropdown';

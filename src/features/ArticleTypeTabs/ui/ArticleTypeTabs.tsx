@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ARTICLE_TYPE } from '@/shared/const/consts';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { TabItemI, Tabs } from '@/shared/ui/Tabs';
+import { TabItemI, Tabs } from '@/shared/ui/deprecated/Tabs';
 
 interface ArticleTypeTabsPropsI {
     className?: string;

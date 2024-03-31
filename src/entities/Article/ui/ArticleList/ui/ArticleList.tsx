@@ -2,7 +2,7 @@
 import React, { HTMLAttributeAnchorTarget } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Text, TEXT_SIZE } from '@/shared/ui/Text';
+import { Text, TEXT_SIZE } from '@/shared/ui/deprecated/Text';
 import { ArticleI } from '../../../model/types/article';
 import { ARTICLE_VIEW } from '@/shared/const/consts';
 import cls from './ArticleList.module.scss';

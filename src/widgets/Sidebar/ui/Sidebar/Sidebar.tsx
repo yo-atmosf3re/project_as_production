@@ -1,15 +1,19 @@
 import React, { memo, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { LangSwitcher } from '@/shared/ui/LangSwitcher';
-import { Button, BUTTON_THEME, BUTTON_SIZE } from '@/shared/ui/Button';
+import { LangSwitcher } from '@/shared/ui/deprecated/LangSwitcher';
+import {
+    Button,
+    BUTTON_THEME,
+    BUTTON_SIZE,
+} from '@/shared/ui/deprecated/Button';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
-import { HStack, VStack } from '@/shared/ui/Stack';
+import { HStack, VStack } from '@/shared/ui/deprecated/Stack';
 import cls from './Sidebar.module.scss';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import { getSidebarItems } from '../../model/selectors/getSidebarItems';
 import { ToggleFeatures } from '@/shared/lib/features';
-import { AppLogo } from '@/shared/ui/AppLogo';
+import { AppLogo } from '@/shared/ui/deprecated/AppLogo';
 
 interface NavbarPropsI {
     className?: string;

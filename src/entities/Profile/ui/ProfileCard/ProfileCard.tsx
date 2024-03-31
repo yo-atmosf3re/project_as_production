@@ -1,14 +1,13 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Text, TEXT_ALIGN, TEXT_THEME } from '@/shared/ui/Text';
-import { Input } from '@/shared/ui/Input';
-import { Loader } from '@/shared/ui/Loader';
-
-import { Avatar } from '@/shared/ui/Avatar';
+import { Text, TEXT_ALIGN, TEXT_THEME } from '@/shared/ui/deprecated/Text';
+import { Input } from '@/shared/ui/deprecated/Input';
+import { Loader } from '@/shared/ui/deprecated/Loader';
+import { Avatar } from '@/shared/ui/deprecated/Avatar';
 import { CurrencySelect } from '@/entities/Currency';
 import { COUNTRY, CountrySelect } from '@/entities/Country';
-import { HStack, VStack } from '@/shared/ui/Stack';
+import { HStack, VStack } from '@/shared/ui/deprecated/Stack';
 import { CURRENCY } from '@/shared/const/consts';
 import { ProfileI } from '../../index';
 import cls from './ProfileCard.module.scss';
