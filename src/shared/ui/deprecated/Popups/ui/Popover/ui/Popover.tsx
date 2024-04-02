@@ -22,6 +22,7 @@ interface PopoverPropsI {
  * @param trigger - содержимое кнопки, которая активирует показ содержимого `Popover`;
  * @param direction - направление отрисовки `Popover`;
  * @param children
+ * @deprecated используется новые компоненты из папки `redesigned`;
  */
 export const MyPopover: React.FC<PopoverPropsI> = ({
     className,

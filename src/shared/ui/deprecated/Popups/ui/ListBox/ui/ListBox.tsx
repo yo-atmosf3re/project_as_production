@@ -4,7 +4,10 @@ import { MAP_DIRECTION_CLASS } from '../../../styles/consts';
 import { DropdownDirectionUnionType } from '../../../../../../types/ui';
 import { HStack } from '../../../../Stack';
 import { Button } from '../../../../Button';
-import { ModsType, classNames } from '../../../../../../lib/classNames/classNames';
+import {
+    ModsType,
+    classNames,
+} from '../../../../../../lib/classNames/classNames';
 import cls from './ListBox.module.scss';
 import popupCls from '../../../styles/popup.module.scss';
 
@@ -36,6 +39,7 @@ interface ListBoxPropsI {
  * @param readonly - флаг, отвечающий за дизейбл списка;
  * @param direction - направление отрисовки списка;
  * @param label
+ * @deprecated используется новые компоненты из папки `redesigned`;
  */
 export const ListBox: React.FC<ListBoxPropsI> = ({
     className,

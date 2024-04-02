@@ -9,6 +9,7 @@ interface LoaderPropsI {
 /**
  * Компонента-лоудер, входящая в комплект UI-kit проекта;
  * @param className
+ * @deprecated используется новые компоненты из папки `redesigned`;
  */
 export const Loader: React.FC<LoaderPropsI> = ({ className }) => (
     <div className={classNames(cls.loader, {}, [className])}>

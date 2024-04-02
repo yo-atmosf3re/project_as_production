@@ -22,6 +22,7 @@ interface TabsPropsI {
  * @param tabs - массив с табами;
  * @param value - значение, которое передаётся из родительской функции - т.н выбранный таб;
  * @param onTabClick - переключатель табов;
+ * @deprecated используется новые компоненты из папки `redesigned`;
  */
 export const Tabs: React.FC<TabsPropsI> = ({
     className,

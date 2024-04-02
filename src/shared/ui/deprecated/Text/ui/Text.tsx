@@ -63,6 +63,7 @@ const MAP_SIZE_TO_HEADER_TAG: Record<TEXT_SIZE, HeaderTagType> = {
  * @param theme - тема текста, для доступа используется TEXT_THEME enum;
  * @param align - выравнивание текста - справа, слева или по-центру, для доступа используется TEXT_ALIGN enum;
  * @param size - размера текста - S, M, L, для доступа используется TEXT_SIZE enum;
+ * @deprecated используется новые компоненты из папки `redesigned`;
  */
 export const Text: React.FC<TextPropsI> = memo(
     ({

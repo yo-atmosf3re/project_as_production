@@ -10,8 +10,9 @@ interface AppLogoPropsI {
 }
 
 /**
- *
+ * Компонента, которая отрисовывает проектное лого в виде `svg`, входящая в комплект UI-kit проекта;
  * @param className
+ * @deprecated используется новые компоненты из папки `redesigned`;
  */
 export const AppLogo: React.FC<AppLogoPropsI> = memo(({ className }) => {
     return (

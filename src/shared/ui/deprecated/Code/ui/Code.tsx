@@ -13,6 +13,7 @@ interface CodePropsI {
  * Кастомная компонента, входящая в комплект UI-kit проекта, которая отрисовывает программный код. Children обёрнут в <pre>, а затем в <code>. Тег <pre> позволяет сохранять все нужные отступы, переносы и пробелы;
  * @param className
  * @param text - сам код, который нужно отрисовать;
+ * @deprecated используется новые компоненты из папки `redesigned`;
  */
 export const Code: React.FC<CodePropsI> = ({ className, text }) => {
     const mods: ModsType = {};

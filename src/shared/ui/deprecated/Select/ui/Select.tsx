@@ -25,6 +25,7 @@ interface SelectPropsI<T extends string> {
  * @param options - массив с `option`, где value - это `T`, а `content` это обычный `string`;
  * @param value - принмает тип `T`;
  * @param onChange - обработчик, в аргументах которого принимается `T`;
+ * @deprecated используется новые компоненты из папки `redesigned`;
  */
 export const Select = <T extends string>({
     // ? Для корректной работы с дженериками и типизации было убрано memo. Позже будет исправлено;

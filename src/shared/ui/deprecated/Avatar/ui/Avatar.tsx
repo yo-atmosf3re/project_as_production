@@ -22,6 +22,7 @@ interface AvatarPropsI {
  * @param alt - альтернативный текст для изображения;
  * @param size - размер img;
  * @param fallbackInverted - флаг для указания инвертированного цвета иконки аватара;
+ * @deprecated используется новые компоненты из папки `redesigned`;
  */
 export const Avatar: React.FC<AvatarPropsI> = ({
     className,

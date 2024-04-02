@@ -19,6 +19,7 @@ const STARS: number[] = [1, 2, 3, 4, 5];
  * @param onSelect - коллбэк, который сигнализирует о том на какую звезду нажал пользователь;
  * @param size - размер звёзд;
  * @param selectedStars - значение по-умолчанию, количественно выбранных звёзд;
+ * @deprecated используется новые компоненты из папки `redesigned`;
  */
 export const StarRating: React.FC<StarRatingPropsI> = memo(
     ({ className, onSelect, size = 30, selectedStars = 0 }) => {

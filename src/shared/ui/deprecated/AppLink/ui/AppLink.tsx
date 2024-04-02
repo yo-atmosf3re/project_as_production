@@ -21,6 +21,7 @@ interface AppLinkPropsI extends LinkProps {
  * @param className
  * @param theme - тема ссылки, для доступа используется APP_LINK_THEME enum;
  * @param children
+ * @deprecated используется новые компоненты из папки `redesigned`;
  */
 export const AppLink: React.FC<AppLinkPropsI> = memo(
     ({

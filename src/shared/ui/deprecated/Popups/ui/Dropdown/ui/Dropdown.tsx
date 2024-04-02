@@ -30,6 +30,7 @@ interface DropdownPropsI {
  * @param items - массив с элементами списка;
  * @param trigger - содержимое кнопки, которая активирует показ содержимого `Dropdown`;
  * @param direction - направление отрисовки списка;
+ * @deprecated используется новые компоненты из папки `redesigned`;
  */
 export const Dropdown: React.FC<DropdownPropsI> = ({
     className,

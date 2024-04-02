@@ -24,6 +24,7 @@ interface CardPropsI extends HTMLAttributes<HTMLDivElement> {
  * @param children
  * @param theme - тема карточки, для доступа используется CARD_THEME enum;
  * @param max - флаг, по которому указывается максимальная ширина для карточки;
+ * @deprecated используется новые компоненты из папки `redesigned`;
  * @returns
  */
 export const Card: React.FC<CardPropsI> = ({

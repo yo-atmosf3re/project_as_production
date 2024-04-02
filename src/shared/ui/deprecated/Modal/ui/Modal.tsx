@@ -23,6 +23,8 @@ const ANIMATION_DELAY = 300;
  * @param isOpen - флаг отображения модального окна;
  * @param onClose - передаваемый коллбэк, на основании которого происходит плавное закрытие модального окна;
  * @param lazy - флаг, который устанавливает ленивую загрузку для модального окна;
+ * @deprecated используется новые компоненты из папки `redesigned`;
+ *
  */
 export const Modal: React.FC<ModalPropsI> = ({
     className,

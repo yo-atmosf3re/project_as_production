@@ -7,6 +7,7 @@ type HStackPropsI = Omit<FlexPropsI, 'direction'>;
 /**
  * Имплементация `Flex` в виде горизонтального стека (обёртка для `Flex`, внутри которой задан `direction` со значением `row`);
  * @returns `Flex`
+ * @deprecated используется новые компоненты из папки `redesigned`;
  */
 export const HStack = (props: HStackPropsI) => {
     return (

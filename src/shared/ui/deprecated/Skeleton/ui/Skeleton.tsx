@@ -15,6 +15,7 @@ interface SkeletonPropsI {
  * @param height - высота, указывается в процентах или в пикселях (например 100, или '50%');
  * @param width - ширина, указывается в процентах или в пикселях (например 100, или '50%');
  * @param border - border-radius (принимает значения в px, % и так далее), по-умолчанию 6px;
+ * @deprecated используется новые компоненты из папки `redesigned`;
  * @returns
  */
 export const Skeleton: React.FC<SkeletonPropsI> = ({

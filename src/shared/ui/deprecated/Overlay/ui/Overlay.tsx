@@ -11,6 +11,7 @@ interface OverlayPropsI {
  * Компонента, входящая в комполект UI-kit проекта, отвечающая за затемнение `background` модального окна;
  * @param className
  * @param onClick - функция, отвечающая за обработку клика на затемнённый `background`;
+ * @deprecated используется новые компоненты из папки `redesigned`;
  */
 export const Overlay: React.FC<OverlayPropsI> = memo(
     ({ className, onClick }) => {

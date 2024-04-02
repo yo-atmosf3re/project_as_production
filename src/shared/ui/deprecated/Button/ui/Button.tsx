@@ -55,6 +55,7 @@ interface ButtonPropsI extends ButtonHTMLAttributes<HTMLButtonElement> {
  * @param size - размер кнопки, для доступа используется BUTTON_SIZE enum (по-умолчанию - M);
  * @param disabled - возможность отключить кнопку;
  * @param fullWidth - флаг, указывающий на то, нужно ли растягивать кнопку по всей ширине или нет;
+ * @deprecated используется новые компоненты из папки `redesigned`;
  */
 export const Button: React.FC<ButtonPropsI> = memo(
     ({

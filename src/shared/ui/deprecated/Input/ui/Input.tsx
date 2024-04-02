@@ -37,6 +37,7 @@ interface SelectHandlerI extends React.ChangeEventHandler<HTMLInputElement> {
  * @param onChange
  * @param autofocus - флаг, отвечающий за фокус на инпуте;
  * @param readonly - передаёт этот флаг в свойство readOnly самого инпута (для чтения инпут или нет);
+ * @deprecated используется новые компоненты из папки `redesigned`;
  */
 export const Input: React.FC<InputPropsI> = memo(
     ({

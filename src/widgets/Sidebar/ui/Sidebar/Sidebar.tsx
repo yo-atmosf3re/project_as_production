@@ -1,7 +1,7 @@
 import React, { memo, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { LangSwitcher } from '@/shared/ui/deprecated/LangSwitcher';
+import { LangSwitcher } from '@/features/LangSwitcher';
 import {
     Button,
     BUTTON_THEME,
