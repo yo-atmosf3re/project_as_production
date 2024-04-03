@@ -13,7 +13,9 @@ import cls from './Sidebar.module.scss';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import { getSidebarItems } from '../../model/selectors/getSidebarItems';
 import { ToggleFeatures } from '@/shared/lib/features';
-import { AppLogo } from '@/shared/ui/deprecated/AppLogo';
+import { AppLogo } from '@/shared/ui/redesigned/AppLogo';
+import { Icon } from '@/shared/ui/redesigned/Icon';
+import ArrowIcon from '@/shared/assets/icons/arrow-bottom.svg';
 
 interface NavbarPropsI {
     className?: string;
@@ -23,6 +25,8 @@ interface NavbarPropsI {
 export const Sidebar: React.FC<NavbarPropsI> = memo(({ className }) => {
     const [collapsed, setCollapsed] = useState<boolean>(false);
     const sidebarItemsList = useSelector(getSidebarItems);
+
+    console.log(collapsed);
 
     const onToggleHandler = () => {
         setCollapsed((prev) => !prev);
@@ -87,11 +91,30 @@ export const Sidebar: React.FC<NavbarPropsI> = memo(({ className }) => {
                     data-testid="sidebar"
                     className={classNames(
                         cls['sidebar-redesigned'],
-                        { [cls.collapsed]: !collapsed },
+                        { [cls['collapsed-redesigned']]: collapsed },
                         [className],
                     )}
                 >
-                    <AppLogo className={cls['app-logo']} />
+                    <AppLogo
+                        size={collapsed ? 27 : 230}
+                        className={cls['app-logo']}
+                    />
+                    <VStack
+                        role="navigation"
+                        className={cls.items}
+                        gap="8"
+                    >
+                        {itemsList}
+                    </VStack>
+                    <Icon
+                        data-testid="sidebar-toggle"
+                        onClick={onToggleHandler}
+                        className={cls['collapse-button']}
+                        Svg={ArrowIcon}
+                        clickable
+                    >
+                        {collapsed ? '>' : '<'}
+                    </Icon>
                 </aside>
             }
             off={deprecatedSidebar}

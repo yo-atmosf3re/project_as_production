@@ -80,7 +80,8 @@ module.exports = {
                     'gap',
                     'role',
                     'as',
-                    'feature'
+                    'feature',
+                    'variant'
                 ],
             },
         ],
@@ -155,7 +156,7 @@ module.exports = {
         "react/jsx-max-props-per-line": [1, {'maximum': 1}],
         // ? Проверка на использование const вместо let, var - отключена;
         "prefer-const": "off",
-        "react/no-unstable-nested-components": "warn"
+        "react/no-unstable-nested-components": "warn",
     },
     // ? Глобальные переменные, которые могут использоваться в любом месте, они задекларированы в global.d.ts;
     globals: {
