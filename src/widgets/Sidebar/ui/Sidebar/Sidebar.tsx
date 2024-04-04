@@ -112,9 +112,17 @@ export const Sidebar: React.FC<NavbarPropsI> = memo(({ className }) => {
                         className={cls['collapse-button']}
                         Svg={ArrowIcon}
                         clickable
+                    />
+                    <HStack
+                        justify="center"
+                        className={cls.switchers}
                     >
-                        {collapsed ? '>' : '<'}
-                    </Icon>
+                        <ThemeSwitcher />
+                        <LangSwitcher
+                            className={cls.lang}
+                            short={!collapsed}
+                        />
+                    </HStack>
                 </aside>
             }
             off={deprecatedSidebar}

@@ -62,6 +62,7 @@ export const SidebarItem = memo(({ item, collapsed }: SidebarItemProps) => {
                     className={classNames(cls['item-redesigned'], {
                         [cls['collapsed-redesigned']]: collapsed,
                     })}
+                    activeClassName={cls.active}
                 >
                     <HStack align="center">
                         <Icon Svg={item.Icon} />

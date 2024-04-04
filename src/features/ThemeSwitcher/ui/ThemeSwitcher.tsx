@@ -5,8 +5,11 @@ import cls from './ThemeSwitcher.module.scss';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { saveJsonSettings } from '@/entities/User';
-import ThemeIcon from '@/shared/assets/icons/theme-light.svg';
-import { Icon } from '@/shared/ui/deprecated/Icon';
+import ThemeIconDeprecated from '@/shared/assets/icons/theme-light.svg';
+import ThemeIcon from '@/shared/assets/icons/theme.svg';
+import { Icon as IconDeprecated } from '@/shared/ui/deprecated/Icon';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { Icon } from '@/shared/ui/redesigned/Icon';
 
 interface ThemeSwitcherPropsI {
     className?: string;
@@ -30,19 +33,33 @@ export const ThemeSwitcher: React.FC<ThemeSwitcherPropsI> = memo(
             });
         }, [dispatch, toggleTheme]);
 
-        return (
+        const deprecatedThemeSwitcher = (
             <Button
                 theme={BUTTON_THEME.CLEAR}
                 className={classNames(cls.themeSwitcher, {}, [className])}
                 onClick={onToggleHandler}
             >
-                <Icon
-                    Svg={ThemeIcon}
+                <IconDeprecated
+                    Svg={ThemeIconDeprecated}
                     width={40}
                     height={40}
                     inverted
                 />
             </Button>
+        );
+
+        return (
+            <ToggleFeatures
+                on={
+                    <Icon
+                        Svg={ThemeIcon}
+                        clickable
+                        onClick={onToggleHandler}
+                    />
+                }
+                off={deprecatedThemeSwitcher}
+                feature="isAppRedesigned"
+            />
         );
     },
 );

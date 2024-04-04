@@ -3,24 +3,11 @@ import { ModsType, classNames } from '../../../../lib/classNames/classNames';
 import cls from './Button.module.scss';
 
 /**
- * Различные стилизованные темы для кнопки;
- * @param CLEAR - чистая кнопка с обнулёнными стилями;
- * @param CLEAR_INVERTED - аналогичная по стилям CLEAR, но с другим цветом текста внутри;
- * @param OUTLINE - кнопка с обводкой, без заднего фона;
- * @param OUTLINE_RED - аналогичная по стилям OUTLINE, но с светло-красным цветом текста внутри;
- * @param OUTLINE_INVERTED - аналогичная по стилям OUTLINE, но с другим цветом текста внутри;
- * @param BACKGROUND - кнопка с заданным задним фоном из css-переменной `--bg-color`, имеет заданный цвет текста внутри, не имеет обводки;
- * @param BACKGROUND_INVERTED - аналогичная по стилям с BACKGROUND, но с другим цветом заднего фона, текста;
+ * Стилистические типы кнопки;
+ * @param clear
+ * @param outline
  */
-export enum BUTTON_THEME {
-    CLEAR = 'clear',
-    CLEAR_INVERTED = 'clear-inverted',
-    OUTLINE = 'outline',
-    OUTLINE_RED = 'outline-red',
-    OUTLINE_INVERTED = 'outline-inverted',
-    BACKGROUND = 'background',
-    BACKGROUND_INVERTED = 'backgroundInverted',
-}
+export type ButtonVariantType = 'clear' | 'outline';
 
 /**
  * Размеры кнопки, значения которых соответствуют значениям css-переменным из global.scss (используются размеры из переменных, которые ответственны за размер шрифтов);
@@ -28,17 +15,13 @@ export enum BUTTON_THEME {
  * @param L
  * @param XL
  */
-export enum BUTTON_SIZE {
-    M = 'size_m',
-    L = 'size_l',
-    XL = 'size_xl',
-}
+export type ButtonSizeType = 'm' | 'l' | 'xl';
 
 interface ButtonPropsI extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
-    theme?: BUTTON_THEME;
+    variant?: ButtonVariantType;
     square?: boolean;
-    size?: BUTTON_SIZE;
+    size?: ButtonSizeType;
     disabled?: boolean;
     children: ReactNode;
     fullWidth?: boolean;
@@ -60,8 +43,8 @@ export const Button: React.FC<ButtonPropsI> = memo(
     ({
         className,
         children,
-        theme = BUTTON_THEME.OUTLINE,
-        size = BUTTON_SIZE.M,
+        variant = 'outline',
+        size = 'm',
         square,
         disabled,
         fullWidth,
@@ -69,13 +52,13 @@ export const Button: React.FC<ButtonPropsI> = memo(
     }) => {
         const mods: ModsType = {
             [cls.square]: square,
-            [cls[size]]: true,
             [cls.disabled]: disabled,
             [cls['full-width']]: fullWidth,
         };
         const additionalClasses: Array<string | undefined> = [
             className,
-            cls[theme],
+            cls[variant],
+            cls[size],
         ];
         return (
             <button
