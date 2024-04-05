@@ -7,7 +7,7 @@ import { Button, BUTTON_THEME } from '@/shared/ui/deprecated/Button';
 import { TEXT_THEME, Text } from '@/shared/ui/deprecated/Text';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getUserAuthData } from '@/entities/User';
-import { HStack } from '@/shared/ui/deprecated/Stack';
+import { HStack } from '@/shared/ui/redesigned/Stack';
 import { VALIDATE_PROFILE_ERROR } from '@/shared/const/consts';
 import { updateProfileData } from '../../models/services/updateProfileData/updateProfileData';
 import { profileActions } from '../../models/slice/profileSlice';

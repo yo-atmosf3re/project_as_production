@@ -13,7 +13,7 @@ import { Avatar } from '@/shared/ui/deprecated/Avatar';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
 import CalendarIcon from '@/shared/assets/icons/clarity_date.svg';
 import { Icon } from '@/shared/ui/deprecated/Icon';
-import { HStack, VStack } from '@/shared/ui/deprecated/Stack';
+import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 import { ARTICLE_BLOCK_TYPE } from '@/shared/const/consts';
 import { ArticleBlockI } from '../../../model/types/article';
 import { getArticleDetailsError } from '../../../model/selectors/getArticleDetailsError/getArticleDetailsError';

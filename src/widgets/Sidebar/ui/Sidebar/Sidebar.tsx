@@ -8,7 +8,7 @@ import {
     BUTTON_SIZE,
 } from '@/shared/ui/deprecated/Button';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
-import { HStack, VStack } from '@/shared/ui/deprecated/Stack';
+import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 import cls from './Sidebar.module.scss';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import { getSidebarItems } from '../../model/selectors/getSidebarItems';

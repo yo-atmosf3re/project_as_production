@@ -2,7 +2,7 @@ import { Fragment, ReactNode } from 'react';
 import { Listbox as HListBox } from '@headlessui/react';
 import { MAP_DIRECTION_CLASS } from '../../../styles/consts';
 import { DropdownDirectionUnionType } from '../../../../../../types/ui';
-import { HStack } from '../../../../Stack';
+import { HStack } from '../../../../../redesigned/Stack';
 import { Button } from '../../../../Button';
 import {
     ModsType,

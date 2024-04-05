@@ -17,7 +17,6 @@ interface AppImagePropsI extends ImgHTMLAttributes<HTMLImageElement> {
  * @param className
  * @param fallback - React-нода, которая отрисовывается во время загрузки изображения;
  * @param errorFallback - React-нода, которая отрисовывается в том случае, если возникла какая-либо ошибка вовремя загрузки изображения;
- * @deprecated
  */
 export const AppImage: React.FC<AppImagePropsI> = memo(
     ({

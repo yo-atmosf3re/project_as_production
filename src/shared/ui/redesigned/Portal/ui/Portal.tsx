@@ -15,7 +15,6 @@ interface PortalPropsI {
  * Нативный реактовский портал - предоставляет возможность визуализировать дочерний элемент в узел DOM, который существует вне иерархии родительского компонента;
  * @param children
  * @param element
- * @deprecated используется новые компоненты из папки `redesigned`;
  */
 export const Portal: React.FC<PortalPropsI> = ({
     children,

@@ -3,7 +3,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './AppLogo.module.scss';
 import YoSvg from '../../../../assets/icons/yo_logo.svg';
 import { Icon } from '../../Icon';
-import { HStack } from '../../../deprecated/Stack';
+import { HStack } from '../../../redesigned/Stack';
 
 interface AppLogoPropsI {
     className?: string;

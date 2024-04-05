@@ -8,7 +8,7 @@ import { Input } from '@/shared/ui/deprecated/Input';
 
 import { SortOrderType } from '@/shared/types';
 import { useDebouce } from '@/shared/lib/hooks/useDebounce/useDebounce';
-import { HStack } from '@/shared/ui/deprecated/Stack';
+import { HStack } from '@/shared/ui/redesigned/Stack';
 import {
     ARTICLE_SORT_FIELD,
     ARTICLE_TYPE,

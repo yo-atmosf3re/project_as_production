@@ -6,7 +6,7 @@ import { Button, BUTTON_THEME } from '@/shared/ui/deprecated/Button';
 import { getUserAuthData } from '@/entities/User';
 import { Text, TEXT_THEME } from '@/shared/ui/deprecated/Text';
 import { APP_LINK_THEME, AppLink } from '@/shared/ui/deprecated/AppLink';
-import { HStack } from '@/shared/ui/deprecated/Stack';
+import { HStack } from '@/shared/ui/redesigned/Stack';
 
 import { NotificationButton } from '@/features/NotificationButton';
 import { AvatarDropdown } from '@/features/AvatarDropdown';

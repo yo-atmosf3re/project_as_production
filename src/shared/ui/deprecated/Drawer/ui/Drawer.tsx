@@ -1,7 +1,7 @@
 import React, { ReactNode, memo, useCallback, useEffect } from 'react';
 import { useTheme } from '../../../../lib/hooks/useTheme/useTheme';
-import { Overlay } from '../../Overlay';
-import { Portal } from '../../Portal';
+import { Overlay } from '../../../redesigned/Overlay';
+import { Portal } from '../../../redesigned/Portal';
 import { classNames, ModsType } from '../../../../lib/classNames/classNames';
 import cls from './Drawer.module.scss';
 import {
