@@ -1,9 +1,9 @@
 .title {
-    color: var(--primary-color);
+    color: var(--text-redesigned);
 }
 
 .text {
-    color: var(--secondary-color);
+    color: var(--text-redesigned);
 }
 
 .error {
@@ -13,6 +13,16 @@
 
     .text {
         color: var(--red-dark);
+    }
+}
+
+.accent {
+    .title {
+        color: var(--accent-redesigned);
+    }
+
+    .text {
+        color: var(--accent-redesigned);
     }
 }
 
@@ -40,40 +50,40 @@
 
 .size-s {
     .title {
-        font: var(--font-m);
+        font: var(--font-m-redesigned);
     }
 
     .text {
-        font: var(--font-s);
+        font: var(--font-s-redesigned);
     }
 }
 
 .size-m {
     .title {
-        font: var(--font-l);
+        font: var(--font-l-redesigned);
     }
 
     .text {
-        font: var(--font-m);
+        font: var(--font-m-redesigned);
     }
 }
 
 .size-l {
     .title {
-        font: var(--font-xl);
+        font: var(--font-xl-redesigned);
     }
 
     .text {
-        font: var(--font-l);
+        font: var(--font-l-redesigned);
     }
 }
 
 .size-xl {
     .title {
-        font: var(--font-xl);
+        font: var(--font-xl-redesigned);
     }
 
     .text {
-        font: var(--font-xl);
+        font: var(--font-xl-redesigned);
     }
 }

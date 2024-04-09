@@ -5,23 +5,14 @@ import cls from './Text.module.scss';
 /**
  * Цветовые темы для текста;
  * @param PRIMARY - text - использует secondary-color, title - использует primary-color;
- * @param INVERTED - text - использует inverted-secondary-color, title - использует inverted-primary-color;
  * @param ERROR - text - тёмно-красный, title - светло-красный;
  */
-export enum TEXT_THEME {
-    PRIMARY = 'primary',
-    INVERTED = 'inverted',
-    ERROR = 'error',
-}
+export type TextVariant = 'primary' | 'error' | 'accent';
 
 /**
  * Направление текста;
  */
-export enum TEXT_ALIGN {
-    RIGHT = 'right',
-    LEFT = 'left',
-    CENTER = 'center',
-}
+export type TextAlign = 'right' | 'left' | 'center';
 
 /**
  * Размер текста;
@@ -29,29 +20,31 @@ export enum TEXT_ALIGN {
  * @param M - text - 16px, title - 24px;
  * @param L - text - 24px, title - 32px;
  */
-export enum TEXT_SIZE {
-    S = 'size-s',
-    M = 'size-m',
-    L = 'size-l',
-}
+export type TextSize = 's' | 'm' | 'l';
 
 interface TextPropsI {
     className?: string;
     title?: string;
     text?: string;
-    theme?: TEXT_THEME;
-    align?: TEXT_ALIGN;
-    size?: TEXT_SIZE;
+    variant?: TextVariant;
+    align?: TextAlign;
+    size?: TextSize;
     'data-testid'?: string;
 }
 
 export type HeaderTagType = 'h1' | 'h2' | 'h3';
 
+const MAP_SIZE_TO_CLASS: Record<TextSize, string> = {
+    s: 'size_s',
+    m: 'size_m',
+    l: 'size_l',
+};
+
 // ? Маппер для сопоставления размера шрифта с HTML-тегом;
-const MAP_SIZE_TO_HEADER_TAG: Record<TEXT_SIZE, HeaderTagType> = {
-    [TEXT_SIZE.S]: 'h3',
-    [TEXT_SIZE.M]: 'h2',
-    [TEXT_SIZE.L]: 'h1',
+const MAP_SIZE_TO_HEADER_TAG: Record<TextSize, HeaderTagType> = {
+    s: 'h3',
+    m: 'h2',
+    l: 'h1',
 };
 
 /**
@@ -69,22 +62,24 @@ export const Text: React.FC<TextPropsI> = memo(
         className,
         text,
         title,
-        theme = TEXT_THEME.PRIMARY,
-        align = TEXT_ALIGN.LEFT,
-        size = TEXT_SIZE.M,
+        variant = 'primary',
+        align = 'left',
+        size = 'm',
         'data-testid': dataTestId = 'Text',
     }) => {
         // ? Название с большой буквы, потому что используется как JSX-компонента;
         // ? Используется для отрисовки title для сохранения семантики;
         const HeaderTag: HeaderTagType = MAP_SIZE_TO_HEADER_TAG[size];
+        const sizeClass = MAP_SIZE_TO_CLASS[size];
 
-        const mods: ModsType = {
-            [cls[theme]]: true,
-            [cls[align]]: true,
-            [cls[size]]: true,
-        };
+        const mods: ModsType = {};
 
-        const additionalClasses: Array<string | undefined> = [className];
+        const additionalClasses: Array<string | undefined> = [
+            className,
+            cls[variant],
+            cls[align],
+            sizeClass,
+        ];
         return (
             <div
                 data-testid="text-wrapper"

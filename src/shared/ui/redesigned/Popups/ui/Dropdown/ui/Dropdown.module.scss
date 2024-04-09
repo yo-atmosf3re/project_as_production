@@ -1,0 +1,18 @@
+.menu {
+    display: flex;
+    flex-direction: column;
+    background: var(--card-bg);
+    position: absolute;
+    z-index: 10000;
+    border-radius: var(--border-radius-l);
+}
+
+.item {
+    padding: 10px 25px;
+    width: 100%;
+    border: none;
+    background: none;
+    outline: none;
+    color: var(--primary-color);
+    cursor: pointer;
+}
