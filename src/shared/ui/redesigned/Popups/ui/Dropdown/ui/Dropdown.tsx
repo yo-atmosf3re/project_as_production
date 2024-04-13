@@ -46,6 +46,7 @@ export const Dropdown: React.FC<DropdownPropsI> = ({
 
     const menuClasses: Array<string | undefined> = [
         MAP_DIRECTION_CLASS[direction],
+        popupCls.menu,
     ];
 
     return (

@@ -38,6 +38,7 @@ export const MyPopover: React.FC<PopoverPropsI> = ({
 
     const menuClasses: Array<string | undefined> = [
         MAP_DIRECTION_CLASS[direction],
+        popupCls.menu,
     ];
 
     return (

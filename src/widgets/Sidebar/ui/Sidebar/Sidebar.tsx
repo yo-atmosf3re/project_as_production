@@ -26,8 +26,6 @@ export const Sidebar: React.FC<NavbarPropsI> = memo(({ className }) => {
     const [collapsed, setCollapsed] = useState<boolean>(false);
     const sidebarItemsList = useSelector(getSidebarItems);
 
-    console.log(collapsed);
-
     const onToggleHandler = () => {
         setCollapsed((prev) => !prev);
     };

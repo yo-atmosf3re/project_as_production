@@ -14,6 +14,7 @@ import { Drawer } from '@/shared/ui/deprecated/Drawer';
 import cls from './NotificationButton.module.scss';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { Icon } from '@/shared/ui/redesigned/Icon';
+import { Popover } from '@/shared/ui/redesigned/Popups';
 
 interface NotificationButtonPropsI {
     className?: string;
@@ -62,18 +63,36 @@ export const NotificationButton: React.FC<NotificationButtonPropsI> = ({
         />
     );
 
+    const deprecatedPopover = (
+        <PopoverDeprecated
+            className={classNames(cls['notification-button'], {}, [className])}
+            direction="bottom left"
+            trigger={trigger}
+        >
+            <NotificationList className={cls.notifications} />
+        </PopoverDeprecated>
+    );
+
     return (
         <>
             <BrowserView>
-                <PopoverDeprecated
-                    className={classNames(cls['notification-button'], {}, [
-                        className,
-                    ])}
-                    direction="bottom left"
-                    trigger={trigger}
-                >
-                    <NotificationList className={cls.notifications} />
-                </PopoverDeprecated>
+                <ToggleFeatures
+                    feature="isAppRedesigned"
+                    off={deprecatedPopover}
+                    on={
+                        <Popover
+                            className={classNames(
+                                cls['notification-button'],
+                                {},
+                                [className],
+                            )}
+                            direction="bottom left"
+                            trigger={trigger}
+                        >
+                            <NotificationList className={cls.notifications} />
+                        </Popover>
+                    }
+                />
             </BrowserView>
             <MobileView>
                 {trigger}

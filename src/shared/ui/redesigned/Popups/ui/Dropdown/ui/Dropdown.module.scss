@@ -1,10 +1,9 @@
 .menu {
-    display: flex;
-    flex-direction: column;
-    background: var(--card-bg);
+    background: var(--dark-bg-redesigned);
     position: absolute;
     z-index: 10000;
-    border-radius: var(--border-radius-l);
+    flex-direction: column;
+    display: flex;
 }
 
 .item {
@@ -13,6 +12,6 @@
     border: none;
     background: none;
     outline: none;
-    color: var(--primary-color);
+    color: var(--text-redesigned);
     cursor: pointer;
 }

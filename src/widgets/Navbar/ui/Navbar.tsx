@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -22,15 +22,15 @@ interface NavbarPropsI {
 // ? Компонента-навбар;
 export const Navbar: React.FC<NavbarPropsI> = memo(() => {
     const { t } = useTranslation('navbar');
-    const [isAuthModal, setIsAuthModal] = React.useState(false);
+    const [isAuthModal, setIsAuthModal] = useState(false);
     // ? Авторизационные данные;
     const authData = useSelector(getUserAuthData);
 
-    const onCloseModal = React.useCallback(() => {
+    const onCloseModal = useCallback(() => {
         setIsAuthModal(false);
     }, []);
 
-    const onShowModal = React.useCallback(() => {
+    const onShowModal = useCallback(() => {
         setIsAuthModal(true);
     }, []);
 

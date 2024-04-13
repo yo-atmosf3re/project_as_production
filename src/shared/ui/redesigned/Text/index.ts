@@ -1,1 +1,2 @@
-export { Text, TextVariant as TEXT_THEME, TextAlign as TEXT_ALIGN, TextSize as TEXT_SIZE } from './ui/Text';
+export { Text } from './ui/Text';
+export type { TextVariantType, TextAlignType, TextSizeType } from './ui/Text';

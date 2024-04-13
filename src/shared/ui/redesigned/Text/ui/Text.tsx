@@ -7,12 +7,12 @@ import cls from './Text.module.scss';
  * @param PRIMARY - text - использует secondary-color, title - использует primary-color;
  * @param ERROR - text - тёмно-красный, title - светло-красный;
  */
-export type TextVariant = 'primary' | 'error' | 'accent';
+export type TextVariantType = 'primary' | 'error' | 'accent';
 
 /**
  * Направление текста;
  */
-export type TextAlign = 'right' | 'left' | 'center';
+export type TextAlignType = 'right' | 'left' | 'center';
 
 /**
  * Размер текста;
@@ -20,28 +20,28 @@ export type TextAlign = 'right' | 'left' | 'center';
  * @param M - text - 16px, title - 24px;
  * @param L - text - 24px, title - 32px;
  */
-export type TextSize = 's' | 'm' | 'l';
+export type TextSizeType = 's' | 'm' | 'l';
 
 interface TextPropsI {
     className?: string;
     title?: string;
     text?: string;
-    variant?: TextVariant;
-    align?: TextAlign;
-    size?: TextSize;
+    variant?: TextVariantType;
+    align?: TextAlignType;
+    size?: TextSizeType;
     'data-testid'?: string;
 }
 
 export type HeaderTagType = 'h1' | 'h2' | 'h3';
 
-const MAP_SIZE_TO_CLASS: Record<TextSize, string> = {
+const MAP_SIZE_TO_CLASS: Record<TextSizeType, string> = {
     s: 'size_s',
     m: 'size_m',
     l: 'size_l',
 };
 
 // ? Маппер для сопоставления размера шрифта с HTML-тегом;
-const MAP_SIZE_TO_HEADER_TAG: Record<TextSize, HeaderTagType> = {
+const MAP_SIZE_TO_HEADER_TAG: Record<TextSizeType, HeaderTagType> = {
     s: 'h3',
     m: 'h2',
     l: 'h1',

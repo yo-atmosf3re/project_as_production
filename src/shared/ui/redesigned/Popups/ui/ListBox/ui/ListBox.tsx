@@ -54,6 +54,7 @@ export const ListBox: React.FC<ListBoxPropsI> = ({
 
     const optionsClasses: Array<string | undefined> = [
         MAP_DIRECTION_CLASS[direction],
+        popupCls.menu,
     ];
 
     return (
