@@ -1,6 +1,6 @@
 import React, { ReactNode, useCallback } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { HStack } from '../../Stack';
+import { HStack } from '../../../redesigned/Stack';
 import { CARD_THEME, Card } from '../../Card';
 import cls from './Tabs.module.scss';
 
