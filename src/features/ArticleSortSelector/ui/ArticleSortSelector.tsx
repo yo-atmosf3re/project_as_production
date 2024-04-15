@@ -8,6 +8,7 @@ import { ARTICLE_SORT_FIELD } from '@/shared/const/consts';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { ListBox } from '@/shared/ui/redesigned/Popups';
 import { Text } from '@/shared/ui/redesigned/Text';
+import cls from './ArticleSortSelector.module.scss';
 
 interface ArticleSortSelectorPropsI {
     className?: string;
@@ -83,6 +84,7 @@ export const ArticleSortSelector: React.FC<ArticleSortSelectorPropsI> = ({
                 value={order}
                 onChange={onChangeOrder}
                 label={t('по')}
+                className={cls.order}
             />
         </HStack>
     );
@@ -91,12 +93,8 @@ export const ArticleSortSelector: React.FC<ArticleSortSelectorPropsI> = ({
         <ToggleFeatures
             feature="isAppRedesigned"
             on={
-                <HStack
-                    gap="32"
-                    align="center"
-                    className={classNames('', {}, [className])}
-                >
-                    <VStack>
+                <div className={classNames('', {}, [className])}>
+                    <VStack gap="8">
                         <Text text={t('Сортировать по:')} />
                         <ListBox
                             items={sortFieldOptions}
@@ -109,7 +107,7 @@ export const ArticleSortSelector: React.FC<ArticleSortSelectorPropsI> = ({
                             onChange={onChangeOrder}
                         />
                     </VStack>
-                </HStack>
+                </div>
             }
             off={deprecatedArticleSortSelector}
         />

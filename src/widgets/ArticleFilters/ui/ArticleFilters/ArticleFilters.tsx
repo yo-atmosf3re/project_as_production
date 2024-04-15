@@ -51,16 +51,16 @@ export const ArticleFilters: React.FC<ArticleFiltersPropsI> = memo(
                         onChange={onChangeSearch}
                         placeholder={t('Поиск')}
                     />
+                    <ArticleTypeTabs
+                        value={type}
+                        onChangeType={onChangeType}
+                        className={cls.tabs}
+                    />
                     <ArticleSortSelector
                         order={order}
                         sort={sort}
                         onChangeSort={onChangeSort}
                         onChangeOrder={onChangeOrder}
-                    />
-                    <ArticleTypeTabs
-                        value={type}
-                        onChangeType={onChangeType}
-                        className={cls.tabs}
                     />
                 </VStack>
             </Card>
