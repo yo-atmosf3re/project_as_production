@@ -15,6 +15,10 @@ import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPag
 import { ArticlesPageFilters } from '../ArticlesPageFilters';
 import { ArticleInfiteList } from '../ArticleInfiteList';
 import { ArticlePageGreeting } from '@/features/ArticlePageGreeting';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout';
+import { ViewSelectorContainer } from '../ViewSelectorContainer';
+import { FiltersContainer } from '../FiltersContainer';
 
 interface ArticlesPagePropsI {
     className?: string;
@@ -40,20 +44,50 @@ const ArticlesPage: React.FC<ArticlesPagePropsI> = ({ className }) => {
         dispatch(initArticlesPage(searchParams));
     });
 
+    const deprecatedContent = (
+        <Page
+            onScrollEnd={onLoadNextPart}
+            className={classNames(cls['article-page'], {}, [className])}
+            data-testid="ArticlesPage"
+        >
+            <ArticlesPageFilters />
+            <ArticleInfiteList className={cls.list} />
+            <ArticlePageGreeting />
+        </Page>
+    );
+
+    const content = (
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            on={
+                <StickyContentLayout
+                    left={<ViewSelectorContainer />}
+                    right={<FiltersContainer />}
+                    content={
+                        <Page
+                            onScrollEnd={onLoadNextPart}
+                            className={classNames(cls['ap-redesigned'], {}, [
+                                className,
+                            ])}
+                            data-testid="ArticlesPage"
+                        >
+                            {/* <ArticlesPageFilters /> */}
+                            <ArticleInfiteList className={cls.list} />
+                            <ArticlePageGreeting />
+                        </Page>
+                    }
+                />
+            }
+            off={deprecatedContent}
+        />
+    );
+
     return (
         <DynamicModuleLoader
             removeAfterUnmount={false}
             reducers={INITIAL_REDUCERS}
         >
-            <Page
-                onScrollEnd={onLoadNextPart}
-                className={classNames(cls['article-page'], {}, [className])}
-                data-testid="ArticlesPage"
-            >
-                <ArticlesPageFilters />
-                <ArticleInfiteList className={cls.list} />
-                <ArticlePageGreeting />
-            </Page>
+            {content}
         </DynamicModuleLoader>
     );
 };

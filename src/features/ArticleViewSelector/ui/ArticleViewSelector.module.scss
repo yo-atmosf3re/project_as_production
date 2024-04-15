@@ -1,7 +1,15 @@
-.selected {
-    fill: var(--secondary-color);
+.article-view_selector {
+    .selected {
+        fill: var(--secondary-color);
+    }
+
+    .not-selected {
+        fill: var(--inverted-primary-color);
+    }
 }
 
-.not-selected {
-    fill: var(--inverted-primary-color);
+.article-view_redesigned {
+    .not-selected {
+        color: var(--light-bg-redesigned);
+    }
 }

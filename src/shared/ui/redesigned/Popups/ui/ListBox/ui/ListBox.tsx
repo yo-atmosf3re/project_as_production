@@ -1,4 +1,4 @@
-import { Fragment, ReactNode } from 'react';
+import { Fragment, ReactNode, useMemo } from 'react';
 import { Listbox as HListBox } from '@headlessui/react';
 import { MAP_DIRECTION_CLASS } from '../../../styles/consts';
 import { DropdownDirectionUnionType } from '../../../../../../types/ui';
@@ -11,19 +11,19 @@ import {
 import cls from './ListBox.module.scss';
 import popupCls from '../../../styles/popup.module.scss';
 
-export interface ListBoxItemI {
+export interface ListBoxItemI<T extends string> {
     value: string;
     content: ReactNode;
     disabled?: boolean;
 }
 
-interface ListBoxPropsI {
+interface ListBoxPropsI<T extends string> {
     className?: string;
-    items?: ListBoxItemI[];
-    value?: string;
+    items?: ListBoxItemI<T>[];
+    value?: T;
     defaultValue?: string;
     // ? Дженерик `T` для поддержки enum'ов и прочего;
-    onChange: (value: string) => void;
+    onChange: (value: T) => void;
     readonly?: boolean;
     direction?: DropdownDirectionUnionType;
     label?: string;
@@ -40,7 +40,7 @@ interface ListBoxPropsI {
  * @param direction - направление отрисовки списка;
  * @param label
  */
-export const ListBox: React.FC<ListBoxPropsI> = ({
+export function ListBox<T extends string>({
     className,
     items,
     onChange,
@@ -49,13 +49,17 @@ export const ListBox: React.FC<ListBoxPropsI> = ({
     readonly,
     direction = 'bottom left',
     label,
-}) => {
+}: ListBoxPropsI<T>) {
     const mainBoxMods: ModsType = {};
 
     const optionsClasses: Array<string | undefined> = [
         MAP_DIRECTION_CLASS[direction],
         popupCls.menu,
     ];
+
+    const selectedItem = useMemo(() => {
+        return items?.find((item) => item.value === value);
+    }, [items, value]);
 
     return (
         <HStack gap="8">
@@ -74,10 +78,13 @@ export const ListBox: React.FC<ListBoxPropsI> = ({
                     disabled={readonly}
                     className={cls.trigger}
                 >
-                    <Button disabled={readonly}>
+                    <Button
+                        disabled={readonly}
+                        variant="filled"
+                    >
                         {
                             // ? При отсутствии value отрисовывается defaultValue;
-                            value ?? defaultValue
+                            selectedItem?.content ?? defaultValue
                         }
                     </Button>
                 </HListBox.Button>
@@ -91,13 +98,15 @@ export const ListBox: React.FC<ListBoxPropsI> = ({
                             disabled={item.disabled}
                             as={Fragment}
                         >
-                            {({ active }) => (
+                            {({ active, selected }) => (
                                 <li
                                     className={classNames(cls.item, {
                                         [popupCls.active]: active,
                                         [popupCls.disabled]: item.disabled,
+                                        [popupCls.selected]: selected,
                                     })}
                                 >
+                                    {selected}
                                     {item.content}
                                 </li>
                             )}
@@ -107,4 +116,4 @@ export const ListBox: React.FC<ListBoxPropsI> = ({
             </HListBox>
         </HStack>
     );
-};
+}

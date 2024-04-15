@@ -3,8 +3,11 @@ import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Select, SelectOptionI } from '@/shared/ui/deprecated/Select';
 import { SortOrderType } from '@/shared/types';
-import { HStack } from '@/shared/ui/redesigned/Stack';
+import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 import { ARTICLE_SORT_FIELD } from '@/shared/const/consts';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { ListBox } from '@/shared/ui/redesigned/Popups';
+import { Text } from '@/shared/ui/redesigned/Text';
 
 interface ArticleSortSelectorPropsI {
     className?: string;
@@ -63,7 +66,7 @@ export const ArticleSortSelector: React.FC<ArticleSortSelectorPropsI> = ({
         [t],
     );
 
-    return (
+    const deprecatedArticleSortSelector = (
         <HStack
             gap="32"
             align="center"
@@ -82,5 +85,33 @@ export const ArticleSortSelector: React.FC<ArticleSortSelectorPropsI> = ({
                 label={t('по')}
             />
         </HStack>
+    );
+
+    return (
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            on={
+                <HStack
+                    gap="32"
+                    align="center"
+                    className={classNames('', {}, [className])}
+                >
+                    <VStack>
+                        <Text text={t('Сортировать по:')} />
+                        <ListBox
+                            items={sortFieldOptions}
+                            value={sort}
+                            onChange={onChangeSort}
+                        />
+                        <ListBox
+                            items={orderOptions}
+                            value={order}
+                            onChange={onChangeOrder}
+                        />
+                    </VStack>
+                </HStack>
+            }
+            off={deprecatedArticleSortSelector}
+        />
     );
 };

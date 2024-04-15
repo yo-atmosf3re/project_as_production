@@ -6,8 +6,9 @@ import cls from './Button.module.scss';
  * Стилистические типы кнопки;
  * @param clear
  * @param outline
+ * @param filled
  */
-export type ButtonVariantType = 'clear' | 'outline';
+export type ButtonVariantType = 'clear' | 'outline' | 'filled';
 
 /**
  * Размеры кнопки, значения которых соответствуют значениям css-переменным из global.scss (используются размеры из переменных, которые ответственны за размер шрифтов);

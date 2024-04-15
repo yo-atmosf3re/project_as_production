@@ -21,6 +21,7 @@
 
 .normal {
     background: var(--dark-bg-redesigned);
+    border-radius: var(--border-radius-xxl);
 }
 
 .light {
@@ -29,6 +30,10 @@
 
 .outlined {
     border: 1px solid var(--accent-redesigned);
+}
+
+.round {
+    border-radius: var(--border-radius-special-l);
 }
 
 .max {

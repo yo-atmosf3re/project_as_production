@@ -14,6 +14,11 @@ export type CardVariantType = 'normal' | 'outlined' | 'light';
  */
 export type CardPaddingType = '0' | '8' | '16' | '24';
 
+/**
+ * Внешний вид карточки - загруглённый или нормальный;
+ */
+export type CardBorderType = 'round' | 'normal';
+
 const MAP_PADDING_TO_CLASS: Record<CardPaddingType, string> = {
     '0': 'gap_0',
     '8': 'gap_8',
@@ -27,6 +32,7 @@ interface CardPropsI extends HTMLAttributes<HTMLDivElement> {
     variant?: CardVariantType;
     max?: boolean;
     padding?: CardPaddingType;
+    border?: CardBorderType;
 }
 
 /**
@@ -43,6 +49,7 @@ export const Card: React.FC<CardPropsI> = ({
     variant = 'normal',
     max,
     padding = '8',
+    border = 'normal',
     ...otherProps
 }) => {
     const paddingClass = MAP_PADDING_TO_CLASS[padding];
@@ -53,6 +60,7 @@ export const Card: React.FC<CardPropsI> = ({
         className,
         cls[variant],
         cls[paddingClass],
+        cls[border]
     ];
     return (
         <div
