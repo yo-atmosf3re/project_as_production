@@ -39,6 +39,7 @@ export const ArticleFilters: React.FC<ArticleFiltersPropsI> = memo(
         type,
     }) => {
         const { t } = useTranslation('article');
+
         return (
             <Card
                 className={classNames(cls['article-filters'], {}, [className])}
