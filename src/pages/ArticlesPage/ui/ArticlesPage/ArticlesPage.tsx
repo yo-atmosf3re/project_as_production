@@ -47,7 +47,7 @@ const ArticlesPage: React.FC<ArticlesPagePropsI> = ({ className }) => {
     const deprecatedContent = (
         <Page
             onScrollEnd={onLoadNextPart}
-            className={classNames(cls['article-page'], {}, [className])}
+            className={classNames(cls['articles-page'], {}, [className])}
             data-testid="ArticlesPage"
         >
             <ArticlesPageFilters />
@@ -71,7 +71,6 @@ const ArticlesPage: React.FC<ArticlesPagePropsI> = ({ className }) => {
                             ])}
                             data-testid="ArticlesPage"
                         >
-                            {/* <ArticlesPageFilters /> */}
                             <ArticleInfiteList className={cls.list} />
                             <ArticlePageGreeting />
                         </Page>

@@ -5,7 +5,6 @@ import { EditableProfileCard } from '@/features/EditableProfileCard';
 import { Page } from '@/widgets/Page';
 import { VStack } from '@/shared/ui/redesigned/Stack';
 import cls from './ProfilePage.module.scss';
-import { ProfileRating } from '@/features/ProfileRating';
 
 interface ProfilePagePropsI {
     className?: string;
@@ -31,7 +30,6 @@ const ProfilePage: React.FC<ProfilePagePropsI> = ({ className }) => {
                 gap="16"
             >
                 <EditableProfileCard id={id} />
-                <ProfileRating profileId={id} />
             </VStack>
         </Page>
     );
