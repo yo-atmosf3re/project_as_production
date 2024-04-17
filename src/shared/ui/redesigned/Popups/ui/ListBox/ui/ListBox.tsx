@@ -10,6 +10,8 @@ import {
 } from '../../../../../../lib/classNames/classNames';
 import cls from './ListBox.module.scss';
 import popupCls from '../../../styles/popup.module.scss';
+import ArrowIcon from '../../../../../../assets/icons/arrow-bottom.svg';
+import { Icon } from '../../../../Icon';
 
 export interface ListBoxItemI<T extends string> {
     value: string;
@@ -22,7 +24,6 @@ interface ListBoxPropsI<T extends string> {
     items?: ListBoxItemI<T>[];
     value?: T;
     defaultValue?: string;
-    // ? Дженерик `T` для поддержки enum'ов и прочего;
     onChange: (value: T) => void;
     readonly?: boolean;
     direction?: DropdownDirectionUnionType;
@@ -81,6 +82,7 @@ export function ListBox<T extends string>({
                     <Button
                         disabled={readonly}
                         variant="filled"
+                        addonRight={<Icon Svg={ArrowIcon} />}
                     >
                         {
                             // ? При отсутствии value отрисовывается defaultValue;

@@ -26,6 +26,8 @@ interface ButtonPropsI extends ButtonHTMLAttributes<HTMLButtonElement> {
     disabled?: boolean;
     children: ReactNode;
     fullWidth?: boolean;
+    addonLeft?: ReactNode;
+    addonRight?: ReactNode;
 }
 
 /**
@@ -38,6 +40,8 @@ interface ButtonPropsI extends ButtonHTMLAttributes<HTMLButtonElement> {
  * @param size - размер кнопки, для доступа используется BUTTON_SIZE enum (по-умолчанию - M);
  * @param disabled - возможность отключить кнопку;
  * @param fullWidth - флаг, указывающий на то, нужно ли растягивать кнопку по всей ширине или нет;
+ * @param addonLeft - дополнительный элемент, добавляемый к кнопке слева;
+ * @param addonRight - дополнительный элемент, добавляемый к кнопке справа;
  */
 export const Button: React.FC<ButtonPropsI> = memo(
     ({
@@ -48,12 +52,15 @@ export const Button: React.FC<ButtonPropsI> = memo(
         square,
         disabled,
         fullWidth,
+        addonLeft,
+        addonRight,
         ...otherProps
     }) => {
         const mods: ModsType = {
             [cls.square]: square,
             [cls.disabled]: disabled,
             [cls['full-width']]: fullWidth,
+            [cls['with-addon']]: Boolean(addonLeft) || Boolean(addonRight),
         };
         const additionalClasses: Array<string | undefined> = [
             className,
@@ -67,7 +74,9 @@ export const Button: React.FC<ButtonPropsI> = memo(
                 className={classNames(cls.button, mods, additionalClasses)}
                 {...otherProps}
             >
+                <div className={cls['addon-left']}>{addonLeft}</div>
                 {children}
+                <div className={cls['addon-right']}>{addonRight}</div>
             </button>
         );
     },
