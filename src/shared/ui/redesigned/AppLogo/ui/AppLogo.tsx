@@ -22,14 +22,14 @@ export const AppLogo: React.FC<AppLogoPropsI> = memo(
                 justify="center"
                 className={classNames(cls.wrapper, {}, [className])}
             >
-                <div className={cls['gradient-big']} />
-                <div className={cls['gradient-small']} />
                 <Icon
                     Svg={YoSvg}
                     className={cls.logo}
                     width={size}
                     height={70}
                 />
+                <div className={cls['gradient-big']} />
+                <div className={cls['gradient-small']} />
             </HStack>
         );
     },
