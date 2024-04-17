@@ -1,18 +1,21 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import { Text, TEXT_ALIGN, TEXT_THEME } from '@/shared/ui/deprecated/Text';
-import { Input } from '@/shared/ui/deprecated/Input';
-import { Loader } from '@/shared/ui/deprecated/Loader';
-import { Avatar } from '@/shared/ui/deprecated/Avatar';
-import { CurrencySelect } from '@/entities/Currency';
-import { COUNTRY, CountrySelect } from '@/entities/Country';
-import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
+
+import { COUNTRY } from '@/entities/Country';
 import { CURRENCY } from '@/shared/const/consts';
 import { ProfileI } from '../../index';
-import cls from './ProfileCard.module.scss';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { ProfileCardDeprecated } from '../ProfileCardDeprecated';
+import {
+    ProfileCardRedesigned,
+    ProfileCardRedesignedError,
+    ProfileCardRedesignedSkeleton,
+} from '../ProfileCardRedesigned/ui/ProfileCardRedesigned';
+import {
+    ProfileCardDeprecatedError,
+    ProfileCardDeprecatedLoader,
+} from '../ProfileCardDeprecated/ui/ProfileCardDeprecated';
 
-interface ProfileCardPropsI {
+export interface ProfileCardPropsI {
     className?: string;
     data?: ProfileI;
     isLoading?: boolean;
@@ -45,134 +48,34 @@ interface ProfileCardPropsI {
  * @param onChangeCurrencyHandler
  * @param onChangeCountryHandler
  */
-export const ProfileCard: React.FC<ProfileCardPropsI> = ({
-    className,
-    data,
-    error,
-    isLoading,
-    readonly,
-    onChangeFirstnameHandler,
-    onChangeLastnameHandler,
-    onChangeAgeHandler,
-    onChangeCityHandler,
-    onChangeAvatarHandler,
-    onChangeUsernameHandler,
-    onChangeCurrencyHandler,
-    onChangeCountryHandler,
-}) => {
-    const { t } = useTranslation('profile');
+export const ProfileCard: React.FC<ProfileCardPropsI> = (props) => {
+    const { isLoading, error } = props;
 
     if (isLoading) {
         return (
-            <VStack
-                max
-                align="center"
-                justify="center"
-                className={classNames(
-                    cls['profile-card'],
-                    { [cls.loading]: true },
-                    [className],
-                )}
-            >
-                <Loader />
-            </VStack>
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                on={<ProfileCardRedesignedSkeleton />}
+                off={<ProfileCardDeprecatedLoader />}
+            />
         );
     }
 
     if (error) {
         return (
-            <HStack
-                max
-                align="center"
-                justify="center"
-                className={classNames(cls['profile-card'], {}, [
-                    className,
-                    cls.error,
-                ])}
-            >
-                <Text
-                    theme={TEXT_THEME.ERROR}
-                    title={t('Произошла ошибка при загрузке профиля')}
-                    text={t('Попробуйте обновить страницу')}
-                    align={TEXT_ALIGN.CENTER}
-                />
-            </HStack>
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                on={<ProfileCardRedesignedError />}
+                off={<ProfileCardDeprecatedError />}
+            />
         );
     }
 
     return (
-        <VStack
-            gap="16"
-            max
-            className={classNames(cls['profile-card'], {}, [className])}
-        >
-            {data?.avatar ? (
-                <HStack
-                    max
-                    className={cls['avatar-wrapper']}
-                >
-                    <Avatar
-                        src={data?.avatar}
-                        alt={t('Аватар пользователя')}
-                    />
-                </HStack>
-            ) : null}
-            <Input
-                value={data?.first}
-                onChange={onChangeFirstnameHandler}
-                placeholder={t('Ваше имя')}
-                readonly={readonly}
-                className={cls.input}
-                data-testid="ProfileCard.firstname"
-            />
-            <Input
-                value={data?.lastname}
-                onChange={onChangeLastnameHandler}
-                placeholder={t('Ваша фамилия')}
-                readonly={readonly}
-                className={cls.input}
-                data-testid="ProfileCard.lastname"
-            />
-            <Input
-                value={data?.age}
-                onChange={onChangeAgeHandler}
-                placeholder={t('Возраст')}
-                readonly={readonly}
-                className={cls.input}
-            />
-            <Input
-                value={data?.city}
-                onChange={onChangeCityHandler}
-                placeholder={t('Город')}
-                readonly={readonly}
-                className={cls.input}
-            />
-            <Input
-                value={data?.username}
-                onChange={onChangeUsernameHandler}
-                placeholder={t('Никнейм пользователя')}
-                readonly={readonly}
-                className={cls.input}
-            />
-            <Input
-                value={data?.avatar}
-                onChange={onChangeAvatarHandler}
-                placeholder={t('Аватар')}
-                readonly={readonly}
-                className={cls.input}
-            />
-            <CurrencySelect
-                value={data?.currency}
-                onChange={onChangeCurrencyHandler}
-                className={cls.input}
-                readonly={readonly}
-            />
-            <CountrySelect
-                value={data?.country}
-                onChange={onChangeCountryHandler}
-                className={cls.input}
-                readonly={readonly}
-            />
-        </VStack>
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            on={<ProfileCardRedesigned {...props} />}
+            off={<ProfileCardDeprecated {...props} />}
+        />
     );
 };

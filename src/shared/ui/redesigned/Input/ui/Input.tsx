@@ -10,20 +10,26 @@ import React, {
 } from 'react';
 import { ModsType, classNames } from '../../../../lib/classNames/classNames';
 import cls from './Input.module.scss';
+import { HStack } from '../../Stack';
+import { Text } from '../../Text';
 
 type HTMLInputPropsType = Omit<
     InputHTMLAttributes<HTMLInputElement>,
-    'value' | 'onChange' | 'readOnly'
+    'value' | 'onChange' | 'readOnly' | 'size'
 >;
+
+type InputSizeType = 's' | 'm' | 'l';
 
 interface InputPropsI extends HTMLInputPropsType {
     className?: string;
     value?: string | number;
+    label?: string;
     onChange?: (value: string) => void;
     autofocus?: boolean;
     readonly?: boolean;
     addonLeft?: ReactNode;
     addonRight?: ReactNode;
+    size?: InputSizeType;
 }
 
 /**
@@ -41,12 +47,14 @@ export const Input: React.FC<InputPropsI> = memo(
         type = 'text',
         className,
         value,
+        label,
         onChange,
         placeholder,
         autofocus,
         readonly,
         addonLeft,
         addonRight,
+        size = 'm',
         ...otherProps
     }) => {
         const ref = useRef<HTMLInputElement>(null);
@@ -79,9 +87,12 @@ export const Input: React.FC<InputPropsI> = memo(
             [cls['with-addon_right']]: Boolean(addonRight),
         };
 
-        return (
+        const input = (
             <div
-                className={classNames(cls['input-wrapper'], mods, [className])}
+                className={classNames(cls['input-wrapper'], mods, [
+                    className,
+                    cls[size],
+                ])}
             >
                 <div className={cls['addon-left']}>{addonLeft}</div>
                 <input
@@ -99,5 +110,19 @@ export const Input: React.FC<InputPropsI> = memo(
                 <div className={cls['addon-right']}>{addonRight}</div>
             </div>
         );
+
+        if (label) {
+            return (
+                <HStack
+                    max
+                    gap="8"
+                >
+                    <Text text={label} />
+                    {input}
+                </HStack>
+            );
+        }
+
+        return input;
     },
 );

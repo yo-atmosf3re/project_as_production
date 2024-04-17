@@ -17,7 +17,7 @@ export type FlexDirectionType = 'row' | 'column';
 /**
  * Union-тип для управления нативным свойством 'gap';
  */
-export type FlexGapType = '4' | '8' | '16' | '32';
+export type FlexGapType = '4' | '8' | '16' | '24' | '32';
 
 // ? Сопастовитель (маппер) для css-классов;
 const JUSTIFY_CLASSES: Record<FlexJustifyType, string> = {
@@ -45,6 +45,7 @@ const GAP_CLASSES: Record<FlexGapType, string> = {
     4: cls.gap4,
     8: cls.gap8,
     16: cls.gap16,
+    24: cls.gap24,
     32: cls.gap32,
 };
 

@@ -52,6 +52,7 @@ export const ArticleFilters: React.FC<ArticleFiltersPropsI> = memo(
                         value={search}
                         onChange={onChangeSearch}
                         placeholder={t('Поиск')}
+                        size="s"
                         addonLeft={<Icon Svg={SearchIcon} />}
                     />
                     <ArticleTypeTabs

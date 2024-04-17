@@ -81,7 +81,8 @@ module.exports = {
                     'role',
                     'as',
                     'feature',
-                    'variant'
+                    'variant',
+                    'size'
                 ],
             },
         ],
