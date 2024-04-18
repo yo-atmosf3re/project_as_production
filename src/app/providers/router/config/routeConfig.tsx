@@ -19,8 +19,10 @@ import {
     getRouteForbbied,
     getRouteMain,
     getRouteProfile,
+    getRouteSettings,
 } from '@/shared/const/consts';
 import { AppRoutesPropsType } from '@/shared/types/router';
+import { SettingsPage } from '@/pages/SettignsPage';
 
 export const routeConfig: Record<APP_ROUTES, AppRoutesPropsType> = {
     [APP_ROUTES.MAIN]: {
@@ -61,6 +63,10 @@ export const routeConfig: Record<APP_ROUTES, AppRoutesPropsType> = {
         element: <AdminPanelPage />,
         authOnly: true,
         roles: [USER_ROLE.MANAGER, USER_ROLE.ADMIN],
+    },
+    [APP_ROUTES.SETTINGS]: {
+        path: getRouteSettings(),
+        element: <SettingsPage />,
     },
     [APP_ROUTES.FORBIDDEN]: {
         path: getRouteForbbied(),

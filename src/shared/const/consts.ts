@@ -129,6 +129,11 @@ export const getRouteArticleEdit = (id: string) => `/articles/${id}/edit`;
 export const getRouteAdminPanel = () => '/admin';
 
 /**
+ * Функция, возвращающая путь для `SettingsPage`;
+ */
+export const getRouteSettings = () => '/settings';
+
+/**
  * Функция, возвращающая путь для `ForbbiedPage`;
  */
 export const getRouteForbbied = () => '/forbidden';
@@ -145,6 +150,7 @@ export enum APP_ROUTES {
     ARTICLE_CREATE = 'article_create',
     ARTICLE_EDIT = 'article_edit',
     ADMIN_PANEL = 'admin_panel',
+    SETTINGS = 'settings',
     FORBIDDEN = 'forbidden',
     // ? Последний маршрут;
     NOT_FOUND = 'not_found',
