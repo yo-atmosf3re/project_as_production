@@ -14,7 +14,7 @@ import ArrowIcon from '../../../../../../assets/icons/arrow-bottom.svg';
 import { Icon } from '../../../../Icon';
 
 export interface ListBoxItemI<T extends string> {
-    value: string;
+    value: T;
     content: ReactNode;
     disabled?: boolean;
 }

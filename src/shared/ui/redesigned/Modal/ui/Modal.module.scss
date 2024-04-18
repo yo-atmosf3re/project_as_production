@@ -10,17 +10,29 @@
     opacity: 0;
     z-index: 100;
     pointer-events: none;
-    color: var(--secondary-color);
+
+    // color: var(--secondary-color);
 }
 
 .content {
     padding: 20px;
     border-radius: var(--border-radius-xl);
-    background: var(--bg-color);
     transition: 0.3s transform;
     transform: scale(0.5);
     max-width: 60%;
     z-index: var(--modal-z-index);
+}
+
+.modal-new {
+    .content {
+        background: var(--light-bg-redesigned);
+    }
+}
+
+.modal-old {
+    .content {
+        background: var(--bg-color);
+    }
 }
 
 .opened {

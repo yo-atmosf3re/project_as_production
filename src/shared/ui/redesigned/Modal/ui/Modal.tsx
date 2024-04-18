@@ -4,6 +4,7 @@ import { Overlay } from '../../../redesigned/Overlay';
 import { Portal } from '../../../redesigned/Portal';
 import { ModsType, classNames } from '../../../../lib/classNames/classNames';
 import cls from './Modal.module.scss';
+import { toggleFeatures } from '@/shared/lib/features';
 
 interface ModalPropsI {
     className?: string;
@@ -47,6 +48,11 @@ export const Modal: React.FC<ModalPropsI> = ({
     const additionalClasses: Array<string | undefined> = [
         className,
         'app_modal',
+        toggleFeatures({
+            name: 'isAppRedesigned',
+            on: () => cls['modal-new'],
+            off: () => cls['modal-old'],
+        }),
     ];
 
     const mods: ModsType = {
@@ -55,7 +61,7 @@ export const Modal: React.FC<ModalPropsI> = ({
     };
 
     return (
-        <Portal>
+        <Portal element={document.getElementById('app') ?? document.body}>
             <div className={classNames(cls.modal, mods, additionalClasses)}>
                 <Overlay onClick={close} />
                 <div

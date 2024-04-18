@@ -8,6 +8,7 @@ import {
     AnimationProvider,
     useAnimationLibs,
 } from '../../../../lib/components/AnimationProvider';
+import { toggleFeatures } from '@/shared/lib/features';
 
 interface DrawerPropsI {
     className?: string;
@@ -44,7 +45,6 @@ export const DrawerContent: React.FC<DrawerPropsI> = memo(
         }, [api, isOpen, openDrawer]);
 
         const close = (velocity = 0) => {
-            console.log('close');
             api.start({
                 y: HEIGHT,
                 immediate: false,
@@ -99,10 +99,15 @@ export const DrawerContent: React.FC<DrawerPropsI> = memo(
             className,
             theme,
             'app_drawer',
+            toggleFeatures({
+                name: 'isAppRedesigned',
+                on: () => cls['drawer-new'],
+                off: () => cls['drawer-old'],
+            }),
         ];
 
         return (
-            <Portal>
+            <Portal element={document.getElementById('app') ?? document.body}>
                 <div
                     className={classNames(cls.drawer, mods, additionalClasses)}
                 >
