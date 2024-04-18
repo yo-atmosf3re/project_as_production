@@ -4,14 +4,16 @@
     cursor: pointer;
 
     .image-wrapper {
-        width: 200px;
-        height: 200px;
+        // width: 200px;
+        // height: 200px;
         position: relative;
+        padding: 4px 10px;
     }
 
     .image {
         width: 200px;
         height: 200px;
+        object-fit: cover;
     }
 
     .date {
@@ -31,7 +33,10 @@
     }
 
     .info-wrapper {
-        margin-top: 8px;
+        display: flex;
+        align-items: center;
+
+        // margin-top: 8px;
     }
 
     .types p {
@@ -46,12 +51,12 @@
     }
 
     .views {
-        margin-left: auto;
-        margin-right: 8px;
+        // margin-left: auto;
+        // margin-right: 8px;
     }
 
     .title {
-        margin-top: 8px;
+        // margin-top: 8px;
 
         & p {
             white-space: nowrap;
@@ -59,11 +64,22 @@
             text-overflow: ellipsis;
         }
     }
+
+    .card {
+        // display: flex;
+        // flex-direction: column;
+        // justify-content: space-between;
+    }
 }
 
 .BIG {
     .views {
         margin-left: auto;
+    }
+
+    .header {
+        display: flex;
+        align-items: center;
     }
 
     .username {
@@ -92,5 +108,21 @@
     .text-block {
         max-height: 200px;
         overflow-y: hidden;
+    }
+}
+
+.list-redesigned {
+    &.BIG {
+        width: 100%;
+    }
+
+    &.SMALL {
+        width: 240px;
+        height: 350px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        // border-radius: var(--border-radius-special-l);
     }
 }

@@ -60,7 +60,7 @@ export const Card: React.FC<CardPropsI> = ({
         className,
         cls[variant],
         cls[paddingClass],
-        cls[border]
+        cls[border],
     ];
     return (
         <div

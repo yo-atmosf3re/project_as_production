@@ -8,6 +8,8 @@ import { ARTICLE_VIEW } from '@/shared/const/consts';
 import cls from './ArticleList.module.scss';
 import { ArticleListItem } from '../../ArticleListItem';
 import { ArticleListItemSkeleton } from '../../ArticleListItemSkeleton';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { HStack } from '@/shared/ui/redesigned/Stack';
 
 interface ArticleListPropsI {
     className?: string;
@@ -69,7 +71,7 @@ export const ArticleList: React.FC<ArticleListPropsI> = ({
         );
     }
 
-    return (
+    const deprecatedArticleList = (
         <div
             className={classNames(cls['article-list'], {}, [
                 className,
@@ -80,5 +82,31 @@ export const ArticleList: React.FC<ArticleListPropsI> = ({
             {articles.length > 0 ? articles.map(renderArticle) : null}
             {isLoading ? GET_SKELETONS(view) : null}
         </div>
+    );
+
+    return (
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            on={
+                <HStack
+                    wrap="wrap"
+                    gap="16"
+                    className={classNames(cls['list-redesigned'], {}, [])}
+                    data-testid="ArticleList"
+                >
+                    {articles.length > 0 ? articles.map(renderArticle) : null}
+                    {isLoading ? GET_SKELETONS(view) : null}
+                </HStack>
+                // <HStack
+                //     wrap="wrap"
+                //     gap="16"
+                //     className={classNames(cls['list-redesigned'], {}, [])}
+                //     data-testid="ArticleList"
+                // >
+                //     {GET_SKELETONS(view)}
+                // </HStack>
+            }
+            off={deprecatedArticleList}
+        />
     );
 };

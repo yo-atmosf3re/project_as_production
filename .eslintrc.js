@@ -82,7 +82,8 @@ module.exports = {
                     'as',
                     'feature',
                     'variant',
-                    'size'
+                    'size',
+                    'wrap'
                 ],
             },
         ],

@@ -18,6 +18,10 @@ export type FlexDirectionType = 'row' | 'column';
  * Union-тип для управления нативным свойством 'gap';
  */
 export type FlexGapType = '4' | '8' | '16' | '24' | '32';
+/**
+ * Union-тип для управления нативным свойством 'flex-wrap';
+ */
+export type FlexWrapType = 'nowrap' | 'wrap';
 
 // ? Сопастовитель (маппер) для css-классов;
 const JUSTIFY_CLASSES: Record<FlexJustifyType, string> = {
@@ -63,6 +67,7 @@ export interface FlexPropsI extends DivPropsType {
     direction: FlexDirectionType;
     gap?: FlexGapType;
     max?: boolean;
+    wrap?: FlexWrapType;
 }
 
 // ? Почему бы не использовать инлайн-стили? Потому что у них слишком высокая специфичность, и если захочется откуда-то из вне их переопределить, то придётся использовать !important. И, во всяком случае, такое количество созданных классов в Flex.module.scss, которые похожи друг на друга, компенсируется тем, что при работе с проектом и созданием UI компонента Flex просто будет переиспользоваться, и эти же самые стили в таком количестве написаны не будут;
@@ -84,6 +89,7 @@ export const Flex: React.FC<FlexPropsI> = ({
     direction = 'row',
     gap,
     max,
+    wrap = 'nowrap',
     ...otherProps
 }) => {
     const additionalClasses: Array<string | undefined> = [
@@ -93,6 +99,7 @@ export const Flex: React.FC<FlexPropsI> = ({
         DIRECTION_CLASSES[direction],
         // ? Для исключения проблем, которые связаны с тем, что gap может быть undefined, используется вот такая контструкция;
         gap && GAP_CLASSES[gap],
+        cls[wrap],
     ];
 
     const mods: ModsType = {

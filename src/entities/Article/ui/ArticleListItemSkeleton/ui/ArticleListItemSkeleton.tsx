@@ -7,6 +7,7 @@ import { Card as CardDeprecated } from '@/shared/ui/deprecated/Card';
 import { ARTICLE_VIEW } from '@/shared/const/consts';
 import cls from '../../ArticleListItem/ui/ArticleListItem.module.scss';
 import { toggleFeatures } from '@/shared/lib/features';
+import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 
 interface ArticleListItemSkeletonPropsI {
     className?: string;
@@ -20,6 +21,12 @@ interface ArticleListItemSkeletonPropsI {
 export const ArticleListItemSkeleton: React.FC<
     ArticleListItemSkeletonPropsI
 > = ({ className, view }) => {
+    const mainClass = toggleFeatures({
+        name: 'isAppRedesigned',
+        on: () => cls['list-redesigned'],
+        off: () => cls['article-item'],
+    });
+
     const Skeleton = toggleFeatures({
         name: 'isAppRedesigned',
         on: () => SkeletonRedesigned,
@@ -34,28 +41,23 @@ export const ArticleListItemSkeleton: React.FC<
 
     if (view === 'BIG') {
         return (
-            <div
-                className={classNames(cls['article-item'], {}, [
-                    className,
-                    cls[view],
-                ])}
-            >
+            <div className={classNames(mainClass, {}, [className, cls[view]])}>
                 <Card className={cls.card}>
                     <div className={cls.header}>
                         <Skeleton
+                            border="50%"
                             height={30}
                             width={30}
-                            border="50%"
                         />
                         <Skeleton
+                            width={150}
+                            height={16}
                             className={cls.username}
-                            height={16}
-                            width={150}
                         />
                         <Skeleton
-                            className={cls.date}
-                            height={16}
                             width={150}
+                            height={16}
+                            className={cls.date}
                         />
                     </div>
                     <Skeleton
@@ -64,8 +66,8 @@ export const ArticleListItemSkeleton: React.FC<
                         className={cls.title}
                     />
                     <Skeleton
-                        className={cls.image}
                         height={200}
+                        className={cls.image}
                     />
                     <div className={cls.footer}>
                         <Skeleton
@@ -79,32 +81,80 @@ export const ArticleListItemSkeleton: React.FC<
     }
 
     return (
-        <div
-            className={classNames(cls['article-item'], {}, [
+        // <div className={classNames(mainClass, {}, [className, cls[view]])}>
+        //     <Card className={cls.card}>
+        //         <div className={cls['image-wrapper']}>
+        //             <Skeleton
+        //                 width={200}
+        //                 height={200}
+        //                 className={cls.image}
+        //             />
+        //         </div>
+        //         <div className={cls['info-wrapper']}>
+        //             <Skeleton
+        //                 width={130}
+        //                 height={16}
+        //             />
+        //         </div>
+        //         <Skeleton
+        //             className={cls.title}
+        //             width={150}
+        //             height={16}
+        //         />
+        //     </Card>
+        // </div>
+        <Card
+            className={classNames(mainClass, {}, [
                 className,
+                // cls.card,
                 cls[view],
             ])}
+            border="round"
+            padding="16"
         >
-            <Card className={cls.card}>
-                <div className={cls['image-wrapper']}>
-                    <Skeleton
-                        width={200}
-                        height={200}
-                        className={cls.image}
-                    />
-                </div>
-                <div className={cls['info-wrapper']}>
-                    <Skeleton
-                        width={130}
-                        height={16}
-                    />
-                </div>
+            <VStack
+                justify="center"
+                className={cls['image-wrapper']}
+                align="center"
+                gap="16"
+            >
                 <Skeleton
-                    className={cls.title}
-                    width={150}
-                    height={16}
+                    width={224}
+                    height={140}
+                    className={cls.image}
                 />
-            </Card>
-        </div>
+                <Skeleton
+                    width={224}
+                    height={30}
+                />
+            </VStack>
+            <VStack
+                justify="center"
+                align="center"
+                gap="8"
+            >
+                <HStack
+                    className={cls['info-wrapper']}
+                    justify="between"
+                    max
+                >
+                    <Skeleton
+                        width={75}
+                        height={25}
+                    />
+                    <Skeleton
+                        width={75}
+                        height={25}
+                    />
+                </HStack>
+                <HStack max>
+                    <Skeleton
+                        className={cls.title}
+                        width={45}
+                        height={25}
+                    />
+                </HStack>
+            </VStack>
+        </Card>
     );
 };
