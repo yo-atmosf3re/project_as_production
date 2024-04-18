@@ -47,6 +47,16 @@
     border-radius: var(--border-radius-special-m);
 }
 
+.outline {
+    background: none;
+    border: 1px solid var(--icon-redesigned);
+    border-radius: var(--border-radius-special-m);
+
+    &:hover {
+        border: 1px solid var(--icon-redesigned);
+    }
+}
+
 .square {
     padding: 0;
 }

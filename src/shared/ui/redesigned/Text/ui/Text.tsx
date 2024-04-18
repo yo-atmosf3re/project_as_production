@@ -29,6 +29,7 @@ interface TextPropsI {
     variant?: TextVariantType;
     align?: TextAlignType;
     size?: TextSizeType;
+    bold?: boolean;
     'data-testid'?: string;
 }
 
@@ -56,6 +57,7 @@ const MAP_SIZE_TO_HEADER_TAG: Record<TextSizeType, HeaderTagType> = {
  * @param theme - тема текста, для доступа используется TEXT_THEME enum;
  * @param align - выравнивание текста - справа, слева или по-центру, для доступа используется TEXT_ALIGN enum;
  * @param size - размера текста - S, M, L, для доступа используется TEXT_SIZE enum;
+ * @param bold - флаг, указывающий является ли текст жирным или нет;
  */
 export const Text: React.FC<TextPropsI> = memo(
     ({
@@ -65,6 +67,7 @@ export const Text: React.FC<TextPropsI> = memo(
         variant = 'primary',
         align = 'left',
         size = 'm',
+        bold,
         'data-testid': dataTestId = 'Text',
     }) => {
         // ? Название с большой буквы, потому что используется как JSX-компонента;
@@ -72,7 +75,9 @@ export const Text: React.FC<TextPropsI> = memo(
         const HeaderTag: HeaderTagType = MAP_SIZE_TO_HEADER_TAG[size];
         const sizeClass = MAP_SIZE_TO_CLASS[size];
 
-        const mods: ModsType = {};
+        const mods: ModsType = {
+            [cls.bold]: bold,
+        };
 
         const additionalClasses: Array<string | undefined> = [
             className,

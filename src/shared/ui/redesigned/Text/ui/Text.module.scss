@@ -87,3 +87,10 @@
         font: var(--font-xl-redesigned);
     }
 }
+
+.bold {
+    .title,
+    .text {
+        font-weight: 700;
+    }
+}
