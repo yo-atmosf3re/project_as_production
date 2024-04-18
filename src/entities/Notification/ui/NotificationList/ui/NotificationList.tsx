@@ -1,10 +1,12 @@
 import React from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { VStack } from '@/shared/ui/redesigned/Stack';
-import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
+import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton';
+import { Skeleton as SkeletonRedesigned } from '@/shared/ui/redesigned/Skeleton';
 import { useNotifications } from '../../../api/notificationApi';
 import cls from './NotificationList.module.scss';
 import { NotificationItem } from '../../NotificationItem';
+import { toggleFeatures } from '@/shared/lib/features';
 
 interface NotificationListPropsI {
     className?: string;
@@ -20,6 +22,12 @@ export const NotificationList: React.FC<NotificationListPropsI> = ({
     const { data, isLoading } = useNotifications(null, {
         // ? Используя лонг-пуллинг, указываем интервал, по которому с периодичностью будут отправляться запросы на сервер за новыми уведомлениями;
         pollingInterval: 5000,
+    });
+
+    const Skeleton = toggleFeatures({
+        name: 'isAppRedesigned',
+        on: () => SkeletonRedesigned,
+        off: () => SkeletonDeprecated,
     });
 
     if (isLoading) {
