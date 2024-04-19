@@ -19,7 +19,7 @@ export const DetailsContainer: React.FC<DetailsContainerPropsI> = memo(
                 max
                 className={className}
                 padding="24"
-                border="round"
+                border="partial"
             >
                 <ArticleDetails id={id} />
             </Card>

@@ -11,10 +11,10 @@
     position: absolute;
     max-width: 200px;
     padding: 10px;
-    box-shadow: var(--shadow-color);
-    border-radius: var(--border-radius-m);
+    border-radius: 20px;
     background: var(--inverted-bg-color);
     animation: fade 0.3s ease-in forwards;
+    top: 108px;
 }
 
 @keyframes fade {

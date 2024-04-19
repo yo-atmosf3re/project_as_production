@@ -3,8 +3,15 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
-import { Button, BUTTON_THEME } from '@/shared/ui/deprecated/Button';
-import { TEXT_THEME, Text } from '@/shared/ui/deprecated/Text';
+import {
+    Button as ButtonDeprecated,
+    BUTTON_THEME,
+} from '@/shared/ui/deprecated/Button';
+import {
+    TEXT_THEME,
+    Text as TextDeprecated,
+} from '@/shared/ui/deprecated/Text';
+import { Text } from '@/shared/ui/redesigned/Text';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getUserAuthData } from '@/entities/User';
 import { HStack } from '@/shared/ui/redesigned/Stack';
@@ -16,6 +23,9 @@ import { getProfileIsLoading } from '../../models/selectors/getProfileIsLoading/
 import { getProfileReadonly } from '../../models/selectors/getProfileReadonly/getProfileReadonly';
 import { getProfileValidateErrors } from '../../models/selectors/getProfileValidateErrors/getProfileValidateErrors';
 import cls from './EditableProfilePageHeader.module.scss';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { Button } from '@/shared/ui/redesigned/Button';
+import { Card } from '@/shared/ui/redesigned/Card';
 
 interface ProfilePageHeaderPropsI {
     className?: string;
@@ -65,18 +75,18 @@ export const EditableProfilePageHeader: React.FC<ProfilePageHeaderPropsI> = ({
         dispatch(updateProfileData());
     }, [dispatch]);
 
-    return (
+    const deprecatedEditableProfilePageHeader = (
         <HStack
             max
             justify="between"
             className={classNames(cls['profile-header'], {}, [className])}
         >
             <>
-                <Text title={t('Профиль')} />
+                <TextDeprecated title={t('Профиль')} />
                 {validateErrorTranslates && validateErrors?.length ? (
                     <div className={cls['errors-card']}>
                         {validateErrors.map((error) => (
-                            <Text
+                            <TextDeprecated
                                 key={`${error}-${Math.random()
                                     .toString()
                                     .replace('.', '')}`}
@@ -92,7 +102,7 @@ export const EditableProfilePageHeader: React.FC<ProfilePageHeaderPropsI> = ({
             {canEdit && (
                 <div className={cls.buttons}>
                     {readonly ? (
-                        <Button
+                        <ButtonDeprecated
                             className={classNames(
                                 cls['edit-button'],
                                 { [cls['light-button']]: buttonClassCondition },
@@ -104,10 +114,10 @@ export const EditableProfilePageHeader: React.FC<ProfilePageHeaderPropsI> = ({
                             data-testid="EditableProfilePageHeader.EditButton"
                         >
                             {t('Редактировать')}
-                        </Button>
+                        </ButtonDeprecated>
                     ) : (
                         <HStack gap="8">
-                            <Button
+                            <ButtonDeprecated
                                 className={classNames(
                                     cls['some-button'],
                                     {
@@ -122,8 +132,8 @@ export const EditableProfilePageHeader: React.FC<ProfilePageHeaderPropsI> = ({
                                 data-testid="EditableProfilePageHeader.CancelButton"
                             >
                                 {t('Отменить')}
-                            </Button>
-                            <Button
+                            </ButtonDeprecated>
+                            <ButtonDeprecated
                                 className={classNames(
                                     cls['edit-button'],
                                     {
@@ -138,11 +148,108 @@ export const EditableProfilePageHeader: React.FC<ProfilePageHeaderPropsI> = ({
                                 data-testid="EditableProfilePageHeader.SaveButton"
                             >
                                 {t('Сохранить')}
-                            </Button>
+                            </ButtonDeprecated>
                         </HStack>
                     )}
                 </div>
             )}
         </HStack>
+    );
+
+    return (
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            on={
+                <Card
+                    padding="16"
+                    max
+                    border="partial"
+                >
+                    <HStack
+                        max
+                        justify="between"
+                        className={classNames(cls['profile-header'], {}, [
+                            className,
+                        ])}
+                    >
+                        <>
+                            <Text title={t('Профиль')} />
+                            {validateErrorTranslates &&
+                            validateErrors?.length ? (
+                                <div className={cls['errors-card']}>
+                                    {validateErrors.map((error) => (
+                                        <Text
+                                            key={`${error}-${Math.random()
+                                                .toString()
+                                                .replace('.', '')}`}
+                                            variant="error"
+                                            // ? Обращаемся к объекту validateErrorTranslates по ключу, ключом будет являться error. Ключи validateErrorTranslates и ключи error идентичны, поэтому вернётся сопоставимое по ключу значение, а значением будет являться перевод;
+                                            text={
+                                                validateErrorTranslates[error]
+                                            }
+                                            data-testid="EditableProfilePageHeader.Error"
+                                        />
+                                    ))}
+                                </div>
+                            ) : null}
+                        </>
+                        {canEdit && (
+                            <div className={cls.buttons}>
+                                {readonly ? (
+                                    <Button
+                                        className={classNames(
+                                            cls['edit-button'],
+                                            {
+                                                [cls['light-button']]:
+                                                    buttonClassCondition,
+                                            },
+                                            [],
+                                        )}
+                                        // theme={buttonThemeCondition}
+                                        onClick={onEditHandler}
+                                        disabled={isLoading}
+                                        data-testid="EditableProfilePageHeader.EditButton"
+                                    >
+                                        {t('Редактировать')}
+                                    </Button>
+                                ) : (
+                                    <HStack gap="8">
+                                        <Button
+                                            className={classNames(
+                                                cls['some-button'],
+                                                {},
+                                                [],
+                                            )}
+                                            variant="outline"
+                                            onClick={onCancelEditHandler}
+                                            disabled={isLoading}
+                                            data-testid="EditableProfilePageHeader.CancelButton"
+                                            color="error"
+                                        >
+                                            {t('Отменить')}
+                                        </Button>
+                                        <Button
+                                            className={classNames(
+                                                cls['edit-button'],
+                                                {},
+                                                [],
+                                            )}
+                                            // theme={buttonThemeCondition}
+                                            color="success"
+                                            onClick={onSaveEditHandler}
+                                            disabled={isLoading}
+                                            data-testid="EditableProfilePageHeader.SaveButton"
+                                        >
+                                            {t('Сохранить')}
+                                        </Button>
+                                    </HStack>
+                                )}
+                            </div>
+                        )}
+                    </HStack>
+                </Card>
+            }
+            off={deprecatedEditableProfilePageHeader}
+        />
     );
 };

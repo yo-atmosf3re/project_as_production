@@ -1722,7 +1722,7 @@
         "isAppRedesigned": true
       },
       "jsonSettings": {
-        "theme": "app_dark_theme",
+        "theme": "app_jungle_theme",
         "isFirstVisit": true,
         "isArticlesPageWasOpened": true
       },
@@ -1792,7 +1792,7 @@
       "first": "Alex",
       "lastname": "Fisher",
       "age": 25,
-      "currency": "USD",
+      "currency": "EUR",
       "country": "Ukrain",
       "city": "Moscow",
       "username": "ADMIN",

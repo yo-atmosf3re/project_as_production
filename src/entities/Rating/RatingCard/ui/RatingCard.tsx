@@ -239,7 +239,7 @@ export const RatingCard: React.FC<RatingCardPropsI> = memo(
                 feature="isAppRedesigned"
                 on={
                     <Card
-                        border="round"
+                        border="partial"
                         max
                         padding="24"
                         data-testid="RatingCard"

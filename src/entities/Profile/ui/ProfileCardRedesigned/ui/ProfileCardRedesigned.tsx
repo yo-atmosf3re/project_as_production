@@ -18,6 +18,7 @@ export const ProfileCardRedesignedSkeleton = () => {
         <Card
             padding="24"
             max
+            border="partial"
         >
             <VStack gap="32">
                 <HStack
@@ -127,6 +128,7 @@ export const ProfileCardRedesigned: React.FC<ProfileCardPropsI> = ({
             padding="24"
             max
             className={className}
+            border="partial"
         >
             <VStack gap="32">
                 {data?.avatar ? (

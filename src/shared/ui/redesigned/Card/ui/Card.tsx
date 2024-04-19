@@ -17,7 +17,7 @@ export type CardPaddingType = '0' | '8' | '16' | '24';
 /**
  * Внешний вид карточки - загруглённый или нормальный;
  */
-export type CardBorderType = 'round' | 'normal';
+export type CardBorderType = 'round' | 'normal' | 'partial';
 
 const MAP_PADDING_TO_CLASS: Record<CardPaddingType, string> = {
     '0': 'gap_0',

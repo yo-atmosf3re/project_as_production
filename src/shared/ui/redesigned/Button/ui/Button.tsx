@@ -11,6 +11,14 @@ import cls from './Button.module.scss';
 export type ButtonVariantType = 'clear' | 'outline' | 'filled';
 
 /**
+ * Цветовые варианты кнопки;
+ * @param normal
+ * @param success
+ * @param error
+ */
+export type ButtonColorType = 'normal' | 'success' | 'error';
+
+/**
  * Размеры кнопки, значения которых соответствуют значениям css-переменным из global.scss (используются размеры из переменных, которые ответственны за размер шрифтов);
  * @param M
  * @param L
@@ -26,6 +34,7 @@ interface ButtonPropsI extends ButtonHTMLAttributes<HTMLButtonElement> {
     disabled?: boolean;
     children: ReactNode;
     fullWidth?: boolean;
+    color?: ButtonColorType;
     addonLeft?: ReactNode;
     addonRight?: ReactNode;
 }
@@ -52,6 +61,7 @@ export const Button: React.FC<ButtonPropsI> = memo(
         square,
         disabled,
         fullWidth,
+        color = 'normal',
         addonLeft,
         addonRight,
         ...otherProps
@@ -66,6 +76,7 @@ export const Button: React.FC<ButtonPropsI> = memo(
             className,
             cls[variant],
             cls[size],
+            cls[color],
         ];
         return (
             <button

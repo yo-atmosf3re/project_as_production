@@ -63,7 +63,7 @@ const AddCommentForm: React.FC<AddCommentFormPropsI> = ({
                 on={
                     <Card
                         padding="24"
-                        border="round"
+                        border="partial"
                         max
                     >
                         <HStack

@@ -134,7 +134,7 @@ export const ArticleListItemRedesigned: React.FC<ArticleListItemPropsI> = memo(
             >
                 <Card
                     className={cls.card}
-                    border="round"
+                    border="partial"
                     padding="0"
                 >
                     <AppImage

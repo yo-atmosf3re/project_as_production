@@ -49,11 +49,32 @@
 
 .outline {
     background: none;
-    border: 1px solid var(--icon-redesigned);
     border-radius: var(--border-radius-special-m);
 
-    &:hover {
+    &.normal {
         border: 1px solid var(--icon-redesigned);
+
+        &:hover {
+            border: 1px solid var(--icon-redesigned);
+        }
+    }
+
+    &.error {
+        border: 1px solid var(--cancel-redesigned);
+
+        &:hover {
+            opacity: 0.8;
+            color: var(--cancel-redesigned);
+        }
+    }
+
+    &.success {
+        border: 1px solid var(--save-redesigned);
+
+        &:hover {
+            opacity: 0.8;
+            color: var(--save-redesigned);
+        }
     }
 }
 
