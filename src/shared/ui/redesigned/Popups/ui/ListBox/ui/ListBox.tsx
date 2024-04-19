@@ -76,8 +76,9 @@ export function ListBox<T extends string>({
                 onChange={onChange}
             >
                 <HListBox.Button
-                    disabled={readonly}
+                    // disabled={readonly}
                     className={cls.trigger}
+                    as="div"
                 >
                     <Button
                         disabled={readonly}

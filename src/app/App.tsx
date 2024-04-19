@@ -10,6 +10,7 @@ import { AppRouter } from './providers/router';
 import { PageLoader } from '@/widgets/PageLoader';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { MainLayout } from '@/shared/layouts/MainLayout';
+import { getAllFeatureFlags } from '@/shared/lib/features/lib/setGetFeatures';
 
 // ? Корневой компонент;
 const App = () => {
@@ -19,8 +20,12 @@ const App = () => {
     const inited = useSelector(getUserInited);
 
     useEffect(() => {
-        dispatch(initAuthData());
-    }, [dispatch]);
+        if (!inited) {
+            dispatch(initAuthData());
+        }
+    }, [dispatch, inited]);
+
+    console.log(getAllFeatureFlags().isAppRedesigned, 'redesigned');
 
     if (!inited) {
         return <PageLoader />;

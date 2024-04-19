@@ -1,5 +1,4 @@
 import React, { memo, useMemo, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { LangSwitcher } from '@/features/LangSwitcher';
 import {
@@ -11,7 +10,7 @@ import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 import cls from './Sidebar.module.scss';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
-import { getSidebarItems } from '../../model/selectors/getSidebarItems';
+import { useSidebarItems } from '../../model/selectors/getSidebarItems';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { AppLogo } from '@/shared/ui/redesigned/AppLogo';
 import { Icon } from '@/shared/ui/redesigned/Icon';
@@ -24,7 +23,7 @@ interface SidebarPropsI {
 // ? Компонента-сайдбар, содержит некоторый функционал по пользовательской кастомизации приложения (смена темы, языка);
 export const Sidebar: React.FC<SidebarPropsI> = memo(({ className }) => {
     const [collapsed, setCollapsed] = useState<boolean>(false);
-    const sidebarItemsList = useSelector(getSidebarItems);
+    const sidebarItemsList = useSidebarItems();
 
     const onToggleHandler = () => {
         setCollapsed((prev) => !prev);

@@ -1719,10 +1719,10 @@
       "features": {
         "isArticleRatingEnabled": true,
         "isCounterEnabled": true,
-        "isAppRedesigned": true
+        "isAppRedesigned": false
       },
       "jsonSettings": {
-        "theme": "app_jungle_theme",
+        "theme": "app_dark_theme",
         "isFirstVisit": true,
         "isArticlesPageWasOpened": true
       },
@@ -1741,9 +1741,7 @@
         "isAppRedesigned": true
       },
       "jsonSettings": {
-        "theme": "app_dark_theme",
-        "isFirstVisit": true,
-        "settingsPageHasBeenOpen": false,
+        "theme": "app_light_theme",
         "isArticlesPageWasOpened": true
       },
       "avatar": "https://img.24live.co/avatar/0e43e4c8944711e78cbcf23c913e91ea_1525708454.jpeg"

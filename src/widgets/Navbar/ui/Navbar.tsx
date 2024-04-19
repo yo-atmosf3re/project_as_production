@@ -54,7 +54,7 @@ export const Navbar: React.FC<NavbarPropsI> = memo(({ className }) => {
         <HStack
             role="heading"
             align="center"
-            className={classNames(cls.navbar, {}, [className])}
+            className={classNames(mainClass, {}, [className])}
         >
             <TextDeprecated
                 theme={TEXT_THEME.INVERTED}

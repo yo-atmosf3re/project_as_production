@@ -7,6 +7,7 @@ import { ThemeProvider } from '@/app/providers/ThemeProvider';
 import App from './app/App';
 import '@/app/styles/index.scss';
 import '@/shared/config/i18n/i18n';
+import { ForceUpdateProvider } from './shared/lib/render/forceUpdate';
 
 const container = document.getElementById('root');
 
@@ -23,11 +24,13 @@ root.render(
     <BrowserRouter>
         <StoreProvider>
             <ErrorBoundary>
-                <ThemeProvider>
-                    <Suspense fallback="">
-                        <App />
-                    </Suspense>
-                </ThemeProvider>
+                <ForceUpdateProvider>
+                    <ThemeProvider>
+                        <Suspense fallback="">
+                            <App />
+                        </Suspense>
+                    </ThemeProvider>
+                </ForceUpdateProvider>
             </ErrorBoundary>
         </StoreProvider>
     </BrowserRouter>,

@@ -9,6 +9,7 @@ import { getUserAuthData } from '@/entities/User';
 import { VStack } from '@/shared/ui/redesigned/Stack';
 import { Text } from '@/shared/ui/redesigned/Text';
 import { Skeleton } from '@/shared/ui/redesigned/Skeleton';
+import { useForceUpdate } from '@/shared/lib/render/forceUpdate';
 
 interface UiDesignSwitcherPropsI {
     className?: string;
@@ -25,6 +26,7 @@ export const UiDesignSwitcher: React.FC<UiDesignSwitcherPropsI> = memo(
         const [isLoading, setIsLoading] = useState<boolean>(false);
         const dispatch = useAppDispatch();
         const authData = useSelector(getUserAuthData);
+        const forceUpdate = useForceUpdate();
 
         const isAppRedesigned = getFeatureFlags('isAppRedesigned');
 
@@ -51,6 +53,7 @@ export const UiDesignSwitcher: React.FC<UiDesignSwitcherPropsI> = memo(
                     }),
                 ).unwrap();
                 setIsLoading(false);
+                forceUpdate();
             }
         };
 

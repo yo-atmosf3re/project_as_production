@@ -28,6 +28,7 @@ import cls from './LoginForm.module.scss';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { Button } from '@/shared/ui/redesigned/Button';
 import { Input } from '@/shared/ui/redesigned/Input';
+import { useForceUpdate } from '@/shared/lib/render/forceUpdate';
 
 export interface LoginFormPropsI {
     className?: string;
@@ -51,6 +52,7 @@ const LoginForm: React.FC<LoginFormPropsI> = memo(
         const password = useSelector(getLoginPassword);
         const error = useSelector(getLoginError);
         const isLoading = useSelector(getLoginIsLoading);
+        const forceUpdate = useForceUpdate();
 
         const onChangeUsername = useCallback(
             (value: string) => {
@@ -75,8 +77,9 @@ const LoginForm: React.FC<LoginFormPropsI> = memo(
             );
             if (result.meta.requestStatus === 'fulfilled') {
                 onSuccess();
+                forceUpdate();
             }
-        }, [onSuccess, dispatch, password, username]);
+        }, [dispatch, username, password, onSuccess, forceUpdate]);
 
         const deprecatedLoginForm = (
             <VStack
