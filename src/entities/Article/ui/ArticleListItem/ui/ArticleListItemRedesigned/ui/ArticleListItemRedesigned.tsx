@@ -32,6 +32,7 @@ export const ArticleListItemRedesigned: React.FC<ArticleListItemPropsI> = memo(
                 <Avatar
                     size={32}
                     src={article.user.avatar}
+                    className={cls.avatar}
                 />
                 <Text
                     bold
@@ -139,7 +140,7 @@ export const ArticleListItemRedesigned: React.FC<ArticleListItemPropsI> = memo(
                     <AppImage
                         fallback={
                             <Skeleton
-                                width={200}
+                                width="100%"
                                 height={200}
                             />
                         }

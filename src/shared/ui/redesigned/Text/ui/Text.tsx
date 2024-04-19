@@ -36,9 +36,9 @@ interface TextPropsI {
 export type HeaderTagType = 'h1' | 'h2' | 'h3';
 
 const MAP_SIZE_TO_CLASS: Record<TextSizeType, string> = {
-    s: 'size_s',
-    m: 'size_m',
-    l: 'size_l',
+    s: cls['size-s'],
+    m: cls['size-m'],
+    l: cls['size-l'],
 };
 
 // ? Маппер для сопоставления размера шрифта с HTML-тегом;

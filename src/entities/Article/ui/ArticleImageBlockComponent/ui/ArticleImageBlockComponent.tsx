@@ -1,8 +1,13 @@
 import React, { memo } from 'react';
 import { ModsType, classNames } from '@/shared/lib/classNames/classNames';
-import { TEXT_ALIGN, Text } from '@/shared/ui/deprecated/Text';
+import {
+    Text as TextDeprecated,
+    TEXT_ALIGN,
+} from '@/shared/ui/deprecated/Text';
+import { Text } from '@/shared/ui/redesigned/Text';
 import { ArticleImageBlockI } from '../../../model/types/article';
 import cls from './ArticleImageBlockComponent.module.scss';
+import { ToggleFeatures } from '@/shared/lib/features';
 
 interface ArticleImageBlockComponentPropsI {
     className?: string;
@@ -24,9 +29,20 @@ export const ArticleImageBlockComponent: React.FC<ArticleImageBlockComponentProp
                     className={cls.image}
                 />
                 {block.title ? (
-                    <Text
-                        text={block.title}
-                        align={TEXT_ALIGN.CENTER}
+                    <ToggleFeatures
+                        feature="isAppRedesigned"
+                        on={
+                            <Text
+                                text={block.title}
+                                align="center"
+                            />
+                        }
+                        off={
+                            <TextDeprecated
+                                text={block.title}
+                                align={TEXT_ALIGN.CENTER}
+                            />
+                        }
                     />
                 ) : null}
             </div>
