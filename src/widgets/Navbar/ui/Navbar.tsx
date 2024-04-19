@@ -54,7 +54,7 @@ export const Navbar: React.FC<NavbarPropsI> = memo(({ className }) => {
         <HStack
             role="heading"
             align="center"
-            className={classNames(mainClass, {}, [className])}
+            className={classNames(cls.navbar, {}, [className])}
         >
             <TextDeprecated
                 theme={TEXT_THEME.INVERTED}
@@ -107,14 +107,14 @@ export const Navbar: React.FC<NavbarPropsI> = memo(({ className }) => {
         <HStack
             role="heading"
             align="center"
-            className={classNames(cls.navbar)}
+            className={classNames(mainClass)}
         >
             <ToggleFeatures
                 feature="isAppRedesigned"
                 on={
                     <Button
                         variant="clear"
-                        className={cls.links}
+                        className={cls['links-redesigned']}
                         onClick={onShowModal}
                     >
                         {t('Войти')}
