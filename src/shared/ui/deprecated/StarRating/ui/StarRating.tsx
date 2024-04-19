@@ -2,7 +2,9 @@ import React, { memo, useState } from 'react';
 import { classNames } from '../../../../lib/classNames/classNames';
 import cls from './StarRating.module.scss';
 import StarIcon from '../../../../assets/icons/star.svg';
-import { Icon } from '../../Icon';
+import { Icon as IconDeprecated } from '../../Icon';
+import { ToggleFeatures, toggleFeatures } from '../../../../lib/features';
+import { Icon } from '../../../redesigned/Icon';
 
 interface StarRatingPropsI {
     className?: string;
@@ -53,34 +55,54 @@ export const StarRating: React.FC<StarRatingPropsI> = memo(
         };
 
         return (
-            <div className={classNames(cls['star-rating'], {}, [className])}>
+            <div
+                className={classNames(
+                    toggleFeatures({
+                        name: 'isAppRedesigned',
+                        on: () => 'rating-redesigned',
+                        off: () => 'star-rating',
+                    }),
+                    {},
+                    [className],
+                )}
+            >
                 {
                     // ? Итерация по представленному массиву с числами, который является т.н рейтингом, где в зависимости от некоторых условий применяются классы, которые отличают выбранные звёзды от невыбранных;
-                    STARS.map((starNumber) => (
-                        <Icon
-                            className={classNames(
+                    STARS.map((starNumber) => {
+                        const commonProps = {
+                            className: classNames(
                                 cls['star-icon'],
-                                {
-                                    [cls.selected]: isSelected,
-                                },
+                                { [cls.selected]: isSelected },
                                 [
                                     currentStarsCount >= starNumber
                                         ? cls.hovered
                                         : cls.normal,
                                 ],
-                            )}
-                            Svg={StarIcon}
-                            key={starNumber}
-                            width={size}
-                            height={size}
-                            onMouseLeave={onLeaveHandler}
-                            onMouseEnter={onHoverHandler(starNumber)}
-                            onClick={onClickHandler(starNumber)}
-                            data-testid={`StarRating.${starNumber}`}
-                            // ? Проверка на количественно выбранных звёзд (для e2e-тестирования);
-                            data-selected={currentStarsCount >= starNumber}
-                        />
-                    ))
+                            ),
+                            Svg: StarIcon,
+                            key: starNumber,
+                            width: size,
+                            height: size,
+                            onMouseLeave: onLeaveHandler,
+                            onMouseEnter: onHoverHandler(starNumber),
+                            onClick: onClickHandler(starNumber),
+                            'data-testid': `StarRating.${starNumber}`,
+                            'data-selected': currentStarsCount >= starNumber,
+                        };
+
+                        return (
+                            <ToggleFeatures
+                                feature="isAppRedesigned"
+                                on={
+                                    <Icon
+                                        clickable={!isSelected}
+                                        {...commonProps}
+                                    />
+                                }
+                                off={<IconDeprecated {...commonProps} />}
+                            />
+                        );
+                    })
                 }
             </div>
         );

@@ -20,9 +20,6 @@ interface DrawerPropsI {
 const HEIGHT = window.innerHeight - 100;
 
 // ? Основное описание компоненты представлено ниже;
-/**
- * @deprecated используется новые компоненты из папки `redesigned`;
- */
 export const DrawerContent: React.FC<DrawerPropsI> = memo(
     ({ className, children, isOpen, onClose }) => {
         const { Spring, Gesture } = useAnimationLibs();
@@ -147,7 +144,6 @@ const DrawerAsync: React.FC<DrawerPropsI> = (props) => {
  * @param className
  * @param isOpen - флаг отображения модального окна;
  * @param onClose - передаваемый коллбэк, на основании которого происходит плавное закрытие модального окна;
- * @deprecated используется новые компоненты из папки `redesigned`;
  */
 export const Drawer: React.FC<DrawerPropsI> = (props) => {
     return (

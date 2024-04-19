@@ -7,7 +7,10 @@ import {
     useRateArticle,
 } from '../../../api/articleRatingApi';
 import { getUserAuthData } from '@/entities/User';
-import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
+import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton';
+import { Skeleton } from '@/shared/ui/redesigned/Skeleton';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { Card } from '@/shared/ui/redesigned/Card';
 
 export interface ArticleRatingPropsI {
     className?: string;
@@ -68,9 +71,26 @@ const ArticleRating: React.FC<ArticleRatingPropsI> = memo(
 
         if (isLoading) {
             return (
-                <Skeleton
-                    width="100%"
-                    height="120px"
+                <ToggleFeatures
+                    feature="isAppRedesigned"
+                    on={
+                        <Card
+                            padding="24"
+                            border="round"
+                            max
+                        >
+                            <Skeleton
+                                width="100%"
+                                height="120px"
+                            />
+                        </Card>
+                    }
+                    off={
+                        <SkeletonDeprecated
+                            width="100%"
+                            height="120px"
+                        />
+                    }
                 />
             );
         }

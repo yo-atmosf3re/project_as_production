@@ -2,7 +2,8 @@ import React, { Suspense, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { TEXT_SIZE, Text } from '@/shared/ui/deprecated/Text';
+import { Text as TextDeprecated, TEXT_SIZE } from '@/shared/ui/deprecated/Text';
+import { Text } from '@/shared/ui/redesigned/Text';
 import { CommentList } from '@/entities/Comment';
 import { AddCommentForm } from '@/features/AddCommentForm';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -15,6 +16,7 @@ import { getArticleComments } from '../../../model/slice/articleDetailsCommentSl
 // eslint-disable-next-line max-len
 import { getArticleCommentsIsLoading } from '../../../model/selectors/getArticleCommentsIsLoading/getArticleCommentsIsLoading';
 import cls from './ArticleDetailsComments.module.scss';
+import { ToggleFeatures } from '@/shared/lib/features';
 
 interface ArticleDetailsCommentsPropsI {
     className?: string;
@@ -53,10 +55,22 @@ export const ArticleDetailsComments: React.FC<ArticleDetailsCommentsPropsI> = ({
             max
             className={classNames('', {}, [className])}
         >
-            <Text
-                size={TEXT_SIZE.L}
-                className={cls['comment-title']}
-                title={t('Комментарии')}
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                on={
+                    <Text
+                        size="l"
+                        className={cls['comment-title']}
+                        title={t('Комментарии')}
+                    />
+                }
+                off={
+                    <TextDeprecated
+                        size={TEXT_SIZE.L}
+                        className={cls['comment-title']}
+                        title={t('Комментарии')}
+                    />
+                }
             />
             <Suspense fallback={<Loader />}>
                 <AddCommentForm onSendComment={onSendComment} />

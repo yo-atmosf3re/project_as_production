@@ -81,34 +81,8 @@ export const ArticleListItemSkeleton: React.FC<
     }
 
     return (
-        // <div className={classNames(mainClass, {}, [className, cls[view]])}>
-        //     <Card className={cls.card}>
-        //         <div className={cls['image-wrapper']}>
-        //             <Skeleton
-        //                 width={200}
-        //                 height={200}
-        //                 className={cls.image}
-        //             />
-        //         </div>
-        //         <div className={cls['info-wrapper']}>
-        //             <Skeleton
-        //                 width={130}
-        //                 height={16}
-        //             />
-        //         </div>
-        //         <Skeleton
-        //             className={cls.title}
-        //             width={150}
-        //             height={16}
-        //         />
-        //     </Card>
-        // </div>
         <Card
-            className={classNames(mainClass, {}, [
-                className,
-                // cls.card,
-                cls[view],
-            ])}
+            className={classNames(mainClass, {}, [className, cls[view]])}
             border="round"
             padding="16"
         >
@@ -158,3 +132,26 @@ export const ArticleListItemSkeleton: React.FC<
         </Card>
     );
 };
+
+// <div className={classNames(mainClass, {}, [className, cls[view]])}>
+//     <Card className={cls.card}>
+//         <div className={cls['image-wrapper']}>
+//             <Skeleton
+//                 width={200}
+//                 height={200}
+//                 className={cls.image}
+//             />
+//         </div>
+//         <div className={cls['info-wrapper']}>
+//             <Skeleton
+//                 width={130}
+//                 height={16}
+//             />
+//         </div>
+//         <Skeleton
+//             className={cls.title}
+//             width={150}
+//             height={16}
+//         />
+//     </Card>
+// </div>

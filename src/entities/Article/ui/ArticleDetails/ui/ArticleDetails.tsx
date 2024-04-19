@@ -14,6 +14,7 @@ import {
 } from '@/shared/ui/deprecated/Text';
 import { Text } from '@/shared/ui/redesigned/Text';
 import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton';
+import { Skeleton as SkeletonRedesigned } from '@/shared/ui/redesigned/Skeleton';
 import { Avatar as AvatarDeprecated } from '@/shared/ui/deprecated/Avatar';
 import EyeIcon from '@/shared/assets/icons/eyeDeprecated.svg';
 import CalendarIcon from '@/shared/assets/icons/clarity_date.svg';
@@ -27,9 +28,8 @@ import cls from './ArticleDetails.module.scss';
 import { fetchArticleById } from '../../../model/services/fetchArticleById/fetchArticleById';
 import { articleDetailsReducer } from '../../../model/slice/articleDetailsSlice';
 import { renderArticleBlock } from './renderBlock';
-import { ToggleFeatures } from '@/shared/lib/features';
+import { ToggleFeatures, toggleFeatures } from '@/shared/lib/features';
 import { AppImage } from '@/shared/ui/redesigned/AppImage';
-import { Skeleton } from '@/shared/ui/redesigned/Skeleton';
 
 interface ArticleDetailsPropsI {
     className?: string;
@@ -105,7 +105,7 @@ const ArticleDetailsRedesigned = () => {
             <Text title={article?.subtitle} />
             <AppImage
                 fallback={
-                    <Skeleton
+                    <SkeletonRedesigned
                         width="100%"
                         height={420}
                         border="16px"
@@ -117,6 +117,54 @@ const ArticleDetailsRedesigned = () => {
 
             {article?.blocks.map(renderArticleBlock)}
         </>
+    );
+};
+
+const ArticleDetailsSkeleton = () => {
+    const Skeleton = toggleFeatures({
+        name: 'isAppRedesigned',
+        on: () => SkeletonRedesigned,
+        off: () => SkeletonDeprecated,
+    });
+
+    return (
+        <VStack
+            gap="16"
+            max
+        >
+            <>
+                <Skeleton
+                    className={cls.avatar}
+                    width={200}
+                    height={200}
+                    border="50%"
+                />
+                <Skeleton
+                    className={cls.title}
+                    width={300}
+                    height={32}
+                    border="6px"
+                />
+                <Skeleton
+                    className={cls.skeleton}
+                    width={600}
+                    height={24}
+                    border="6px"
+                />
+                <Skeleton
+                    className={cls.skeleton}
+                    width="100%"
+                    height={200}
+                    border="6px"
+                />
+                <Skeleton
+                    className={cls.skeleton}
+                    width="100%"
+                    height={200}
+                    border="6px"
+                />
+            </>
+        </VStack>
     );
 };
 
@@ -139,47 +187,25 @@ export const ArticleDetails: React.FC<ArticleDetailsPropsI> = memo(
 
         // ? Состояние загрузки;
         if (isLoading) {
-            content = (
-                <>
-                    <SkeletonDeprecated
-                        className={cls.avatar}
-                        width={200}
-                        height={200}
-                        border="50%"
-                    />
-                    <SkeletonDeprecated
-                        className={cls.title}
-                        width={300}
-                        height={32}
-                        border="6px"
-                    />
-                    <SkeletonDeprecated
-                        className={cls.skeleton}
-                        width={600}
-                        height={24}
-                        border="6px"
-                    />
-                    <SkeletonDeprecated
-                        className={cls.skeleton}
-                        width="100%"
-                        height={200}
-                        border="6px"
-                    />
-                    <SkeletonDeprecated
-                        className={cls.skeleton}
-                        width="100%"
-                        height={200}
-                        border="6px"
-                    />
-                </>
-            );
+            content = <ArticleDetailsSkeleton />;
             // ? Состояние, если есть ошибка;
         } else if (error) {
             // ? Состояние успешного получения данных;
             content = (
-                <TextDeprecated
-                    align={TEXT_ALIGN.CENTER}
-                    title={t('Произошла ошибка при загрузке статьи.')}
+                <ToggleFeatures
+                    feature="isAppRedesigned"
+                    on={
+                        <Text
+                            align={TEXT_ALIGN.CENTER}
+                            title={t('Произошла ошибка при загрузке статьи.')}
+                        />
+                    }
+                    off={
+                        <TextDeprecated
+                            align={TEXT_ALIGN.CENTER}
+                            title={t('Произошла ошибка при загрузке статьи.')}
+                        />
+                    }
                 />
             );
         } else {
