@@ -40,7 +40,10 @@ export const LangSwitcher: React.FC<LangSwitcherPropsI> = memo(
         return (
             <ToggleFeatures
                 on={
-                    <Button variant="clear">
+                    <Button
+                        variant="clear"
+                        onClick={toggleLanguageHandler}
+                    >
                         {t(!short ? 'Короткий язык' : 'Язык')}
                     </Button>
                 }

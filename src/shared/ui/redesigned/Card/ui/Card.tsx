@@ -33,6 +33,7 @@ interface CardPropsI extends HTMLAttributes<HTMLDivElement> {
     max?: boolean;
     padding?: CardPaddingType;
     border?: CardBorderType;
+    fullHeight?: boolean;
 }
 
 /**
@@ -50,11 +51,13 @@ export const Card: React.FC<CardPropsI> = ({
     max,
     padding = '8',
     border = 'normal',
+    fullHeight,
     ...otherProps
 }) => {
     const paddingClass = MAP_PADDING_TO_CLASS[padding];
     const mods: ModsType = {
         [cls.max]: max,
+        [cls['full-height']]: fullHeight,
     };
     const additionalClasses: Array<string | undefined> = [
         className,

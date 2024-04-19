@@ -23,5 +23,8 @@
     "Ошибка при загрузке статей": "Error loading articles",
     "Оцените статью": "Rate this article",
     "Комментарии отсутствуют": "No comments",
-    "Оценка статей скоро появится!": "Article rating is coming soon!"
+    "Оценка статей скоро появится!": "Article rating is coming soon!",
+    "{{count}} просмотров_zero": "{{count}} views",
+    "{{count}} просмотров_one": "{{count}} view",
+    "{{count}} просмотров_other": "{{count}} views"
 }

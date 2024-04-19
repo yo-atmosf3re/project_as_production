@@ -17,6 +17,9 @@ import { ArticleDetailsComments } from '../ArticleDetailsComments';
 import { ArticleRating } from '@/features/ArticleRating';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { Card } from '@/shared/ui/deprecated/Card';
+import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout';
+import { DetailsContainer } from '../DetailsContainer';
+import { AdditionalInfoContanier } from '../AdditionalInfoContanier';
 
 interface ArticleDetailsPagePropsI {
     className?: string;
@@ -38,26 +41,55 @@ const ArticleDetailsPage: React.FC<ArticleDetailsPagePropsI> = ({
 
     if (!id) return null;
 
+    const deprecatedArticleDetailsPage = (
+        <Page className={classNames(cls['article-detials'], {}, [className])}>
+            <VStack
+                gap="16"
+                max
+            >
+                <ArticleDetailsPageHeader />
+                <ArticleDetails id={id} />
+                <ToggleFeatures
+                    feature="isArticleRatingEnabled"
+                    on={<ArticleRating articleId={id} />}
+                    off={<Card>{t('Оценка статей скоро появится!')}</Card>}
+                />
+                <ArticleRecommendationsList />
+                <ArticleDetailsComments id={id} />
+            </VStack>
+        </Page>
+    );
+
     return (
         <DynamicModuleLoader reducers={INITIAL_REDUCERS}>
-            <Page
-                className={classNames(cls['article-detials'], {}, [className])}
-            >
-                <VStack
-                    gap="16"
-                    max
-                >
-                    <ArticleDetailsPageHeader />
-                    <ArticleDetails id={id} />
-                    <ToggleFeatures
-                        feature="isArticleRatingEnabled"
-                        on={<ArticleRating articleId={id} />}
-                        off={<Card>{t('Оценка статей скоро появится!')}</Card>}
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                on={
+                    <StickyContentLayout
+                        content={
+                            <Page
+                                className={classNames(
+                                    cls['article-detials'],
+                                    {},
+                                    [className],
+                                )}
+                            >
+                                <VStack
+                                    gap="16"
+                                    max
+                                >
+                                    <DetailsContainer />
+                                    <ArticleRating articleId={id} />
+                                    <ArticleRecommendationsList />
+                                    <ArticleDetailsComments id={id} />
+                                </VStack>
+                            </Page>
+                        }
+                        right={<AdditionalInfoContanier />}
                     />
-                    <ArticleRecommendationsList />
-                    <ArticleDetailsComments id={id} />
-                </VStack>
-            </Page>
+                }
+                off={deprecatedArticleDetailsPage}
+            />
         </DynamicModuleLoader>
     );
 };

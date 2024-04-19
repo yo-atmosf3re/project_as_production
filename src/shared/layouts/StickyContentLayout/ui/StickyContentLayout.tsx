@@ -14,17 +14,15 @@ interface StickyContentLayoutPropsI {
  *
  * @param className
  */
-export const StickyContentLayout: React.FC<StickyContentLayoutPropsI> = memo(({
-    className, content, left, right
-}) => {
-    const { t } = useTranslation();
-    return (
-        <div
-            className={classNames(cls.sticky, {}, [className])}
-        >
-            {right && <div className={cls.left}>{left}</div>}
-            <div className={cls.content}>{content}</div>
-            {left && <div className={cls.right}>{right}</div>}
-        </div>
-    );
-});
+export const StickyContentLayout: React.FC<StickyContentLayoutPropsI> = memo(
+    ({ className, content, left, right }) => {
+        const { t } = useTranslation();
+        return (
+            <div className={classNames(cls.sticky, {}, [className])}>
+                {left && <div className={cls.left}>{left}</div>}
+                <div className={cls.content}>{content}</div>
+                {right && <div className={cls.right}>{right}</div>}
+            </div>
+        );
+    },
+);
