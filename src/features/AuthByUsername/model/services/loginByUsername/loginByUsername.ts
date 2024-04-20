@@ -20,8 +20,6 @@ export const loginByUsername = createAsyncThunk<
     async (authData, thunkApi) => {
         const { dispatch, extra, rejectWithValue } = thunkApi;
         try {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
             const response = await extra.api.post<UserI>('/login', authData);
 
             if (!response.data) {
@@ -31,9 +29,6 @@ export const loginByUsername = createAsyncThunk<
             // ? Сохраянем регистрационные данные в userSlice;
             dispatch(userActions.setAuthData(response.data));
 
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            extra.navigate('/about');
             return response.data;
         } catch (error) {
             console.log(error, 'Login');
