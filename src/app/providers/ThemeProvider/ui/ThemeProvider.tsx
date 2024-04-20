@@ -30,6 +30,10 @@ export const ThemeProvider: React.FC<ThemeProviderPropsI> = ({
         }
     }, [defaultTheme, isThemeInited]);
 
+    useEffect(() => {
+        document.body.className = theme;
+    }, [theme]);
+
     const defaultProps = useMemo(
         () => ({
             theme,

@@ -1,77 +1,3 @@
-.SMALL {
-    width: 230px;
-    transition: 0.15s;
-    cursor: pointer;
-
-    .image-wrapper {
-        // width: 200px;
-        // height: 200px;
-        position: relative;
-        padding: 4px 10px;
-    }
-
-    .image {
-        width: 200px;
-        height: 200px;
-        object-fit: cover;
-    }
-
-    .date {
-        display: none;
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
-
-    &:hover {
-        opacity: 0.7;
-        transform: scale(1.01);
-
-        .date {
-            display: block;
-        }
-    }
-
-    .info-wrapper {
-        display: flex;
-        align-items: center;
-
-        // margin-top: 8px;
-    }
-
-    .types p {
-        width: 115px;
-        white-space: nowrap;
-
-        // ? Скрываем текст, который выходит за ширину параграфа;
-        overflow: hidden;
-
-        // ? Добавляем многоточие к концу текста, который был обрезан из-за ограниченной ширины параграфа;
-        text-overflow: ellipsis;
-    }
-
-    .views {
-        // margin-left: auto;
-        // margin-right: 8px;
-    }
-
-    .title {
-        // margin-top: 8px;
-
-        & p {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-    }
-
-    .card {
-        // display: flex;
-        // flex-direction: column;
-        // justify-content: space-between;
-    }
-}
-
 .BIG {
     .views {
         margin-left: auto;
@@ -111,18 +37,92 @@
     }
 }
 
+.SMALL {
+    width: 230px;
+    transition: 0.15s;
+    cursor: pointer;
+
+    .date {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    &:hover {
+        opacity: 0.7;
+        transform: scale(1.01);
+
+        .date {
+            display: block;
+        }
+    }
+
+    .image-wrapper {
+        width: 200px;
+        height: 200px;
+        position: relative;
+
+        // padding: 4px 10px;
+    }
+
+    .image {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .info-wrapper {
+        display: flex;
+        align-items: center;
+        margin-top: 8px;
+    }
+
+    .skeleton-footer {
+        padding-left: 16px;
+        padding-bottom: 30px;
+    }
+
+    .types p {
+        width: 115px;
+        white-space: nowrap;
+
+        // ? Скрываем текст, который выходит за ширину параграфа;
+        overflow: hidden;
+
+        // ? Добавляем многоточие к концу текста, который был обрезан из-за ограниченной ширины параграфа;
+        text-overflow: ellipsis;
+    }
+
+    .views {
+        margin-left: auto;
+        margin-right: 8px;
+    }
+
+    .title {
+        margin-top: 8px;
+    }
+
+    .title p {
+        width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
 .list-redesigned {
     &.BIG {
         width: 100%;
     }
 
     &.SMALL {
-        width: 240px;
-        height: 350px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-
-        // border-radius: var(--border-radius-special-l);
+        .card {
+            height: 350px;
+            width: 240px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
     }
 }

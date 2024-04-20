@@ -23,17 +23,17 @@
     display: flex;
 }
 
-*::-webkit-scrollbar {
+.app *::-webkit-scrollbar {
     // ? Ширина scrollbar;
     width: 12px;
 }
 
-*::-webkit-scrollbar-track {
+.app *::-webkit-scrollbar-track {
     // ? Цвет дорожки;
     background: var(--card-bg);
 }
 
-*::-webkit-scrollbar-thumb {
+.app *::-webkit-scrollbar-thumb {
     // ? Цвет плашки;
     background-color: var(--inverted-bg-color);
 
@@ -42,4 +42,18 @@
 
     // ? Padding вокруг плашки;
     border: 1px solid  var(--inverted-bg-color);
+}
+
+*::-webkit-scrollbar {
+    width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--light-bg-redesigned);
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--icon-redesigned);
+    border-radius: 20px;
+    border: 1px solid  var(--accent-redesigned);
 }
