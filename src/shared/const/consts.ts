@@ -164,3 +164,16 @@ export enum THEME {
     DARK = 'app_dark_theme',
     JUNGLE = 'app_jungle_theme',
 }
+
+export const AppRouteByPathPattern: Record<string, APP_ROUTES> = {
+    [getRouteMain()]: APP_ROUTES.MAIN,
+    [getRouteAbout()]: APP_ROUTES.ABOUT,
+    [getRouteProfile(':id')]: APP_ROUTES.PROFILE,
+    [getRouteArticles()]: APP_ROUTES.ARTICLES,
+    [getRouteArticleDetails(':id')]: APP_ROUTES.ARTICLE_DETAILS,
+    [getRouteArticleCreate()]: APP_ROUTES.ARTICLE_CREATE,
+    [getRouteArticleEdit(':id')]: APP_ROUTES.ARTICLE_EDIT,
+    [getRouteAdminPanel()]: APP_ROUTES.ADMIN_PANEL,
+    [getRouteSettings()]: APP_ROUTES.SETTINGS,
+    [getRouteForbbied()]: APP_ROUTES.FORBIDDEN,
+}
