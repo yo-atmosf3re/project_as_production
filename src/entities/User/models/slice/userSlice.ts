@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { USER_LS_KEY } from '@/shared/const/localstorage';
+import { LAST_DESIGN_LS_KEY, USER_LS_KEY } from '@/shared/const/localstorage';
 import { UserI, UserSchema } from '../types/user';
 import { setFeatureFlags } from '@/shared/lib/features';
 import { saveJsonSettings } from '../services/saveJsonSettings';
@@ -21,6 +21,12 @@ export const userSlice = createSlice({
             // ? Записываем и сохраняем ответ в LS, переведя эти данные в строку, потому что в LS можно сохранять только строки;
             // " Имитация сохранения т.н токена;
             localStorage.setItem(USER_LS_KEY, action.payload.id);
+            localStorage.setItem(
+                LAST_DESIGN_LS_KEY,
+                action.payload.features?.isAppRedesigned
+                    ? 'new'
+                    : 'old'
+            )
         },
         logout: (state) => {
             state.authData = undefined;
