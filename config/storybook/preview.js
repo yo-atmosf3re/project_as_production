@@ -4,6 +4,9 @@ import { ThemeDecorator } from '../../src/shared/config/storybook/ThemeDecorator
 import { TranslationDecorator } from '../../src/shared/config/storybook/TranslationDecorator/TranslationDecorator';
 import { RouterDecorator } from '../../src/shared/config/storybook/RouterDecorator/RouterDecorator';
 import { SuspenseDecorator } from '../../src/shared/config/storybook/SuspenseDecorator/SuspenseDecorator';
+import { 
+    FeaturesFlagsDecorator
+ } from '../../src/shared/config/storybook/FeaturesFlagsDecorator/FeaturesFlagsDecorator';
 import '../../src/app/styles/index.scss';
 import { THEME } from '../../src/shared/const/consts';
 
@@ -50,7 +53,7 @@ export const parameters = {
 
 // ? Добавляет декоратор для предоставления глобальных стилей сторисам во всем Storybook;
 addDecorator(StyleDecorator);
-// Добавляет декоратор для добавления поддержки перевода сторисам в Storybook. Используется там где есть тексты, которые нужно перевести;
+// ? Добавляет декоратор для добавления поддержки перевода сторисам в Storybook. Используется там где есть тексты, которые нужно перевести;
 addDecorator(TranslationDecorator);
 // ? Добавляет декоратор для применения темы LIGHT ко всем сторисам в Storybook по-умолчанию, в самой сторис можно переназначить тему, воспользовавшись этим же декоратором;
 addDecorator(ThemeDecorator(THEME.LIGHT));
@@ -58,3 +61,5 @@ addDecorator(ThemeDecorator(THEME.LIGHT));
 addDecorator(RouterDecorator);
 // ? Добавляет декоратор, который оборачивает сторис в Suspense реакта;
 addDecorator(SuspenseDecorator);
+// ? Добавляет декоратор фичей с пустым объектом для переопределения фичей после переключения сторисов с различными флагами;
+addDecorator(FeaturesFlagsDecorator({}))

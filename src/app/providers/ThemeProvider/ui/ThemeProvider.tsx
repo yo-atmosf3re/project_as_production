@@ -1,7 +1,6 @@
 import React, { ReactNode, useEffect, useMemo, useState } from 'react';
 import { ThemeContext } from '../../../../shared/lib/context/ThemeContext';
 import { THEME } from '@/shared/const/consts';
-import { useJsonSettings } from '@/entities/User';
 import { THEME_LS_KEY } from '@/shared/const/localstorage';
 
 // ? Const, которой присвоено значение из LS с использованием ключа THEME_LS_KEY, и если значение из LS не определено, то присваивается значение THEME.LIGHT по-умолчанию;
@@ -16,23 +15,21 @@ interface ThemeProviderPropsI {
 const fallbackTheme = localStorage.getItem(THEME_LS_KEY) as THEME;
 
 // ? Обёртка в провайдер контекста, который ответственный за цветовые темы приложения;
-export const ThemeProvider: React.FC<ThemeProviderPropsI> = ({
+const ThemeProvider: React.FC<ThemeProviderPropsI> = ({
     children,
     initialTheme,
 }) => {
-    const { theme: defaultTheme } = useJsonSettings();
-
     const [isThemeInited, setIsThemeInited] = useState<boolean>(false);
     const [theme, setTheme] = useState<THEME>(
         initialTheme || fallbackTheme || THEME.LIGHT,
     );
 
     useEffect(() => {
-        if (!isThemeInited && defaultTheme) {
-            setTheme(defaultTheme);
+        if (!isThemeInited && initialTheme) {
+            setTheme(initialTheme);
             setIsThemeInited(true);
         }
-    }, [defaultTheme, isThemeInited]);
+    }, [initialTheme, isThemeInited]);
 
     useEffect(() => {
         document.body.className = theme;
@@ -54,3 +51,5 @@ export const ThemeProvider: React.FC<ThemeProviderPropsI> = ({
         </ThemeContext.Provider>
     );
 };
+
+export default ThemeProvider;

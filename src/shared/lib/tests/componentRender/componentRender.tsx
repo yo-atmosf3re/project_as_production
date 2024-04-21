@@ -7,7 +7,7 @@ import { ReducersMapObject } from '@reduxjs/toolkit';
 import i18nForTests from '@/shared/config/i18n/i18nForTests';
 import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
 import { THEME } from '@/shared/const/consts';
-import { ThemeProvider } from '@/app/providers/ThemeProvider';
+import ThemeProvider from '@/app/providers/ThemeProvider';
 import '@/app/styles/index.scss';
 
 export interface ComponentRouteOptionsI {

@@ -1,7 +1,7 @@
 import { Story } from '@storybook/react';
 // ? Это не бизнес код, поэтому добавление исключения вполне себе оправданное действие;
 // eslint-disable-next-line yo-plugin/layer-imports
-import { ThemeProvider } from '@/app/providers/ThemeProvider';
+import ThemeProvider from '@/app/providers/ThemeProvider';
 import { THEME } from '@/shared/const/consts';
 
 /**
