@@ -27,8 +27,8 @@ npm run start:dev или npm run start:dev:vite - запуск сервера + 
 - `npm run test:ui:report` - генерация полного отчета для скриншотных тестов;
 - `npm run test:ui:json` - генерация JSON отчета для скриншотных тестов;
 - `npm run test:ui:html` - генерация HTML отчета для скриншотных тестов;
-- `npm run storybook` - запуск Storybook;
-- `npm run storybook:build` - сборка storybook билда;
+- `npm run sb` - запуск Storybook;
+- `npm run sb:build` - сборка storybook билда;
 - `npm run prepare` - прекоммит хуки;
 - `npm run generate:slice` - Скрипт для генерации FSD слайсов;
 
