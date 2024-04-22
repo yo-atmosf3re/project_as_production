@@ -17,8 +17,8 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Button, ButtonSize, ButtonTheme } from './Button';
-import { Theme } from '@/shared/const/theme';
+import { Button, BUTTON_SIZE, BUTTON_THEME } from './Button';
+import { THEME } from '@/shared/const/theme';
 
 export default {
     title: 'shared/Button',
@@ -38,6 +38,6 @@ Primary.args = {
 export const Clear = Template.bind({});
 Clear.args = {
     children: 'Text',
-    theme: ButtonTheme.CLEAR,
+    theme: BUTTON_THEME.CLEAR,
 };
 ```
