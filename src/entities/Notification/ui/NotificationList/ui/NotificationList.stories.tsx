@@ -5,6 +5,7 @@ import { NotificationList } from './NotificationList';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { THEME } from '@/shared/const/consts';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 
 export default {
     title: 'entities/Notification/NotificationList',
@@ -30,6 +31,40 @@ export const WithNotification = Template.bind({});
 WithNotification.args = {};
 WithNotification.decorators = [StoreDecorator({})];
 WithNotification.parameters = {
+    mockData: [
+        {
+            // ! По какой-то причине конструкция `${__API__}/...` не даёт желаемого результата и запрос не мокается, поэтому ниже используется полное название адреса;
+            url: 'http://localhost:7777/notifications',
+            method: 'GET',
+            status: 200,
+            response: [
+                {
+                    id: '1',
+                    title: 'Уведомление',
+                    description: 'Какое-то описание',
+                },
+                {
+                    id: '2',
+                    title: 'Уведомление',
+                    description: 'Какое-то описание',
+                },
+                {
+                    id: '3',
+                    title: 'Уведомление',
+                    description: 'Какое-то описание',
+                },
+            ],
+        },
+    ],
+};
+
+export const WithNotificationRedesigned = Template.bind({});
+WithNotificationRedesigned.args = {};
+WithNotificationRedesigned.decorators = [
+    StoreDecorator({}),
+    NewDesignDecorator,
+];
+WithNotificationRedesigned.parameters = {
     mockData: [
         {
             // ! По какой-то причине конструкция `${__API__}/...` не даёт желаемого результата и запрос не мокается, поэтому ниже используется полное название адреса;

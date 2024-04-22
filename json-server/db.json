@@ -1738,7 +1738,7 @@
       "features": {
         "isArticleRatingEnabled": false,
         "isCounterEnabled": false,
-        "isAppRedesigned": true
+        "isAppRedesigned": false
       },
       "jsonSettings": {
         "theme": "app_light_theme",
@@ -1847,6 +1847,13 @@
       "rate": 5,
       "feedback": "123",
       "id": 4
+    },
+    {
+      "userId": "1",
+      "articleId": "10",
+      "rate": 5,
+      "feedback": "111",
+      "id": 5
     }
   ],
   "profile-ratings": [

@@ -5,6 +5,7 @@ import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDe
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { THEME } from '@/shared/const/consts';
 import { AddCommentForm } from '../index';
+import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 
 export default {
     title: 'features/AddCommentForm',
@@ -23,6 +24,12 @@ Light.args = {
     onSendComment: action('onSendComment'),
 };
 Light.decorators = [StoreDecorator({})];
+
+export const LightRedesigned = Template.bind({});
+LightRedesigned.args = {
+    onSendComment: action('onSendComment'),
+};
+LightRedesigned.decorators = [StoreDecorator({}), NewDesignDecorator];
 
 export const Dark = Template.bind({});
 Dark.args = {

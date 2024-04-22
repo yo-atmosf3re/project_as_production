@@ -10,6 +10,7 @@ import {
 
 import { ArticleI } from '../../../model/types/article';
 import { ArticleListItem } from './ArticleListItem';
+import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 
 export default {
     title: 'entities/Article/ArticleListItem',
@@ -109,11 +110,25 @@ Big.args = {
     article,
 };
 
-export const Small = Template.bind({});
-Small.args = {
+export const BigRedesigned = Template.bind({});
+BigRedesigned.args = {
     view: ARTICLE_VIEW.BIG,
     article,
 };
+BigRedesigned.decorators = [NewDesignDecorator];
+
+export const Small = Template.bind({});
+Small.args = {
+    view: ARTICLE_VIEW.SMALL,
+    article,
+};
+
+export const SmallRedesigned = Template.bind({});
+SmallRedesigned.args = {
+    view: ARTICLE_VIEW.SMALL,
+    article,
+};
+SmallRedesigned.decorators = [NewDesignDecorator];
 
 export const BigDark = Template.bind({});
 BigDark.args = {
@@ -124,7 +139,7 @@ BigDark.decorators = [ThemeDecorator(THEME.DARK)];
 
 export const SmallDark = Template.bind({});
 SmallDark.args = {
-    view: ARTICLE_VIEW.BIG,
+    view: ARTICLE_VIEW.SMALL,
     article,
 };
 SmallDark.decorators = [ThemeDecorator(THEME.DARK)];
@@ -138,7 +153,7 @@ BigJungle.decorators = [ThemeDecorator(THEME.JUNGLE)];
 
 export const SmallJungle = Template.bind({});
 SmallJungle.args = {
-    view: ARTICLE_VIEW.BIG,
+    view: ARTICLE_VIEW.SMALL,
     article,
 };
 SmallJungle.decorators = [ThemeDecorator(THEME.JUNGLE)];

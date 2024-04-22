@@ -6,7 +6,7 @@ import { ThemeDecorator } from '../../../../config/storybook/ThemeDecorator/Them
 import { CARD_THEME, Card } from './Card';
 
 export default {
-    title: 'shared/Card',
+    title: 'shared/deprecated/Card',
     component: Card,
     argTypes: {
         backgroundColor: { control: 'color' },

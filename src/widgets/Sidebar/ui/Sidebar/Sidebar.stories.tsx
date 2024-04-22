@@ -4,6 +4,7 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { THEME } from '@/shared/const/consts';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { Sidebar } from './Sidebar';
+import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 
 export default {
     title: 'widget/Sidebar',
@@ -25,6 +26,17 @@ Light.decorators = [
             authData: {},
         },
     }),
+];
+
+export const LightRedesigned = Template.bind({});
+LightRedesigned.args = {};
+LightRedesigned.decorators = [
+    StoreDecorator({
+        user: {
+            authData: {},
+        },
+    }),
+    NewDesignDecorator,
 ];
 
 export const Dark = Template.bind({});

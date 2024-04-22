@@ -5,6 +5,7 @@ import ArticleRating from './ArticleRating';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { THEME } from '@/shared/const/consts';
+import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 
 export default {
     title: 'features/ArticleRating',
@@ -33,6 +34,36 @@ WithRate.decorators = [
     }),
 ];
 WithRate.parameters = {
+    mockData: [
+        {
+            // ! По какой-то причине конструкция `${__API__}/...` не даёт желаемого результата и запрос не мокается, поэтому ниже используется полное название адреса;
+            url: 'http://localhost:7777/article-ratings?articleId=1&userId=1',
+            method: 'GET',
+            status: 200,
+            response: [
+                {
+                    rate: 4,
+                },
+            ],
+        },
+    ],
+};
+
+export const WithRateRedesigned = Template.bind({});
+WithRateRedesigned.args = {
+    articleId: '1',
+};
+WithRateRedesigned.decorators = [
+    StoreDecorator({
+        user: {
+            authData: {
+                id: '1',
+            },
+        },
+    }),
+    NewDesignDecorator,
+];
+WithRateRedesigned.parameters = {
     mockData: [
         {
             // ! По какой-то причине конструкция `${__API__}/...` не даёт желаемого результата и запрос не мокается, поэтому ниже используется полное название адреса;

@@ -5,6 +5,7 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { THEME, ARTICLE_TYPE, ARTICLE_BLOCK_TYPE } from '@/shared/const/consts';
 import { ArticleI } from '../../../model/types/article';
 import { ArticleDetails } from './ArticleDetails';
+import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 
 export default {
     title: 'entities/Article/ArticleDetails',
@@ -103,6 +104,17 @@ Normal.decorators = [
             data: article,
         },
     }),
+];
+
+export const NormalRedesigned = Template.bind({});
+NormalRedesigned.args = {};
+NormalRedesigned.decorators = [
+    StoreDecorator({
+        articleDetails: {
+            data: article,
+        },
+    }),
+    NewDesignDecorator,
 ];
 
 export const Loading = Template.bind({});

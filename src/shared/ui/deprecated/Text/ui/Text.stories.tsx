@@ -5,7 +5,7 @@ import { ThemeDecorator } from '../../../../config/storybook/ThemeDecorator/Them
 import { TEXT_SIZE, TEXT_THEME, Text } from './Text';
 
 export default {
-    title: 'shared/Text',
+    title: 'shared/deprecated/Text',
     component: Text,
     argTypes: {
         backgroundColor: { control: 'color' },

@@ -1,18 +1,20 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { UiDesignSwitcher } from './UiDesignSwitcher';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 
 export default {
-    title: 'shared/UiDesignSwitcher',
+    title: 'features/UiDesignSwitcher',
     component: UiDesignSwitcher,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
 } as ComponentMeta<typeof UiDesignSwitcher>;
 
-const Template: ComponentStory<typeof UiDesignSwitcher> = (args) => <UiDesignSwitcher {...args} />;
+const Template: ComponentStory<typeof UiDesignSwitcher> = (args) => (
+    <UiDesignSwitcher {...args} />
+);
 
 export const Primary = Template.bind({});
-Primary.args = {
-
-};
+Primary.args = {};
+Primary.decorators = [StoreDecorator({})];

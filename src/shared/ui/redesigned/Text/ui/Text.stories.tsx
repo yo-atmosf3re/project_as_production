@@ -1,15 +1,15 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { THEME } from '@/shared/const/consts';
-import { ThemeDecorator } from '../../../../config/storybook/ThemeDecorator/ThemeDecorator';
-import { TextSizeType, TextVariantType, Text } from './Text';
+import { Text } from './Text';
+import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 
 export default {
-    title: 'shared/Text',
+    title: 'shared/redesigned/Text',
     component: Text,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
+    decorators: [NewDesignDecorator],
 } as ComponentMeta<typeof Text>;
 
 const Template: ComponentStory<typeof Text> = (args) => <Text {...args} />;
@@ -24,89 +24,47 @@ SomeTitlePrimary.args = {
     title: 'Title',
 };
 
-export const SomeTextDarkPrimary = Template.bind({});
-SomeTextDarkPrimary.args = {
-    text: 'Text',
-};
-SomeTextDarkPrimary.decorators = [ThemeDecorator(THEME.DARK)];
-
-export const SomeTitleDarkPrimary = Template.bind({});
-SomeTitleDarkPrimary.args = {
-    title: 'Title',
-};
-SomeTitleDarkPrimary.decorators = [ThemeDecorator(THEME.DARK)];
-
 export const BothVariantsTextsPrimary = Template.bind({});
 BothVariantsTextsPrimary.args = {
     text: 'Text',
     title: 'Title',
 };
 
-export const BothVariantsTextsDarkPrimary = Template.bind({});
-BothVariantsTextsDarkPrimary.args = {
-    text: 'Text',
-    title: 'Title',
-};
-BothVariantsTextsDarkPrimary.decorators = [ThemeDecorator(THEME.DARK)];
-
 export const SomeTextError = Template.bind({});
 SomeTextError.args = {
     text: 'Text',
-    variant: TextVariant.ERROR,
+    variant: 'error',
 };
 
 export const SomeTitleError = Template.bind({});
 SomeTitleError.args = {
     title: 'Title',
-    variant: TextVariant.ERROR,
+    variant: 'error',
 };
-
-export const SomeTextDarkError = Template.bind({});
-SomeTextDarkError.args = {
-    text: 'Text',
-    variant: TextVariant.ERROR,
-};
-SomeTextDarkError.decorators = [ThemeDecorator(THEME.DARK)];
-
-export const SomeTitleDarkError = Template.bind({});
-SomeTitleDarkError.args = {
-    title: 'Title',
-    variant: TextVariant.ERROR,
-};
-SomeTitleDarkError.decorators = [ThemeDecorator(THEME.DARK)];
-
 export const BothVariantsTextsError = Template.bind({});
 BothVariantsTextsError.args = {
     text: 'Text',
     title: 'Title',
-    variant: TextVariant.ERROR,
+    variant: 'error',
 };
-
-export const BothVariantsTextsDarkError = Template.bind({});
-BothVariantsTextsDarkError.args = {
-    text: 'Text',
-    title: 'Title',
-    variant: TextVariant.ERROR,
-};
-BothVariantsTextsDarkError.decorators = [ThemeDecorator(THEME.DARK)];
 
 export const SizeS = Template.bind({});
 SizeS.args = {
-    size: TextSize.S,
+    size: 's',
     text: 'Text',
     title: 'Title',
 };
 
 export const SizeM = Template.bind({});
 SizeM.args = {
-    size: TextSize.M,
+    size: 'm',
     text: 'Text',
     title: 'Title',
 };
 
 export const SizeL = Template.bind({});
 SizeL.args = {
-    size: TextSize.L,
+    size: 'l',
     text: 'Text',
     title: 'Title',
 };

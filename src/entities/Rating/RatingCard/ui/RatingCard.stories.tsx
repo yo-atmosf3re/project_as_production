@@ -1,6 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { RatingCard } from './RatingCard';
+import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 
 export default {
     title: 'entities/Rating/RatingCard',
@@ -16,3 +17,7 @@ const Template: ComponentStory<typeof RatingCard> = (args) => (
 
 export const Primary = Template.bind({});
 Primary.args = {};
+
+export const PrimaryRedesigned = Template.bind({});
+PrimaryRedesigned.args = {};
+PrimaryRedesigned.decorators = [NewDesignDecorator];

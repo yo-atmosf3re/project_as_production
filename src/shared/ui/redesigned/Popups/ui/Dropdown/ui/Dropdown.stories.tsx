@@ -2,13 +2,15 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Button } from '../../../../Button';
 import { Dropdown } from './Dropdown';
+import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 
 export default {
-    title: 'shared/Dropdown',
+    title: 'shared/redesigned/Popups/Dropdown',
     component: Dropdown,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
+    decorators: [NewDesignDecorator],
 } as ComponentMeta<typeof Dropdown>;
 
 const Template: ComponentStory<typeof Dropdown> = (args) => (

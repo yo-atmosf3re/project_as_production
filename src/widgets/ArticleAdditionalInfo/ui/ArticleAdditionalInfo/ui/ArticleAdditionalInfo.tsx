@@ -17,7 +17,7 @@ interface ArticleAdditionalInfoPropsI {
 }
 
 /**
- *
+ * Компонента, которая отрисовывает информацию о конкретной статье справа в `layout`;
  * @param className
  */
 export const ArticleAdditionalInfo: React.FC<ArticleAdditionalInfoPropsI> =

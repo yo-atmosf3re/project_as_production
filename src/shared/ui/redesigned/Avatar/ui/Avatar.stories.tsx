@@ -3,13 +3,15 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Avatar } from './Avatar';
 // ? Картинка для тестов, чтобы не грузить её откуда-либо потом и не тратить время на загрузку;
 import AvatarImage from '../../../../assets/tests/avatar_image_for_test.jpg';
+import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 
 export default {
-    title: 'shared/Avatar',
+    title: 'shared/redesigned/Avatar',
     component: Avatar,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
+    decorators: [NewDesignDecorator],
 } as ComponentMeta<typeof Avatar>;
 
 const Template: ComponentStory<typeof Avatar> = (args) => <Avatar {...args} />;

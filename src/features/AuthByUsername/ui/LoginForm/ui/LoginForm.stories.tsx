@@ -1,6 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import LoginForm from './LoginForm';
+import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 
 export default {
     title: 'features/LoginForm',
@@ -24,19 +25,13 @@ Error.decorators = [
     }),
 ];
 
-// export const Okay = Template.bind({});
-// Okay.args = {};
-// Okay.decorators = [StoreDecorator({
-//     loginForm: {
-//         username: '1',
-//         password: '1',
-//     },
-// })];
-
-// export const Loading = Template.bind({});
-// Loading.args = {};
-// Loading.decorators = [StoreDecorator({
-//     loginForm: {
-//         isLoading: true,
-//     },
-// })];
+export const ErrorRedeigned = Template.bind({});
+ErrorRedeigned.args = {};
+ErrorRedeigned.decorators = [
+    StoreDecorator({
+        loginForm: {
+            error: 'Some error',
+        },
+    }),
+    NewDesignDecorator,
+];

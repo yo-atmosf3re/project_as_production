@@ -1,6 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { NotificationItem } from './NotificationItem';
+import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 
 export default {
     title: 'entities/Notification/NotificationItem',
@@ -30,3 +31,14 @@ Primary.args = {
         href: 'https://www.google.com/',
     },
 };
+
+export const PrimaryRedesigned = Template.bind({});
+PrimaryRedesigned.args = {
+    item: {
+        id: '1',
+        title: 'Какое-то название для элемента со списком уведомлений',
+        description: 'Какое-то описание',
+        href: 'https://www.google.com/',
+    },
+};
+PrimaryRedesigned.decorators = [NewDesignDecorator];

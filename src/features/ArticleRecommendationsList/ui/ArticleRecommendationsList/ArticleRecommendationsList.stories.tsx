@@ -4,6 +4,7 @@ import withMock from 'storybook-addon-mock';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ArticleI } from '@/entities/Article';
 import { ArticleRecommendationsList } from './ArticleRecommendationsList';
+import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 
 export default {
     title: 'features/ArticleRecommendationsList',
@@ -43,6 +44,29 @@ Primary.parameters = {
         {
             // ! По какой-то причине конструкция `${__API__}/articles?_limit=3` не даёт желаемого результата и запрос не мокается, поэтому ниже используется полное название адреса;
             url: 'http://localhost:7777/articles?_limit=3',
+            method: 'GET',
+            status: 200,
+            response: [
+                { ...article, id: '1' },
+                { ...article, id: '2' },
+                { ...article, id: '3' },
+                { ...article, id: '4' },
+            ],
+        },
+    ],
+};
+
+export const PrimaryRedesigned = Template.bind({});
+PrimaryRedesigned.args = {};
+PrimaryRedesigned.decorators = [StoreDecorator({}), NewDesignDecorator];
+
+// ? С помощью стороннего аддона мокаем запрос на сервер за данными, это нужно для того, чтобы можно было создавать сторисы, которые внутри себя будут использоваться RTK Query;
+PrimaryRedesigned.parameters = {
+    mockData: [
+        {
+            // ! По какой-то причине конструкция `${__API__}/articles?_limit=3` не даёт желаемого результата и запрос не мокается, поэтому ниже используется полное название адреса;
+            // url: 'http://localhost:7777/articles?_limit=3',
+            url: `${__API__}/articles?_limit=3`,
             method: 'GET',
             status: 200,
             response: [

@@ -3,6 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ARTICLE_TYPE, ARTICLE_BLOCK_TYPE } from '@/shared/const/consts';
 import { ArticleInfiteList } from './ArticleInfiteList';
+import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 
 export default {
     title: 'pages/ArticlesPage/ArticleInfiteList',
@@ -96,4 +97,16 @@ Primary.decorators = [
             data: article,
         },
     }),
+];
+
+export const PrimaryRedesigned = Template.bind({});
+PrimaryRedesigned.args = {};
+PrimaryRedesigned.decorators = [
+    StoreDecorator({
+        articleDetails: {
+            isLoading: false,
+            data: article,
+        },
+    }),
+    NewDesignDecorator,
 ];

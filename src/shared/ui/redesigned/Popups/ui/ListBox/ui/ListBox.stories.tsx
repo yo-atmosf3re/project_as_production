@@ -1,11 +1,10 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { THEME } from '@/shared/const/consts';
-import { ThemeDecorator } from '../../../../../../config/storybook/ThemeDecorator/ThemeDecorator';
 import { ListBox } from './ListBox';
+import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 
 export default {
-    title: 'shared/ListBox',
+    title: 'shared/redesigned/Popups/ListBox',
     component: ListBox,
     argTypes: {
         backgroundColor: { control: 'color' },
@@ -17,6 +16,7 @@ export default {
                 <Story />
             </div>
         ),
+        NewDesignDecorator,
     ],
 } as ComponentMeta<typeof ListBox>;
 
@@ -24,8 +24,8 @@ const Template: ComponentStory<typeof ListBox> = (args) => (
     <ListBox {...args} />
 );
 
-export const Light = Template.bind({});
-Light.args = {
+export const Primary = Template.bind({});
+Primary.args = {
     defaultValue: 'Num',
     items: [
         {
@@ -44,8 +44,8 @@ Light.args = {
     label: 'Select current value',
 };
 
-export const LightTopRight = Template.bind({});
-LightTopRight.args = {
+export const PrimaryTopRight = Template.bind({});
+PrimaryTopRight.args = {
     direction: 'top right',
     defaultValue: 'Num',
     items: [
@@ -65,8 +65,8 @@ LightTopRight.args = {
     label: 'Select current value',
 };
 
-export const LightTopLeft = Template.bind({});
-LightTopLeft.args = {
+export const PrimaryTopLeft = Template.bind({});
+PrimaryTopLeft.args = {
     direction: 'top left',
     defaultValue: 'Num',
     items: [
@@ -85,111 +85,3 @@ LightTopLeft.args = {
     ],
     label: 'Select current value',
 };
-
-export const Dark = Template.bind({});
-Dark.args = {
-    defaultValue: 'Num',
-    items: [
-        {
-            content: '1111111111111111111111',
-            value: '1111111111111111111111',
-        },
-        {
-            content: '222',
-            value: '222',
-        },
-        {
-            content: '333',
-            value: '333',
-        },
-    ],
-    label: 'Select current value',
-};
-Dark.decorators = [ThemeDecorator(THEME.DARK)];
-
-export const DarkBottomRight = Template.bind({});
-DarkBottomRight.args = {
-    direction: 'bottom right',
-    defaultValue: 'Num',
-    items: [
-        {
-            content: '1111111111111111111111',
-            value: '1111111111111111111111',
-        },
-        {
-            content: '222',
-            value: '222',
-        },
-        {
-            content: '333',
-            value: '333',
-        },
-    ],
-    label: 'Select current value',
-};
-DarkBottomRight.decorators = [ThemeDecorator(THEME.DARK)];
-
-export const DarkBottomLeft = Template.bind({});
-DarkBottomLeft.args = {
-    direction: 'bottom left',
-    defaultValue: 'Num',
-    items: [
-        {
-            content: '1111111111111111111111',
-            value: '1111111111111111111111',
-        },
-        {
-            content: '222',
-            value: '222',
-        },
-        {
-            content: '333',
-            value: '333',
-        },
-    ],
-    label: 'Select current value',
-};
-DarkBottomLeft.decorators = [ThemeDecorator(THEME.DARK)];
-
-export const DarkReadonly = Template.bind({});
-DarkReadonly.args = {
-    readonly: true,
-    defaultValue: 'Num',
-    items: [
-        {
-            content: '1111111111111111111111',
-            value: '1111111111111111111111',
-        },
-        {
-            content: '222',
-            value: '222',
-        },
-        {
-            content: '333',
-            value: '333',
-        },
-    ],
-    label: 'Select current value',
-};
-DarkReadonly.decorators = [ThemeDecorator(THEME.DARK)];
-
-export const Jungle = Template.bind({});
-Jungle.args = {
-    defaultValue: 'Num',
-    items: [
-        {
-            content: '1111111111111111111111',
-            value: '1111111111111111111111',
-        },
-        {
-            content: '222',
-            value: '222',
-        },
-        {
-            content: '333',
-            value: '333',
-        },
-    ],
-    label: 'Select current value',
-};
-Jungle.decorators = [ThemeDecorator(THEME.JUNGLE)];

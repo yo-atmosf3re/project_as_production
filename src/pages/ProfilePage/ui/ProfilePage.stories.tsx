@@ -2,10 +2,10 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { THEME } from '@/shared/const/consts';
+import { THEME, CURRENCY } from '@/shared/const/consts';
 import { COUNTRY } from '@/entities/Country';
-import { CURRENCY } from '@/shared/const/consts';
 import ProfilePage from './ProfilePage';
+import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 
 export default {
     title: 'pages/ProfilePage/ProfilePage',
@@ -35,6 +35,25 @@ Light.decorators = [
             },
         },
     }),
+];
+
+export const LightRedesigned = Template.bind({});
+LightRedesigned.args = {};
+LightRedesigned.decorators = [
+    StoreDecorator({
+        profile: {
+            form: {
+                username: 'Stories',
+                age: 28,
+                country: COUNTRY.ARMENIA,
+                lastname: 'yo atmo',
+                first: '1',
+                city: '2',
+                currency: CURRENCY.RUB,
+            },
+        },
+    }),
+    NewDesignDecorator,
 ];
 
 export const Dark = Template.bind({});

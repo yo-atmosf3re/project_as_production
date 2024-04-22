@@ -10,6 +10,7 @@ import {
 
 import { ArticleI } from '../../../model/types/article';
 import { ArticleList } from './ArticleList';
+import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 
 export default {
     title: 'entities/Article/ArticleList',
@@ -127,6 +128,17 @@ Big.args = {
     view: ARTICLE_VIEW.BIG,
 };
 
+export const BigRedesigned = Template.bind({});
+BigRedesigned.args = {
+    isLoading: false,
+    articles: Array.from({ length: 6 }, (_, index) => ({
+        ...article,
+        id: String(index),
+    })),
+    view: ARTICLE_VIEW.BIG,
+};
+BigRedesigned.decorators = [NewDesignDecorator];
+
 export const Small = Template.bind({});
 Small.args = {
     isLoading: false,
@@ -136,6 +148,17 @@ Small.args = {
     })),
     view: ARTICLE_VIEW.SMALL,
 };
+
+export const SmallRedesigned = Template.bind({});
+SmallRedesigned.args = {
+    isLoading: false,
+    articles: Array.from({ length: 6 }, (_, index) => ({
+        ...article,
+        id: String(index),
+    })),
+    view: ARTICLE_VIEW.SMALL,
+};
+SmallRedesigned.decorators = [NewDesignDecorator];
 
 export const IsLoadingBigDark = Template.bind({});
 IsLoadingBigDark.args = {

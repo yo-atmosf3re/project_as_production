@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { SettignsPage } from './SettignsPage';
+import SettignsPage from './SettignsPage';
 
 export default {
     title: 'shared/SettignsPage',
@@ -10,9 +10,9 @@ export default {
     },
 } as ComponentMeta<typeof SettignsPage>;
 
-const Template: ComponentStory<typeof SettignsPage> = (args) => <SettignsPage {...args} />;
+const Template: ComponentStory<typeof SettignsPage> = (args) => (
+    <SettignsPage {...args} />
+);
 
 export const Primary = Template.bind({});
-Primary.args = {
-
-};
+Primary.args = {};

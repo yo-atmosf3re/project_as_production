@@ -1,6 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { CommentList } from './CommentList';
+import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 
 export default {
     title: 'entities/Comment/CommentList',
@@ -45,6 +46,12 @@ export const Primary = Template.bind({});
 Primary.args = {
     comments,
 };
+
+export const PrimaryRedesigned = Template.bind({});
+PrimaryRedesigned.args = {
+    comments,
+};
+PrimaryRedesigned.decorators = [NewDesignDecorator];
 
 export const Loading = Template.bind({});
 Loading.args = {
