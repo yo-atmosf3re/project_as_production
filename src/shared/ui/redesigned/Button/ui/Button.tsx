@@ -1,4 +1,9 @@
-import React, { ButtonHTMLAttributes, ReactNode, memo } from 'react';
+import React, {
+    ButtonHTMLAttributes,
+    ForwardedRef,
+    ReactNode,
+    forwardRef,
+} from 'react';
 import { ModsType, classNames } from '../../../../lib/classNames/classNames';
 import cls from './Button.module.scss';
 
@@ -52,20 +57,24 @@ interface ButtonPropsI extends ButtonHTMLAttributes<HTMLButtonElement> {
  * @param addonLeft - дополнительный элемент, добавляемый к кнопке слева;
  * @param addonRight - дополнительный элемент, добавляемый к кнопке справа;
  */
-export const Button: React.FC<ButtonPropsI> = memo(
-    ({
-        className,
-        children,
-        variant = 'outline',
-        size = 'm',
-        square,
-        disabled,
-        fullWidth,
-        color = 'normal',
-        addonLeft,
-        addonRight,
-        ...otherProps
-    }) => {
+export const Button: React.FC<ButtonPropsI> = forwardRef(
+    (
+        {
+            className,
+            children,
+            variant = 'outline',
+            size = 'm',
+            square,
+            disabled,
+            fullWidth,
+            color = 'normal',
+            addonLeft,
+            addonRight,
+            ...otherProps
+        },
+        // ? Headless UI использует forwardRef при указании какой-либо своей компоненты в as в компоненте самой библиотеки. Для устранения всех проблем используется forwardRef;
+        ref: ForwardedRef<HTMLButtonElement>,
+    ) => {
         const mods: ModsType = {
             [cls.square]: square,
             [cls.disabled]: disabled,
@@ -84,6 +93,7 @@ export const Button: React.FC<ButtonPropsI> = memo(
                 type="button"
                 className={classNames(cls.button, mods, additionalClasses)}
                 {...otherProps}
+                ref={ref}
             >
                 <div className={cls['addon-left']}>{addonLeft}</div>
                 {children}

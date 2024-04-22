@@ -73,13 +73,12 @@ export const ListBox: React.FC<ListBoxPropsI> = ({
                 <HListBox.Button
                     disabled={readonly}
                     className={cls.trigger}
+                    as={Button}
                 >
-                    <Button disabled={readonly}>
-                        {
-                            // ? При отсутствии value отрисовывается defaultValue;
-                            value ?? defaultValue
-                        }
-                    </Button>
+                    {
+                        // ? При отсутствии value отрисовывается defaultValue;
+                        value ?? defaultValue
+                    }
                 </HListBox.Button>
                 <HListBox.Options
                     className={classNames(cls.options, {}, optionsClasses)}
