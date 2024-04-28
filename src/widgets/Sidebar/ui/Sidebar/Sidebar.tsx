@@ -20,7 +20,9 @@ interface SidebarPropsI {
     className?: string;
 }
 
-// ? Компонента-сайдбар, содержит некоторый функционал по пользовательской кастомизации приложения (смена темы, языка);
+/**
+ * Компонента-сайдбар, содержит некоторый функционал по пользовательской кастомизации приложения (смена темы, языка);
+ */
 export const Sidebar: React.FC<SidebarPropsI> = memo(({ className }) => {
     const [collapsed, setCollapsed] = useState<boolean>(false);
     const sidebarItemsList = useSidebarItems();

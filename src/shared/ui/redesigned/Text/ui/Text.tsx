@@ -53,8 +53,8 @@ const MAP_SIZE_TO_HEADER_TAG: Record<TextSizeType, HeaderTagType> = {
  *
  * @param className
  * @param title - более яркий и, чуть выше среднего размера, текст;
- * @param text - слегка бледный и обычного размера текст;
- * @param theme - тема текста, для доступа используется TEXT_THEME enum;
+ * @param text - обычного размера текст;
+ * @param variant - цветовая тема текста;
  * @param align - выравнивание текста - справа, слева или по-центру, для доступа используется TEXT_ALIGN enum;
  * @param size - размера текста - S, M, L, для доступа используется TEXT_SIZE enum;
  * @param bold - флаг, указывающий является ли текст жирным или нет;

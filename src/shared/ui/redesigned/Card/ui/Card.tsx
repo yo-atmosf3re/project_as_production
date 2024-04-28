@@ -40,7 +40,7 @@ interface CardPropsI extends HTMLAttributes<HTMLDivElement> {
  * Компонента-карточка, входящая в комплект UI-kit проекта. Стилизует children этой компоненты в подобие блока в виде карточки-блока;
  * @param className
  * @param children
- * @param theme - тема карточки, для доступа используется CARD_THEME enum;
+ * @param theme - цветовой вариант карточки;
  * @param max - флаг, по которому указывается максимальная ширина для карточки;
  * @returns
  */

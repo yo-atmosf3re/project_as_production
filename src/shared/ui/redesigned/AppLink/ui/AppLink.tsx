@@ -16,7 +16,7 @@ interface AppLinkPropsI extends LinkProps {
 /**
  * Кастомизированная компонента, входящая в обновлённый комплект UI-kit проекта, для создания ссылок;
  * @param className
- * @param theme - тема ссылки, для доступа используется AppLinkTheme;
+ * @param variant - вариант ссылки;
  * @param children
  */
 export const AppLink: React.FC<AppLinkPropsI> = memo(

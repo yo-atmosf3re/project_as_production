@@ -49,7 +49,7 @@ interface ButtonPropsI extends ButtonHTMLAttributes<HTMLButtonElement> {
  *
  * @param className
  * @param children - содержимое кнопки;
- * @param theme - тема кнопки, для доступа используется BUTTON_THEME enum (по-умолчанию - OUTLINE);
+ * @param variant - тема кнопки;
  * @param square - флаг, указывающий, что кнопка должна быть квадратной;
  * @param size - размер кнопки, для доступа используется BUTTON_SIZE enum (по-умолчанию - M);
  * @param disabled - возможность отключить кнопку;
